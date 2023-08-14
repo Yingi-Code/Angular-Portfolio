@@ -1,0 +1,31 @@
+.carousel-caption {
+    max-width: 100%;
+}
+
+.sub-caption {
+font-size: 20px;
+/* margin-top: 30px; */
+margin-bottom: 10px;
+}
+
+
+.carousel-button-container {
+    color: white;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+.carousel-button-container>.btn {
+    border: 1px solid lightgrey;
+    max-width: 60%;
+    margin: 5px;
+ 
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+}
+.carousel-button-container .btn:hover {
+    background-color: goldenrod;
+    color: white;
+    border: 1px solid goldenrod;
+} 
+

@@ -1,0 +1,91 @@
+.page-banner {
+    background-image: url("/assets/banners/notfound.jpg");
+    margin: 0px auto;
+    text-align: center;
+}
+
+.page-banner-heading {
+    color: lightgray;
+}
+
+.second-row {
+    color: grey;
+}
+
+.page-banner-sub-heading {
+    color: white;
+}
+
+.page-banner-heading-buttons {
+    color: white;
+}
+
+.page-banner-heading-buttons .btn:hover {
+    background-color: brown;
+    color: white;
+}
+
+.page-banner-heading-buttons>.btn {
+    border: 1px solid lightgrey;
+    width: 200px;
+    margin: 5px;
+    color: white;
+}
+
+.page-banner-heading-buttons>.packages-button {
+    background-color: goldenrod;
+    color: white;
+}
+
+.page-banner-heading-buttons>.request-button {
+    color: white;
+    border-color: white;
+}
+
+.page-content {
+    margin-top: 15px;
+}
+
+.service-info-container {
+    padding: 8px;
+    margin-bottom: 35px;
+}
+
+.service-info-content-header {
+    color: red;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.service-info-content {
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.extra-services-list {
+    font-weight: bold;
+    color: brown;
+}
+
+.page-error-container {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.error-content-heading {
+    color:red;
+}
+
+.page-error-paragraph {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* .page-content-container {
+
+    align-items: center;
+} */
+
+
+

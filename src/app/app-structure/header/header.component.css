@@ -1,0 +1,32 @@
+.company-identity {
+        /* background-image: url("/assets/img/e.jpg"); */
+        /* background-size: 100%; */
+        /* background-repeat: repeat; */
+        padding: 20px;
+        padding-left: 0px;
+        text-align: right;
+}
+
+.company-name {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: 2em sans-serif;
+    vertical-align: middle;
+    color: red;
+}
+
+.logo img {
+    height: 60px;
+    padding-right: 10px;
+}
+
+.moto {
+    color: darkgray;
+    font: 1.2em sans-serif;
+}
+
+
+.company-reg {
+    color: black;
+    margin-top: 5px;
+}
+

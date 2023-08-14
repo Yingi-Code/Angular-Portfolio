@@ -1,0 +1,113 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage ">
+        <h1>ABOUT THE DEVELOPER</h1>
+        <p class="page-title-description">ACADEMIC BACKGROUND, WORK EXPERIENCE, & RECENT PROJECTS.</p>
+        
+        <div class="social-buttons-aligner">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row page-content">
+
+    <div class="col-md-9">
+
+        <div class="page-content-container">
+            
+            <div class="accordion outer-accordion accordion-flush" id="accordionExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header " id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <fa-icon class="concept-icon" [icon]="['fas', 'business-time']"></fa-icon>&nbsp;
+                           BACKGROUND
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p><b>Mabunda Group Pty. Ltd</b> is the EHS consulting company, geared to assist the clients to comply with OHS,
+                            Environmental, Food Safety and other applicable legislation and to empower all interested and affected stakeholders. </p>
+                            <p>The company address the core EHS, Construction Health and Safety and Food Safety issues with all client’s employees at
+                            all levels and preferably at the language that they understand well.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <fa-icon class="concept-icon" [icon]="['fas', 'crosshairs']"></fa-icon>&nbsp;
+                            OUR MISSION
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>Our aim is to promote a health and safe working environment in an inclusive- consultative approach at all spheres of
+                                management, all employees and interested or affected parties.</p>
+                            <p>
+                                Knowledge and information is shared at the workplace to
+                                ensure continual improvement as required by International Standards. We aspire to be the preferred EHS, CHS and Food
+                                Safety Consultancy in industry.
+                            </p>                     
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                            aria-expanded="false" aria-controls="collapseFour">
+                            <fa-icon class="concept-icon" [icon]="['fas', 'gears']"></fa-icon>&nbsp;
+                            OUR OBJECTIVES
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>
+                                    Facilitate the Risk Assessment process.
+                                </li>
+                                <li>
+                                    Facilitate EHS Management Systems
+                                </li>
+                                <li>
+                                    Facilitate Environmental Health and Safety and Food Safety training.
+                                </li>
+                                <li>
+                                    Facilitate hands on practical solutions to the clients’ EHS, CHS and Food Safety challenges.
+                                </li>
+                                <li>
+                                    Providing professional advice to the convenience of the clients.
+                                </li>
+                                <li>
+                                    Providing appropriate advice in relation to EHS, Environmental, Food Safety and all applicable legislation and
+                                    standards.
+                                </li>
+                                <li>
+                                    Conducts needs analysis in relation for EHS, CHS and Food Safety matters.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+<div class="col-md-3">
+    <app-sidebar></app-sidebar>
+</div>
+
+</div>

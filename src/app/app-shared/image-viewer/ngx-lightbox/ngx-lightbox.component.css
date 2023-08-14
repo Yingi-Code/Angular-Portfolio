@@ -1,0 +1,22 @@
+.lightbox-container {
+    display: block;
+    text-align: center;
+}
+
+.lightbox-image-container {
+    display: inline;
+}
+
+ img {
+    height: 88px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 8px solid lightgrey;
+}
+
+.boby {
+    overflow: hidden;
+}
+
+
+

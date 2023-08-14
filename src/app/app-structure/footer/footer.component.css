@@ -1,0 +1,67 @@
+footer {
+    
+    text-align: center;
+    color: #f0f0f0;
+    /* margin-top: 10px; */
+    border-top: 5px solid orange;
+    word-wrap: break-word;
+}
+
+.footer-items-container {
+    text-align: left;
+    color: white;
+    padding: 15px;
+    
+}
+
+
+.footer-item-header {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.footer-item {
+    margin-bottom: 15px;
+}
+
+.footer-item-list {
+    color: grey;
+    /* font-size: 13px; */
+    padding-left: 2px;
+    /* margin-left: 21px; */
+}
+
+.copyright-items-container {
+    margin: 0px;
+    padding: 20px;
+    border-top: 5px solid brown;
+}
+
+.footer-quick-links a{
+    text-decoration: none;
+    color: grey;
+}
+
+/*
+    WhatsApp floating button
+*/
+
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 11px #999;
+    z-index: 100;
+}
+
+.my-float {
+    margin-top: 15px;
+}

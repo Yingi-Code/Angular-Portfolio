@@ -1,0 +1,39 @@
+.page-banner {
+    /* background-image: url("/assets/banners/home1.jpg"); */
+    margin: 0px auto;
+    text-align: center;
+}
+
+.page-banner-heading {
+    color: brown;
+}
+
+.second-row {
+    color: grey;
+}
+
+.page-banner-sub-heading {
+    color: white;
+}
+
+.page-banner-heading-buttons {
+    color: white;
+}
+
+.page-banner-heading-buttons .btn:hover {
+    background-color: brown;
+    color: white;
+}
+
+.page-banner-heading-buttons>.btn {
+    border: 1px solid lightgrey;
+    width: 200px;
+    margin: 5px;
+    color: white;
+}
+
+.page-banner-heading-buttons>.packages-button {
+    /* color:coral; */
+    background-color: goldenrod;
+    color: white;
+} 

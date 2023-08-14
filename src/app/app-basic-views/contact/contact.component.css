@@ -1,0 +1,67 @@
+.page-content {
+    margin-top: 15px;
+}
+
+form {
+    font-size: 25px;
+}
+
+.contac-form-name {
+font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control, .form-select {
+    padding: 8px;
+    color: lightseagreen;
+    border-color: brown;
+    opacity: 0.5;
+}
+
+input::placeholder, textarea::placeholder {
+    color: lightseagreen;
+    /* opacity: 0.5; */
+}
+
+.default-selected-text {
+    color: grey;
+}
+
+textarea {
+    resize: none;
+}
+
+.contact-form-btn-container {
+    text-align: right;
+}
+
+.contact-form-btn {
+    padding-left: 30px;
+    border: none;
+    background-color: grey;
+    color: white;
+    padding-right: 30px;    
+}
+
+.submit {
+    background-color: brown;
+    margin-left: 10px;
+    color: white;
+}
+
+.submit:hover{
+    color: white;
+    background-color: red;
+}
+
+.hint-content {
+    margin-bottom: 15px;
+}
+
+.reset:hover {
+    background-color: lightgrey;
+    color: white;
+}
