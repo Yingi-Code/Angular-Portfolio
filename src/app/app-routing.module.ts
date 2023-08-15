@@ -14,15 +14,12 @@ const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
 
   // redirectTo - home
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '', component: HomeComponent, title: "My RPs - Home"  },
   
   { path: 'home', component: HomeComponent, title: "My RPs - Home" },
   { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
   { path: 'services', component: ServicesComponent, title: "My RPs - Dashboard" },
-  { path: 'faq', component: FaqComponent, title: "My RPs- FAQs" },
-  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Contact Us" },
-  { path: 'gallery', component: GalleryComponent, title: "My RPs - Gallery" },
+
   // redirectTo - Error page
   { path: '**', component: ErrorComponent, title: "My RPs- Not found" },
 ];

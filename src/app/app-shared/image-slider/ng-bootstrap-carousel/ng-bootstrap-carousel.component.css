@@ -1,3 +1,7 @@
+.picsum-img-wrapper {
+    max-height: 300px;
+}
+
 .carousel-caption {
     max-width: 100%;
 }
@@ -8,24 +12,23 @@ font-size: 20px;
 margin-bottom: 10px;
 }
 
-
 .carousel-button-container {
     color: white;
-    margin-bottom: 30px;
+  
+    margin-bottom: 5px;
     margin-top: 5px;
 }
 .carousel-button-container>.btn {
-    border: 1px solid lightgrey;
+    background-color: orange;
     max-width: 60%;
     margin: 5px;
- 
     padding-left: 50px;
     padding-right: 50px;
     color: white;
+    font-weight: bold;
 }
 .carousel-button-container .btn:hover {
-    background-color: goldenrod;
+    background-color: red;
     color: white;
-    border: 1px solid goldenrod;
 } 
 

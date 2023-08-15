@@ -1,14 +1,14 @@
 <ngb-carousel class="carousel" @fadeInOutCarousel *ngIf="images">
 
     <ng-template ngbSlide >
-        <div  class="picsum-img-wrapper ">
+        <div  class="picsum-img-wrapper">
             <img class="img-fluid"  [src]="images[0].src" alt="Random first slide"  />
         </div>
         <div class="carousel-caption items-one">
             <h1>{{images[0].title}}</h1>
             <div class="sub-caption d-none d-md-block">{{images[0].short}}</div> 
             <div class="carousel-button-container d-none d-md-block">
-                <a class="btn" routerLink="/contact"> Get in Touch </a>
+                <a class="btn" routerLink="/dashboard"> Explore... </a>
             </div>
         </div>
     </ng-template>
@@ -22,7 +22,7 @@
             <h1>{{images[1].title}}</h1>
             <div class="sub-caption d-none d-md-block">{{images[1].short}}</div>
             <div class="carousel-button-container d-none d-md-block">
-                <a class="btn" routerLink="/contact"> Get in Touch </a>
+                <a class="btn" routerLink="/dashboard">Explore...</a>
             </div>
         </div>
     </ng-template>
@@ -36,25 +36,10 @@
             <h1>{{images[2].title}}</h1>
             <div class="sub-caption d-none d-md-block">{{images[2].short}}</div>
             <div class="carousel-button-container d-none d-md-block">
-                <a class="btn" routerLink="/contact"> Get in Touch </a>
+                <a class="btn" routerLink="/dashboard">Explore...</a>
             </div>
         </div>
     </ng-template>
-
-
-    <ng-template ngbSlide>
-        <div class="picsum-img-wrapper ">
-            <img class="img-fluid"  [src]="images[3].src" alt="Random fourth slide" />
-        </div>
-        <div class="carousel-caption items-four">
-            <h1>{{images[3].title}}</h1>
-            <div class="sub-caption d-none d-md-block">{{images[3].short}}</div>
-            <div class="carousel-button-container d-none d-md-block">
-                <a class="btn" routerLink="/contact"> Get in Touch </a>
-            </div>
-        </div>
-    </ng-template>
-
 
 </ngb-carousel>
 

@@ -3,7 +3,7 @@ footer {
     text-align: center;
     color: #f0f0f0;
     /* margin-top: 10px; */
-    border-top: 5px solid orange;
+    border-top: 5px solid lightgrey;
     word-wrap: break-word;
 }
 
@@ -35,7 +35,7 @@ footer {
 .copyright-items-container {
     margin: 0px;
     padding: 20px;
-    border-top: 5px solid brown;
+border-top: 5px solid lightgrey;
 }
 
 .footer-quick-links a{

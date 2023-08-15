@@ -1,27 +1,40 @@
 .company-identity {
-        /* background-image: url("/assets/img/e.jpg"); */
-        /* background-size: 100%; */
-        /* background-repeat: repeat; */
-        padding: 20px;
+        padding: 10px;
         padding-left: 0px;
-        text-align: right;
+        text-align: left;
+        color: black;       
+}
+
+.company-name img {
+    height: 60px;
+    padding-right: 10px;
+    margin-bottom: 10px;
 }
 
 .company-name {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font: 2em sans-serif;
-    vertical-align: middle;
-    color: red;
+    /* word-spacing: -1px; */
 }
 
-.logo img {
-    height: 60px;
-    padding-right: 10px;
+.company-name .first-word {
+    color: darkslategray;
+    /* font-weight: bold; */
+}
+
+.company-name .second-word {
+    color: red;
+    /* font-weight: bold; */
+}
+
+.company-name .third-word {
+    color: gray;
+    font-weight: bold;
 }
 
 .moto {
     color: darkgray;
     font: 1.2em sans-serif;
+    margin-top: 5px;
 }
 
 

@@ -5,7 +5,7 @@ import { StickyShareButtonsConfig } from 'sharethis-angular';
 //Inline Share Buttons
 const inlineShareButtonsConfig: InlineShareButtonsConfig = {
   alignment: 'center', // alignment of buttons (left, center, right)
-  color: 'social', // set the color of buttons (social, white)
+  color: 'white', // set the color of buttons (social, white)
   enabled: true, // show/hide buttons (true, false)
   font_size: 16, // font size for the buttons
   labels: null, // button labels (cta, counts, null)
@@ -15,10 +15,10 @@ const inlineShareButtonsConfig: InlineShareButtonsConfig = {
     'whatsapp',
     'linkedin',
     // 'messenger',
-    'facebook',
+    // 'facebook',
     // 'twitter',
-    // 'email',
-    // 'print'
+    'email',
+    'print'
   ],
   padding: 12, // padding within buttons (INTEGER)
   radius: 4, // the corner radius on each button (INTEGER)
@@ -38,10 +38,11 @@ const stickyShareButtonsConfig: StickyShareButtonsConfig = {
   min_count: 0,         // hide react counts less than min_count (INTEGER)
   networks: [           // which networks to include (see SHARING NETWORKS)
     'linkedin',
-    'facebook',
-    'twitter',
+    // 'facebook',
+    // 'twitter',
     'whatsapp',
-    'email'
+    'email',
+    'print'
    
   ],
   padding: 12,          // padding within buttons (INTEGER)
@@ -55,12 +56,12 @@ const stickyShareButtonsConfig: StickyShareButtonsConfig = {
 
   // OPTIONAL PARAMETERS
 
-  url: 'www.monakaliattorneys.co.za', // (defaults to current url)
+  url: 'www.myrecentprojects.co.za', // (defaults to current url)
   image: '../assets/banners/6.jpg',  // (defaults to og:image or twitter:image)
-  description: 'Goog day, I would lie to share the Law-firm website to you. Thank you.',       // (defaults to og:description or twitter:description)
-  title: 'KM. Attorneys Inc - Website',            // (defaults to og:title or twitter:title)
-  message: 'Goog day, I would lie to share the Law-firm website to you. Thank you.',     // (only for email sharing)
-  subject: 'KM. Attorneys Inc - Website',  // (only for email sharing)
+  description: 'Hi Yingi, I would like to hear more about your software development skills. Can we please have a discussion? Thanks.',       // (defaults to og:description or twitter:description)
+  title: 'Angular App [Portfolio]',            // (defaults to og:title or twitter:title)
+  message: 'Hi Yingi, I would like to hear more about your software development skills. Can we please have a discussion? Thanks.',     // (only for email sharing)
+  subject: 'Let me more about your Angular App',  // (only for email sharing)
   username: 'custom twitter handle' // (only for twitter sharing)
 };
 
