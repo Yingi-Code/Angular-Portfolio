@@ -1,0 +1,80 @@
+<div class="bg-light">
+    <div @fadeInPageTitle  class="welcome-messsage ">
+        <h3>[ WELCOME ]</h3>
+        <p class="page-title-description fade-in">
+            HI, I'M <b>YINGI!</b> WELCOME TO MY <b>ANGULAR PORTFOLIO</b>.
+    </div>
+
+    <div class="social-buttons-aligner ">
+        <app-share-this-buttons></app-share-this-buttons>
+    </div>
+</div>
+
+<!--Page content -->
+
+
+<div @fadeInFeaturedImaged class="row featured-items-container">
+
+    <div class="col-md-4 featured-container">
+        <div class="home-first-col">
+
+            <div class="featured-items-image slide-to-right">
+                <img class="img-fluid" src="../assets/featured/1.png">
+            </div>
+
+            <div class="featured-items-headings fade-out">
+                RESPONSIVE UI
+            </div>
+
+            <div class="featured-items-description">
+                Designing user-interfaces that fit in various device screen sizes using HTML5, CSS3, and Bootstrap.
+            </div>
+
+            <div class="featured-items-button-container slide-to-left">
+                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 featured-container">
+        <div class="home-first-col">
+
+            <div class="featured-items-image slide-to-down">
+                <img class="img-fluid" src="../assets/featured/2.png">
+            </div>
+
+            <div class="featured-items-headings fade-out">
+                ANGULAR (SPA)
+            </div>
+
+            <div class="featured-items-description">
+                Developing web-based applications that render dynamic content in single page, using Angular framework.
+            </div>
+
+            <div class="featured-items-button-container slide-to-up">
+                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 featured-container">
+        <div class="home-first-col">
+
+            <div class="featured-items-image slide-to-left ">
+                <img class="img-fluid" src="../assets/featured/3.png">
+            </div>
+
+            <div class="featured-items-headings fade-out">
+                RESTful API
+            </div>
+
+            <div class="featured-items-description">
+                Building Angular web-based applications that share real-time data by interacting with various web APIs.
+            </div>
+
+            <div class="featured-items-button-container slide-to-right">
+                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+            </div>
+        </div>
+    </div>
+</div>

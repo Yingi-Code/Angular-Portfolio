@@ -1,0 +1,92 @@
+<div @fadeInPageTitle class="bg-light">
+    <div class="welcome-messsage">
+        <h3>[ DASHBOARD ]</h3>
+        <p class="page-title-description fade-in">
+            LIST OF <b class="bold-subtitle-word">ANGULAR CONCEPTS</b> AND HOW THEY WORK.
+        </p>
+    </div>
+
+    <div class="social-buttons-aligner ">
+        <app-share-this-buttons></app-share-this-buttons>
+    </div>
+
+</div>
+
+
+<div class="row page-content">
+    <div class="col-md-9">
+        <div class="page-content-container">
+
+            <div class="dashboard-items">
+                
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'address-card']"></fa-icon> <br />
+                    [ Forms ] <br /> Template-Driven<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'address-card']"></fa-icon> <br />
+                    [ Forms ] <br /> Reactive<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'share-nodes']"></fa-icon> <br />
+                    [ RESTful API ] <br /> Online-store<br /> 
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'user-lock']"></fa-icon> <br />
+                    [ Authentication ] <br /> JWT<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'cloud-arrow-up']"></fa-icon> <br />
+                    [ File Systems ] <br /> Upload<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'calendar-days']"></fa-icon> <br />
+                    [ Date/Time ] <br /> Booking<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'images']"></fa-icon> <br />
+                    [ Gallery ] <br /> Photos Album<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="" [icon]="['fas', 'location-dot']"></fa-icon> <br />
+                    [ AGM ] <br /> Google Maps<br />
+                </a>
+
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="panding-itmes" [icon]="['fas', 'circle-info']"></fa-icon> <br />
+                    [ Pending.. ] <br /> Coming soon<br />
+                </a>
+                    
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="panding-itmes" [icon]="['fas', 'circle-info']"></fa-icon> <br />
+                    [ Pending.. ] <br /> Coming soon<br />
+                </a>
+                
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="panding-itmes" [icon]="['fas', 'circle-info']"></fa-icon> <br />
+                    [ Pending.. ] <br /> Coming soon<br />
+                </a>
+                
+                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
+                    <fa-icon class="panding-itmes" [icon]="['fas', 'circle-info']"></fa-icon> <br />
+                    [ Pending.. ] <br /> Coming soon<br />
+                </a>
+
+
+                </div>   
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>

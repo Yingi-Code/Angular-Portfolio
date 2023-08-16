@@ -1,0 +1,218 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ FORMS - TEMPLATE-DRIVE ]</h3>
+        <p class="page-title-description fade-in">
+            DESIGN, VALIDATION, ROUTE-GUARD, AND CRUD OPERATION.
+        </p>
+
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row page-content">
+
+    <div class="col-md-9">
+
+        <div class="page-content-container">
+
+    <div class="form-sections-headings">Developer form</div>
+    <section class="row dome-form-container">
+        <!--                                        
+            ngModel     - binds all form elements to ngForm using their form element names
+            formData    - acts as a form object (form-controls, Statuses [touched, valud, etc], and their Values [element-names contents])
+            ngForm      - allow binding all form-controls
+            #tempalte   -variables are used to acces form-controls for validation
+            (ngSubmit)  - gets triggered by the clicked submit button  
+        -->
+
+        <!-- Form -->
+        
+        <form #formData="ngForm" (ngSubmit)="Developer(formData)">
+            
+            <section class="row">
+                <!-- Form - first column -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- #firstName allows angular to binda the form-control to ngModel -->
+                        <input [(ngModel)]="developerName" type="text" name="firstName" #firstName="ngModel"
+                            id="firstName" required class="form-control form-control-sm" validateStr
+                            placeholder="First name">
+
+                        <!--Multiple Validation Error messages -->
+                        <div *ngIf="firstName.touched && firstName.invalid" class="form-validation-message">
+                            <div *ngIf="firstName.errors?.['required']">* First name required </div>
+
+                            <div *ngIf="firstName.errors?.['whiteSpace']">* First name cannot contain whitespace</div>
+                            <div *ngIf="firstName.errors?.['specialCharacter']">* First name cannot contain special
+                                chatacter(s)</div>
+
+                            <div *ngIf="firstName.errors?.['minlength']"> First name should have a minimum of
+                                {{firstName.errors?.['minlength'].requiredLength}} characters </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- #firstName allows angular to binda the form-control to ngModel -->
+                        <input [(ngModel)]="developerEmail" type="text" name="emailAddress" #emailAddress="ngModel"
+                            required email minlength="5" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            class="form-control form-control-sm" placeholder="Email address">
+                        <!--Multiple Validation Error messages -->
+                        <div *ngIf="emailAddress.touched && emailAddress.invalid" class="form-validation-message">
+                            <div *ngIf="emailAddress.errors?.['required']">* Email address required </div>
+                            <!-- <div *ngIf="emailAddress.errors?.['whiteSpace']">* Email address cannot contain whitespace</div> -->
+                            <div *ngIf="emailAddress.errors?.['minlength']"> * Email should have a minimum of
+                                {{emailAddress.errors?.['minlength'].requiredLength}} characters </div>
+                            <!-- <div *ngIf="firstName.errors?.['maxlength']"> First name should have a minimum of 5 characters </div> -->
+                            <div *ngIf="emailAddress.errors?.['pattern']"> * Email address does not match the required
+                                data format </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form - second column -->
+                <div class="col-md-6 form-second-column">
+
+                    <div ngModelGroup="project">
+                        <div class="form-group">
+                            <select class="form-select form-select-sm select-text" [(ngModel)]="developerRole"
+                                name="developerRole" #role="ngModel" required>
+                                <!--Binding the selected option as an object {"id": 2, "name": "Email"}-->
+                                <option value="" hidden disabled selected class=""> --- Developer Role ---</option>
+                                <option *ngFor="let roleItem of developerRoles" class="" [ngValue]="roleItem.name"
+                                    [selected]="roleItem.name">
+                                    {{roleItem.name}}
+                                </option>
+                            </select>
+
+                            <div *ngIf="role.touched && role.invalid" class="form-validation-message">
+                                <div *ngIf="role.errors?.['required']">* Please select developer role</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group teamMember">
+                            <input [(ngModel)]="developerSubscription" type="checkbox" class="checkbox"
+                                #isSubscribed="ngModel" name="isSubscribed"> Project Team Member? <br />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- keep the button inactive untill when wthe for is valid -->
+                        <input type="submit" value="{{btnMode == true ? ' Update ' : ' Add '}}"
+                            [disabled]="!formData.valid" class="btn btn-danger btn-sm ">
+
+                        <!-- <input type="button" value="Clear" (click)="ClearForm()" class="btn btn-secondary btn-sm "> -->
+                    </div>
+
+                </div>
+
+            </section>
+        </form>
+    </section>
+
+
+    <!-- Develpers list -->
+    <section class="row">
+        <div class="col-md-6">
+            <div class="form-sections-headings">Developers list</div>
+            <div *ngIf="developers.length != 0; else noCustomerFound" class="row list-group dome-list-container">
+                <button *ngFor="let developer of developers;  let i = index" class=" list-group-item ">
+
+                    <div (click)="DeveloperDetails(developer)" class="col-md-1 dome-list-cells "
+                        title="Click for details">
+                        <b> {{i+1 }}. </b>&nbsp;&nbsp;
+                    </div>
+
+                    <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells "
+                        title="Click for details">
+                        <fa-icon class="concept-icon" [icon]="['fas', 'user']"></fa-icon> &nbsp;
+                        {{ developer.firstName}}
+                    </div>
+                    <!-- <div (click)="deleteSelectedCustomer(customer)" class="col-md-3 dome-list-cells " title="Click to delete">
+                                                    {{customer.emailAddress}}
+                                                </div> -->
+                    <div (click)="DeveloperDetails(developer)" class="col-md-1 dome-list-cells "
+                        title="Click for details">
+                        {{developer.project.isSubscribed == true? 'Yes': 'No'}}
+                    </div>
+                    <div class="col-lg-0 dome-list-cells list-btn-container">
+
+                    </div>
+                    <div class="col-lg-6 dome-list-cells list-btn-container">
+                        <button (click)="DeveloperData(developer)" class=" btn-sm list-btn"> &nbsp; Edit &nbsp;
+                        </button>&nbsp;
+                        <button (click)="DeleteSelectedDeveloper(developer)" class=" btn-sm list-btn">Delete</button>
+                    </div>
+
+                </button>
+
+            </div>
+            <ng-template #noCustomerFound>
+                <div class="alert alert-danger  empty-list-message">
+                    <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
+                    Sorry, no developer profile found!
+                </div>
+            </ng-template>
+
+        </div>
+
+        <!-- Developer details -->
+        <div class="col-md-6 ">
+            
+            <div *ngIf="developers.length !=0"  class="form-sections-headings" >
+                Developer details
+            </div>
+
+            <div *ngIf="developers.length !=0" >
+            
+            <div *ngIf="(isDeveloperDetails == true) && (developers.length !=0) ; else noDeveloperDetailsFound;" class="developer-details-container">
+                <section class="row ">
+                    <div class="col-md-3"><b>Name:</b></div>
+                    <div class="col-md-9">{{objDeveloperDetails.firstName}}</div>
+                </section>
+
+                <section class="row ">
+                    <div class="col-md-3"><b>Email:</b></div>
+                    <div class="col-md-9">{{objDeveloperDetails.emailAddress}}</div>
+                </section>
+
+                <section class="row ">
+                    <div class="col-md-3"><b>Role:</b></div>
+                    <div class="col-md-9">{{objDeveloperDetails.project.developerRole}}</div>
+                </section>
+
+                <section class="row ">
+                    <div class="col-md-3"><b>Project:</b></div>
+                    <div class="col-md-9">{{objDeveloperDetails.project.isSubscribed == true ? 'Yes': 'No'}}</div>
+                </section>
+            </div>
+
+            <ng-template #noDeveloperDetailsFound>
+                <div class="alert alert-warning alert-sm empty-list-message">
+                    <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
+                    Please select developer for details!
+                </div>
+            </ng-template>
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+        </div>
+        </div>
+        
+        <div class="col-md-3">
+            <app-sidebar></app-sidebar>
+        </div>
+        
+        </div>
+

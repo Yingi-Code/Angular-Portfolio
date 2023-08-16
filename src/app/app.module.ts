@@ -19,12 +19,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
+//App structural components
 import { HeaderComponent } from './app-structure/header/header.component';
 import { FooterComponent } from './app-structure/footer/footer.component';
 import { NavbarComponent } from './app-structure/navbar/navbar.component';
-import { HomeComponent } from './app-basic-views/home/home.component';
-import { AboutComponent } from './app-basic-views/about/about.component';
-import { ErrorComponent } from './app-basic-views/error/error.component';
+
+//App Views components
+import { HomeComponent } from './app-views/home/home.component';
+import { AboutComponent } from './app-views/about/about.component';
+import { ContactComponent } from './app-views/contact/contact.component';
+import { PageNotFoundComponent } from './app-views/page-not-found/page-not-found.component';
+
 import { AppRoutingModule } from './app-routing.module';
 
 //for font-awesome
@@ -35,14 +41,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import { SidebarComponent } from './app-structure/sidebar/sidebar.component';
-import { ServicesComponent } from './app-basic-views/services/services.component';
-import { FaqComponent } from './app-basic-views/faq/faq.component';
-import { ContactComponent } from './app-basic-views/contact/contact.component';
+
+
 import { CommonModule } from '@angular/common';
 
 //for carousels
 import { NgbCarouselConfig, NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { CarouselComponent } from './app-shared/image-slider/carousel/carousel.component';
 import { NgBootstrapCarouselComponent } from './app-shared/image-slider/ng-bootstrap-carousel/ng-bootstrap-carousel.component';
 
 
@@ -55,7 +59,9 @@ import { NgxLightboxComponent } from './app-shared/image-viewer/ngx-lightbox/ngx
 import { SharethisAngularModule } from 'sharethis-angular';
 import { ShareThisButtonsComponent } from './app-shared/social-media-buttons/share-this-buttons/share-this-buttons.component';
 import { StarRatingComponent } from './app-shared/star-rating/star-rating.component';
-import { GalleryComponent } from './app-basic-views/gallery/gallery.component';
+import { DashboardComponent } from './app-views/dashboard/dashboard.component';
+import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
+
 
 
 @NgModule({
@@ -68,17 +74,15 @@ import { GalleryComponent } from './app-basic-views/gallery/gallery.component';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ErrorComponent,
+    PageNotFoundComponent,
     SidebarComponent,
-    ServicesComponent,
-    FaqComponent,
     ContactComponent,
-    CarouselComponent,
     NgBootstrapCarouselComponent,
     NgxLightboxComponent,
     ShareThisButtonsComponent,
     StarRatingComponent,
-    GalleryComponent
+    DashboardComponent,
+    FormsTemplateDrivenComponent
 
   ],
   imports: [

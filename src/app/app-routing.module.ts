@@ -1,13 +1,12 @@
-import { ContactComponent } from './app-basic-views/contact/contact.component';
+import { PageNotFoundComponent } from './app-views/page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './app-basic-views/home/home.component';
-import { AboutComponent } from './app-basic-views/about/about.component';
-import { ServicesComponent } from './app-basic-views/services/services.component';
-import { ErrorComponent } from './app-basic-views/error/error.component';
+import { HomeComponent } from './app-views/home/home.component';
+import { AboutComponent } from './app-views/about/about.component';
 import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
-import { FaqComponent } from './app-basic-views/faq/faq.component';
-import { GalleryComponent } from './app-basic-views/gallery/gallery.component';
+import { ContactComponent } from './app-views/contact/contact.component';
+import { DashboardComponent } from './app-views/dashboard/dashboard.component';
+import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
 
 
 const routes: Routes = [
@@ -18,10 +17,11 @@ const routes: Routes = [
   
   { path: 'home', component: HomeComponent, title: "My RPs - Home" },
   { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
-  { path: 'services', component: ServicesComponent, title: "My RPs - Dashboard" },
-
+  { path: 'contact', component: ContactComponent, title: "My RPs - About Developer" },
+  { path: 'dashboard', component: DashboardComponent, title: "My RPs - Dashboard" },
+  { path: 'template-driven-form', component: FormsTemplateDrivenComponent, title: "My RPs - tempalte-driven" },
   // redirectTo - Error page
-  { path: '**', component: ErrorComponent, title: "My RPs- Not found" },
+  { path: '**', component: PageNotFoundComponent, title: "My RPs- Not found" },
 ];
 
 @NgModule({

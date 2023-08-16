@@ -32,7 +32,7 @@ body {
 .welcome-messsage {
     text-align: center;
     padding-top: 35px;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     padding-left: 20px;
     padding-right: 20px;
     font-size: large;
@@ -42,16 +42,8 @@ body {
     margin-bottom: 10px;
 }
 
-.welcome-messsage>b{
-    margin-bottom: 50px;
-}
-
-.page-banner-heading-buttons {
-    font-size: 30px;
-}
-
 .social-buttons-aligner {
-    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* 
@@ -64,12 +56,14 @@ body {
     border-radius: 6px;
 }
 
+
 .page-content-container {
     border: 1px solid lightgrey;
+
     padding: 20px;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    color: brown;
+    color: grey;
     
 }
 .form-control {
@@ -113,7 +107,6 @@ body {
     background-color: darkgray;
     color: white;
 }
-
 
 /*
 ---------------------------------------

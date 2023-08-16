@@ -14,16 +14,16 @@ export let fadeInPageTitle: AnimationTriggerMetadata = trigger(
         animate(800)
       ]),
 
-      query('.fade-out', [
+      query('.fade-in', [
         style({ opacity: 0 }),
         animate(4000)
       ]),
 
-      //the second animation - to he applied on H4 within this HTML section
-      query('.slide-up', [
-        style({ transform: 'translateY(20px)' }),
-        animate(800)
-      ]),
+      // //the second animation - to he applied on H4 within this HTML section
+      // query('.slide-up', [
+      //   style({ transform: 'translateY(20px)' }),
+      //   animate(800)
+      // ]),
     ])
   ])
 ])
