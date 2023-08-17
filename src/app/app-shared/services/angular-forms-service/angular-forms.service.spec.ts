@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AngularFormsDataService } from './angular-forms-data.service';
+import { AngularFormsDataService } from './angular-forms.service';
 
 describe('AngularFormsDataService', () => {
   let service: AngularFormsDataService;

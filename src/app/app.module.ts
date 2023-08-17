@@ -61,6 +61,8 @@ import { ShareThisButtonsComponent } from './app-shared/social-media-buttons/sha
 import { StarRatingComponent } from './app-shared/star-rating/star-rating.component';
 import { DashboardComponent } from './app-views/dashboard/dashboard.component';
 import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
+import { StrValidatorDirective } from './app-shared/validators/template-driven-validator.directive';
+import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/forms-reactive.component';
 
 
 
@@ -82,7 +84,9 @@ import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-templa
     ShareThisButtonsComponent,
     StarRatingComponent,
     DashboardComponent,
-    FormsTemplateDrivenComponent
+    FormsTemplateDrivenComponent,
+    StrValidatorDirective,
+    FormsReactiveComponent
 
   ],
   imports: [

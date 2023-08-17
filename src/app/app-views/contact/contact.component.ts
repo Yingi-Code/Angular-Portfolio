@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
-import { NotificationService } from 'src/app/app-shared/toastr-notifications/notifications';
-import { strValidator } from 'src/app/app-shared/validators/validators';
+import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
+import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
+import { strValidator } from 'src/app/app-shared/validators/reactive-form-validators';
 
 @Component({
   selector: 'app-contact',
@@ -25,8 +26,9 @@ export class ContactComponent implements OnInit {
 
   ];
 
-
-  constructor(private notifyService: NotificationService) {
+  constructor(
+    private notifyService: ToastrNotificationsService, 
+    private alertsService: AlertNotificationsService) {
   }
 
   ngOnInit() {
@@ -65,12 +67,12 @@ export class ContactComponent implements OnInit {
   }
 
   // ------------  caDeactivate Route Guard section -------------------
-  canExit(): boolean {
+  async canExit(): Promise<boolean> {
     if (this.contactForm.dirty) {
-      if (confirm("Are you sure you want to discard unsaved changes?")) {
+      //pop-up confirmation alert if the form is incomplete
+      if (await this.alertsService.deactivateConfirmation) {
         this.exit = true;
-      }
-      else {
+      } else {
         this.exit = false;
       }
     }

@@ -3,6 +3,10 @@
     margin-top: 15px;
 }
 
+.formSwitch {
+    padding-bottom: 10px;
+}
+
 /* ------------------- Demo content form --------------------- */
 
 .form-second-column {
@@ -48,8 +52,12 @@
     text-decoration: none;
 }
 
+.project-member-cell {
+    padding-left: 7px;
+}
+
 .empty-list-message {
-    text-align: center;
+    text-align: left;
 }
 
 /* ------------------- Demo content form --------------------- */
@@ -91,7 +99,8 @@
 .developer-details-container {
     padding-left: 10px;
     border: 1px solid lightgrey;
-    background-color: #f8f9fa;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    background-color: darkslategrey;
+    padding-top: 20px;
+    padding-bottom: 21px;
+    border-radius: 5px;
 }

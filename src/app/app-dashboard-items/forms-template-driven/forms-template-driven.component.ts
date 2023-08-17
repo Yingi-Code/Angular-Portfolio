@@ -2,10 +2,15 @@ import { NgForm } from '@angular/forms';
 import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { IDeveloper } from 'src/app/app-shared/models/ideveloper/ideveloper.component';
-import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-data.service';
-import { NotificationService } from 'src/app/app-shared/toastr-notifications/notifications';
+import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
+import { IDeveloper } from 'src/app/app-shared/interfaces/developer/ideveloper.component';
+
+//Toastr alert notifications - not being used for now
+import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
+
+//sweet alert2 pop-up notifications
+import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
 
 
 @Component({
@@ -20,7 +25,8 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 export class FormsTemplateDrivenComponent implements OnInit {
   @ViewChild('formData') private myForm!: NgForm;
 
-  deleteTag = false;
+  //[ ngSwitch tag]
+  viewMode = 'defaultTab';
 
   //declare an array of [type] Developer object
   developers: IDeveloper[] = [];
@@ -43,8 +49,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
     },
   };
 
-  displayGithubBtn = true;
-
+  //Toastr messages
   messange: string = "";
 
   //submit button-mode tag
@@ -53,6 +58,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
   //developer details tag
   isDeveloperDetails: boolean = false
 
+  //CanDeactivate
   exit: boolean = true;
 
   //injects the istanace of formDataservice
@@ -61,7 +67,8 @@ export class FormsTemplateDrivenComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private notifyService: NotificationService
+    private notifyService: ToastrNotificationsService,
+    private alertsService: AlertNotificationsService
   ) { }
 
   //Loads the list of developers and list of roles
@@ -130,9 +137,9 @@ export class FormsTemplateDrivenComponent implements OnInit {
   }
 
   //populates details of the clicked developer
-  DeveloperData(thisDeveloper: IDeveloper) {
+  populateDeveloperForm(thisDeveloper: IDeveloper) {
 
-    //assign the clicked developer details to the form -controls
+    //store selected developer array index
     this.developerIndex = this.developers.indexOf(thisDeveloper);
 
     this.developerName = thisDeveloper.firstName;
@@ -153,24 +160,18 @@ export class FormsTemplateDrivenComponent implements OnInit {
   }
 
   //deletes the developer and clear details view
-  DeleteSelectedDeveloper(thisDeveloper: IDeveloper) {
+  async DeleteSelectedDeveloper(thisDeveloper: IDeveloper) {
 
-    if (confirm("Are you sure you want to delete " + thisDeveloper.firstName + "'s record?")) {
+    //pop-up confirmation alert
+    if (await this.alertsService.deleteConfirmation) {
 
       //call the delete method if the user clicks 'Yes'
       this.developerService.DeleteDeveloper(thisDeveloper);
 
-      this.isDeveloperDetails = false;
-
-      //set toastr message
-      this.messange = "Profile deleted successfully! ";
-      this.showToasterSuccess();
-
-      //reset values to default
-      this.ResetToDefault();
-
-      //Clear Developer object
-      //this.ClearDetails(thisDeveloper)
+      //Wipe this developer details container if seleted
+      if (thisDeveloper == this.objDeveloperDetails) {
+        this.isDeveloperDetails = false;
+      }
     }
   }
 
@@ -180,18 +181,19 @@ export class FormsTemplateDrivenComponent implements OnInit {
       // this.objDeveloperDetails = null;
     }
   }
-
   /* 
      - CanDeactivate method
      - Used by Deactivate-guard service
      - For confirmation before exiting the page
   */
-  canExit(): boolean {
+  async canExit(): Promise<boolean> {
+
     if (this.myForm.dirty) {
-      if (confirm("Are you sure you want to discard unsaved changes?")) {
+
+      //pop-up confirmation alert if the form is incomplete
+      if (await this.alertsService.deactivateConfirmation) {
         this.exit = true;
-      }
-      else {
+      } else {
         this.exit = false;
       }
     }

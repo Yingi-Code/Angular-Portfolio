@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IDeveloper } from '../models/ideveloper/ideveloper.component';
+import { IDeveloper } from '../../interfaces/developer/ideveloper.component';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,105 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+/* ------------------- Demo content form --------------------- */
+
+.form-second-column {
+    padding-top: 6px;
+}
+
+.select-text {
+    color: grey;
+}
+
+/* ------------------- Demo content list --------------------- */
+
+.dome-list-container {
+    margin: 0px;
+    margin-bottom: 10px;
+
+}
+
+.dome-list-cells {
+    float: left;
+    text-align: left;
+    color: grey;
+}
+
+.list-btn-container {
+    /* border: none;  */
+    float: right;
+    text-align: right;
+}
+
+.list-btn {
+    border: none;
+    background-color: #FEEE;
+    text-align: right;
+}
+
+.list-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+.load-hyperLink {
+    text-decoration: none;
+}
+
+.project-member-cell {
+    padding-left: 7px;
+}
+
+.empty-list-message {
+    text-align: left;
+}
+
+/* ------------------- Demo content form --------------------- */
+
+.dome-form-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    border: 1px solid lightgrey;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.dome-form-container form {
+    border-radius: 0px;
+}
+
+.form-sections-headings {
+    color: brown;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dome-form-container .teamMember {
+    margin-top: 5px;
+}
+
+.dome-form-container .btn {
+    margin-top: 8px;
+    margin-right: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px
+}
+
+/* ------------------- Demo Developer details --------------------- */
+
+.developer-details-container {
+    padding-left: 10px;
+    border: 1px solid lightgrey;
+    background-color: darkslategrey;
+    padding-top: 20px;
+    padding-bottom: 21px;
+    border-radius: 5px;
+}
