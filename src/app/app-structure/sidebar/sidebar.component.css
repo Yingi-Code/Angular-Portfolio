@@ -1,6 +1,7 @@
-.side-bar {
+.side-bar , .sidebar-heading{
     text-align: left;
 }
+
 .sidebar-heading {
     padding-left: 15px;
     padding-top: 12px;
@@ -12,6 +13,7 @@
 }
 .sidebar-projects-list {
     margin-bottom: 10px;
+
 }
 
 a {
@@ -34,5 +36,6 @@ a:hover {
 
 .list-group-item {
    word-wrap: break-word;
+   color: brown;
 }
 

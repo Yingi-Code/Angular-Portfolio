@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarouselConfig, NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
-import { fadeInOutCarousel } from '../../animations/animations';
-
+import { fadeInOutCarousel } from 'src/app/app-shared/animations/animations';
 
 @Component({
   selector: 'app-ng-bootstrap-carousel',
@@ -11,6 +10,7 @@ import { fadeInOutCarousel } from '../../animations/animations';
   providers: [NgbCarouselConfig]
 })
 export class NgBootstrapCarouselComponent {
+
 
   images = [
     {
@@ -35,7 +35,7 @@ export class NgBootstrapCarouselComponent {
     config.interval = 4000;
     config.keyboard = true;
     config.pauseOnHover = true;
-    
+
   }
 
 }

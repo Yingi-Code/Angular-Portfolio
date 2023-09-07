@@ -1,0 +1,68 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ PHOTO GALLERY ]</h3>
+        <p class="page-title-description fade-in">
+            VIEW PHOTO ALBUMS USING VARIOUS PLUG-INS.
+        </p>
+
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+
+<div class="row page-content">
+
+    <div class="col-md-9">
+        
+        <div class="page-content-container " >
+            <div [ngSwitch]="ngx_ViewMode">
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]=" ngx_ViewMode == 'defaultTab'">
+                        <a (click)=" ngx_ViewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">LightBox [ngx]</a>
+                    </li>
+            
+                    <li [class.active]=" ngx_ViewMode == 'desciptionTab'">
+                        <a (click)=" ngx_ViewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">Description</a>
+                    </li>
+                </ul>
+            </div>
+
+                <div *ngSwitchCase="'defaultTab'">
+                    <app-ngx-lightbox></app-ngx-lightbox>
+                </div>
+
+                <div *ngSwitchCase="'desciptionTab'">
+                    <section class="about-paragraphs borderd-paragraph">
+                        This example covers the basics of template directives and how they can be
+                        used.<br />
+                    </section>
+                    <section class="about-name ">Covered concepts</section>
+                    <section class="about-paragraphs">
+                        <ul class="skills-list">
+                            <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                                greater than 0 </li>
+                            <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                                is equal to</li>
+                            <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                            <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                            </li>
+                            <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                                portfolio</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>
+

@@ -7,9 +7,6 @@
     text-align: center;
 }
 
-.page-content-container,  {
-
-}
 
 .item-container {
     display: inline-block;
@@ -19,7 +16,6 @@
     color: grey;
     min-width: 120px;
     padding: 5px;
-
     font-size: 12px;
 }
 
@@ -29,6 +25,6 @@
     color: red;
 }
 
-.panding-itmes  {
+.panding-item  {
     color: red;
 }

@@ -14,10 +14,11 @@ export class AlertNotificationsService implements OnInit {
   get successNotification() {
    return Swal.fire('Hi', 'We have been informed!', 'success');
   }
+
   get deleteConfirmation() {
     return Swal.fire({
       title: 'Confirm!',
-      text: 'Are you sure you want to remove this record?',
+      text: 'Are you sure you want to remove this item?',
       // icon: 'warning',
       showCancelButton: true,
       confirmButtonText: ' Yes ',
@@ -25,11 +26,30 @@ export class AlertNotificationsService implements OnInit {
 
     }).then((result) => {
       if (result.value) {
-        return Swal.fire('Removed!', 'Developer record removed successfully.', 'success');
+        return Swal.fire('Removed!', 'Item removed successfully.', 'success');
       }  else {
         return null;
       }
       
+    });
+  }
+
+  get updateConfirmation() {
+    return Swal.fire({
+      title: 'Confirm!',
+      text: 'Are you sure you want to apply these changes?',
+      // icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: ' Yes ',
+      cancelButtonText: ' No ',
+
+    }).then((result) => {
+      if (result.value) {
+        return Swal.fire('Updated!', 'Changes updated successfully.', 'success');
+      } else {
+        return null;
+      }
+
     });
   }
 

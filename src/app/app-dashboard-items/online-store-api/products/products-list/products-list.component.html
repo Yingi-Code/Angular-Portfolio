@@ -1,0 +1,215 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ API - ONLINE STORE ]</h3>
+        <p class="page-title-description fade-in">
+            LIST, SEARCH, AND VIEW THE DETAILS OF EACH PRODUCT.
+        </p>
+
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+<div class="row page-content">
+
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
+        <!-- page content -->
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text"
+                            data-bs-toggle="tab">Online-store API</a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
+                            data-bs-toggle="tab">Description</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+
+                <!-- Product list -->
+                                <div class="row dome-list-container">
+
+                                    <div>
+                                        <div class="search-container">
+                                            <app-search (searchEvent)="searchProduct($event)"></app-search>
+                                        </div>
+
+
+                                        <div class="filter-options-container ">
+
+                                            <label class="radio-inline">
+                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue" selected
+                                                    value="All"> All clothing
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
+                                                    value="men's clothing"> Male clothing
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
+                                                    value="women's clothing"> Female clothing
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
+                                                    value="electronics"> Electronics
+                                            </label>
+
+                                            <label class="radio-inline">
+                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
+                                                    value="jewelery"> Jewellary
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div *ngIf="productsList != null">
+
+                                        <ng-container *ngFor="let product of productsList 
+                                                                | paginate: {
+                                                                                itemsPerPage: tableSize,
+                                                                                currentPage: page,
+                                                                                totalItems: count
+                                                                            }; let i = index"
+                                        >
+             
+                                            <!-- searchKeyWord === '' || product.title.toLowerCase().contains(searchKeyWord) || -->
+                                            <div *ngIf=" (( selectedRadioButtonValue === 'All' || selectedRadioButtonValue === product.category) && (product.title.toLowerCase().includes(searchKeyWord) ))"
+                                                class="product-container-all d-lg-inline-flex"
+                                                title="View product details">
+
+                                                <div *ngIf="product != null; else searchedlist "
+                                                    (click)=" ProductDetails(product.id)" class="product-container btn">
+
+                                                    <div class=" product-img-container">
+                                                        <img src="{{product.image}}" class="product-image responsive" />
+                                                    </div>
+
+                                                    <div class=" product-details  ">
+                                                        <div class="product-title">
+                                                            {{product.title.slice(0,8)}} ...
+                                                        </div>
+                                                        <!-- <div class="product-price-title">
+                                                            <fa-icon class="price-tag"
+                                                                [icon]="['fas', 'tag']"></fa-icon> <b> Price</b>
+                                                        </div> -->
+                                                        <div class="product-price">
+                                                        <fa-icon class="price-tag" [icon]="['fas', 'tag']"></fa-icon> {{product.price | currency}}
+                                                        </div>
+
+                                                        <div class="actions btn">
+                                                            <!-- <button (click)="ProductDetails(product.id)"
+                                                                class=" btn btn-sm list-btn order"><fa-icon
+                                                                    [icon]="['fas', 'circle-exclamation']"></fa-icon>
+                                                                More
+                                                            </button> -->
+                                                            <button class=" btn btn-sm list-btn add">
+                                                                 details
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                        
+                                            </div>
+
+                                            <ng-template #searchedlist>
+
+                                                <div *ngIf="(selectedRadioButtonValue === product.category) && (product.title.toLowerCase().includes(searchKeyWord))  "
+                                                    class="product-container-all d-lg-inline-flex"
+                                                    title="Click for details">
+
+                                                    <div (click)=" ProductDetails(product.id)"
+                                                        class="product-container btn">
+
+                                                        <div class=" product-img-container">
+                                                            <img src="{{product.image}}"
+                                                                class="product-image responsive" />
+                                                        </div>
+
+                                                        <div class=" product-options  ">
+                                                            <div class="product-title">
+                                                                {{product.title.slice(0,8)}} ...
+                                                            </div>
+                                                            <div class="product-price-title">
+                                                                <fa-icon class="price-tag"
+                                                                    [icon]="['fas', 'tag']"></fa-icon> <b> Price</b>
+                                                            </div>
+                                                            <div class="product-price">
+                                                                {{product.price | currency}}
+                                                            </div>
+
+                                                            <div class="actions btn">
+                                                                <button (click)="ProductDetails(product.id)"
+                                                                    class=" btn btn-sm list-btn order"><fa-icon
+                                                                        [icon]="['fas', 'circle-exclamation']"></fa-icon>
+                                                                    More</button>
+                                                                <button class=" btn btn-sm list-btn add"><fa-icon
+                                                                        [icon]="['fas', 'cart-shopping']"></fa-icon> Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                               
+                                            </ng-template>
+
+
+                                        </ng-container>
+
+                                       
+                                        <div class="d-flex justify-content-left">
+                                            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                                            </pagination-controls>
+                                        </div>
+
+
+                                    </div>
+                                  
+                                </div>
+    
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sidebar-->
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>

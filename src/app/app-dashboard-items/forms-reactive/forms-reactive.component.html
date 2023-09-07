@@ -14,7 +14,6 @@
 
 
 <div class="row page-content">
-
     <div class="col-md-9"  [ngSwitch]="viewMode" >
 
         <!-- page content -->
@@ -24,7 +23,7 @@
             <div class="formSwitch">
                 <ul class="nav nav-tabs ">
                     <li [class.active]="viewMode == 'defaultTab'">
-                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">Example</a>
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">Reactive form</a>
                     </li>
             
                     <li [class.active]="viewMode == 'desciptionTab'">
@@ -132,7 +131,7 @@
             
                                 <div class="form-group">
                                     <!-- keeps the button inactive untill when the for is valid -->
-                                    <input type="submit" value="{{btnMode == true ? ' Update ' : ' Add '}}"
+                                    <input type="submit" value="{{formSubmitBtnMode == true ? ' Update ' : ' Add '}}"
                                         [disabled]="!developerForm.valid" class="btn btn-danger btn-sm ">
             
                                     <!-- <input type="button" value="Clear" (click)="ClearForm()" class="btn btn-secondary btn-sm "> -->

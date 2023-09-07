@@ -44,12 +44,21 @@ export class FormsReactiveComponent {
     },
   };
 
+  populatedDeveloperForm: IDeveloper = {
+    firstName: '',
+    emailAddress: "",
+    project: {
+      isSubscribed: false,
+      developerRole: "",
+    },
+  };
+
   //form properties
   developerIndex: any;
   displayGithubBtn = true;
   messange: string = "";
   //submit button switch-mode tag
-  btnMode: boolean = false;
+  formSubmitBtnMode: boolean = false;
   //developer details tag
   isDeveloperDetails: boolean = false
   exit: boolean = true;
@@ -82,7 +91,7 @@ export class FormsReactiveComponent {
       })
     });
     //console.log(this.developerForm);
-    this.onChanges()
+    //this.onChanges()
   }
 
   //gets form-control with control-name [firstName]
@@ -105,6 +114,8 @@ export class FormsReactiveComponent {
     return this.developerForm.get('project.isSubscribed');
   }
 
+  /*
+  //onChange detection and update
   onChanges() {
     this.firstName?.valueChanges.subscribe(
       uname => {
@@ -112,12 +123,7 @@ export class FormsReactiveComponent {
       }
     );
   }
-
-  //resets the form and its form-controls states
-  ClearForm() {
-    this.developerForm.reset();
-    this.btnMode == false;
-  }
+  */
 
   //sets values to default
   ResetToDefault() {
@@ -127,13 +133,14 @@ export class FormsReactiveComponent {
     this.objDeveloperDetails.project.isSubscribed = false;
   }
 
-  //Add new developer or update existing developer
-  Developer() {
+  //Add new developer or Update an existing developer
+  async Developer() {
+
     //take only four developers - for demo purpose
     if (this.developers?.length != 4) {
 
-      // check the button mode
-      if (this.btnMode == false) {
+      // button mode false = add form
+      if (this.formSubmitBtnMode == false) {
         //
         this.developerService.AddDeveloper(this.developerForm.value);
 
@@ -142,32 +149,28 @@ export class FormsReactiveComponent {
         // this.showToasterSuccess();
         this.developerForm.reset();
 
+        //button mode true = update form
       } else {
-        if (confirm("Are you sure you want to save these changes?")) {
+
+        //pop-up confirmation alert
+        if (await this.alertsService.updateConfirmation) {
+
+          //call the update method if the returned value is true'
           this.developerService.UpdateDeveloper(this.developerForm.value, this.developerIndex);
-
-          //log the form controls and their values
-          //console.log(this.developerForm.value);
-
-          this.developerForm.reset();
-
-          // //set update message
-          // this.messange = "Changes saved successfully! ";
-          // this.showToasterSuccess();
+          //update the displayed developer details
+          this.objDeveloperDetails = this.developerForm.value;
+          this.developerForm.reset()
 
           //switch button mode to create
-          this.btnMode = false;
+          this.formSubmitBtnMode = false;
         } else {
           //keep button mode as update
-          this.btnMode = true;
+          this.formSubmitBtnMode = true;
         }
       }
-    } else {
-      //Pop-up toastr message , in case the developer array length reaches 4
-      // this.messange = "Sorry, you reach your limit!";
-      // this.showToasterError();
     }
   }
+
 
   //populates details of the clicked developer
   populateDeveloperForm(thisDeveloper: IDeveloper) {
@@ -184,25 +187,26 @@ export class FormsReactiveComponent {
       }
     })
     //console.log(this.developerForm);
-    this.btnMode = true;
+    this.formSubmitBtnMode = true;
   }
 
   //desplay the details of the developer
   DeveloperDetails(thisDeveloper: IDeveloper) {
+    
+    
     //assign an object of the retrived Developer to a new instance
+    this.objDeveloperDetails = {
+      firstName: thisDeveloper.firstName,
+      emailAddress: thisDeveloper.emailAddress,
+      project: {
+        developerRole: thisDeveloper.project.developerRole,
+        isSubscribed: thisDeveloper.project.isSubscribed,
+      }
+    };
 
-    // this.objDeveloperDetails = {
-    //   firstName: thisDeveloper.firstName,
-    //   emailAddress: thisDeveloper.emailAddress,
-    //   project: {
-    //     developerRole: thisDeveloper.project.developerRole,
-    //     isSubscribed: thisDeveloper.project.isSubscribed,
-    //   }
-    // };
-
+    //assign an object of the retrived Developer to a new instance
     this.objDeveloperDetails = thisDeveloper;
     this.isDeveloperDetails = true;
-    console.log(this.objDeveloperDetails);
   }
 
 //deletes the developer and clear details view
@@ -213,17 +217,18 @@ export class FormsReactiveComponent {
 
       //call the delete method if the user clicks 'Yes'
       this.developerService.DeleteDeveloper(thisDeveloper);
-
-      console.log(this.objDeveloperDetails);
+      this.developerForm.reset();
 
       //Wipe this developer details container if seleted
       if (thisDeveloper == this.objDeveloperDetails) {
         this.isDeveloperDetails = false;
+       
       }
+
+
     }
   }
 
- 
   /* 
      - CanDeactivate method
      - Used by Deactivate-guard service

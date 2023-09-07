@@ -1,0 +1,13 @@
+.search-container {
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 0px;
+    
+}
+
+.form-control {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+

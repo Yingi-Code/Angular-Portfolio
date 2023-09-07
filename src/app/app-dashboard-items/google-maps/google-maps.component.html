@@ -1,0 +1,76 @@
+<div @fadeInPageTitle class="bg-light">
+    <div class="welcome-messsage">
+        <h3>[ GOOGLE-MAPS ]</h3>
+        <p class="page-title-description fade-in">
+            VIEW PLACES USING GOOGLE MAPS IN ANGULAR.
+        </p>
+    </div>
+
+    <div class="social-buttons-aligner ">
+        <app-share-this-buttons></app-share-this-buttons>
+    </div>
+
+</div>
+
+<div class="row page-content">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text"
+                            data-bs-toggle="tab">Google Maps</a>
+                    </li>
+            
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">Description</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+                <div class="map-container">
+                    <google-map height="325px" width="100%" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+                        (mapMousemove)="move($event)">
+
+                        <map-marker [position]="markerPosition">
+                        </map-marker>
+
+                        <map-info-window>
+                            myRecentProjects
+                        </map-info-window>
+                    </google-map>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>

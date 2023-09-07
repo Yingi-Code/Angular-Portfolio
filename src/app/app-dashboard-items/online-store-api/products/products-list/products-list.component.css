@@ -1,0 +1,125 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+
+/* ------------------- Demo Product --------------------- */
+.product-container-all {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.product-container {
+    /* border: 1px solid lightgrey; */
+    width: 215px;
+    flex: 1 1 auto;
+    border-bottom: 1px solid lightgrey;
+    max-height: 110px;
+    margin: 4px;
+}
+
+
+.product-container:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product-container.btn {
+    /* border: 1px solid lightgrey; */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.product-img-container {
+    display: flex;
+    justify-content: flex-start;
+    /* border: 1px solid lightgrey; */
+    width: 35%;
+    padding: 10px;
+}
+
+.product-image {
+    margin-top: 0px;
+    padding-bottom: 0px;
+    object-fit: contain;
+    width: 55px;
+    height: 65px;
+    object-fit: contain;
+
+    /* border: 1px solid lightgrey; */
+}
+
+.product-details {
+    /* border: 1px solid lightgrey; */
+    padding: 5px;
+    text-align: left;
+    width: 65%;
+}
+
+.product-title {
+    color: gray;
+    font-weight: bolder;
+}
+
+.product-price-title {
+    font-size: 25px;
+}
+
+.product-price {
+    color: red;
+    font-size: 15px;
+}
+
+.list-btn-container {
+    /* border: none;  */
+    float: right;
+    text-align: right;
+}
+
+.list-btn {
+    border: none;
+    background-color: #f8f9fa;
+    margin-left: 0px;
+    margin-right: 10px;
+    /* text-align: right; */
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.list-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+.list-btn .add {
+    color: white;
+    padding: 0px;
+}
+
+.list-btn.order {
+    background-color: grey;
+    color: white;
+}
+
+.actions {
+    /* margin-top: 10px; */
+    padding-left: 0px;
+}
+
+
+
+.filter-options-container {
+    text-align: center;
+    background-color: #f8f9fa;
+    margin-bottom: 8px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.radio-inline {
+    padding-right: 15px;
+}

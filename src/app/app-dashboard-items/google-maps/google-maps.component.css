@@ -1,0 +1,12 @@
+.page-content {
+    margin-top: 15px;
+}
+
+google-map {
+    height: 300px;
+    margin-top: 20px;
+}
+
+.map-container, .about-paragraphs{
+    margin-top: 10px;
+}

@@ -19,16 +19,22 @@
 .company-name .first-word {
     color: darkslategray;
     /* font-weight: bold; */
+    margin: 0px;
+    padding: 0px;
 }
 
 .company-name .second-word {
     color: red;
-    /* font-weight: bold; */
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
 }
 
 .company-name .third-word {
     color: gray;
     font-weight: bold;
+    margin: 0px;
+    padding: 0px;
 }
 
 .moto {

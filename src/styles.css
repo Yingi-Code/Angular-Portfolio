@@ -1,4 +1,5 @@
 @import '~font-awesome/css/font-awesome.css';
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 /* 
 --------------------------------
@@ -35,6 +36,8 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     font-size: large;
+
+    border-top: 10px solid lightgrey;
 }
 
 .welcome-messsage>h3 {
@@ -144,4 +147,8 @@ body {
 .accordion-body {
    margin-left: 24px;
    color: brown;
+}
+
+agm-map {
+    height: 400px;
 }

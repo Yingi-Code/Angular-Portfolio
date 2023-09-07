@@ -1,9 +1,6 @@
 //for data-binding - using ngModel
 import { NgModule } from '@angular/core';
 
-//eliminates 404 error when refresh the hosted page
-// import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
-
 //for reactive forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +14,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 //for template-driven forms. e.g ngForm
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 
 //App structural components
@@ -32,7 +28,7 @@ import { ContactComponent } from './app-views/contact/contact.component';
 import { PageNotFoundComponent } from './app-views/page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 //for font-awesome
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
@@ -42,18 +38,13 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import { SidebarComponent } from './app-structure/sidebar/sidebar.component';
 
-
 import { CommonModule } from '@angular/common';
 
 //for carousels
 import { NgbCarouselConfig, NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { NgBootstrapCarouselComponent } from './app-shared/image-slider/ng-bootstrap-carousel/ng-bootstrap-carousel.component';
-
 
 //for lightbox image gallery
 import { LightboxModule } from 'ngx-lightbox';
-
-import { NgxLightboxComponent } from './app-shared/image-viewer/ngx-lightbox/ngx-lightbox.component';
 
 //for share-this buttons
 import { SharethisAngularModule } from 'sharethis-angular';
@@ -63,7 +54,21 @@ import { DashboardComponent } from './app-views/dashboard/dashboard.component';
 import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
 import { StrValidatorDirective } from './app-shared/validators/template-driven-validator.directive';
 import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/forms-reactive.component';
+import { NgBootstrapCarouselComponent } from './app-structure/carousel/ng-bootstrap-carousel/ng-bootstrap-carousel.component';
+import { NgxLightboxComponent } from './app-structure/image-gallery/ngx-lightbox/ngx-lightbox/ngx-lightbox.component';
+import { GalleryComponent } from './app-dashboard-items/gallery/gallery.component';
+import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
+import { AngularFormsDataService } from './app-shared/services/angular-forms-service/angular-forms.service';
+import { ProductsService } from './app-shared/services/online-store-services/products.service';
+import { SearchComponent } from './app-structure/search/search.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-maps.component';
+
+import { NgChartsModule } from 'ng2-charts';
+import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
+import { defaults } from 'chart.js';
 
 
 @NgModule({
@@ -79,24 +84,28 @@ import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/for
     PageNotFoundComponent,
     SidebarComponent,
     ContactComponent,
-    NgBootstrapCarouselComponent,
     NgxLightboxComponent,
     ShareThisButtonsComponent,
     StarRatingComponent,
     DashboardComponent,
     FormsTemplateDrivenComponent,
     StrValidatorDirective,
-    FormsReactiveComponent
-
+    FormsReactiveComponent,
+    NgBootstrapCarouselComponent,
+    GalleryComponent,
+    ProductsListComponent,
+    SearchComponent,
+    GoogleMapsComponent,
+    ChartsComponent
   ],
+
   imports: [
-  
-    // NgbCarouselModule,
-    // NgIf,
+
+    HttpClientModule,
+
 
     //All the App Special Models not from @angular/core
     BrowserModule,
-    // GoogleMapsModule,
     FontAwesomeModule,
     CommonModule,
 
@@ -115,16 +124,31 @@ import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/for
     
     //for toasts notifications
     BrowserAnimationsModule,
+
+    //for pagination
+    NgxPaginationModule,
+
+    //for GoogleMaps
+    GoogleMapsModule,
+
+    // AgmCoreModule.forRoot({
+    //   apiKey: ''
+    // }),
+
+    NgChartsModule,
+
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
     }),
-
     //for routes in App-Routing.Module.ts
     AppRoutingModule,
+
   ],
+
   providers: [
-    NgbCarouselConfig, 
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    NgbCarouselConfig,
+    AngularFormsDataService,
+    ProductsService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

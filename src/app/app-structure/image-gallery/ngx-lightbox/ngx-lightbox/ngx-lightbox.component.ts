@@ -8,24 +8,25 @@ import { LightboxConfig } from 'ngx-lightbox';
   styleUrls: ['./ngx-lightbox.component.css']
 })
 export class NgxLightboxComponent {
+
   i: number = 0;
-  
+
   albums: any = [];
   private _images = [
-    { src: "assets/gallery/1.jpeg" },
-    // { src: "assets/gallery/2.jpeg", caption: "Excited for strawberry harvest" },
-    { src: "assets/gallery/3.jpeg", caption: "Before the harvest starts" },
-    { src: "assets/gallery/4.jpeg", caption: "Waiting for eating" },
-    { src: "assets/gallery/5.jpeg", caption: "Testing the sweetness" },
-    // { src: "assets/gallery/6.jpeg" },
-    { src: "assets/gallery/7.jpeg" },
-    { src: "assets/gallery/8.jpeg" },
-    { src: "assets/gallery/9.jpeg" },
-    { src: "assets/gallery/10.jpeg" },
-    { src: "assets/gallery/11.jpeg" },
-    { src: "assets/gallery/12.jpeg" },
-    { src: "assets/gallery/13.jpeg" },
-    { src: "assets/gallery/14.jpeg" },
+    { src: "assets/gallery/1.jpeg", caption: "Example" },
+    // { src: "assets/gallery/2.jpeg", caption: "Example" },
+    { src: "assets/gallery/3.jpeg", caption: "Example" },
+    { src: "assets/gallery/4.jpeg", caption: "Example" },
+    { src: "assets/gallery/5.jpeg", caption: "Example" },
+    // { src: "assets/gallery/6.jpeg" , caption: "Example" },
+    { src: "assets/gallery/7.jpeg", caption: "Example" },
+    { src: "assets/gallery/8.jpeg", caption: "Example" },
+    { src: "assets/gallery/9.jpeg", caption: "Example" },
+    { src: "assets/gallery/10.jpeg", caption: "Example" },
+    { src: "assets/gallery/11.jpeg", caption: "Example" },
+    { src: "assets/gallery/12.jpeg", caption: "Example" },
+    { src: "assets/gallery/13.jpeg", caption: "Example" },
+    { src: "assets/gallery/14.jpeg", caption: "Example" },
   ];
 
   public get images() {
@@ -36,7 +37,7 @@ export class NgxLightboxComponent {
   }
 
   constructor(private _lightboxConfig: LightboxConfig, private _lightbox: Lightbox) {
-    
+
 
     _lightboxConfig.fadeDuration = 0.7;
     _lightboxConfig.resizeDuration = 0.5;
@@ -54,13 +55,13 @@ export class NgxLightboxComponent {
     _lightboxConfig.showRotate = false;
     _lightboxConfig.showDownloadButton = false;
     _lightboxConfig.containerElementResolver = () => document.body;
-   
+
     while (this.i < this.images.length) {
-      
+
       const src = this.images[this.i].src;
       const caption = this.images[this.i].caption;
       const thumb = this.images[this.i].src;
-      
+
       const album = {
         src: src,
         caption: caption,
