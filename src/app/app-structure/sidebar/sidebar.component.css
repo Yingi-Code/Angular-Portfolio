@@ -11,6 +11,7 @@
     color: white;
     font-weight: bold;
 }
+
 .sidebar-projects-list {
     margin-bottom: 10px;
 
@@ -23,7 +24,6 @@ a {
 a:hover {
     color: red;
 }
-
 
 .sidebar-heading-subheading {
     padding-left: 15px;

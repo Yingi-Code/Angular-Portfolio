@@ -1,0 +1,151 @@
+<div @fadeInPageTitle class="bg-light">
+    <div class="welcome-messsage">
+        <h3>[ ONLINE CALENDAR]</h3>
+        <p class="page-title-description fade-in">
+            MANAGEMENT WORKSHOP SESSIONS BOOKING.
+        </p>
+    </div>
+
+    <div class="social-buttons-aligner ">
+        <app-share-this-buttons></app-share-this-buttons>
+    </div>
+
+</div>
+
+<div class="row page-content">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
+        <!-- page content -->
+        <div class="page-content-container ">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['far', 'calendar-days']"></fa-icon>
+                            Schedule
+                        </a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'dashboardTab'">
+
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard"
+                            class="nav-link  btn tab-text"><fa-icon class="" [icon]="['fas', 'sliders']"></fa-icon>
+                            Menu</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+
+                <div class="container">
+
+                    <div class="row content-container">
+
+                        <div class="col-md-8 player-sections-wrapper">
+                            <full-calendar 
+                            [options]="calendarOptions"
+                            >
+                            </full-calendar>
+                        </div>
+
+                        <div class="col-md-4  ">
+       
+                            <div *ngIf="clickedEvent; else noEventSeleted">
+                                <div class="playlist-heading bg-dark">
+                                    <fa-icon class="" [icon]="['far', 'calendar-days']"> </fa-icon> 
+                                    WORKSHOP DETAILS
+                                </div>
+
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action schedlee-headings">
+                                        <fa-icon class="" [icon]="['fas', 'user-tie']"> </fa-icon>&nbsp;
+                                        <b>GUEST DETAILS</b>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action schedule-content">
+                                        <b>Full names:</b><br /> {{clickedEvent.event.title}}
+                                    </button>
+                                </div>
+                            
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action schedlee-headings">
+                                        <fa-icon class="" [icon]="['fas', 'clock']"> </fa-icon>&nbsp;
+                                        <b>SCHEDULE</b>
+                                    </button>
+
+                                    <button type="button" class="list-group-item list-group-item-action schedule-content">
+                                        <b>Starts :</b> {{clickedEvent.event.start | date:'d MMMM y'}}<br />
+                                        <b>Ends &nbsp; : </b> {{clickedEvent.event.end | date:'d MMMM y'}}
+                                    </button>
+                                </div>
+
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action schedlee-headings">
+                                        <fa-icon class="" [icon]="['fas', 'bookmark']"> </fa-icon>&nbsp;
+                                        <b>CONTENT</b>
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action schedule-content">
+                                        <b>Topic:</b><br /> {{clickedEvent.event.extendedProps.workshopTopic | uppercase }}<br/>
+                                        <b>Summary:</b><br /> {{clickedEvent.event.extendedProps.description}}
+                                    </button>
+                                </div>
+
+                                <div class="workshop-details-buttons-conatiner">
+                                    <button class="workshop-details-buttons"> <fa-icon class="" [icon]="['far', 'pen-to-square']"></fa-icon> </button> 
+                                    <button class="workshop-details-buttons "> <fa-icon class="" [icon]="['far', 'trash-can']"> </fa-icon>  </button>
+                                </div>
+                            
+                            </div>
+                            
+                            <ng-template #noEventSeleted>
+                                <div class="playlist-heading bg-dark">
+                                    NO SESSION SELETED
+                                </div>
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action bg-light">
+                                        <fa-icon class="" [icon]="['far', 'calendar-days']"></fa-icon>
+                                        Please select the workshop seesion to view details.
+                                    </button>
+                                </div>
+                            </ng-template>                          
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>

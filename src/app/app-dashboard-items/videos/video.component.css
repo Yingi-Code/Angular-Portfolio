@@ -1,0 +1,34 @@
+.page-content {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+vg-player {
+    height: auto;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.player-sections-wrapper {
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.playlist-heading {
+    font-weight: bold;
+    padding: 10px;
+    background-color: brown;
+    margin-bottom: 10px;
+    color: white;
+}
+
+button.selected {
+    color: orangered;
+}
+
+

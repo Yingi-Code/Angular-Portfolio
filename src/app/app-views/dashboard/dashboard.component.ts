@@ -11,4 +11,7 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 })
 export class DashboardComponent {
 
+  //[ ngSwitch tag]
+  viewMode = 'defaultTab';
+  
 }

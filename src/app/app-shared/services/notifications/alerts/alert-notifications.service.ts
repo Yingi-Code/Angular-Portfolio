@@ -6,13 +6,40 @@ import Swal from 'sweetalert2';
 })
 export class AlertNotificationsService implements OnInit {
   ngOnInit() {
-    console.log('Life Cyle Hook with spontaneous response.');
+
   }
-  tinyAlert() {
-    Swal.fire('Hey there!');
+ 
+  get addLimitErrorNotification() {
+    return Swal.fire({
+      icon: 'error',
+      title: 'Sorry! you reached your list limit.',
+      showConfirmButton: false,
+      timer: 3000
+    });
   }
-  get successNotification() {
-   return Swal.fire('Hi', 'We have been informed!', 'success');
+
+  get addConfirmation() {
+    return Swal.fire({
+      title: 'Confirm!',
+      text: 'Are you sure you want to add this item?',
+      // icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: ' Yes ',
+      cancelButtonText: ' No ',
+
+    }).then((result) => {
+      if (result.value) {
+        return Swal.fire({
+          icon: 'success',
+          title: 'Created successfully',
+          showConfirmButton: false,
+          timer: 3000
+        });
+      } else {
+        return null;
+      }
+
+    });
   }
 
   get deleteConfirmation() {
@@ -26,7 +53,12 @@ export class AlertNotificationsService implements OnInit {
 
     }).then((result) => {
       if (result.value) {
-        return Swal.fire('Removed!', 'Item removed successfully.', 'success');
+        return Swal.fire({
+          icon: 'success',
+          title: 'Deleted successfully',
+          showConfirmButton: false,
+          timer: 3000
+        });
       }  else {
         return null;
       }
@@ -45,7 +77,12 @@ export class AlertNotificationsService implements OnInit {
 
     }).then((result) => {
       if (result.value) {
-        return Swal.fire('Updated!', 'Changes updated successfully.', 'success');
+        return Swal.fire({
+          icon: 'success',
+          title: 'Updapted successfully',
+          showConfirmButton: false,
+          timer: 3000
+        });
       } else {
         return null;
       }

@@ -1,0 +1,69 @@
+.page-content {
+    margin-top: 15px;
+    text-align: left;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+full-calendar {
+    /* height: 350px;  */
+     width: 100%;
+    margin-bottom: 8px;
+}
+
+.fc-toolbar {
+    display: inline;
+    font-size: 0.5em;
+}
+
+.player-sections-wrapper {
+    border: 1px solid lightgray;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.playlist-heading {
+    font-weight: bold;
+    padding: 10px;
+    background-color: brown;
+    margin-bottom: 10px;
+    color: white;
+   
+}
+
+.list-group {
+    margin-bottom: 10px;
+}
+
+.fc-toolbar-title {
+    font-size: 0.5em;
+}
+
+.schedlee-headings {
+ background-color: #f8f9fa;
+ font-size: 12px;
+}
+
+.schedule-content {
+    color: brown;
+}
+
+.workshop-details-buttons-conatiner {
+    text-align: right;
+}
+
+.workshop-details-buttons{
+    border: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-right: 10px;
+    background-color: #343a40;
+    color: white;
+}
+
+.workshop-details-buttons:hover {
+    background-color: red;
+    color: white;
+}

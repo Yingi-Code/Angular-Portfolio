@@ -10,23 +10,20 @@ import { LightboxConfig } from 'ngx-lightbox';
 export class NgxLightboxComponent {
 
   i: number = 0;
+  selectedImageDetails: any;
+  selectedImageIndex: number = 0;
+  fileExtension: any;
+  fileName: any;
+  filePath: any;
 
   albums: any = [];
   private _images = [
-    { src: "assets/gallery/1.jpeg", caption: "Example" },
-    // { src: "assets/gallery/2.jpeg", caption: "Example" },
-    { src: "assets/gallery/3.jpeg", caption: "Example" },
-    { src: "assets/gallery/4.jpeg", caption: "Example" },
-    { src: "assets/gallery/5.jpeg", caption: "Example" },
-    // { src: "assets/gallery/6.jpeg" , caption: "Example" },
-    { src: "assets/gallery/7.jpeg", caption: "Example" },
-    { src: "assets/gallery/8.jpeg", caption: "Example" },
-    { src: "assets/gallery/9.jpeg", caption: "Example" },
-    { src: "assets/gallery/10.jpeg", caption: "Example" },
-    { src: "assets/gallery/11.jpeg", caption: "Example" },
-    { src: "assets/gallery/12.jpeg", caption: "Example" },
-    { src: "assets/gallery/13.jpeg", caption: "Example" },
-    { src: "assets/gallery/14.jpeg", caption: "Example" },
+    { src: "assets/gallery/1.jpeg", caption: "Example - 1" },
+    { src: "assets/gallery/3.jpeg", caption: "Example - 2" },
+    { src: "assets/gallery/4.jpeg", caption: "Example - 3" },
+    { src: "assets/gallery/5.jpeg", caption: "Example - 4" },
+    { src: "assets/gallery/7.jpeg", caption: "Example - 5" },
+    { src: "assets/gallery/8.jpeg", caption: "Example - 6" },
   ];
 
   public get images() {
@@ -81,6 +78,20 @@ export class NgxLightboxComponent {
   close(): void {
     // close lightbox programmatically
     this._lightbox.close();
+  }
+
+  getSelectedImageDetails(imageIndex: number) {
+    this.selectedImageIndex = imageIndex;
+    this.selectedImageDetails = this._images[imageIndex];
+    this.getSeletedImageExtension(imageIndex);
+  }
+
+  getSeletedImageExtension(imageIndex: number) {
+    this.selectedImageIndex = imageIndex;
+    this.filePath = this._images[imageIndex].src;
+    this.fileName = this.filePath.split('/').pop().split('.')[0];
+    this.fileExtension = this.filePath.split('/').pop().split('.')[1];
+
   }
 
 }

@@ -7,6 +7,11 @@
     padding-bottom: 10px;
 }
 
+.dashboard-back-button {
+    background-color: #f8f9fa;
+}
+
+
 /* ------------------- Demo content form --------------------- */
 
 .form-second-column {
@@ -31,8 +36,11 @@
     color: grey;
 }
 
+.dome-list-cells:hover{
+    color: red;
+}
+
 .list-btn-container {
-    /* border: none;  */
     float: right;
     text-align: right;
 }
@@ -41,6 +49,9 @@
     border: none;
     background-color: #FEEE;
     text-align: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: grey;
 }
 
 .list-btn:hover {
@@ -103,4 +114,23 @@
     padding-top: 20px;
     padding-bottom: 21px;
     border-radius: 5px;
+}
+
+.create-button-toggle{
+    text-align: right;
+}
+
+.create-button-toggle button {
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: grey;
+    text-align: right;
+}
+
+.create-button-toggle button:hover {
+    color: white;
+    background-color: red;
 }

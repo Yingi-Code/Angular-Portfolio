@@ -1,19 +1,62 @@
-.lightbox-container {
+
+.gallery-content {
     display: block;
     text-align: center;
-}
-
-.lightbox-image-container {
-    display: inline;
+    border: 1px solid lightgrey;
+    padding-bottom: 15px;
 }
 
 img {
-    height: 88px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: 110px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border: 8px solid lightgrey;
+    cursor: pointer;
 }
 
 .boby {
     overflow: hidden;
+}
+
+.content-item-wrapper {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+
+}
+
+.view-image-details-btn {
+    border: none;
+    padding: 5px;
+}
+
+.view-image-details-btn:hover {
+    background-color: red;
+    color: white;
+}
+
+.image-details-section {
+    border: 1px solid lightgrey;
+    text-align: center;
+    padding: 5px;
+    padding-top: 0px;
+}
+
+.image-item {
+    text-align: center;
+}
+
+.image-details-default-img {
+    height: 160px;
+    max-width: 100%;
+}
+
+.image-details-img {
+    height: 210px;
+    max-width: 100%;
+}
+
+.list-group {
+    text-align: left;
 }

@@ -27,6 +27,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
 
   //[ ngSwitch tag]
   viewMode = 'defaultTab';
+  displayDeveloperForm: boolean = true;
 
   //declare an array of [type] Developer object
   developers: IDeveloper[] = [];
@@ -53,7 +54,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
   messange: string = "";
 
   //submit button-mode tag
-  btnMode: boolean = false;
+  formSubmitBtnMode: boolean = false;
 
   //developer details tag
   isDeveloperDetails: boolean = false
@@ -76,15 +77,20 @@ export class FormsTemplateDrivenComponent implements OnInit {
     this.developers = this.developerService.developers;
     this.developerRoles = this.developerService.roleList;
     this.ResetToDefault();
+    this.displayDeveloperForm = false;
   }
 
   //resets the form and its form-controls states
   @ViewChild('formData') theForm!: NgForm;
   ClearForm() {
     this.theForm.reset();
-    this.btnMode == false;
+    this.formSubmitBtnMode == false;
     console.log('Clear fucntion executed...');
-    console.log('buttun mode is = ' + this.btnMode);
+    console.log('buttun mode is = ' + this.formSubmitBtnMode);
+  }
+
+  get toggleFormDisplay() {
+    return this.displayDeveloperForm = !this.displayDeveloperForm;
   }
 
   //sets values to default
@@ -96,44 +102,55 @@ export class FormsTemplateDrivenComponent implements OnInit {
   }
 
   //Add new developer or update existing developer
-  Developer(formData: NgForm) {
-    //take only four developers - for demo purpose
-    if (this.developers?.length != 4) {
+  async Developer(formData: NgForm) {
 
       // check the button mode
-      if (this.btnMode == false) {
-        //
-        this.developerService.AddDeveloper(formData.value);
+    if (this.formSubmitBtnMode == false) {
+        
+      //take only four developers - for demo purpose
+      if (this.developers?.length != 4) {
+        if (await this.alertsService.addConfirmation) {
+          //
+          this.developerService.AddDeveloper(formData.value);
+        }
+       
+      } else {
+        //Pop-up toastr message , in case the developer array length reaches 4
+        // this.messange = "Sorry, you reach your limit!";
+        // this.showToasterError();
+        
+        await this.alertsService.addLimitErrorNotification;
+      }
 
         //set create message
-        this.messange = "Profile created successfully! ";
-        this.showToasterSuccess();
+        // this.messange = "Profile created successfully! ";
+        // this.showToasterSuccess();
         formData.reset();
 
-      } else {
-        if (confirm("Are you sure you want to save these changes?")) {
-          this.developerService.UpdateDeveloper(formData.value, this.developerIndex);
+    //button mode true = update for
+    } else {
+      
+        //pop-up confirmation alert
+      if (await this.alertsService.updateConfirmation) {
 
-          //log the form controls and their values
-          console.log(formData.value);
+        //call the update method if the returned value is true'
+        this.developerService.UpdateDeveloper(formData.value, this.developerIndex);
 
-          formData.reset();
-          //set update message
-          this.messange = "Changes saved successfully! ";
-          this.showToasterSuccess();
-          //switch button mode to create
-          this.btnMode = false;
+        //update the displayed developer details if same user
+        if (this.objDeveloperDetails.emailAddress == formData.value.emailAddress) {
+          this.objDeveloperDetails = formData.value;
+        }
+
+        formData.reset();
+        //switch button mode to create
+          this.formSubmitBtnMode = false;
         } else {
 
           //keep button mode as update
-          this.btnMode = true;
+          this.formSubmitBtnMode = true;
         }
       }
-    } else {
-      //Pop-up toastr message , in case the developer array length reaches 4
-      this.messange = "Sorry, you reach your limit!";
-      this.showToasterError();
-    }
+   
   }
 
   //populates details of the clicked developer
@@ -148,7 +165,10 @@ export class FormsTemplateDrivenComponent implements OnInit {
     this.developerRole = thisDeveloper.project.developerRole;
 
     //change buttom mode to 'Update' once form-controls are populated
-    this.btnMode = true;
+    this.formSubmitBtnMode = true;
+
+    //display developer form
+    this.displayDeveloperForm = true;
   }
 
   //desplay the details of the developer
@@ -168,9 +188,15 @@ export class FormsTemplateDrivenComponent implements OnInit {
       //call the delete method if the user clicks 'Yes'
       this.developerService.DeleteDeveloper(thisDeveloper);
 
-      //Wipe this developer details container if seleted
+      //Clear the form if populated with the same item
+      if (thisDeveloper.emailAddress == this.myForm.value.emailAddress) {
+        this.myForm.reset();
+      }
+
+      //Clear developer details if deleting the same item
       if (thisDeveloper == this.objDeveloperDetails) {
         this.isDeveloperDetails = false;
+
       }
     }
   }
@@ -181,6 +207,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
       // this.objDeveloperDetails = null;
     }
   }
+
   /* 
      - CanDeactivate method
      - Used by Deactivate-guard service
@@ -188,7 +215,7 @@ export class FormsTemplateDrivenComponent implements OnInit {
   */
   async canExit(): Promise<boolean> {
 
-    if (this.myForm.dirty) {
+    if (this.myForm?.dirty) {
 
       //pop-up confirmation alert if the form is incomplete
       if (await this.alertsService.deactivateConfirmation) {
@@ -198,11 +225,6 @@ export class FormsTemplateDrivenComponent implements OnInit {
       }
     }
     return this.exit;
-  }
-
-  //Reload the page
-  refreshData() {
-    location.reload();
   }
 
   // ------------  Toastr Notifications section -------------------

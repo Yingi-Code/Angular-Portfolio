@@ -30,6 +30,10 @@
     color: grey;
 }
 
+.dome-list-cells:hover {
+    color: red;
+}
+
 .list-btn-container {
     /* border: none;  */
     float: right;
@@ -40,6 +44,9 @@
     border: none;
     background-color: #FEEE;
     text-align: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: grey;
 }
 
 .list-btn:hover {
@@ -102,4 +109,25 @@
     padding-top: 20px;
     padding-bottom: 21px;
     border-radius: 5px;
+}
+
+.create-button-toggle {
+    text-align: right;
+}
+
+.create-button-toggle button {
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: grey;
+    text-align: right;
+}
+
+.create-button-toggle button:hover {
+    color: white;
+    background-color: red;
 }

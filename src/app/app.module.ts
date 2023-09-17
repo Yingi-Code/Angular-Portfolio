@@ -69,6 +69,19 @@ import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-ma
 import { NgChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
 import { defaults } from 'chart.js';
+import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
+
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { VideoComponent } from './app-dashboard-items/videos/video.component';
+import { OnlineBookingsComponent } from './app-dashboard-items/online-bookings/online-bookings.component';
+
+//for calendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 @NgModule({
@@ -96,7 +109,10 @@ import { defaults } from 'chart.js';
     ProductsListComponent,
     SearchComponent,
     GoogleMapsComponent,
-    ChartsComponent
+    ChartsComponent,
+    DashboardItemsComponent,
+    VideoComponent,
+    OnlineBookingsComponent
   ],
 
   imports: [
@@ -142,6 +158,15 @@ import { defaults } from 'chart.js';
     }),
     //for routes in App-Routing.Module.ts
     AppRoutingModule,
+
+    //for videogular
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+
+    //for calendar
+    FullCalendarModule
 
   ],
 

@@ -14,73 +14,63 @@
 
 
 <div class="row page-content">
-    <div class="col-md-9">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
         <div class="page-content-container">
 
-            <div class="dashboard-items">
-                
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="" [icon]="['fas', 'address-card']"></fa-icon> <br />
-                    [ Forms ] <br /> Template-Driven<br />
-                </a>
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'sliders']"></fa-icon> Menu
+                        </a>
+                    </li>
+            
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon
+                                class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                    </li>
+<!-- 
+                    <li [class.active]="viewMode == 'dashboardTab'">                   
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/home" class="nav-link  btn tab-text"><fa-icon class=""
+                                [icon]="['fas', 'home']"></fa-icon> Home</a>
+                    </li> -->
+                </ul>
+            </div>
 
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/reactive-form">
-                    <fa-icon class="" [icon]="['fas', 'address-card']"></fa-icon> <br />
-                    [ Forms ] <br /> Reactive<br />
-                </a>
+            <div *ngSwitchCase="'defaultTab'">
+                <app-dashboard-items></app-dashboard-items>
+                <!--For enabling the chald routes-->
+                <router-outlet>
+                    <!--
+                                Takes care of routes requests all app components
+                              -->
+                </router-outlet>
+            </div>
 
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="" [icon]="['fas', 'unlock']"></fa-icon> <br />
-                    [ Authentication ] <br /> JWT<br />
-                </a>
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
 
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/products">
-                    <fa-icon class="" [icon]="['fas', 'share-nodes']"></fa-icon> <br />
-                    [ RESTful API ] <br /> Online-store<br /> 
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/charts">
-                    <fa-icon class="" [icon]="['fas', 'chart-line']"></fa-icon> <br />
-                    [ Data Analysis ] <br /> Charts<br />
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="" [icon]="['fas', 'arrow-up-from-bracket']"></fa-icon> <br />
-                    [ File Systems ] <br /> Upload<br />
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="" [icon]="['fas', 'calendar-days']"></fa-icon> <br />
-                    [ Date/Time ] <br /> Booking<br />
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/gallery">
-                    <fa-icon class="" [icon]="['fas', 'images']"></fa-icon> <br />
-                    [ Gallery ] <br /> Photos Album<br />
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="" [icon]="['fas', 'video']"></fa-icon> <br />
-                    [ Video ] <br /> Online clips<br />
-                </a>
-
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/google-maps">
-                    <fa-icon class="" [icon]="['fas', 'location-dot']"></fa-icon> <br />
-                    [ AGM ] <br /> Google Maps<br />
-                </a>                
-                                    
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="panding-item" [icon]="['fas', 'circle-info']"></fa-icon> <br />
-                    [ Pending.. ] <br /> Coming soon<br />
-                </a>
-                
-                <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/template-driven-form">
-                    <fa-icon class="panding-item" [icon]="['fas', 'circle-info']"></fa-icon> <br />
-                    [ Pending.. ] <br /> Coming soon<br />
-                </a>
-
-
-                </div>   
+            
         </div>
 
     </div>

@@ -14,6 +14,7 @@ body {
     background-color: white;
 }
 
+
 /*
 -----------------------------------------------------
  Sets padding to keep content from hitting the edges 
@@ -36,7 +37,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     font-size: large;
-
     border-top: 10px solid lightgrey;
 }
 
@@ -46,6 +46,10 @@ body {
 
 .social-buttons-aligner {
     padding-bottom: 20px;
+}
+
+.dashboard-button-section {
+    text-align: right;
 }
 
 /* 
@@ -58,10 +62,8 @@ body {
     border-radius: 6px;
 }
 
-
 .page-content-container {
     border: 1px solid lightgrey;
-
     padding: 20px;
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -75,7 +77,6 @@ body {
 }
 
 .form-control.ng-touched.ng-invalid {
-    /* border: 2px solid red; */
     border-left: 14px solid #42A948;
     opacity: 1;
 }
@@ -86,12 +87,11 @@ body {
 
 .form-validation-message {
     color: red;
-    font-size: 14px;
-    
+    font-size: 14px;  
 }
 
 .nav-tabs .nav-link {
-    font-weight: bold;
+    /* font-weight: bold; */
     color: brown;
 }
 

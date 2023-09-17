@@ -12,16 +12,34 @@
                 <div class="navbar-nav ms-auto">
 
                     <div class="nav-item">
-                        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true} routerLink="/">Home </a>
+                        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true} routerLink="/">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'house']"> </fa-icon>
+                            Home 
+                        </a>
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/about">About Developer</a>
+                        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/about">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'graduation-cap']"> </fa-icon>
+                             Developer
+                        </a>
                     </div>
 
                     <div class="nav-item">
-                        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard">Dashboard</a>
+                        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'sliders']"> </fa-icon>
+                            Dashboard
+                        </a>
                     </div>
+
+                    <div class="nav-item">                       
+                        <a class="nav-link"  [routerLinkActive]="['active']" routerLink="/login">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon> 
+                            Acoount
+                        </a>
+                    </div>
+
+
                 </div>
             </div>
         </div>

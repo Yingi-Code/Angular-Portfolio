@@ -18,16 +18,26 @@
     <div class="col-md-9">
         
         <div class="page-content-container " >
-            <div [ngSwitch]="ngx_ViewMode">
+            <div [ngSwitch]="viewMode">
             <!-- Switch tabs-->
             <div class="formSwitch">
                 <ul class="nav nav-tabs ">
-                    <li [class.active]=" ngx_ViewMode == 'defaultTab'">
-                        <a (click)=" ngx_ViewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">LightBox [ngx]</a>
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'image']"></fa-icon>
+                            Gallery
+                        </a>
                     </li>
-            
-                    <li [class.active]=" ngx_ViewMode == 'desciptionTab'">
-                        <a (click)=" ngx_ViewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">Description</a>
+                    
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
+                                [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                    </li>
+                    
+                    <li [class.active]="viewMode == 'dashboardTab'">
+                    
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
+                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
                     </li>
                 </ul>
             </div>

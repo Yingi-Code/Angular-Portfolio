@@ -4,27 +4,8 @@
 
 .page-content {
     margin-top: 15px;
-    text-align: center;
 }
 
-
-.item-container {
-    display: inline-block;
-    margin:10px;
-    text-align: center;
-    border: 1px solid lightgrey;
-    color: grey;
-    min-width: 120px;
-    padding: 5px;
-    font-size: 12px;
-}
-
-.btn:hover {
-    background-color: #f8f9fa;
-    border: 1px solid  #f8f9fa;;
-    color: red;
-}
-
-.panding-item  {
-    color: red;
+.formSwitch {
+    padding-bottom: 10px;
 }

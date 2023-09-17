@@ -22,14 +22,23 @@
             <div class="formSwitch">
                 <ul class="nav nav-tabs ">
                     <li [class.active]="viewMode == 'defaultTab'">
-                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text"
-                            data-bs-toggle="tab">Online-store API</a>
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
+                            Products
+                        </a>
                     </li>
-
+                    
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab">Description</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
+                                [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
                     </li>
+                    
+                    <li [class.active]="viewMode == 'dashboardTab'">
+                    
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
+                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                    </li>
+                    
                 </ul>
             </div>
 

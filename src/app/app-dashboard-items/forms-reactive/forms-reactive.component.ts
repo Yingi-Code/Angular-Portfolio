@@ -21,18 +21,24 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 })
 export class FormsReactiveComponent {
 
-  //page title
-  viewTitle = "Demonstrations";
-
   //[ ngSwitch tag]
   viewMode = 'defaultTab';
-
+  displayDeveloperForm: boolean = true;
   //declare an array of [type] Developer object
   developers: IDeveloper[] = [];
   //Developer roles list
   developerRoles: any;
   //Reactive form
   developerForm!: FormGroup;
+  //form properties
+  developerIndex: any;
+  displayGithubBtn = true;
+  messange: string = "";
+  //submit button switch-mode tag
+  formSubmitBtnMode: boolean = false;
+  //developer details tag
+  isDeveloperDetails: boolean = false
+  exit: boolean = true;
 
   //developer details object
   objDeveloperDetails: IDeveloper = {
@@ -53,16 +59,6 @@ export class FormsReactiveComponent {
     },
   };
 
-  //form properties
-  developerIndex: any;
-  displayGithubBtn = true;
-  messange: string = "";
-  //submit button switch-mode tag
-  formSubmitBtnMode: boolean = false;
-  //developer details tag
-  isDeveloperDetails: boolean = false
-  exit: boolean = true;
-
   //injects the istanace of formDataservice
   constructor(
     private developerService: AngularFormsDataService,
@@ -74,12 +70,13 @@ export class FormsReactiveComponent {
 
   ) { }
 
-
   //Loads the list of developers and list of roles
   ngOnInit(): void {
     this.developers = this.developerService.developers;
     this.developerRoles = this.developerService.roleList;
     this.ResetToDefault();
+    this.displayDeveloperForm = true;
+    // this.FormContentStatus = false;
 
     //Form object with form-control names
     this.developerForm = new FormGroup({
@@ -96,34 +93,23 @@ export class FormsReactiveComponent {
 
   //gets form-control with control-name [firstName]
   get firstName() {
-    return this.developerForm.get('firstName');
-  }
+    return this.developerForm.get('firstName');}
 
   //gets form-control with control-name [emailAddress]
   get emailAddress() {
-    return this.developerForm.get('emailAddress');
-  }
+    return this.developerForm.get('emailAddress');}
 
   //gets form-control with control-name [developerRole] from [project]
   get developerRole() {
-    return this.developerForm.get('project.developerRole');
-  }
+    return this.developerForm.get('project.developerRole');}
 
   //gets form-control with control-name [developerRole] from [isSubscribed]
   get isSubscribed() {
-    return this.developerForm.get('project.isSubscribed');
-  }
+    return this.developerForm.get('project.isSubscribed');}
 
-  /*
-  //onChange detection and update
-  onChanges() {
-    this.firstName?.valueChanges.subscribe(
-      uname => {
-        console.log('firstName changed:' + uname);
-      }
-    );
+  get toggleFormDisplay() {
+      return this.displayDeveloperForm = !this.displayDeveloperForm; 
   }
-  */
 
   //sets values to default
   ResetToDefault() {
@@ -137,14 +123,26 @@ export class FormsReactiveComponent {
   async Developer() {
 
     //take only four developers - for demo purpose
-    if (this.developers?.length != 4) {
+   
 
       // button mode false = add form
-      if (this.formSubmitBtnMode == false) {
-        //
-        this.developerService.AddDeveloper(this.developerForm.value);
+    if (this.formSubmitBtnMode == false) {
 
-        //set create message
+      //take only four developers - for demo purpose
+      if (this.developers?.length != 4) {
+        if (await this.alertsService.addConfirmation) {
+        //
+          this.developerService.AddDeveloper(this.developerForm.value);
+        }
+
+      } else {
+        //Pop-up toastr message , in case the developer array length reaches 4
+        // this.messange = "Sorry, you reach your limit!";
+        // this.showToasterError();
+
+        await this.alertsService.addLimitErrorNotification;
+      }
+        //set torstr message - created
         // this.messange = "Profile created successfully! ";
         // this.showToasterSuccess();
         this.developerForm.reset();
@@ -152,15 +150,18 @@ export class FormsReactiveComponent {
         //button mode true = update form
       } else {
 
-        //pop-up confirmation alert
+        //pop-up item update confirmation alert
         if (await this.alertsService.updateConfirmation) {
 
           //call the update method if the returned value is true'
           this.developerService.UpdateDeveloper(this.developerForm.value, this.developerIndex);
-          //update the displayed developer details
-          this.objDeveloperDetails = this.developerForm.value;
-          this.developerForm.reset()
 
+          //update the displayed developer details if same user
+          if (this.objDeveloperDetails.emailAddress == this.developerForm.value.emailAddress) {
+            this.objDeveloperDetails = this.developerForm.value;
+          }
+          
+          this.developerForm.reset()
           //switch button mode to create
           this.formSubmitBtnMode = false;
         } else {
@@ -168,32 +169,35 @@ export class FormsReactiveComponent {
           this.formSubmitBtnMode = true;
         }
       }
-    }
+    
   }
 
 
   //populates details of the clicked developer
   populateDeveloperForm(thisDeveloper: IDeveloper) {
-
-    //store selected developer array index
-    this.developerIndex = this.developers.indexOf(thisDeveloper);
-
-    this.developerForm.setValue({
-      firstName: thisDeveloper.firstName,
-      emailAddress: thisDeveloper.emailAddress,
-      project: {
-        developerRole: thisDeveloper.project.developerRole,
-        isSubscribed: thisDeveloper.project.isSubscribed,
-      }
-    })
     //console.log(this.developerForm);
     this.formSubmitBtnMode = true;
+
+    //display developer form
+    if (this.displayDeveloperForm = false) {
+        this.developerForm.reset();
+    } 
+      //store selected developer array index
+      this.developerIndex = this.developers.indexOf(thisDeveloper);
+
+      this.developerForm.setValue({
+        firstName: thisDeveloper.firstName,
+        emailAddress: thisDeveloper.emailAddress,
+        project: {
+          developerRole: thisDeveloper.project.developerRole,
+          isSubscribed: thisDeveloper.project.isSubscribed,
+        }
+      });
   }
 
   //desplay the details of the developer
   DeveloperDetails(thisDeveloper: IDeveloper) {
-    
-    
+
     //assign an object of the retrived Developer to a new instance
     this.objDeveloperDetails = {
       firstName: thisDeveloper.firstName,
@@ -217,9 +221,13 @@ export class FormsReactiveComponent {
 
       //call the delete method if the user clicks 'Yes'
       this.developerService.DeleteDeveloper(thisDeveloper);
-      this.developerForm.reset();
+      
+      //Clear the form if populated with the same item
+      if (thisDeveloper.emailAddress == this.developerForm.value.emailAddress) {
+        this.developerForm.reset();
+      }
 
-      //Wipe this developer details container if seleted
+      //Clear developer details if deleting the same item
       if (thisDeveloper == this.objDeveloperDetails) {
         this.isDeveloperDetails = false;
        
@@ -246,28 +254,5 @@ export class FormsReactiveComponent {
     }
     return this.exit;
   }
-
-  //Reload the page
-  refreshData() {
-    location.reload();
-  }
-
-  // ------------  Toastr Notifications section -------------------
-  // showToasterSuccess() {
-  //   this.notifyService.showSuccess("", this.messange)
-  // }
-
-  // showToasterError() {
-  //   this.notifyService.showError("", this.messange)
-  // }
-
-  // showToasterInfo() {
-  //   this.notifyService.showInfo("", this.messange)
-  // }
-
-  // showToasterWarning() {
-  //   this.notifyService.showWarning("", this.messange)
-  // }
-
 
 }

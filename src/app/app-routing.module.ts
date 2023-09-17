@@ -13,12 +13,12 @@ import { NgGalleryLightboxComponent } from './app-structure/image-gallery/ng-gal
 import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
 import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-maps.component';
 import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
-
-
+import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
+import { VideoComponent } from './app-dashboard-items/videos/video.component';
+import { OnlineBookingsComponent } from './app-dashboard-items/online-bookings/online-bookings.component';
 
 const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
-
   // redirectTo - home
   { path: '', component: HomeComponent, title: "My RPs - Home"  },
   
@@ -26,15 +26,21 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
   { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - About Developer" },
   { path: 'dashboard', component: DashboardComponent, title: "My RPs - Dashboard" },
+  { path: 'dashboard-items', component: DashboardItemsComponent, title: "My RPs - Dashboard" },
 
-  { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Tempalte-driven" },
-  { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Reactive" },
-  { path: 'gallery', component: GalleryComponent, title: "My RPs - Gallery" },
-  { path: 'ng-gallery', component: NgGalleryLightboxComponent, title: "My RPs - Gallery" },
-  { path: 'products', component: ProductsListComponent, title: "My RPs - Products" },
-  { path: 'google-maps', component: GoogleMapsComponent, title: "My RPs - Maps" },
-  { path: 'charts', component: ChartsComponent, title: "My RPs - Charts" },
-  
+  {
+    path: 'dashboard', children: [
+      { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Template-driven" },
+      { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Reactive" },
+      { path: 'gallery', component: GalleryComponent, title: "My RPs - Gallery" },
+      { path: 'ng-gallery', component: NgGalleryLightboxComponent, title: "My RPs - Gallery" },
+      { path: 'products', component: ProductsListComponent, title: "My RPs - Products" },
+      { path: 'google-maps', component: GoogleMapsComponent, title: "My RPs - Maps" },
+      { path: 'charts', component: ChartsComponent, title: "My RPs - Charts" },
+      { path: 'videos', component: VideoComponent, title: "My RPs - Videos" },
+      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My RPs - Bookings" }
+  ] },
+
   // redirectTo - Error page
   { path: '**', component: PageNotFoundComponent, title: "My RPs- Not found" },
 ];

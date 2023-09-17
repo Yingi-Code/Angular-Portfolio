@@ -1,5 +1,52 @@
-<div class="lightbox-container">
-    <div class="btn col-mid-3 lightbox-image-container img-fluid" *ngFor="let image of albums; let i=index">
-        <img class="img-fluid" [src]="image.thumb" (click)="open(i)" />
+<div class="row lightbox-container">
+
+    <!-- image gallery section -->
+    <div class="col-md-8">
+
+        <div class="gallery-content">
+            <div class="btn" *ngFor="let image of albums; let i=index">
+                <div class="content-item-wrapper">
+                    <img class="img-fluid" [src]="image.thumb" (click)="open(i)" title="View image" />
+                    <button class="view-image-details-btn" (click)="getSelectedImageDetails(i)" title="View image properties">Details</button>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+    <!-- image details section -->
+    <div class="col-md-4">
+
+        <div *ngIf="selectedImageDetails; else noImageSeleted" class="image-details-section">
+            <div class="image-item">
+                <img class="image-details-img" [src]="selectedImageDetails.src" (click)="open(selectedImageIndex)"  />
+            </div>
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action schedule-content">
+                    <b>Caption:</b> {{selectedImageDetails.caption}}
+                </button>
+                <button type="button" class="list-group-item list-group-item-action schedule-content">
+                    <b>File name:</b> {{fileName}}
+                </button>
+                <button type="button" class="list-group-item list-group-item-action schedule-content">
+                    <b>File type:</b> {{fileExtension}}
+                </button>
+            </div>
+        </div>
+
+        <ng-template #noImageSeleted >
+            <div class="image-details-section">
+            <div class="image-item">
+                <img class="image-details-default-img" src="assets/gallery/default.png" />
+            </div>
+
+            <button type="button" class="list-group-item list-group-item-action schedule-content">
+                <fa-icon class="" [icon]="['fas', 'circle-info']"> </fa-icon>&nbsp;
+                Sorry, no image seleted yet.
+            </button>
+
+            </div>
+        </ng-template>
+
     </div>
 </div>
+
