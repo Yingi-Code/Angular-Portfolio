@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+  signedIn: boolean = false;
   constructor(
     public router: Router
   ) { }
+
+
 }

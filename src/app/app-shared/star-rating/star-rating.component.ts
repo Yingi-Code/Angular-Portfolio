@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./star-rating.component.css']
 })
 export class StarRatingComponent {
-  starRating = 0;
+  starRating = 4.6;
 }

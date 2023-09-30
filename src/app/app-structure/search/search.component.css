@@ -1,13 +1,12 @@
-.search-container {
-    /* display: flex;
-    justify-content: center; */
-    margin-top: 0px;
-    
-}
+ .search-icon {
+     float: left;
+     margin-left: 14px;
+     margin-top: -27px;
+     position: relative;
+     z-index: 2;   
+ }
 
-.form-control {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-}
-
+ .form-control {
+    margin: 0 auto;
+    padding-left: 38px;
+ }

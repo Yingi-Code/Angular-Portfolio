@@ -24,7 +24,7 @@
                     <li [class.active]="viewMode == 'defaultTab'">
                         <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
                             <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
-                            Products
+                            Store
                         </a>
                     </li>
                     
@@ -44,154 +44,213 @@
 
             <div *ngSwitchCase="'defaultTab'">
 
-                <!-- Product list -->
-                                <div class="row dome-list-container">
+                                
+                <!-- filter-Sort-Search container section -->
+                <form>
+                    <div class="row filter-search-sort-section">
+                        
+                        <!-- filter-options using drop-down list -->
+                        <div class="col-md-3 filter-container">                      
+                            <select #filterOption (change)="filterBy(filterOption.value)" class="form-select form-select-sm dropdown-list" required> 
+                                <option hidden 
+                                    disabled 
+                                    selected> 
+                                    Filter By
+                                </option>
+                            
+                                <option 
+                                *ngFor="let productCategory of getProductCategories" 
+                                [value]="productCategory.value" >
+                                {{productCategory.name}}
+                                </option>
+                            </select>
+                            <fa-icon class="errspan" [icon]="['fas', 'sliders']"></fa-icon>
+                        </div>
+                        
+                        <!-- Sort-options -->
+                        <div class="col-md-3 sort-container ">                      
+                            <select #sortOption (change)="sortBy(sortOption.value)"  class="form-select form-select-sm dropdown-list" required>
+                                <option hidden value="0" disabled selected> 
+                                Sort By 
+                                </option>
+                            
+                                <option 
+                                *ngFor="let sortOption of getSortOptions" 
+                                [value]="sortOption.id" >
+                                {{sortOption.name}}
+                                </option>
+                            </select>
+                            <fa-icon class="errspan" [icon]="['fas', 'arrow-down-wide-short']"></fa-icon>                      
+                        </div>
 
-                                    <div>
-                                        <div class="search-container">
-                                            <app-search (searchEvent)="searchProduct($event)"></app-search>
-                                        </div>
+                        <!-- Search section -->
+                        <div class="col-md-3  search-container">
+                            <app-search (searchEvent)="searchProduct($event)"></app-search>
+                            
+                        </div>
 
+                        <!-- reset-options -->
+                        <div class="col-md-3 refresh-reset-btn-container">
+                            <button type="reset" class="refresh-rest-btns">
+                                <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon>
+                                Clear all
+                            </button>
+                            <button class="refresh-rest-btns" (click)="getAllProducts()">
+                                <fa-icon class="" [icon]="['fas', 'arrows-rotate']"></fa-icon>
+                                Refresh
+                            </button>
+                        </div>
 
-                                        <div class="filter-options-container ">
+                    </div>
+                </form>
 
-                                            <label class="radio-inline">
-                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue" selected
-                                                    value="All"> All clothing
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
-                                                    value="men's clothing"> Male clothing
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
-                                                    value="women's clothing"> Female clothing
-                                            </label>
+               
+                <!-- products-details-section -->
+                <div *ngIf="productDetails!=null" class="product-details-container">
+                    
+                    <div class="row product-details-first-row">                       
+                        <!-- product-details-image-->
+                        <div class="col-md-2 product-details-image-container">
+                            <div class="product-details-image">
+                                <img src="{{productDetails?.image}}" (click)="open(0)" class="responsive" />
+                            </div>
+                        </div>
+                        
+                        <!-- product-details-price-->
+                        <div class="col-md-5 product-details-title-price ">
+                            <div class="product-details-title">
+                                {{productDetails?.title}}
+                            </div>
+                         
+                            <div class="product-details-price">
+                                {{usDollarToRandConvention(productDetails.price) | currency:'R'}}
+                            </div>
+                        
+                        </div>
+                        
+                        <!-- product-details-description-->
+                        <div class="col-md-5  product-details-description">
+                            <div class="product-details-category">
+                                [ {{productDetails?.category | titlecase }} ]
+                            </div>
+                            <div class="product-details-rating">
+                                <b>Ratings:</b> 
+                                <ngb-rating class="star-ratings" [max]="5" [(rate)]="productDetails?.rating.rate" [readonly]="false"></ngb-rating> 
+                                ({{productDetails?.rating.rate}})
 
-                                            <label class="radio-inline">
-                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
-                                                    value="electronics"> Electronics
-                                            </label>
+                            </div>
+                            <div class="product-details-count">
+                            <b>Counts:</b> {{productDetails?.rating.count}}
+                            </div>
 
-                                            <label class="radio-inline">
-                                                <input type="radio" [(ngModel)]="selectedRadioButtonValue"
-                                                    value="jewelery"> Jewellary
-                                            </label>
+                            <button class=" btn btn-sm product-item-btn buy-btn" title="click to buy">
+                                Buy
+                            </button>
+                            <button class=" btn btn-sm product-item-btn" title="add to busket">
+                                <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
+                            </button>
+                            <button class=" btn btn-sm product-item-btn" (click)="hideProductDetailsview" title="Close">
+                                <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon> Clear
+                            </button>
+                        </div>
+                    </div>
 
-                                        </div>
+                    <div class="row product-details-second-row">
+                        <div>
+                            <details>
+                                <summary>Product Description</summary>
+                                <p>{{productDetails?.description}}</p>
+                            </details>
+
+                        </div>
+                    </div>
+                   
+                </div>
+<!--                 
+                <div *ngIf="productDetailsLoading" class="spinner-container">
+                    <app-loading-spinner></app-loading-spinner> &nbsp;
+                    loading...
+                </div> -->
+            
+                <!-- products-list-section -->
+                <div *ngIf="productsList!=null" class="products-container">
+                    <!-- loop products-list -->
+                    <div *ngFor="let product of productsList  | paginate: {
+                                                                            itemsPerPage: tableSize,
+                                                                            currentPage: page,
+                                                                            totalItems: count
+                                                                        }; let i = index"
+                        class=" d-lg-inline-flex">
+                
+                        <!-- product -->
+                            <div  class="product-container">
+                
+                                <div class=" product-img-container" (click)="getThisProductDetails(product.id)" title="product details">
+                                    <img src="{{product.image}}" class="product-image responsive " />
+                                </div>
+                
+                                <div class="product-details">
+                                    <div class="product-title" (click)="getThisProductDetails(product.id)" title="product details">
+                                        {{product.title.slice(0,14)}} ..
                                     </div>
-
-
-                                    <div *ngIf="productsList != null">
-
-                                        <ng-container *ngFor="let product of productsList 
-                                                                | paginate: {
-                                                                                itemsPerPage: tableSize,
-                                                                                currentPage: page,
-                                                                                totalItems: count
-                                                                            }; let i = index"
-                                        >
-             
-                                            <!-- searchKeyWord === '' || product.title.toLowerCase().contains(searchKeyWord) || -->
-                                            <div *ngIf=" (( selectedRadioButtonValue === 'All' || selectedRadioButtonValue === product.category) && (product.title.toLowerCase().includes(searchKeyWord) ))"
-                                                class="product-container-all d-lg-inline-flex"
-                                                title="View product details">
-
-                                                <div *ngIf="product != null; else searchedlist "
-                                                    (click)=" ProductDetails(product.id)" class="product-container btn">
-
-                                                    <div class=" product-img-container">
-                                                        <img src="{{product.image}}" class="product-image responsive" />
-                                                    </div>
-
-                                                    <div class=" product-details  ">
-                                                        <div class="product-title">
-                                                            {{product.title.slice(0,8)}} ...
-                                                        </div>
-                                                        <!-- <div class="product-price-title">
-                                                            <fa-icon class="price-tag"
-                                                                [icon]="['fas', 'tag']"></fa-icon> <b> Price</b>
-                                                        </div> -->
-                                                        <div class="product-price">
-                                                        <fa-icon class="price-tag" [icon]="['fas', 'tag']"></fa-icon> {{product.price | currency}}
-                                                        </div>
-
-                                                        <div class="actions btn">
-                                                            <!-- <button (click)="ProductDetails(product.id)"
-                                                                class=" btn btn-sm list-btn order"><fa-icon
-                                                                    [icon]="['fas', 'circle-exclamation']"></fa-icon>
-                                                                More
-                                                            </button> -->
-                                                            <button class=" btn btn-sm list-btn add">
-                                                                 details
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                        
-                                            </div>
-
-                                            <ng-template #searchedlist>
-
-                                                <div *ngIf="(selectedRadioButtonValue === product.category) && (product.title.toLowerCase().includes(searchKeyWord))  "
-                                                    class="product-container-all d-lg-inline-flex"
-                                                    title="Click for details">
-
-                                                    <div (click)=" ProductDetails(product.id)"
-                                                        class="product-container btn">
-
-                                                        <div class=" product-img-container">
-                                                            <img src="{{product.image}}"
-                                                                class="product-image responsive" />
-                                                        </div>
-
-                                                        <div class=" product-options  ">
-                                                            <div class="product-title">
-                                                                {{product.title.slice(0,8)}} ...
-                                                            </div>
-                                                            <div class="product-price-title">
-                                                                <fa-icon class="price-tag"
-                                                                    [icon]="['fas', 'tag']"></fa-icon> <b> Price</b>
-                                                            </div>
-                                                            <div class="product-price">
-                                                                {{product.price | currency}}
-                                                            </div>
-
-                                                            <div class="actions btn">
-                                                                <button (click)="ProductDetails(product.id)"
-                                                                    class=" btn btn-sm list-btn order"><fa-icon
-                                                                        [icon]="['fas', 'circle-exclamation']"></fa-icon>
-                                                                    More</button>
-                                                                <button class=" btn btn-sm list-btn add"><fa-icon
-                                                                        [icon]="['fas', 'cart-shopping']"></fa-icon> Add
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                               
-                                            </ng-template>
-
-
-                                        </ng-container>
+                
+                                    <div class="product-price" (click)="getThisProductDetails(product.id)" title="product details">
+                                        <fa-icon class="" [icon]="['fas', 'tag']"></fa-icon> 
+                                        {{ usDollarToRandConvention(product.price) | currency:'R': 'symbol'}}
+                                    </div>
+                
+                                    <div class="product-btns-container">
+                                        <button class=" btn btn-sm product-item-btn buy-btn" title="click to buy">
+                                            Buy
+                                        </button>
+                                        <button class=" btn btn-sm product-item-btn" title="add to busket">
+                                            <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>              
+                                        </button>
+                                        <button class=" btn btn-sm product-item-btn" (click)="getThisProductDetails(product.id)" title="product details">
+                                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
+                                        </button>
 
                                        
-                                        <div class="d-flex justify-content-left">
-                                            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-                                            </pagination-controls>
-                                        </div>
-
-
                                     </div>
-                                  
                                 </div>
-    
-            </div>
+                
+                            </div>
+                                    
+                    </div>
+                </div>
 
+                <!-- spinner section -->
+                <div *ngIf="productListLoading" class="spinner-container">
+                    <app-loading-spinner></app-loading-spinner> &nbsp;
+                    loading...
+                </div>
+
+                <!-- Items not found view -->
+                <div *ngIf="productsList?.length == 0 " class=" product-list-container">
+                    <div class="noItemFound">
+                        <div class="noItemFoundTitle">
+                            
+                            Oops!
+                        </div>
+                        <div class="noItemFoundDescription">
+                            The item you are searching for could not be found. <br/>
+                            <button class="rearch-error-button" (click)="getAllProducts()" >
+                                <fa-icon class="" [icon]="['fas', 'magnifying-glass']"></fa-icon>
+                                &nbsp; search again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagenation section-->
+                <div  *ngIf="!productListLoading"  class="pagenation-container">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+                
+                
+            </div>
+                    
             <div *ngSwitchCase="'desciptionTab'">
                 <section class="about-paragraphs borderd-paragraph">
                     This example covers the basics of template directives and how they can be
@@ -212,9 +271,10 @@
                     </ul>
                 </section>
             </div>
-        </div>
 
     </div>
+    </div>
+   
 
     <!-- Sidebar-->
     <div class="col-md-3">
@@ -222,3 +282,5 @@
     </div>
 
 </div>
+
+

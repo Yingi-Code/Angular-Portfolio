@@ -59,7 +59,7 @@ import { NgxLightboxComponent } from './app-structure/image-gallery/ngx-lightbox
 import { GalleryComponent } from './app-dashboard-items/gallery/gallery.component';
 import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
 import { AngularFormsDataService } from './app-shared/services/angular-forms-service/angular-forms.service';
-import { ProductsService } from './app-shared/services/online-store-services/products.service';
+import { ProductService } from './app-shared/services/online-store-services/products.service';
 import { SearchComponent } from './app-structure/search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -76,12 +76,18 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VideoComponent } from './app-dashboard-items/videos/video.component';
-import { OnlineBookingsComponent } from './app-dashboard-items/online-bookings/online-bookings.component';
+import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-calendar/online-bookings.component';
 
 //for calendar
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { LoadingSpinnerComponent } from './app-structure/loading-spinner/loading-spinner.component';
+
+//for Authentication methods
+import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
+import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
+import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
 
 
 @NgModule({
@@ -112,13 +118,19 @@ import dayGridPlugin from '@fullcalendar/daygrid';
     ChartsComponent,
     DashboardItemsComponent,
     VideoComponent,
-    OnlineBookingsComponent
+    OnlineBookingsComponent,
+    LoadingSpinnerComponent,
+    
+    //Account and Auth components
+    AccountComponent,
+    AuthBasicComponent,
+    AuthJwtComponent
+    
   ],
 
   imports: [
 
     HttpClientModule,
-
 
     //All the App Special Models not from @angular/core
     BrowserModule,
@@ -173,7 +185,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
   providers: [
     NgbCarouselConfig,
     AngularFormsDataService,
-    ProductsService,
+    ProductService,
     provideClientHydration()
   ],
   bootstrap: [AppComponent]

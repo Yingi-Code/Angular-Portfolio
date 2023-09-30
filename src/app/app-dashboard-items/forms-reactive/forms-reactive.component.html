@@ -12,7 +12,6 @@
     </div>
 </div>
 
-
 <div class="row page-content">
     <div class="col-md-9"  [ngSwitch]="viewMode" >
 
@@ -127,19 +126,18 @@
                                         </div>
             
                                     </div>
-            
-                                    <div class="form-group teamMember">
-                                        <input type="checkbox" class="checkbox" #isSubscribed formControlName="isSubscribed">
-                                        Project Team Member? <br />
+
+                                    <div class="form-check form-switch teamMember">
+                                        <input #isSubscribed formControlName="isSubscribed" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Project member (No/Yes)</label>
                                     </div>
                                 </div>
-            
-            
+                       
                                 <div class="form-group">
                                     <!-- keeps the button inactive untill when the for is valid -->
                                     <input type="submit" value="{{formSubmitBtnMode == true ? ' confirm ' : ' submit '}}"
                                         [disabled]="!developerForm.valid" class="btn btn-danger btn-sm form-btns">
-                                        <input type="button" value="Close" (click)="toggleFormDisplay" class="btn btn-success btn-sm ">
+                                    <input type="button" value="close" (click)="toggleFormDisplay" class="btn btn-success btn-sm ">
                                 </div>
                             </div>
             
@@ -147,33 +145,30 @@
                     </form>
                 </section>
 
-                <section *ngIf="toggleFormDisplay  == true" class="create-button-toggle">  
-                    <button (click)="toggleFormDisplay"><fa-icon class="" [icon]="['fas', 'user-plus']"></fa-icon> New </button>
-                </section>
-               
                 <!-- second row - list and details view -->
                 <section class="row dome-form-container">
 
                     <!-- Develpers list -->
                     <div class="col-md-6">
+                        <!-- developers list section -->
                         <div class="form-sections-headings">Developers list</div>
                         <div *ngIf="developers.length != 0; else noCustomerFound" class="row list-group dome-list-container">
                             <button *ngFor="let developer of developers;  let i = index" class=" list-group-item">
                             
-                                <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells " title="Click for details">
+                                <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells developer-names " title="Click for details">
                                     <b> {{i+1 }}. </b>&nbsp;
                                     <fa-icon class="concept-icon" [icon]="['fas', 'user']"></fa-icon> &nbsp;
                                     {{ developer.firstName}}
                                 </div>
                             
-                                <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell"
+                                <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell d-none d-md-block"
                                     title="Click for details">
                                     <div *ngIf="developer.project.isSubscribed == true">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'clock-rotate-left']"></fa-icon> Project member
+                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-check']"></fa-icon> Project member
                                     </div>
                             
                                     <div *ngIf="developer.project.isSubscribed == false">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'minus']"></fa-icon> Not a member
+                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-xmark']"></fa-icon> Not a member
                                     </div>
                                     <!-- {{developer.project.isSubscribed == true? 'Assigned to project': 'No'}}    -->
                                 </div>
@@ -189,12 +184,18 @@
                             
                             </button>
                         </div>
+
                         <ng-template #noCustomerFound>
                             <div class="alert alert-danger  empty-list-message">
                                 <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
                                 Sorry, no developer profile found!
                             </div>
                         </ng-template>
+
+                        <!-- display developer form btn -->
+                        <section *ngIf="toggleFormDisplay  == true" class="create-button-toggle">
+                            <button (click)="toggleFormDisplay"><fa-icon class="" [icon]="['fas', 'user-plus']"></fa-icon> Create </button>
+                        </section>
             
                     </div>
             

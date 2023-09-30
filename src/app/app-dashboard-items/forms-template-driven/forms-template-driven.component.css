@@ -11,9 +11,7 @@
     background-color: #f8f9fa;
 }
 
-
 /* ------------------- Demo content form --------------------- */
-
 .form-second-column {
     padding-top: 6px;
 }
@@ -23,7 +21,6 @@
 }
 
 /* ------------------- Demo content list --------------------- */
-
 .dome-list-container {
     margin: 0px;
     margin-bottom: 10px;
@@ -34,6 +31,10 @@
     float: left;
     text-align: left;
     color: grey;
+}
+
+.developer-names {
+    width: 120px;
 }
 
 .dome-list-cells:hover{
@@ -72,7 +73,6 @@
 }
 
 /* ------------------- Demo content form --------------------- */
-
 .dome-form-container {
     margin-left: 0px;
     margin-right: 0px;
@@ -106,7 +106,6 @@
 }
 
 /* ------------------- Demo Developer details --------------------- */
-
 .developer-details-container {
     padding-left: 10px;
     border: 1px solid lightgrey;
@@ -117,20 +116,21 @@
 }
 
 .create-button-toggle{
-    text-align: right;
+    text-align: left;
 }
 
 .create-button-toggle button {
-    border: none;
+border: none;
     border-radius: 5px;
-    margin: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: grey;
-    text-align: right;
+    padding: 6px;
+    padding-left: 17px;
+    padding-right: 17px;
+    color: white;
+    background-color: red;
+    font-size: 12px;
 }
 
 .create-button-toggle button:hover {
     color: white;
-    background-color: red;
+    background-color: brown;
 }

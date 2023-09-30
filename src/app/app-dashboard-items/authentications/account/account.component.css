@@ -1,0 +1,47 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+.login-options-section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    background-image: url('^assets/banners/1.jpg');
+    background-color: #cccccc;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+
+    object-fit: contain;
+   
+}
+
+.login-img {
+ height: 60px;
+ margin-bottom: 20px;
+}
+
+.Authentication-option {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.Authentication-nav {
+    border: 1px solid lightgrey;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 6px;
+    margin-right: 10px;
+    color: white;
+    font-size: 12px;
+}
+.Authentication-nav:hover {
+    background-color: orangered;
+    color: white;
+    border-color:orangered;
+}
+

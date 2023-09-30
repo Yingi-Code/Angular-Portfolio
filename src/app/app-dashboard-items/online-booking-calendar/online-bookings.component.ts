@@ -36,14 +36,14 @@ export class OnlineBookingsComponent implements OnInit {
     timeZone: 'CAT',
     // themeSystem: 'bootstrap5',
     plugins: [dayGridPlugin, interactionPlugin, listPlugin],
-    initialView: 'dayGridMonth',
+    initialView: 'dayGridWeek',
     weekends: false,
 
     //Calendar header options
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
-      right: 'dayGridMonth,dayGridWeek,listWeek'
+      right: 'dayGridWeek,listWeek'
     },
 
     selectable: true,
@@ -63,23 +63,23 @@ export class OnlineBookingsComponent implements OnInit {
     // /Calendar Events
     events: [
       {
-        title: 'Mariah Smith', start: '2023-09-15T0900:00', end: '2023-09-15T1600:00',
+        title: 'Responsive Web Design', start: '2023-09-15T0900:00', end: '2023-09-15T1600:00',
             extendedProps: {
               workshopTopic: 'Responsive Web Design',
-              description: 'Design the web UIs that are responsive to various browser platforms'
+              description: 'Designing Responsive User Interfaces (UIs) for SAP'
         },
         
       },
       {
-        title: 'Solly Mahlangu', start: '2023-09-05T0900:00', end: '2023-09-05T1600:00',
+        title: 'Developing SPA in Angular', start: '2023-09-05T0900:00', end: '2023-09-05T1600:00',
         extendedProps: {
           workshopTopic: 'Developing SPA in Angular',
-          description: 'Learn how to develop fast responsive applications that render dynamic contents with a single-page '
+          description: 'Learn how to develop Sing Page Applications (SPA)'
         }       
       },
         
       {
-        title: 'Dave Crage', start: '2023-09-18T0800:00', end: '2023-09-20T1600:00',
+        title: 'Intro to Web API', start: '2023-09-18T0800:00', end: '2023-09-20T1600:00',
       extendedProps: {
         workshopTopic: 'Intro to Web API',
         description: 'Learn how to develop your own RESTful Web API'
@@ -87,26 +87,26 @@ export class OnlineBookingsComponent implements OnInit {
       },
         
       {
-        title: 'Luck Simelane', start: '2023-09-27T1400:00', end: '2023-09-29T1500:00',
+        title: 'JWT Authentication', start: '2023-09-27T1400:00', end: '2023-09-29T1500:00',
         extendedProps: {
           workshopTopic: 'JWT Authentication',
-          description: 'How to implement authentication in your application using JWT'
+          description: 'Implementing authentication using JWT in Angular'
         }
       },
 
       {
-        title: 'Belinda Masiya', start: '2023-09-12T10:00:00', end: '2023-09-16T1300:00',
+        title: 'Intro to .NET MVC Core', start: '2023-09-12T10:00:00', end: '2023-09-16T1300:00',
         extendedProps: {
           workshopTopic: 'Intro to .NET MVC Core',
-          description: 'Learn how to develop a complete application using MVC pattern'
+          description: 'Introduction to .NET MVC application'
         }
       },
 
       {
-        title: 'Thabo Maleka', start: '2023-09-18T1100:00', end: '2023-09-18T1500:00' ,
+        title: 'Angular Universal - SEO', start: '2023-09-18T1100:00', end: '2023-09-18T1500:00' ,
         extendedProps: {
           workshopTopic: 'Angular Universal - SEO',
-          description: 'Learn how to implement search engine optimisation in your angular app.'
+          description: 'Learn how to implement search engine optimisation.'
         }
       },
     ],

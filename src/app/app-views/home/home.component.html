@@ -11,8 +11,6 @@
 </div>
 
 <!--Page content -->
-
-
 <div @fadeInFeaturedImaged class="row featured-items-container">
 
     <div class="col-md-4 featured-container">
@@ -31,7 +29,9 @@
             </div>
 
             <div class="featured-items-button-container slide-to-left">
-                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+                <a class="featured-items-buttom btn" routerLink="/dashboard/"> More details
+                    <fa-icon class="concept-icon " [icon]="['fas', 'chevron-right']"> </fa-icon>
+                </a>
             </div>
         </div>
     </div>
@@ -52,7 +52,9 @@
             </div>
 
             <div class="featured-items-button-container slide-to-up">
-                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+                <a class="featured-items-buttom btn" routerLink="/dashboard/reactive-form"> More details
+                    <fa-icon class="concept-icon " [icon]="['fas', 'chevron-right']"> </fa-icon>
+                </a>
             </div>
         </div>
     </div>
@@ -73,7 +75,10 @@
             </div>
 
             <div class="featured-items-button-container slide-to-right">
-                <a class="featured-items-buttom btn" routerLink="/dashboard"> More details.. &#187;</a>
+                <a class="featured-items-buttom btn" routerLink="/dashboard/products"> 
+                    More details 
+                    <fa-icon class="concept-icon " [icon]="['fas', 'chevron-right']"> </fa-icon>
+                </a>
             </div>
         </div>
     </div>

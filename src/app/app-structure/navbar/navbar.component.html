@@ -21,25 +21,86 @@
                     <div class="nav-item">
                         <a class="nav-link" [routerLinkActive]="['active']" routerLink="/about">
                             <fa-icon class="concept-icon " [icon]="['fas', 'graduation-cap']"> </fa-icon>
-                             Developer
+                             About
                         </a>
                     </div>
 
                     <div class="nav-item">
                         <a class="nav-link" [routerLinkActive]="['active']" routerLink="/dashboard">
-                            <fa-icon class="concept-icon " [icon]="['fas', 'sliders']"> </fa-icon>
+                            <fa-icon class="concept-icon " [icon]="['fas', 'gauge-high']"> </fa-icon>
                             Dashboard
                         </a>
                     </div>
 
-                    <div class="nav-item">                       
-                        <a class="nav-link"  [routerLinkActive]="['active']" routerLink="/login">
+                    <!-- only if the user is logged in  -->
+                    <div *ngIf="signedIn; else notSignedIn"  class="nav-item ">                       
+                        <a
+                            class="nav-link"  
+                            [routerLinkActive]="['active']" 
+                            routerLink="/account" 
+                            id="profile-menu"
+                            data-toggle="popover" 
+                       
+                            title='<i class="fa fa-wrench" aria-hidden="true"></i> User Profile' 
+                            data-placement="bottom"
+                            >
                             <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon> 
-                            Acoount
+                            Profile (Yingi)
                         </a>
+
+                        <div id="popover-content" style="margin-bottom: 175px" class="acount-menu list-group">
+                            <a href="#" class="list-group-item acount-menu-item">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                Edit Profile
+                            </a>
+
+                            <a href="#" class="list-group-item acount-menu-item">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                My Carts
+                            </a>
+                            <a href="#" class="list-group-item acount-menu-item">
+                                <i class="fa fa-unlock" aria-hidden="true"></i>
+                                Change Password
+                            </a>
+                            <a href="#" class="list-group-item acount-menu-item">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                Logout
+                            </a>
+                        </div>
+
                     </div>
 
-
+                    <!-- only if the user is not logged in -->
+                    <ng-template #notSignedIn>
+                        <div class="nav-item ">
+                        <button class="nav-link" 
+                            [routerLinkActive]="['active']"
+                            routerLink="/account" 
+                            id="profile-menu" 
+                            data-toggle="popover"
+                            title='<i class="fa fa-wrench" aria-hidden="true"></i> User Profile' 
+                            data-placement="bottom">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
+                             (Guest)
+                        </button>
+                        
+                            <!-- <div id="popover-content" style="margin-bottom: 175px" class="acount-menu list-group">
+                                <a href="#" class="list-group-item acount-menu-item">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                    Login
+                                </a>
+                                <a href="#" class="list-group-item acount-menu-item">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                    Forgot password?
+                                </a>
+                                <a href="#" class="list-group-item acount-menu-item">
+                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                    New Account
+                                </a>   
+                            </div> -->
+                        
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>

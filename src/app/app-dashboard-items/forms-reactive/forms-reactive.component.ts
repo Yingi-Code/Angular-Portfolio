@@ -83,7 +83,7 @@ export class FormsReactiveComponent {
       firstName: new FormControl('', strValidator()),
       emailAddress: new FormControl('', [Validators.email, Validators.required]),
       project: new FormGroup({
-        developerRole: new FormControl('', Validators.required),
+        developerRole: new FormControl('--- select role ---', Validators.required),
         isSubscribed: new FormControl(),
       })
     });
@@ -115,7 +115,7 @@ export class FormsReactiveComponent {
   ResetToDefault() {
     this.objDeveloperDetails.firstName = '';
     this.objDeveloperDetails.emailAddress = '';
-    this.objDeveloperDetails.project.developerRole = '';
+    this.objDeveloperDetails.project.developerRole = '--- select role ---';
     this.objDeveloperDetails.project.isSubscribed = false;
   }
 
@@ -123,12 +123,10 @@ export class FormsReactiveComponent {
   async Developer() {
 
     //take only four developers - for demo purpose
-   
-
-      // button mode false = add form
+      // button mode false = display form
     if (this.formSubmitBtnMode == false) {
 
-      //take only four developers - for demo purpose
+      //take only up to four developers - for demo purpose
       if (this.developers?.length != 4) {
         if (await this.alertsService.addConfirmation) {
         //

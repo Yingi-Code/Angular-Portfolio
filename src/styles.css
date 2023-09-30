@@ -14,7 +14,6 @@ body {
     background-color: white;
 }
 
-
 /*
 -----------------------------------------------------
  Sets padding to keep content from hitting the edges 
@@ -122,11 +121,6 @@ body {
      left: 50%;
      margin-left: -150px;
      width: 50%;
- }
-
- .price-tag {
-     color: red;
-     margin-right: 5px;
  }
 
 /* 

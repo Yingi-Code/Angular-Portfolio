@@ -15,7 +15,10 @@ import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-ma
 import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
 import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
 import { VideoComponent } from './app-dashboard-items/videos/video.component';
-import { OnlineBookingsComponent } from './app-dashboard-items/online-bookings/online-bookings.component';
+import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-calendar/online-bookings.component';
+import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
+import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
+import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
 
 const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
@@ -26,9 +29,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
   { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - About Developer" },
   { path: 'dashboard', component: DashboardComponent, title: "My RPs - Dashboard" },
-  { path: 'dashboard-items', component: DashboardItemsComponent, title: "My RPs - Dashboard" },
-
-  {
+   {
     path: 'dashboard', children: [
       { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Template-driven" },
       { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Reactive" },
@@ -38,9 +39,17 @@ const routes: Routes = [
       { path: 'google-maps', component: GoogleMapsComponent, title: "My RPs - Maps" },
       { path: 'charts', component: ChartsComponent, title: "My RPs - Charts" },
       { path: 'videos', component: VideoComponent, title: "My RPs - Videos" },
-      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My RPs - Bookings" }
-  ] },
-
+      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My RPs - Bookings" },
+    ]
+  },
+  
+  { path: 'account', component: AccountComponent, title: "My RPs - Account" },
+  {
+    path: 'account', children: [
+      { path: 'auth-basic', component: AuthBasicComponent, title: "My RPs - Basic Auth" },
+      { path: 'auth-jwt', component: AuthJwtComponent, title: "My RPs - JWT Auth" }
+    ]
+  },
   // redirectTo - Error page
   { path: '**', component: PageNotFoundComponent, title: "My RPs- Not found" },
 ];

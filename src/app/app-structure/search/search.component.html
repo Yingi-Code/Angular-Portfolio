@@ -1,4 +1,6 @@
-<div class="nosubmit">
-    <input [(ngModel)]="searchKeyward" (input)="onSearchTextChanged()" class="nosubmit form-control form-control-sm "
-        type="text" placeholder="Search...">
-</div>
+<input 
+    type="text"
+    [(ngModel)]="searchKeyward" 
+    (input)="onSearchTextChanged()" 
+    class="form-control form-control-sm ">
+    <fa-icon class="search-icon " [icon]="['fas', 'magnifying-glass']"></fa-icon>

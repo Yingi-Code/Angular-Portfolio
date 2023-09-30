@@ -13,7 +13,6 @@
 </div>
 
 <div class="row page-content">
-
     <div class="col-md-9" [ngSwitch]="viewMode">
         
         <!-- page content -->
@@ -42,7 +41,6 @@
             </div>
 
             <div *ngSwitchCase="'defaultTab'">
-
                     <!-- first row  - Develper form -->
                     <section class="row dome-form-container" *ngIf="displayDeveloperForm == true" >
                         <!-- Develper form -->
@@ -119,9 +117,9 @@
 
                                         </div>
 
-                                        <div class="form-group teamMember">
-                                            <input [(ngModel)]="developerSubscription" type="checkbox" class="checkbox"
-                                                #isSubscribed="ngModel" name="isSubscribed"> Project Team Member? <br />
+                                         <div class="form-check form-switch teamMember">
+                                            <input [(ngModel)]="developerSubscription"  #isSubscribed="ngModel" name="isSubscribed" class="form-check-input" type="checkbox" role="switch" id="developerSubscription" checked>
+                                            <label class="form-check-label" for="developerSubscription">Project member (No/Yes)</label>
                                         </div>
                                     </div>
 
@@ -142,10 +140,6 @@
                         </form>
                     </section>
 
-                    <section *ngIf="displayDeveloperForm == false" class="create-button-toggle" >
-                       <button (click)="toggleFormDisplay" ><fa-icon class="" [icon]="['fas', 'user-plus']"></fa-icon> New </button>
-                    </section>
-
                     <!-- second row - list and details view -->
                     <section class="row dome-form-container">
                         <!-- Develpers list -->
@@ -161,13 +155,13 @@
                                         {{ developer.firstName}}
                                     </div>
 
-                                    <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell" title="Click for details"> 
+                                    <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell d-none d-md-block" title="Click for details"> 
                                         <div  *ngIf="developer.project.isSubscribed == true">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'clock-rotate-left']"></fa-icon> Project member
+                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-check']"></fa-icon> Project member
                                         </div>
 
                                         <div *ngIf="developer.project.isSubscribed == false">
-                                            <fa-icon class="concept-icon" [icon]="['fas', 'minus']"></fa-icon> Not a member
+                                            <fa-icon class="concept-icon" [icon]="['fas', 'circle-xmark']"></fa-icon> Not a member
                                         </div>
                                         <!-- {{developer.project.isSubscribed == true? 'Assigned to project': 'No'}}    -->
                                     </div>
@@ -183,12 +177,21 @@
 
                                 </button>
                             </div>
+
                             <ng-template #noCustomerFound>
                                 <div class="alert alert-danger  empty-list-message">
                                     <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
                                     Sorry, no developer profile found!
                                 </div>
                             </ng-template>
+
+                            <!-- display developer form btn -->
+                            <section *ngIf="displayDeveloperForm == false" class="create-button-toggle">
+                                <button (click)="toggleFormDisplay"><fa-icon class="" [icon]="['fas', 'user-plus']"></fa-icon> Create </button>
+                            </section>
+
+                            
+
                         </div>
 
                         <!-- Developer details -->
