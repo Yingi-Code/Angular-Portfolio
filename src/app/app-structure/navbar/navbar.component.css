@@ -1,6 +1,6 @@
  .navbar-dark a.active, button.active {
-     font-weight: bold;
-     border-bottom: 5px solid red;
+     /* font-weight: bold; */
+     border-bottom: 1px solid red;
      color: #f0f0f0;
  }
 
@@ -47,5 +47,13 @@ btn.active {
     display: none;
 
     /* Use to change horizontal position */
+}
+
+.list-group-item-action {
+    cursor: pointer;
+}
+
+.popover-menu-header {
+    color: black;
 }
 

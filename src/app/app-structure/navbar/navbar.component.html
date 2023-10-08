@@ -33,72 +33,79 @@
                     </div>
 
                     <!-- only if the user is logged in  -->
-                    <div *ngIf="signedIn; else notSignedIn"  class="nav-item ">                       
-                        <a
-                            class="nav-link"  
-                            [routerLinkActive]="['active']" 
-                            routerLink="/account" 
-                            id="profile-menu"
-                            data-toggle="popover" 
-                       
-                            title='<i class="fa fa-wrench" aria-hidden="true"></i> User Profile' 
-                            data-placement="bottom"
-                            >
-                            <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon> 
-                            Profile (Yingi)
-                        </a>
+                    <div *ngIf="firstname?.length !=0; else notSignedIn"  class="nav-item ">                       
+                    <button  type="button" class="nav-link" [ngbPopover]="popContent"
+                        [popoverTitle]="popTitle" placement="bottom">
+                        <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
+                        Online({{firstname}})
+                    </button>
 
-                        <div id="popover-content" style="margin-bottom: 175px" class="acount-menu list-group">
-                            <a href="#" class="list-group-item acount-menu-item">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Edit Profile
-                            </a>
-
-                            <a href="#" class="list-group-item acount-menu-item">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                My Carts
-                            </a>
-                            <a href="#" class="list-group-item acount-menu-item">
-                                <i class="fa fa-unlock" aria-hidden="true"></i>
-                                Change Password
-                            </a>
-                            <a href="#" class="list-group-item acount-menu-item">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                Logout
-                            </a>
+                    <ng-template #popTitle>
+                        
+                        <div class="popover-menu-header"> 
+                            <fa-icon class="concept-icon " [icon]="['fas', 'gear']"> </fa-icon>
+                            <b> Manage</b> 
                         </div>
+                    </ng-template>
 
+                    <ng-template #popContent>
+                       
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'pen-to-square']"> </fa-icon>
+                                    Edit Profile
+                                </li>
+                                <li class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'cart-shopping']"> </fa-icon>
+                                    Carts({{getUserCartsAmount}})
+                                </li>
+                                <li (click)="logout()" class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'right-from-bracket']"> </fa-icon>
+                                    Logout
+                                </li>
+                            </ul>
+
+                    </ng-template>
+
+                    
                     </div>
 
                     <!-- only if the user is not logged in -->
                     <ng-template #notSignedIn>
                         <div class="nav-item ">
-                        <button class="nav-link" 
-                            [routerLinkActive]="['active']"
-                            routerLink="/account" 
-                            id="profile-menu" 
-                            data-toggle="popover"
-                            title='<i class="fa fa-wrench" aria-hidden="true"></i> User Profile' 
-                            data-placement="bottom">
+                        <button type="button" class="nav-link" [ngbPopover]="popContent" [popoverTitle]="popTitle" placement="bottom">
                             <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
-                             (Guest)
+                            (Guest)
                         </button>
                         
-                            <!-- <div id="popover-content" style="margin-bottom: 175px" class="acount-menu list-group">
-                                <a href="#" class="list-group-item acount-menu-item">
-                                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    Login
-                                </a>
-                                <a href="#" class="list-group-item acount-menu-item">
-                                    <i class="fa fa-lock" aria-hidden="true"></i>
-                                    Forgot password?
-                                </a>
-                                <a href="#" class="list-group-item acount-menu-item">
-                                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                    New Account
-                                </a>   
-                            </div> -->
+                        <ng-template #popTitle>
                         
+                            <div class="popover-menu-header">
+                                <fa-icon class="concept-icon " [icon]="['fas', 'gear']"> </fa-icon>
+                                <b> Manage</b>
+                            </div>
+                        </ng-template>
+                        
+                        <ng-template #popContent>
+                        
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'user']"> </fa-icon>
+                                    New profile
+                                </li>
+
+                                <li (click)="loginOptions()"  class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'lock']"> </fa-icon>
+                                    Other options
+                                </li>
+
+                                <li (click)="login()" class="list-group-item list-group-item-action">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'right-to-bracket']"> </fa-icon>
+                                    Login
+                                </li>
+                            </ul>
+                        
+                        </ng-template>
                         </div>
                     </ng-template>
                 </div>

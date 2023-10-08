@@ -6,68 +6,6 @@
     padding-bottom: 10px;
 }
 
-/* ------------------- Demo content form --------------------- */
-.form-second-column {
-    padding-top: 6px;
-}
-
-.select-text {
-    color: grey;
-}
-
-/* ------------------- Demo content list --------------------- */
-.dome-list-container {
-    margin: 0px;
-    margin-bottom: 10px;
-
-}
-
-.dome-list-cells {
-    float: left;
-    text-align: left;
-    color: grey;
-}
-
-.developer-names {
-    width: 120px;
-}
-
-.dome-list-cells:hover {
-    color: red;
-}
-
-.list-btn-container {
-    /* border: none;  */
-    float: right;
-    text-align: right;
-}
-
-.list-btn {
-    border: none;
-    background-color: #FEEE;
-    text-align: right;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: grey;
-}
-
-.list-btn:hover {
-    background-color: red;
-    color: white;
-}
-
-.load-hyperLink {
-    text-decoration: none;
-}
-
-.project-member-cell {
-    padding-left: 7px;
-}
-
-.empty-list-message {
-    text-align: left;
-}
-
 /* -------------------  content form --------------------- */
 .dome-form-container {
     margin-left: 0px;
@@ -76,57 +14,65 @@
     border: 1px solid lightgrey;
     padding-top: 15px;
     padding-bottom: 15px;
-}
+    padding: 15px;
 
-.dome-form-container form {
-    border-radius: 0px;
+    background-image: url('^assets/banners/1.jpg');
+    background-color: #cccccc;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    object-fit: contain;
 }
 
 .form-sections-headings {
-    color: brown;
+    color: white;
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
-.dome-form-container .teamMember {
-    margin-top: 5px;
+.login-form {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 7px;
+    /* border: 2px solid lightgrey; */
 }
 
-.dome-form-container .btn {
-    margin-top: 8px;
-    margin-right: 8px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 2px;
-    padding-bottom: 2px
+/* .form-control-textbox {
+   margin-top: 10px;
+   margin-bottom: 10px;
+} */
+
+.form-control-icon {
+    float: right;
+    margin-right: 17px;
+    margin-top: -34px;
+    position: relative;
+    z-index: 2;
+    color: grey;
 }
 
-/* -------------------  Developer details --------------------- */
-.developer-details-container {
-    padding-left: 10px;
-    border: 1px solid lightgrey;
-    background-color: darkslategrey;
-    padding-top: 20px;
-    padding-bottom: 21px;
-    border-radius: 5px;
-}
-
-.create-button-toggle {
-    text-align: left;
-}
-
-.create-button-toggle button {
+.submit-button {
+    background-color: orangered;
+    width: 100%;
     border: none;
-    border-radius: 5px;
-    padding: 6px;
-    padding-left: 17px;
-    padding-right: 17px;
     color: white;
-    background-color: red;
-    font-size: 12px;
+    cursor: pointer;
+    margin-top: 6px;
 }
 
-.create-button-toggle button:hover {
-    color: white;
+.submit-button:hover {
     background-color: brown;
+    color: white;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: white;
+    padding-left: 0px;
+    font-size: 13px;
+}
+
+.btn-link:hover {
+    color: red;
 }

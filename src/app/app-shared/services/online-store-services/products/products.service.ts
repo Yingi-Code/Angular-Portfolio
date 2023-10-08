@@ -10,7 +10,6 @@ export class ProductService {
   baseUrl = 'https://fakestoreapi.com/products';
 
   private _productCategories = [
-   
     { id: 1, name: 'Men clothing', value: "men's clothing"},
     { id: 2, name: 'Women clothing', value: "women's clothing" },
     { id: 3, name: 'Electronics', value: "electronics" },

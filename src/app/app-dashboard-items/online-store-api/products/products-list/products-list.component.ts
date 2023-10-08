@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
-import { ProductService } from 'src/app/app-shared/services/online-store-services/products.service';
+import { ProductService } from 'src/app/app-shared/services/online-store-services/products/products.service';
 import { RouteExtraParamsService } from 'src/app/app-shared/services/router-services/route-extra-params.service';
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';

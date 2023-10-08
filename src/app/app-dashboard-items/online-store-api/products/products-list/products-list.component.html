@@ -43,8 +43,7 @@
             </div>
 
             <div *ngSwitchCase="'defaultTab'">
-
-                                
+               
                 <!-- filter-Sort-Search container section -->
                 <form>
                     <div class="row filter-search-sort-section">
@@ -64,7 +63,7 @@
                                 {{productCategory.name}}
                                 </option>
                             </select>
-                            <fa-icon class="errspan" [icon]="['fas', 'sliders']"></fa-icon>
+                            <fa-icon class="form-control-icon" [icon]="['fas', 'sliders']"></fa-icon>
                         </div>
                         
                         <!-- Sort-options -->
@@ -80,7 +79,7 @@
                                 {{sortOption.name}}
                                 </option>
                             </select>
-                            <fa-icon class="errspan" [icon]="['fas', 'arrow-down-wide-short']"></fa-icon>                      
+                            <fa-icon class="form-control-icon" [icon]="['fas', 'arrow-down-wide-short']"></fa-icon>                      
                         </div>
 
                         <!-- Search section -->
@@ -92,19 +91,18 @@
                         <!-- reset-options -->
                         <div class="col-md-3 refresh-reset-btn-container">
                             <button type="reset" class="refresh-rest-btns">
-                                <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon>
-                                Clear all
+                                <!-- <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon> -->
+                                Clear
                             </button>
                             <button class="refresh-rest-btns" (click)="getAllProducts()">
-                                <fa-icon class="" [icon]="['fas', 'arrows-rotate']"></fa-icon>
+                                <!-- <fa-icon class="" [icon]="['fas', 'arrows-rotate']"></fa-icon> -->
                                 Refresh
                             </button>
                         </div>
 
                     </div>
                 </form>
-
-               
+             
                 <!-- products-details-section -->
                 <div *ngIf="productDetails!=null" class="product-details-container">
                     
@@ -150,7 +148,8 @@
                                 <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
                             </button>
                             <button class=" btn btn-sm product-item-btn" (click)="hideProductDetailsview" title="Close">
-                                <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon> Clear
+                                <!-- <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon>  -->
+                                Close
                             </button>
                         </div>
                     </div>
@@ -247,8 +246,7 @@
                     <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
                     </pagination-controls>
                 </div>
-                
-                
+                               
             </div>
                     
             <div *ngSwitchCase="'desciptionTab'">

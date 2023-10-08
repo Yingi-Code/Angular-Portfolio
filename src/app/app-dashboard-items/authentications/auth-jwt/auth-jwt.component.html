@@ -1,1 +1,137 @@
-<p>auth-jwt works!</p>
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ JWT - AUTH ]</h3>
+        <p class="page-title-description fade-in">
+            IMPLEMENTING JWT AUTHENTICATION.
+        </p>
+
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+<div class="row page-content">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
+        <!-- page content -->
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'unlock']"></fa-icon>
+                            Auth
+                        </a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'dashboardTab'">
+
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard"
+                            class="nav-link  btn tab-text"><fa-icon class="" [icon]="['fas', 'sliders']"></fa-icon>
+                            Menu</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+                <!-- first row  - Develper form -->
+                <section class="row dome-form-container">
+                    <!-- Form -->
+                    <form [formGroup]="developerForm" class="login-form">
+                        <div class="form-sections-headings">
+                            <!-- <fa-icon class="concept-icon" [icon]="['fas', 'unlock']"></fa-icon> -->
+                            Please login
+                        </div>
+
+                        <section class="row">
+                            <div class="form-first-column">
+
+                                <div class="form-group">
+                                    <!-- #username allows angular to bind form-controls change status to ngModel -->
+                                    <input type="text" formControlName="username"
+                                        class="form-control form-control-sm form-control-textbox"
+                                        placeholder="Username">
+                                    <fa-icon class="form-control-icon" [icon]="['fas', 'user']"></fa-icon>
+
+                                    <!--Multiple Validation Error messages -->
+                                    <div *ngIf="loginFormControls['username']?.touched && loginFormControls['username']?.invalid"
+                                        class="form-validation-message">
+                                        <div *ngIf="loginFormControls['username']?.errors?.['required']">* Username
+                                            required</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- #password allows angular to binda the form-control to ngModel -->
+                                    <input type="password" formControlName="password"
+                                        class="form-control form-control-sm" placeholder="Password">
+                                    <fa-icon class="form-control-icon" [icon]="['fas', 'lock']"></fa-icon>
+
+                                    <!--Multiple Validation Error messages -->
+                                    <div *ngIf="loginFormControls['password']?.touched && loginFormControls['password']?.invalid"
+                                        class="form-validation-message">
+                                        <div *ngIf="loginFormControls['password']?.errors?.['required']">* Password
+                                            required</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <!-- keeps the button inactive untill when the for is valid -->
+                                    <input type="submit" value="Login" (click)="login()"
+                                        [disabled]="!developerForm.valid" class="btn btn-sm submit-button">
+                                    <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn">
+                                    <input type="button" value="[ Password reset ]" class="btn btn-link right-btn">
+                                    <input type="button" value="[ Other options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">
+
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </section>
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
+
+            <div *ngSwitchCase="'dashboardTab'">
+                <app-dashboard-items></app-dashboard-items>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sidebar-->
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>
+

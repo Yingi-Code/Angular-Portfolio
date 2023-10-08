@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
-import { IDeveloper } from 'src/app/app-shared/interfaces/developer/ideveloper.component';
+import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
 
 //Toastr alert notifications - not being used for now
 import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';

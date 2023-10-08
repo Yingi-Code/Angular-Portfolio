@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //for Angular Universal (SEC)
 import { Title, Meta } from '@angular/platform-browser';
+import { AuthStorageService } from './app-shared/services/authentication/auth-storage/auth-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,22 @@ import { Title, Meta } from '@angular/platform-browser';
 
 export class AppComponent implements OnInit {
   title = '';
+  subscription: any;
+  firstname: string | undefined;
+  isLoggedIn: boolean | undefined;
+  constructor(
+    private metaTagService: Meta,
+    private titleTagService: Title,
+    private authStorage: AuthStorageService) { }
+  
+  ngOnInit(): void { 
 
-  constructor(private metaTagService: Meta, private titleTagService: Title) { }
-  ngOnInit() { 
+    if (this.authStorage.getToken() != null) {
+      this.authStorage.updateLoginStatus();
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
 
     //Angular Universal - SEO Config
     this.titleTagService.setTitle(this.title);
@@ -49,5 +63,7 @@ export class AppComponent implements OnInit {
     ]);
 
   }
+
+
   
 }

@@ -1,0 +1,79 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+/* -------------------  content form --------------------- */
+.dome-form-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    border: 1px solid lightgrey;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 15px;
+
+    background-image: url('^assets/banners/1.jpg');
+        background-color: #cccccc;
+        /* background-size: contain; */
+        background-repeat: no-repeat;
+        object-fit: contain;
+}
+
+.form-sections-headings {
+    color: white;
+    font-weight: bold;
+}
+
+.login-form {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 7px;
+    /* border: 2px solid lightgrey; */
+}
+
+/* .form-control-textbox {
+   margin-top: 10px;
+   margin-bottom: 10px;
+} */
+
+.form-control-icon {
+    float: right;
+    margin-right: 17px;
+    margin-top: -34px;
+    position: relative;
+    z-index: 2;
+    color: grey;
+}
+
+
+.submit-button {
+    background-color: orangered;
+    width: 100%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.submit-button:hover {
+    background-color: brown;
+    color: white;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: white;
+    padding-left: 0px;
+    font-size: 13px;
+}
+
+.btn-link:hover {
+    color: red;
+}

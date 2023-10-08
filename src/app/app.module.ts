@@ -59,7 +59,7 @@ import { NgxLightboxComponent } from './app-structure/image-gallery/ngx-lightbox
 import { GalleryComponent } from './app-dashboard-items/gallery/gallery.component';
 import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
 import { AngularFormsDataService } from './app-shared/services/angular-forms-service/angular-forms.service';
-import { ProductService } from './app-shared/services/online-store-services/products.service';
+import { ProductService } from './app-shared/services/online-store-services/products/products.service';
 import { SearchComponent } from './app-structure/search/search.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -85,9 +85,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { LoadingSpinnerComponent } from './app-structure/loading-spinner/loading-spinner.component';
 
 //for Authentication methods
-import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
-import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
+import { AccountComponent } from './app-dashboard-items/authentications/account/account.component'
+import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 
 
 @NgModule({
@@ -120,10 +120,10 @@ import { AccountComponent } from './app-dashboard-items/authentications/account/
     VideoComponent,
     OnlineBookingsComponent,
     LoadingSpinnerComponent,
+    AuthBasicComponent,
     
     //Account and Auth components
     AccountComponent,
-    AuthBasicComponent,
     AuthJwtComponent
     
   ],

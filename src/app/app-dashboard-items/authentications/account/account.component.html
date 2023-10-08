@@ -2,7 +2,7 @@
     <div class="welcome-messsage bg-light">
         <h3>[ AUTHENTICATION ]</h3>
         <p class="page-title-description fade-in">
-            APPLICATION RESOURCES ACCESS OPTIONS
+             ACCESS OPTIONS TO APPLICATION RESOURCES
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -23,7 +23,7 @@
                 <ul class="nav nav-tabs ">
                     <li [class.active]="viewMode == 'defaultTab'">
                         <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
-                            <fa-icon class="" [icon]="['fas', 'user-lock']"></fa-icon>
+                            <fa-icon class="" [icon]="['fas', 'lock']"></fa-icon>
                             Auth
                         </a>
                     </li>
@@ -43,7 +43,7 @@
             </div>
 
             <div *ngSwitchCase="'defaultTab'">
-                <!-- first row  - Develper form -->
+            
                 <section class="login-options-section">
                 <img src="../assets/img/4.png" class="login-img"><br/>
                 <!-- <fa-icon class="login-img" [icon]="['fas', 'user-lock']"></fa-icon> -->
@@ -51,13 +51,36 @@
                     <div class="Authentication-option">
                         <a class="Authentication-nav btn" [routerLinkActive]="['active']" routerLink="/account/auth-basic">
                             <fa-icon class="" [icon]="['fas', 'lock']"></fa-icon> 
-                            Basic Authentication
+                            Basic Authentication (no token)
                         </a>
 
                         <a class="Authentication-nav btn" [routerLinkActive]="['active']" routerLink="/account/auth-jwt">
                             <fa-icon class="" [icon]="['fas', 'lock']"></fa-icon>
                             JWT Authentication
                         </a>
+
+                        <a class="Authentication-nav btn" [routerLinkActive]="['active']" routerLink="/account/auth-jwt">
+                            <fa-icon class="" [icon]="['fas', 'lock']"></fa-icon>
+                            Auth0 Authentication
+                        </a>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="auth-introduction">
+                        This ssection introduces various options in which authentication can be implemented in angular:
+                        <ul class="skills-list">
+                            <li>
+                                [ Basic Authentication ] - only <b>username</b> and <b>password</b>, no Token required.
+                            </li>
+                            <li>
+                                [ JWT Authentication ] - requries <b>username</b>, <b>password</b>, and  <b>Token</b>.
+                            </li>
+                            <li>
+                                [ Auth0 Authentication ] - to be discussed.
+                            </li>
+                        </ul>
+                
                     </div>
                 </section>
                     

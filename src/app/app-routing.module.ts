@@ -16,9 +16,9 @@ import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
 import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
 import { VideoComponent } from './app-dashboard-items/videos/video.component';
 import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-calendar/online-bookings.component';
-import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
 import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
+import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 
 const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
@@ -46,8 +46,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, title: "My RPs - Account" },
   {
     path: 'account', children: [
-      { path: 'auth-basic', component: AuthBasicComponent, title: "My RPs - Basic Auth" },
-      { path: 'auth-jwt', component: AuthJwtComponent, title: "My RPs - JWT Auth" }
+      { path: 'auth-jwt', component: AuthJwtComponent, title: "My RPs - JWT Auth" },
+      { path: 'auth-basic', component: AuthBasicComponent, title: "My RPs - Basic Auth" }
     ]
   },
   // redirectTo - Error page
