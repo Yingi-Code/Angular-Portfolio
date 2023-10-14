@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ PHOTO GALLERY ]</h3>
-        <p class="page-title-description fade-in">
-            VIEW PHOTO ALBUMS USING VARIOUS PLUG-INS.
+        <h3>[ PHOTOS GALLERY ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            ONLINE PHOTO ALBUMS IN ANGULAR.
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -30,14 +30,13 @@
                     </li>
                     
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
-                                [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
                     
                     <li [class.active]="viewMode == 'dashboardTab'">
                     
-                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
-                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                        Panel</a>
                     </li>
                 </ul>
             </div>

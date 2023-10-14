@@ -1,5 +1,12 @@
+ 
+ .header-container {
+    background-color: black;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+ }
  .navbar-dark a.active, button.active {
-     /* font-weight: bold; */
      border-bottom: 1px solid red;
      color: #f0f0f0;
  }
@@ -18,17 +25,11 @@
     color: white;
 }
 
-nav {
-    background-color: black;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
 .container-fluid {
     padding-left: 0px;
-    margin-left: 10px;
+    padding-top: 0px;
+    padding-right: 7px;
+    margin-left: 8px;
 }
 
 btn:hover {
@@ -45,8 +46,6 @@ btn.active {
 
 .acount-menu .arrow {
     display: none;
-
-    /* Use to change horizontal position */
 }
 
 .list-group-item-action {
@@ -55,5 +54,66 @@ btn.active {
 
 .popover-menu-header {
     color: black;
+}
+
+/* --------- Header css ----------*/
+
+.navbar-brand img {
+    height: 30px;
+    padding-left: 10px;
+}
+
+.company-identity {
+    padding: 10px;
+    padding-left: 0px;
+    text-align: left;
+    color: black;
+    width: 100%;
+    border-bottom: 10px solid lightgrey;
+    background-color: white;
+}
+
+.company-name img {
+    height: 60px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.company-name {
+    font: 1.8em sans-serif;
+    /* word-spacing: -1px; */
+}
+
+.company-name .first-word {
+    color: darkslategray;
+    /* font-weight: bold; */
+    margin: 0px;
+    padding: 0px;
+}
+
+.company-name .second-word {
+    color: red;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+.company-name .third-word {
+    color: gray;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+.moto {
+    color: darkgray;
+    font: 1em sans-serif;
+    margin-top: 5px;
+}
+
+
+.company-reg {
+    color: black;
+    margin-top: 5px;
 }
 

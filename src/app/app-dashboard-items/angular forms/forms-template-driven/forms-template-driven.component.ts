@@ -11,6 +11,7 @@ import { ToastrNotificationsService } from 'src/app/app-shared/services/notifica
 
 //sweet alert2 pop-up notifications
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
+import { IDeactivateComponent } from 'src/app/app-shared/routes-guard/deactivate-route';
 
 
 @Component({
@@ -22,7 +23,7 @@ import { AlertNotificationsService } from 'src/app/app-shared/services/notificat
   ]
 })
   
-export class FormsTemplateDrivenComponent implements OnInit {
+export class FormsTemplateDrivenComponent implements OnInit, IDeactivateComponent {
   @ViewChild('formData') private myForm!: NgForm;
 
   //[ ngSwitch tag]
@@ -208,15 +209,9 @@ export class FormsTemplateDrivenComponent implements OnInit {
     }
   }
 
-  /* 
-     - CanDeactivate method
-     - Used by Deactivate-guard service
-     - For confirmation before exiting the page
-  */
+  //for canDeactivate route guard
   async canExit(): Promise<boolean> {
-
     if (this.myForm?.dirty) {
-
       //pop-up confirmation alert if the form is incomplete
       if (await this.alertsService.deactivateConfirmation) {
         this.exit = true;

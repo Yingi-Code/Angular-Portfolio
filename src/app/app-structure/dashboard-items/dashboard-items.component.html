@@ -11,13 +11,18 @@
     </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/account/auth-basic">
-        <fa-icon class="item-icon panding-item" [icon]="['fas', 'unlock']"></fa-icon> <br />
+        <fa-icon class="item-icon panding-item" [icon]="['fas', 'user-lock']"></fa-icon> <br />
         [ Authentication ] <br /> Baisc Auth<br />
     </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/account/auth-jwt">
-        <fa-icon class="item-icon" [icon]="['fas', 'unlock']"></fa-icon> <br />
+        <fa-icon class="item-icon" [icon]="['fas', 'user-lock']"></fa-icon> <br />
         [ Authentication ] <br /> JWT Auth<br />
+    </a>
+
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/account/auth-jwt">
+        <fa-icon class="item-icon panding-item" [icon]="['fas', 'user-lock']"></fa-icon> <br />
+        [ Authentication ] <br /> Auth0<br />
     </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/dashboard/products">
@@ -27,7 +32,7 @@
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/firebase">
         <fa-icon class="item-icon panding-item" [icon]="['fas', 'fire-flame-curved']"></fa-icon> <br />
-        [ RESTful API ] <br /> Firebase App<br />
+        [ RESTful API ] <br /> Firebase API<br />
     </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/dashboard/charts">
@@ -35,10 +40,7 @@
         [ Data Analysis ] <br /> Charts<br />
     </a>
 
-    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/home">
-        <fa-icon class="item-icon panding-item" [icon]="['fas', 'arrow-up-from-bracket']"></fa-icon> <br />
-        [ File Systems ] <br /> Upload<br />
-    </a>
+    
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/dashboard/online-bookings">
         <fa-icon class="item-icon" [icon]="['far', 'calendar-days']"></fa-icon> <br />

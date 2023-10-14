@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
         <h3>[ BASIC - AUTH ]</h3>
-        <p class="page-title-description fade-in">
-            IMPLEMENTING USERNAME/PASSWORD AUTHENTICATION.
+        <p class="page-title-description fade-in d-none d-md-block">
+            IMPLEMENTING BASIC AUTHENTICATION.
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -30,14 +30,15 @@
 
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
 
                         <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard"
-                            class="nav-link  btn tab-text"><fa-icon class="" [icon]="['fas', 'sliders']"></fa-icon>
-                            Menu</a>
+                            class="nav-link  btn tab-text">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                            Panel</a>
                     </li>
                 </ul>
             </div>
@@ -92,7 +93,7 @@
 
                                     <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn">
                                     <input type="button" value="[ Password reset ]" class="btn btn-link right-btn">
-                                    <input type="button" value="[ Other options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">
+                                    <input type="button" value="[ Options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">
 
                                 </div>
                             </div>

@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ FORMS - REACTIVE ]</h3>
-        <p class="page-title-description fade-in">
-            DESIGN, VALIDATION, ROUTE-GUARD, AND CRUD OPERATION.
+        <h3>[ REACTIVE FORMS ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            UI DESIGN, VALIDATION, AND ROUTE-GUARD.
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -29,14 +29,14 @@
                     </li>
             
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
-                                [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
                     
                     <li [class.active]="viewMode == 'dashboardTab'">
                     
-                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text" ><fa-icon class=""
-                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text" ><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                        Panel</a>
                     </li>
                 </ul>
             </div>
@@ -55,8 +55,7 @@
                     <form [formGroup]="developerForm" (ngSubmit)="Developer()">
                         
                         <section class="row">
-                            <div class="col-md-6">
-                                
+                            <div class="col-md-6">                                
                                 <div class="form-group">
                                     <!-- #firstName allows angular to bind form-controls change status to ngModel -->
                                     <input type="text" formControlName="firstName" class="form-control form-control-sm"
@@ -109,11 +108,9 @@
                                             required>
             
                                             <!--Binding the selected option as an object {"id": 2, "name": "Email"}-->
-                                            <option hidden value="0" disabled selected> --- Developer
-                                                Role --- </option>
+                                            <option hidden [defaultSelected]=true [value]="defaultRole">{{defaultRole}}</option>
             
-                                            <option *ngFor="let roleItem of developerRoles" [ngValue]="roleItem.name"
-                                                [selected]="roleItem.name">
+                                            <option *ngFor="let roleItem of developerRoles" [ngValue]="roleItem.name" >
                                                 {{roleItem.name}}
                                             </option>
                                         </select>
@@ -123,13 +120,12 @@
                                             class="form-validation-message">
                                             <div *ngIf="developerRole?.errors?.['required']">* Please
                                                 select developer role</div>
-                                        </div>
-            
+                                        </div>            
                                     </div>
 
                                     <div class="form-check form-switch teamMember">
                                         <input #isSubscribed formControlName="isSubscribed" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                                        <label class="form-check-label" for="flexSwitchCheckChecked">Project member (No/Yes)</label>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Allocate to project? (No/Yes)</label>
                                     </div>
                                 </div>
                        
@@ -152,26 +148,25 @@
                     <div class="col-md-6">
                         <!-- developers list section -->
                         <div class="form-sections-headings">Developers list</div>
-                        <div *ngIf="developers.length != 0; else noCustomerFound" class="row list-group dome-list-container">
+                        <div *ngIf="developers.length != 0; else noDeveloperFound" class="row list-group dome-list-container">
                             <button *ngFor="let developer of developers;  let i = index" class=" list-group-item">
                             
-                                <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells developer-names " title="Click for details">
+                                <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells  developer-name-cell" title="Click for details">
                                     <b> {{i+1 }}. </b>&nbsp;
                                     <fa-icon class="concept-icon" [icon]="['fas', 'user']"></fa-icon> &nbsp;
                                     {{ developer.firstName}}
                                 </div>
                             
-                                <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell d-none d-md-block"
+                                <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell"
                                     title="Click for details">
                                     <div *ngIf="developer.project.isSubscribed == true">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-check']"></fa-icon> Project member
+                                        <fa-icon class="concept-icon" [icon]="['fas', 'hourglass-half']"> </fa-icon> Busy
                                     </div>
                             
                                     <div *ngIf="developer.project.isSubscribed == false">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-xmark']"></fa-icon> Not a member
+                                        <fa-icon class="concept-icon" [icon]="['far', 'clock']"> </fa-icon> Idling
                                     </div>
-                                    <!-- {{developer.project.isSubscribed == true? 'Assigned to project': 'No'}}    -->
-                                </div>
+                                  </div>
                             
                                 <div class="col-lg-3 dome-list-cells list-btn-container">
                                     <button (click)="populateDeveloperForm(developer)" class="btn-sm list-btn" title="Click to edit">
@@ -185,7 +180,7 @@
                             </button>
                         </div>
 
-                        <ng-template #noCustomerFound>
+                        <ng-template #noDeveloperFound>
                             <div class="alert alert-danger  empty-list-message">
                                 <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
                                 Sorry, no developer profile found!
@@ -228,9 +223,7 @@
             
                             <section class="row ">
                                 <div class="col-md-3"><b>Team:</b></div>
-                                <div class="col-md-9">{{objDeveloperDetails.project.isSubscribed == true
-                                    ?
-                                    'Yes': 'No'}}</div>
+                                <div class="col-md-9">{{objDeveloperDetails.project.isSubscribed == true ? 'Allocated to a project': 'No allocated to any project'}}</div>
                             </section>
                         </div>
             

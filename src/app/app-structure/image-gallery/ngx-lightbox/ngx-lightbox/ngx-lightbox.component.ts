@@ -18,12 +18,14 @@ export class NgxLightboxComponent {
 
   albums: any = [];
   private _images = [
-    { src: "assets/gallery/1.jpeg", caption: "Example - 1" },
-    { src: "assets/gallery/3.jpeg", caption: "Example - 2" },
-    { src: "assets/gallery/4.jpeg", caption: "Example - 3" },
-    { src: "assets/gallery/5.jpeg", caption: "Example - 4" },
-    { src: "assets/gallery/7.jpeg", caption: "Example - 5" },
-    { src: "assets/gallery/8.jpeg", caption: "Example - 6" },
+  
+    { src: "assets/gallery/1.jpg", caption: "Hi, I'm Yingi" },
+    { src: "assets/gallery/2.jpg", caption: "I'm passionate about Front End Development" },
+    { src: "assets/gallery/3.jpg", caption: "Learning someting new each day" },
+    { src: "assets/gallery/4.jpg", caption: "We all started somewhere" },
+    { src: "assets/gallery/5.jpg", caption: "Angular is the future" },
+    { src: "assets/gallery/6.jpg", caption: "I hope you enjoyed" },
+
   ];
 
   public get images() {
@@ -48,7 +50,7 @@ export class NgxLightboxComponent {
     _lightboxConfig.centerVertically = true;
     _lightboxConfig.albumLabel = "Image %1 of %2";
     _lightboxConfig.enableTransition = true;
-    _lightboxConfig.showZoom = false;
+    _lightboxConfig.showZoom = true;
     _lightboxConfig.showRotate = false;
     _lightboxConfig.showDownloadButton = false;
     _lightboxConfig.containerElementResolver = () => document.body;

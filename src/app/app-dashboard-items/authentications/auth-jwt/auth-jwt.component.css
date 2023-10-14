@@ -71,6 +71,8 @@
     text-decoration: none;
     color: white;
     padding-left: 0px;
+    padding-right: 0px;
+    margin: 1px;
     font-size: 13px;
 }
 

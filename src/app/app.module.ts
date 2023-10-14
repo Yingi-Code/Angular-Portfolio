@@ -51,9 +51,9 @@ import { SharethisAngularModule } from 'sharethis-angular';
 import { ShareThisButtonsComponent } from './app-shared/social-media-buttons/share-this-buttons/share-this-buttons.component';
 import { StarRatingComponent } from './app-shared/star-rating/star-rating.component';
 import { DashboardComponent } from './app-views/dashboard/dashboard.component';
-import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
+import { FormsTemplateDrivenComponent } from './app-dashboard-items/angular forms/forms-template-driven/forms-template-driven.component';
 import { StrValidatorDirective } from './app-shared/validators/template-driven-validator.directive';
-import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/forms-reactive.component';
+import { FormsReactiveComponent } from './app-dashboard-items/angular forms/forms-reactive/forms-reactive.component';
 import { NgBootstrapCarouselComponent } from './app-structure/carousel/ng-bootstrap-carousel/ng-bootstrap-carousel.component';
 import { NgxLightboxComponent } from './app-structure/image-gallery/ngx-lightbox/ngx-lightbox/ngx-lightbox.component';
 import { GalleryComponent } from './app-dashboard-items/gallery/gallery.component';
@@ -88,6 +88,7 @@ import { LoadingSpinnerComponent } from './app-structure/loading-spinner/loading
 import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
 import { AccountComponent } from './app-dashboard-items/authentications/account/account.component'
 import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
+import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 
 
 @NgModule({
@@ -186,7 +187,8 @@ import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-b
     NgbCarouselConfig,
     AngularFormsDataService,
     ProductService,
-    provideClientHydration()
+    provideClientHydration(),
+    DeactivateRoute
   ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@
 .outer-accordion {
     margin: 0px;
     padding-left: 0px;
+    margin-top: 8px;
 }
 
 .inner-accordion {
@@ -18,8 +19,13 @@
 }
 
 .accordion-body {
-    border-bottom: 1px solid lightgrey;
-    margin-left: 0px;
+    border-left: 1px solid lightgrey;
+    margin-top: 10px;
+     margin-bottom: 10px;
+    margin-left: 18px;
+    padding: 15px;
+    padding-bottom: 5px;
+    
 }
 
 .accordion-item {
@@ -32,13 +38,21 @@
     padding-left: 10px;
     border-radius: 8px;
     margin-left: 0px;
+    margin-bottom: 2px;
 }
 
 .accordion-button:not(.collapsed) {
-    color: brown;
+    color: grey;
     background-color: #f8f9fa;
     box-shadow: none;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
+}
+
+.accordion-button:not(.expand) {
+    color: grey;
+    background-color: #f8f9fa;
+    box-shadow: none;
+    /* border: 1px solid lightgrey; */
 }
 
 .accordion-button:focus {
@@ -47,5 +61,5 @@
     outline: 1;
     box-shadow: 0 0 0 0rem #f8f9fa;
     border: none;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
 }

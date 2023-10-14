@@ -15,12 +15,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: any;
   logInStatus: any;
   firstname?: string;
+  _userCartsQuantity?: string;
 
   //to be declared properly
-  _userCarts?: any;
-  _userCartsAmount?: number;
-  _user: ICustomer;
-
+  private _userCarts?: any;
+  private _user: ICustomer;
   subscription?: Subscription;
   
   constructor(
@@ -55,39 +54,32 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-      this._user = this.authStorage.getUser();
-      console.log('Retrieved user Id: ' + this._user.id);  
-    this.updateLoginStatus();
+    this._user = this.authStorage.getUser();
+    console.log('[1. NavBar] --- User ID ---');
+    console.log('user Id: ' + this._user.id); 
+    
+    this.displayUserFirstName();
+    this.displayUserCartsQuantity();
   }
 
-  updateLoginStatus() {
+  displayUserFirstName() {
       //update firstname in the template immediately
       this.subscription = this.authStorage.userFirstName$
         .subscribe((userFirstName?: string) => {
           this.firstname = userFirstName;
-          console.log('[NavBar] - Firstname = ' + this.firstname);
+          console.log('[2 .NavBar] --- Updated Firstname ---');
+          console.log('First name: ' + this.firstname);
         });
   }
 
-  public get getUserCarts() {
-    if (this.authStorage.getToken() != null) {
-      this.carts.getUserCarts(this.authStorage.getUser().id)
-        .subscribe((userCats) => {
-          if (userCats) {
-            this._userCarts = userCats;
-          } else {
-            this._userCarts = null;
-          }
-        })
-    } else {
-      this._userCarts = null;
-    }
-    return this._userCarts;
-  }
-
-  public get getUserCartsAmount() {
-    return this._userCartsAmount = this.getUserCarts?.length;
+  displayUserCartsQuantity() {
+    //update firstname in the template immediately
+    this.subscription = this.authStorage._userCartsAmountSub$
+      .subscribe((_userCartsAmountSub?: string) => {
+        this._userCartsQuantity = _userCartsAmountSub;
+        console.log('[3 .NavBar] --- Updated carts quantity ---');
+        console.log('Quantity : ' + this._userCartsQuantity);
+      });
   }
 
   public login() {
@@ -104,6 +96,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.authStorage.signOut();
     this.subscription && this.subscription.unsubscribe();
   }
 }

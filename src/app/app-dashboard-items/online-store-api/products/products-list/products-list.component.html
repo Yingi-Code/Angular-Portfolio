@@ -1,7 +1,7 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
         <h3>[ API - ONLINE STORE ]</h3>
-        <p class="page-title-description fade-in">
+        <p class="page-title-description fade-in d-none d-md-block">
             LIST, SEARCH, AND VIEW THE DETAILS OF EACH PRODUCT.
         </p>
 
@@ -29,14 +29,13 @@
                     </li>
                     
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
-                                [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
                     
                     <li [class.active]="viewMode == 'dashboardTab'">
                     
-                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
-                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                        Panel</a>
                     </li>
                     
                 </ul>
@@ -125,8 +124,7 @@
                             </div>
                         
                         </div>
-                        
-                        <!-- product-details-description-->
+                                               
                         <div class="col-md-5  product-details-description">
                             <div class="product-details-category">
                                 [ {{productDetails?.category | titlecase }} ]
@@ -154,6 +152,7 @@
                         </div>
                     </div>
 
+                    <!-- product-details-description-->
                     <div class="row product-details-second-row">
                         <div>
                             <details>
@@ -165,7 +164,8 @@
                     </div>
                    
                 </div>
-<!--                 
+                
+                <!--                 
                 <div *ngIf="productDetailsLoading" class="spinner-container">
                     <app-loading-spinner></app-loading-spinner> &nbsp;
                     loading...
@@ -179,7 +179,7 @@
                                                                             currentPage: page,
                                                                             totalItems: count
                                                                         }; let i = index"
-                        class=" d-lg-inline-flex">
+                        class=" products-block">
                 
                         <!-- product -->
                             <div  class="product-container">
@@ -190,7 +190,7 @@
                 
                                 <div class="product-details">
                                     <div class="product-title" (click)="getThisProductDetails(product.id)" title="product details">
-                                        {{product.title.slice(0,14)}} ..
+                                        {{product.title.slice(0,8)}} ..
                                     </div>
                 
                                     <div class="product-price" (click)="getThisProductDetails(product.id)" title="product details">

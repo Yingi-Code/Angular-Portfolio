@@ -7,6 +7,7 @@ import { AuthStorageService } from 'src/app/app-shared/services/authentication/a
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/app-shared/services/authentication/auth/auth.service';
 import { UsersService } from 'src/app/app-shared/services/online-store-services/users/users.service';
+import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
 
 @Component({
   selector: 'app-auth-basic',
@@ -26,6 +27,8 @@ export class AuthBasicComponent {
   private userRecord: any;
   loggedInUser: any;
   returnUrl: string = '';
+  //canDeactivate
+  exit: boolean = true;
 
   //track loggedIn user and display user firstname
   userFirstNameValue: string = '';
@@ -41,7 +44,8 @@ export class AuthBasicComponent {
     private users: UsersService,
     private router: Router,
     private route: ActivatedRoute,
-    private authStorage: AuthStorageService) { }
+    private authStorage: AuthStorageService,
+    private alertsService: AlertNotificationsService) { }
 
   ngOnInit(): void {
     //Form object with form-control names
@@ -54,7 +58,7 @@ export class AuthBasicComponent {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     if (this.authStorage.getToken() != null) {
-      this.authStorage.updateLoginStatus();
+      // this.authStorage.updateLoginStatus();
       this.isLoggedIn = true;
       this.router.navigate(['/']);
     }
@@ -101,13 +105,27 @@ export class AuthBasicComponent {
         console.log(userRecordFound);
 
         console.log('----- Assign firstname -----');
-        this.authStorage.updateLoginStatus();
+        // this.authStorage.updateLoginStatus();
 
       });
   }
 
   public redirectToAccount() {
     this.router.navigate(['/account']);
+  }
+
+  //for canDeactivate route guard
+  async canExit(): Promise<boolean> {
+    if (this.developerForm.dirty) {
+
+      //pop-up confirmation alert if the form is incomplete
+      if (await this.alertsService.deactivateConfirmation) {
+        this.exit = true;
+      } else {
+        this.exit = false;
+      }
+    }
+    return this.exit;
   }
 
 }

@@ -25,17 +25,23 @@ a:hover {
     color: red;
 }
 
-.sidebar-heading-subheading {
-    padding-left: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-bottom: 10px;
-    color: white;
-    font-size: 0.8em;
+.list-group-item {
+    word-wrap: break-word;
+    color: brown;
 }
 
-.list-group-item {
-   word-wrap: break-word;
-   color: brown;
+.list-group-heading{
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
 }
+.list-group-heading:hover {
+    background-color: orangered;
+        color: white;
+}
+
+
+
+
 

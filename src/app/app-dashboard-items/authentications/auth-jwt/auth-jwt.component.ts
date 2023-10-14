@@ -7,6 +7,8 @@ import { AuthStorageService } from 'src/app/app-shared/services/authentication/a
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/app-shared/services/authentication/auth/auth.service';
 import { UsersService } from 'src/app/app-shared/services/online-store-services/users/users.service';
+import { CartsService } from 'src/app/app-shared/services/online-store-services/carts/carts.service';
+import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
 
 @Component({
   selector: 'app-auth-jwt',
@@ -21,27 +23,32 @@ export class AuthJwtComponent implements OnInit {
 
   //[ ngSwitch tag]
   viewMode = 'defaultTab';
+
   developerForm!: FormGroup;
   private tokenKey: string = '';
-  private userRecord: any;
+
+  //to be declared properly
+  private _loggeInUserRecord: any;
   loggedInUser: any;
   returnUrl: string = '';
-
- //track loggedIn user and display user firstname
-  userFirstNameValue: string = '';
-  private userFirstName: BehaviorSubject<string> = new BehaviorSubject<string>(this.userFirstNameValue);
-  userFirstName$: Observable<string> = this.userFirstName.asObservable();
-
 
   isLoggedIn = false;
   isLoginFailed = false;
 
+  _userCarts: any;
+  _Quantity: any;
+  
+  //canDeactivate
+  exit: boolean = true;
+
   constructor(
     private auth: AuthService,
     private users: UsersService,
+    private carts: CartsService,
     private router: Router,
     private route: ActivatedRoute,
-    private authStorage: AuthStorageService) { }
+    private authStorage: AuthStorageService,
+    private alertsService: AlertNotificationsService) { }
 
   ngOnInit(): void  {
     //Form object with form-control names
@@ -54,7 +61,8 @@ export class AuthJwtComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
     if (this.authStorage.getToken() != null) {
-      this.authStorage.updateLoginStatus();
+      this.authStorage.updateFirstName();
+      this.authStorage.updateCartsQuantity();
       this.isLoggedIn = true;
       this.router.navigate(['/']);
     }
@@ -73,20 +81,20 @@ export class AuthJwtComponent implements OnInit {
 
           //store Token for this user in localStorage
           this.authStorage.saveToken(userData.token);
-          console.log('----- Store token -----');
+          console.log('[1. Login] ----- Store token ----- ');
           console.log(userData.token);
 
-          console.log('----- Are we getting here? -----');
-          this.storeCurrentUserInSession(val.username, val.password);
-          this.router.navigate(['/']);
-          
-        }
-      );     
+          console.log('[2. Login] ----- Store user in local storage ----- ');
+          this.setStorageData(val.username, val.password);
 
+         
+
+          this.router.navigate(['/']);
+        }); 
   }
 
   //store  loggedIn user after successful login
-  private storeCurrentUserInSession(username: string, password: string): void {
+  private setStorageData(username: string, password: string): void {
     let userRecordFound: any;
     this.users.getUsers()
       .subscribe((userData: any) => {
@@ -97,27 +105,58 @@ export class AuthJwtComponent implements OnInit {
         
         //store the record for this user in localStorage
         this.authStorage.saveUser(userRecordFound);  
-        console.log('----- User record has been stored -----');
+        console.log('[3. Login]  ----- User record stored -----');
         console.log(userRecordFound);
 
-        console.log('----- Assign firstname -----');
-        this.authStorage.updateLoginStatus();
-
+        console.log('[4. Login] ----- Store carts in local storage ----- ');
+        this.getUserCartsQuantity();
       });
   }
 
-  //retrieve loggedIn user after successful login
-  private getLoggedInUserRecord() {
-    if (this.authStorage.getUser() != null) {
-      this.userRecord = this.authStorage.getUser();
-    } else {
-      this.userRecord = null;
-    }
-    return this.userRecord[0];
-  }
+  private getUserCartsQuantity() {
+    let userId = this.authStorage.getUser()?.id; 
 
+    this.carts.getUserCarts(userId)
+      .subscribe((userCarts: any) => {
+        if (userCarts) {
+          console.log('[5. Login] --- User carts found ---');
+          console.log(userCarts);
+
+          this._userCarts = userCarts;
+          this._Quantity = this._userCarts?.length.toString();
+
+          console.log('[6. Login] --- Send quantity to storage---');
+          console.log(this._Quantity);
+          this.authStorage.setCartsQuantity(this._Quantity);
+
+          console.log('[7. Login] --- Finally update values ---');
+          console.log('--------------------------------------------');
+          this.authStorage.updateFirstName();
+          this.authStorage.updateCartsQuantity();
+        }
+      });
+    
+    
+  }
+  
+
+   //if the user is already loggedIn
   public redirectToAccount() {
     this.router.navigate(['/account']);
+  }
+
+  //for canDeactivate route guard
+  async canExit(): Promise<boolean> {
+    if (this.developerForm.dirty) {
+
+      //pop-up confirmation alert if the form is incomplete
+      if (await this.alertsService.deactivateConfirmation) {
+        this.exit = true;
+      } else {
+        this.exit = false;
+      }
+    }
+    return this.exit;
   }
 
 }

@@ -33,12 +33,12 @@
     color: grey;
 }
 
-.developer-names {
-    width: 120px;
+.developer-name-cell {
+    width: 130px;
 }
 
-.dome-list-cells:hover{
-    color: red;
+.project-member-cell {
+    width: 70px;
 }
 
 .list-btn-container {
@@ -64,22 +64,20 @@
     text-decoration: none;
 }
 
-.project-member-cell {
-    padding-left: 7px;
-}
+
 
 .empty-list-message {
     text-align: left;
 }
 
-/* ------------------- Demo content form --------------------- */
+/* ------------------- content form --------------------- */
 .dome-form-container {
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 15px;
     border: 1px solid lightgrey;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 .dome-form-container form {
@@ -117,6 +115,7 @@
 
 .create-button-toggle{
     text-align: left;
+    margin-bottom: 5px;
 }
 
 .create-button-toggle button {

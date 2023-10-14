@@ -1,72 +1,95 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CartsService } from '../../online-store-services/carts/carts.service';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const USER_CARTS_QUANTITY = 'auth-user-carts-quantity';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthStorageService {
+export class AuthStorageService implements OnInit{
 
-  //track loggedIn user and display user firstname
+  //to be updated once loggedin
   userFirstNameValue: string = '';
-  logInValue: boolean = false;
 
+  //to be declared appropriately
+  _userCarts: any;
+  _userCartsAmount?: any;
+
+  _cartsQuantity: any;
+  _Quantity: any;
+
+  private _userCartsAmountSub: BehaviorSubject<string> = new BehaviorSubject<string>(this._userCartsAmount);
   private userFirstName: BehaviorSubject<string> = new BehaviorSubject<string>(this.userFirstNameValue);
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.logInValue);
-
-  userFirstName$: Observable<string> = this.userFirstName.asObservable();
-  loggedIn$: Observable<boolean> = this.loggedIn.asObservable();
   
-  constructor(private router: Router) { }
+  _userCartsAmountSub$: Observable<string> = this._userCartsAmountSub.asObservable();
+  userFirstName$: Observable<string> = this.userFirstName.asObservable();
+  
+  constructor(
+    private router: Router,
+    private carts: CartsService,
+
+  ) { }
+
+  ngOnInit(): void {
+  }
  
   public saveToken(token: string): void {
-   localStorage.removeItem(TOKEN_KEY);
-   localStorage.setItem(TOKEN_KEY, token);
+   sessionStorage.removeItem(TOKEN_KEY);
+  sessionStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string | null {
-    return localStorage.getItem(TOKEN_KEY);
+    return sessionStorage.getItem(TOKEN_KEY);
   }
 
   public saveUser(user: any): void {
-   localStorage.removeItem(USER_KEY);
-   localStorage.setItem(USER_KEY, JSON.stringify(user));
+   sessionStorage.removeItem(USER_KEY);
+   sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
   public getUser(): any {
     let userObject: any;
-    const user = localStorage.getItem(USER_KEY);
+    const user = sessionStorage.getItem(USER_KEY);
     if (user) {
-      // console.log('User Object = ' + user);
       userObject = JSON.parse(user);
-      return userObject[0];
+
+      return userObject[0];  
     }
     return {};
   }
 
-  public updateLoginStatus() {
+  //store user carts quantity in session
+  setCartsQuantity(quantity: string) {
+      console.log('[1. authStorage] ----- Save Quanity value ----- ');
+      sessionStorage.removeItem(USER_CARTS_QUANTITY);
+      sessionStorage.setItem(USER_CARTS_QUANTITY, quantity);
+  }
+
+   public updateFirstName() {
+    
     let firstname = this.getUser()?.name?.firstname
-    console.log('----- Firstname to be assigned -----');
+    console.log('[2.1. authStorage] --- Firstname status update---');
     console.log(firstname);
     this.userFirstName.next(firstname);
-      this.logInValue = true;
-      this.loggedIn.next(this.logInValue);  
+  }
+
+  public updateCartsQuantity() { 
+
+    this._cartsQuantity = sessionStorage.getItem(USER_CARTS_QUANTITY);
+    console.log('[2.2. authStorage] --- Carts quantity update---');
+    console.log(this._cartsQuantity);
+    this._userCartsAmountSub.next(this._cartsQuantity);
   }
 
   public signOut() {
-    this.logInValue = false;
-    this.loggedIn.next(this.logInValue);
-
     let firstName = '';
     this.userFirstName.next(firstName);
-
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USER_KEY);
-
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 }

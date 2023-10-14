@@ -12,6 +12,7 @@ body {
     /* background-size: 100%; */
     background-repeat: repeat;
     background-color: white;
+   
 }
 
 /*
@@ -22,6 +23,7 @@ body {
 
 .body-content {
     background-color: white;
+    color: grey;
     padding-bottom: 20px;
     padding: 0px auto;
     box-shadow: 0 0 100px 0 rgba(0, 0, 0, 100),
@@ -36,7 +38,6 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     font-size: large;
-    border-top: 10px solid lightgrey;
 }
 
 .welcome-messsage>h3 {
@@ -62,8 +63,8 @@ body {
 }
 
 .page-content-container {
-    border: 1px solid lightgrey;
-    padding: 20px;
+    /* border: 1px solid lightgrey; */
+    padding: 0px;
     padding-bottom: 10px;
     margin-bottom: 10px;
     color: grey;
@@ -129,20 +130,32 @@ body {
 ---------------------------------------
 */
 
-.accordion-button:not(.collapsed){
-    font-weight: bold;
+.outer-accordion {
+    margin-top: 10px;
 }
+
+.accordion-button{
+    font-size: 10px;
+}
+
+/* .accordion-button:not(.collapsed) {
+    font-weight: bold;
+} */
 
 .accordion-header button {
     color: brown;
-    font-weight: bold;
+    font-size: 14px;
 }
 
 .accordion-body {
    margin-left: 24px;
-   color: brown;
+   color: grey;
 }
-
+/* 
+---------------------------------------
+ For google maps
+---------------------------------------
+*/
 agm-map {
     height: 400px;
 }

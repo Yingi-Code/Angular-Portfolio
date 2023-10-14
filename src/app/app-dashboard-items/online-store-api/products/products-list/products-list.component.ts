@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { ProductService } from 'src/app/app-shared/services/online-store-services/products/products.service';
-import { RouteExtraParamsService } from 'src/app/app-shared/services/router-services/route-extra-params.service';
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';
+import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
 
 @Component({
   selector: 'app-products-list',
@@ -36,7 +36,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   //pagination properties
   page: number = 1;
   count: number = 0;
-  tableSize: number = 8;
+  tableSize: number = 10;
 
   //Image Viwer
   albums: any = [];
@@ -107,12 +107,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.productService.getProducts()
       .subscribe((data: any) => {
         this.productsList = data;
-        this.productListLoading = false
-
-        // setTimeout(() => {
-        //   this.productListLoading = false
-        // }, 100);
-        
+        this.productListLoading = false        
       });
     return this.productsList;
   }

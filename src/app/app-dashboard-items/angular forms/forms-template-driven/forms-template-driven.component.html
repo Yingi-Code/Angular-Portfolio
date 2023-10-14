@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ FORMS - TEMPLATE-DRIVE ]</h3>
-        <p class="page-title-description fade-in">
-            DESIGN, VALIDATION, ROUTE-GUARD, AND CRUD OPERATION.
+        <h3>[ TEMPLATE-DRIVE ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            UI DESIGN, VALIDATION, AND ROUTE-GUARD.
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -29,13 +29,13 @@
                     </li>
             
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
                     
-                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
-                                [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                        Panel</a>
                     </li>
                 </ul>
             </div>
@@ -104,7 +104,7 @@
                                             <select class="form-select form-select-sm select-text" [(ngModel)]="developerRole"
                                                 name="developerRole" #role="ngModel" required>
                                                 <!--Binding the selected option as an object {"id": 2, "name": "Email"}-->
-                                                <option value="" hidden disabled selected class=""> --- Developer Role ---</option>
+                                                <option value="" hidden disabled selected class=""> --- select devepoler role ---</option>
                                                 <option *ngFor="let roleItem of developerRoles" class="" [ngValue]="roleItem.name"
                                                     [selected]="roleItem.name">
                                                     {{roleItem.name}}
@@ -119,7 +119,7 @@
 
                                          <div class="form-check form-switch teamMember">
                                             <input [(ngModel)]="developerSubscription"  #isSubscribed="ngModel" name="isSubscribed" class="form-check-input" type="checkbox" role="switch" id="developerSubscription" checked>
-                                            <label class="form-check-label" for="developerSubscription">Project member (No/Yes)</label>
+                                            <label class="form-check-label" for="developerSubscription">Allocate to project? (No/Yes)</label>
                                         </div>
                                     </div>
 
@@ -145,25 +145,24 @@
                         <!-- Develpers list -->
                         <div class="col-md-6">
                             <div class="form-sections-headings">Developers list</div>
-                            <div *ngIf="developers.length != 0; else noCustomerFound" class="row list-group dome-list-container">
+                            <div *ngIf="developers.length != 0; else noDeveloperFound" class="row list-group dome-list-container">
                                 <button *ngFor="let developer of developers;  let i = index" class=" list-group-item">
 
-                                    <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells "
+                                    <div (click)="DeveloperDetails(developer)" class="col-md-4 dome-list-cells developer-name-cell "
                                         title="Click for details">
                                         <b> {{i+1 }}. </b>&nbsp;
                                         <fa-icon class="concept-icon" [icon]="['fas', 'user']"></fa-icon> &nbsp;
                                         {{ developer.firstName}}
                                     </div>
 
-                                    <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell d-none d-md-block" title="Click for details"> 
+                                    <div (click)="DeveloperDetails(developer)" class="col-md-5 dome-list-cells project-member-cell " title="Click for details"> 
                                         <div  *ngIf="developer.project.isSubscribed == true">
-                                        <fa-icon class="concept-icon" [icon]="['fas', 'circle-check']"></fa-icon> Project member
+                                        <fa-icon class="concept-icon" [icon]="['fas', 'hourglass-half']"> </fa-icon> Busy
                                         </div>
 
                                         <div *ngIf="developer.project.isSubscribed == false">
-                                            <fa-icon class="concept-icon" [icon]="['fas', 'circle-xmark']"></fa-icon> Not a member
+                                            <fa-icon class="concept-icon" [icon]="['far', 'clock']"> </fa-icon> Idling
                                         </div>
-                                        <!-- {{developer.project.isSubscribed == true? 'Assigned to project': 'No'}}    -->
                                     </div>
 
                                     <div  class="col-lg-3 dome-list-cells list-btn-container">
@@ -178,7 +177,7 @@
                                 </button>
                             </div>
 
-                            <ng-template #noCustomerFound>
+                            <ng-template #noDeveloperFound>
                                 <div class="alert alert-danger  empty-list-message">
                                     <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
                                     Sorry, no developer profile found!
@@ -221,7 +220,7 @@
 
                                 <section class="row ">
                                     <div class="col-md-3"><b>Project:</b></div>
-                                    <div class="col-md-9">{{objDeveloperDetails.project.isSubscribed == true ? 'Yes': 'No'}}</div>
+                                    <div class="col-md-9">{{objDeveloperDetails.project.isSubscribed == true ? 'Allocated to a projectr': 'No allocated to any project'}}</div>
                                 </section>
                             </div>
 

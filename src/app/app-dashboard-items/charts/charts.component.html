@@ -1,7 +1,7 @@
 <div @fadeInPageTitle class="bg-light">
     <div class="welcome-messsage">
         <h3>[ GRAPHS & CHARTS ]</h3>
-        <p class="page-title-description fade-in">
+        <p class="page-title-description fade-in d-none d-md-block">
             VISUALIZE DATA FOR STATISTICAL ANALYSYS.
         </p>
     </div>
@@ -29,14 +29,14 @@
                         </li>
                         
                         <li [class.active]="viewMode == 'desciptionTab'">
-                            <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class=""
-                                    [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                            <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">
+                                <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                         </li>
                         
                         <li [class.active]="viewMode == 'dashboardTab'">
                         
-                            <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class=""
-                                    [icon]="['fas', 'sliders']"></fa-icon> Menu</a>
+                            <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                            Panel</a>
                         </li>
                     </ul>
                 </div>

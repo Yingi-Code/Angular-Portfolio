@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //for Angular Universal (SEC)
 import { Title, Meta } from '@angular/platform-browser';
 import { AuthStorageService } from './app-shared/services/authentication/auth-storage/auth-storage.service';
+import { CartsService } from './app-shared/services/online-store-services/carts/carts.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent implements OnInit {
   subscription: any;
   firstname: string | undefined;
   isLoggedIn: boolean | undefined;
+  
   constructor(
+    private carts: CartsService,
     private metaTagService: Meta,
     private titleTagService: Title,
     private authStorage: AuthStorageService) { }
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void { 
 
     if (this.authStorage.getToken() != null) {
-      this.authStorage.updateLoginStatus();
+      this.authStorage.updateFirstName();
+      this.authStorage.updateCartsQuantity();
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;
@@ -34,21 +38,21 @@ export class AppComponent implements OnInit {
     this.metaTagService.updateTag(
       {
         name: 'description',
-        content: 'We assist our clients to comply with the Environmental Health and Safety legislation. We also assist our clients to comply with the Construction Health and Safety legislation. We do audits and TrainingS for Food Safety for various sectors, ranging from private to public.',
+        content: 'my Recent Project is a single-page application (SPA) built with Angular 16.x framework, also integrated with JSON RESTful API, with the purpose of demonstrating the fundamentals software development skills, including responsive web design(RWD)'
       });
 
     this.metaTagService.addTags([
       {
         name: 'keywords',
-        content: 'Mabunda, Mabunda Group, MabundaGroup, Martin Mabunda, Ntsako Mabunda, Mabunda EHS, EHS, Mabunda OHS, Mabunda Food Safety, Mabunda Engineering, OHS, Engineering, Mabunda Group Engineering, Mabunda Group Engineering services, Mabunda Group telecoms, Mabunda Group fire, Mabunda Group fire services, Mabunda Environmental Health and Safety , Mabunda Environmental Health and Safety, Occupational Health and Safety, Construction Health and Safety , Mabunda Occupational Health and Safety, Occupational Health and Safety, Mabunda Construction Health and Safety, Health and Safety, Health and Safety Trainings,',
+        content: 'Myrecentproject, My Recent Project, My, Recent, Projects, Project, Angular, Angular Web, Angular Web Project, Angular Web Portfolio, Angular Project, Angular Projects, Angular Portfolio, Online Angular Portfolio, Angular Online Portfolio, Portfolio, RWD, Responsive, Web, Design, Responsive Web, Web Design, Single Page Application, Single Page, Front End,Front End Development, Front End Angular, Front End Angular Developer, Front-End, Front-End Development, Front-End Angular, Front-End angular Developer, IU, ui, UX, ux, UX/UI, User Experience, User-Interface, User Interface, Github, Online, online portfolio, online project, online angular, angular online, angular forms, forms in angular, reactive forms, template driven forms, API, RESTful, RESTful API, JSON RESTful, JSON RESTful API ,photo gallery, Yingi, Yingisani, Shirinda, Chiqinda, Yingi Shirinda, Yingi Chiqinda Programming, IT Programming, IT Web Development, Angular Web Development, Angular Web Design,',
       },
       {
         name: 'robots',
-        content: 'index, follow'
+        content: 'index, follow,'
       },
       {
         name: 'author',
-        content: 'K.M. Monakali'
+        content: 'Y. Chiqinda'
       },
       {
         name: 'viewport',
@@ -56,7 +60,7 @@ export class AppComponent implements OnInit {
       },
       {
         name: 'date',
-        content: '2023-07-26',
+        content: '2023-10-15',
         scheme: 'YYYY-MM-DD'
       },
       { charset: 'UTF-8' },

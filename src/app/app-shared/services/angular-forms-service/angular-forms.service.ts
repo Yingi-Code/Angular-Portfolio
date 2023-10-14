@@ -30,8 +30,8 @@ export class AngularFormsDataService {
   //Array of [ Developers ] objects
   developers = [
     { firstName: 'Jonh', emailAddress: "jsmith@wixs.co.za", project: { isSubscribed: false, developerRole: this.roleList[0].name } },
-    { firstName: 'Belinda', emailAddress: "belindav@telkom.co.za", project: { isSubscribed: true, developerRole: this.roleList[3].name } },
-    { firstName: 'Thabo', emailAddress: "tmasiya@gibbs.co.za", project: { isSubscribed: false, developerRole: this.roleList[2].name } }
+    { firstName: 'Belinda', emailAddress: "belindav@telkom.co.za", project: { isSubscribed: false, developerRole: this.roleList[3].name } },
+    { firstName: 'Thabo', emailAddress: "tmasiya@gibbs.co.za", project: { isSubscribed: true, developerRole: this.roleList[2].name } }
   ];
 
   //Pushs the new developer object into developers array list

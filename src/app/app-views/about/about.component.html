@@ -1,7 +1,7 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ ABOUT THE DEVELOPER ]</h3>
-        <p class="page-title-description fade-in">
+        <h3>[ ABOUT PORTFOLIO ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
             INTRO, ACADEMIC BACKGROUND, SKILLS, AND WORK EXPERIENCE.
         </p>
 
@@ -17,152 +17,274 @@
 
 <div class="row page-content">
 
-    <div class="col-md-9">
+    <div class="col-md-9" [ngSwitch]="viewMode">
 
         <div class="page-content-container">
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'code']"></fa-icon>
+                            Porfolio
+                        </a>
+                    </li>
+            
+                    <li [class.active]="viewMode == 'developerTab'">
+                        <a (click)="viewMode = 'developerTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon
+                                class="" [icon]="['fas', 'user-tie']"></fa-icon> Developer</a> 
+                    </li>
+            
+                    <li [class.active]="viewMode == 'dashboardTab'">
+            
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon
+                                class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                            Panel</a>
+                    </li>
+                </ul>
+            </div>
 
-            <div class="accordion outer-accordion accordion-flush" id="accordionExample">
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header " id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <fa-icon class="concept-icon" [icon]="['fas', 'user-tie']"></fa-icon>&nbsp;
-                            ABOUT YINGI
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p>
-                                <b>Yingisani (Yingi)</b> is a young South African male, born in Limpopo in a small town called Malamulele, very passionate about programming, particularly web-based technologies.
-                            </p>
-                            <p>
-                                He is a qualified professional programmer who holds several Information Technology (<b>IT</b>) qualifications obtained from various high learning institutions, include 
-                                University of Johannesburg (<b>UJ</b>), Tshwane University of Technology (<b>TUT</b>), and more. 
-                            </p>
-                            <p>
-                                He is currently employed by an international private company as an Engineering Technician and has been responsible for various roles and responsibilities.
-                            </p>
-
+            <div *ngSwitchCase="'defaultTab'">
+                <!-- accordio starts here -->
+                <div class="accordion outer-accordion accordion-flush" id="accordionExample">
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header " id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                aria-expanded="false" aria-controls="collapseOne">
+                                <fa-icon class="concept-icon" [icon]="['far', 'lightbulb']"></fa-icon>&nbsp;
+                                INTRODUCTION
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>
+                                    <b>my Recent Project</b> is a web-based single-page application built using the widely-used javascript framework 
+                                    called Angular 16.x and Typescript, together with the implementation of Responsive Web Design (RWD) principles.               
+                                </p>
+                                <p>
+                                    The objective of this portfolio is to demonstrate basic knowledge and practical programming skills of front-end development using angular framework, and other related technologies and tools.
+                                </p>                
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header " id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <fa-icon class="concept-icon" [icon]="['fas', 'graduation-cap']"></fa-icon>&nbsp;
-                            ACADEMIC BACKGROUND
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        <b>Qualifications:</b>
-                            <ul>
-                                <li>
-                                Bachelor of Science (<b>B.Sc</b>) Honours degree in <b>Computing</b> - University of South Africa (<b>UNISA</b>) - 2023.
-                                </li>
-                                <li>
-                                    Advanced Diploma in IT (<b>Information Resource Management</b>) - University of South Africa (<b>UNISA</b>) - 2021.
-                                </li>
-                                <li>
-                                    National Diploma in IT (<b>Web and Applications Development</b>) - Tshwane University of Technology (<b>TUT</b>) - 2012.
-                                </li>
-<!-- 
-                                <li>
-                                    National Diploma in IT (<b>Support Services</b>) - University of Johannesburg (<b>UJ</b>) - 2008.
-                                </li>                      -->
-                            </ul>
-
-                            <b>Accreditations:</b>
-                            <ul>
-                                <li>
-                                    Data Analysis with Python - (<b>Cambridge Spark</b>) - 2022.
-                                </li>
-                                <li>
-                                    70-486: Developing ASP.NET MVC5 Web Applications - (<b>IT Academy</b>) - 2021
-                                </li>
-                                <li>
-                                    AZ-900: Microsoft Azure Fundamentals - (<b>IT Academy</b>) - 2021
-                                </li>
-                                <!-- <li>
-                                    Siemens Engineering Academy Programme - (<b>Henley Business School</b>) - 2018
-                                </li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <fa-icon class="concept-icon" [icon]="['fas', 'code']"></fa-icon>&nbsp;
-                            KNOWLEDGE & SKILLS
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                        
-                               
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header " id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'scroll']"></fa-icon>&nbsp;
+                                TECHNOLOGIES
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b>Technologies:</b>
                                 <ul>
                                     <li>
-                                        Building Resposive Web Designs (<b>HTML5, CSS3, Boostrap 5.2.x, Font Awesome, Angular Animations</b>)
+                                        HTML5, CSS3, Font-Awesome, and Bootstrap5, - for responsive UI and data presentation
                                     </li>
                                     <li>
-                                        Developing Single-Page applicaitons (<b>SPA</b>) and <b>RESTful API</b> integration using <b>Angular 16.x framework</b>.
+                                        Angular 16.x (TypeScript) - for RESTful API integration. 
                                     </li>
                                     <li>
-                                        Developing Microsoft Applications (<b>.NET MVC App and .NET API</b>) using <b>MVC pattern</b> and <b>.NET Entity Framework</b>.
+                                        Node.js - for Angular runtime environment
                                     </li>
-                                    <li>
-                                        Debugging, Testing, and Source control (<b>Chrome DevTools, Jasmine & Karma, Git and Github</b>)
-                                    </li>
-                                    <li>
-                                        Computer Systems Engineering - process controls and instrumentation (<b>Siemens PLC</b>), and communition networks.
-                                    </li>
-                                
+                                    <!-- 
+                                                <li>
+                                                    National Diploma in IT (<b>Support Services</b>) - University of Johannesburg (<b>UJ</b>) - 2008.
+                                                </li>                      -->
                                 </ul>
-                              
-                            
+                
+                                <b>Tools:</b>
+                                <ul>
+                                    <li>
+                                        Visual Studio Code - for coding
+                                    </li>
+                                    <li>
+                                        Angular CIL - for scaffolding angular application core building blocks.
+                                    </li>
+                                    <li>
+                                        Git and GitHub - for source control
+                                    </li>
+                                    <!-- <li>
+                                                    AZ-900: Microsoft Azure Fundamentals - (<b>IT Academy</b>) - 2021
+                                                </li> -->
+                                    <!-- <li>
+                                                    Siemens Engineering Academy Programme - (<b>Henley Business School</b>) - 2018
+                                                </li> -->
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'flask']"></fa-icon>&nbsp;
+                                CONCEPTS
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                
+                
+                                <ul>
+                                    <li>
+                                       Angular Forms - Template-Driven form, and Reactive form
+                                    </li>
+                                    <li>
+                                        Authentications - Implementation of Standard, JWT, and Auth0 authentication.
+                                    </li>
+                                    <li>
+                                        RESTful API - JSON result API integration
+                                    </li>
+                                    <li>
+                                        Plug-Ins - Google Maps, Photos Gallery, Calendar, Charts and Graphs, and Online Video clips.
+                                    </li>
+
+                                    <li>
+                                        Other concepts - RxJs Operators, Valications, Routing and Route guard (canActive/canDeactivate), etc. 
+                                    </li>
+                
+                                </ul>
+                
+                                
+                            </div>
+                        </div>
+                    </div>
+                
                 </div>
-
-                <!-- <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            <fa-icon class="concept-icon" [icon]="['fas', 'screwdriver-wrench']"></fa-icon>&nbsp;
-                            WORK EXPERIENCE & AWARDS
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>
-                                    Facilitate the Risk Assessment process.
-                                </li>
-                                <li>
-                                    Facilitate EHS Management Systems
-                                </li>
-                                <li>
-                                    Facilitate Environmental Health and Safety and Food Safety training.
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
 
             </div>
 
+            <div *ngSwitchCase="'developerTab'">
+                <!-- accordio starts here -->
+                <div class="accordion outer-accordion accordion-flush" id="accordionExample">
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header " id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                aria-expanded="false" aria-controls="collapseOne">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'user-tie']"></fa-icon>&nbsp;
+                                ABOUT DEVELOPER
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p>
+                                    <b>Yingisani</b> is a young South African male who is career-driven, also passionate about
+                                    programming, particularly with web-based technologies.
+                
+                                </p>
+                                <p>
+                                    He holds several Information Technology (<b>IT</b>) qualifications, obtained from various universities.
+                                </p>
+                                <p>
+                                    He is currently working for an international private company as an Engineering Technician,
+                                    and has been responsible for various roles and responsibilities till present.
+                                </p>
+                
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header " id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'graduation-cap']"></fa-icon>&nbsp;
+                                ACADEMIC BACKGROUND
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <b>Qualifications:</b>
+                                <ul>
+                                    <li>
+                                        Bachelor of Science (<b>B.Sc</b>) Honours degree in Computing - University of South
+                                        Africa (UNISA) - 2023.
+                                    </li>
+                                    <li>
+                                        Advanced Diploma in IT (Information Resource Management) - University of South Africa
+                                        (UNISA) - 2021.
+                                    </li>
+                                    <li>
+                                        National Diploma in IT (Web and Applications Development) - Tshwane University of
+                                        Technology (TUT) - 2012.
+                                    </li>
+                                    <!-- 
+                                                <li>
+                                                    National Diploma in IT (<b>Support Services</b>) - University of Johannesburg (<b>UJ</b>) - 2008.
+                                                </li>                      -->
+                                </ul>
+                
+                                <b>Accreditations:</b>
+                                <ul>
+                                    <li>
+                                        Data Analysis with Python - (Cambridge Spark) - 2022.
+                                    </li>
+                                    <li>
+                                        70-486: Developing ASP.NET MVC5 Web Applications - (IT Academy) - 2021
+                                    </li>
+                                    <!-- <li>
+                                                    AZ-900: Microsoft Azure Fundamentals - (<b>IT Academy</b>) - 2021
+                                                </li> -->
+                                    <!-- <li>
+                                                    Siemens Engineering Academy Programme - (<b>Henley Business School</b>) - 2018
+                                                </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'wrench']"></fa-icon>&nbsp;
+                                SKILLS & KNOWLEDGE
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                
+                
+                                <ul>
+                                    <li>
+                                        Building Resposive Web Designs (<b>HTML5, CSS3, Boostrap 5.2.x, Font Awesome</b>)
+                                    </li>
+                                    <li>
+                                        Developing Single-Page applicaitons (<b>SPA</b>) and <b>RESTful API</b> integration using
+                                        <b>Angular 16.x framework</b>.
+                                    </li>
+                                    <li>
+                                        Developing Web Applications using <b>MVC pattern</b> and <b>.NET Entity Framework</b>.
+                                    </li>
+                                    <li>
+                                        Debugging, Testing, and Source control (<b>DevTools, Jasmine & Karma, Git and Github</b>)
+                                    </li>
+                                    <!-- <li>
+                                        Progranning electronic logic controllers (<b>PLC</b>), and communition networks configuration.
+                                    </li>
+                 -->
+                                </ul>
+                
+                
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
 
+           
         </div>
     </div>
 

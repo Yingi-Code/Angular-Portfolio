@@ -7,13 +7,12 @@ import { AboutComponent } from './app-views/about/about.component';
 import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 import { ContactComponent } from './app-views/contact/contact.component';
 import { DashboardComponent } from './app-views/dashboard/dashboard.component';
-import { FormsTemplateDrivenComponent } from './app-dashboard-items/forms-template-driven/forms-template-driven.component';
-import { FormsReactiveComponent } from './app-dashboard-items/forms-reactive/forms-reactive.component';
+import { FormsTemplateDrivenComponent } from './app-dashboard-items/angular forms/forms-template-driven/forms-template-driven.component';
+import { FormsReactiveComponent } from './app-dashboard-items/angular forms/forms-reactive/forms-reactive.component';
 import { NgGalleryLightboxComponent } from './app-structure/image-gallery/ng-gallery-lightbox/ng-gallery-lightbox/ng-gallery-lightbox.component';
 import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
 import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-maps.component';
 import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
-import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
 import { VideoComponent } from './app-dashboard-items/videos/video.component';
 import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-calendar/online-bookings.component';
 import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
@@ -27,7 +26,7 @@ const routes: Routes = [
   
   { path: 'home', component: HomeComponent, title: "My RPs - Home" },
   { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
-  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - About Developer" },
+  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Contact" },
   { path: 'dashboard', component: DashboardComponent, title: "My RPs - Dashboard" },
    {
     path: 'dashboard', children: [
@@ -46,8 +45,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, title: "My RPs - Account" },
   {
     path: 'account', children: [
-      { path: 'auth-jwt', component: AuthJwtComponent, title: "My RPs - JWT Auth" },
-      { path: 'auth-basic', component: AuthBasicComponent, title: "My RPs - Basic Auth" }
+      { path: 'auth-jwt', component: AuthJwtComponent,  title: "My RPs - JWT Auth" },
+      { path: 'auth-basic', component: AuthBasicComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Basic Auth" }
     ]
   },
   // redirectTo - Error page

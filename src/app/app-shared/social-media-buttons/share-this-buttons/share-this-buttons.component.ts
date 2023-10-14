@@ -12,7 +12,7 @@ const inlineShareButtonsConfig: InlineShareButtonsConfig = {
   language: 'en', // which language to use (see LANGUAGES)
   networks: [
     // which networks to include (see SHARING NETWORKS)
-    'whatsapp',
+    //'whatsapp',
     'linkedin',
     // 'messenger',
     // 'facebook',
@@ -38,9 +38,10 @@ const stickyShareButtonsConfig: StickyShareButtonsConfig = {
   min_count: 0,         // hide react counts less than min_count (INTEGER)
   networks: [           // which networks to include (see SHARING NETWORKS)
     'linkedin',
+    //'messenger',
     // 'facebook',
-    // 'twitter',
-    'whatsapp',
+    //'twitter',
+    //'whatsapp',
     'email',
     'print'
    

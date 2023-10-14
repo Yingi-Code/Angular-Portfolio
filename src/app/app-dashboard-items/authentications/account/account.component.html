@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
         <h3>[ AUTHENTICATION ]</h3>
-        <p class="page-title-description fade-in">
-             ACCESS OPTIONS TO APPLICATION RESOURCES
+        <p class="page-title-description fade-in d-none d-md-block">
+              APPLICATION RESOURCES ACCESS OPTIONS
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -30,14 +30,16 @@
 
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Details</a>
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
 
                         <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard"
-                            class="nav-link  btn tab-text"><fa-icon class="" [icon]="['fas', 'sliders']"></fa-icon>
-                            Menu</a>
+                            class="nav-link  btn tab-text">
+                            <fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                            Panel
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -46,7 +48,8 @@
             
                 <section class="login-options-section">
                 <img src="../assets/img/4.png" class="login-img"><br/>
-                <!-- <fa-icon class="login-img" [icon]="['fas', 'user-lock']"></fa-icon> -->
+                        
+                    [ Authenticaation options ]
 
                     <div class="Authentication-option">
                         <a class="Authentication-nav btn" [routerLinkActive]="['active']" routerLink="/account/auth-basic">
@@ -66,7 +69,7 @@
                     </div>
                 </section>
 
-                <section>
+                <!-- <section>
                     <div class="auth-introduction">
                         This ssection introduces various options in which authentication can be implemented in angular:
                         <ul class="skills-list">
@@ -83,7 +86,7 @@
                 
                     </div>
                 </section>
-                    
+                     -->
             </div>
 
             <div *ngSwitchCase="'desciptionTab'">
