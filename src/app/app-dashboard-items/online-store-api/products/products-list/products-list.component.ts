@@ -6,6 +6,7 @@ import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';
 import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
 import { catchError, filter, map, of, throwError } from 'rxjs';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-products-list',
@@ -22,29 +23,28 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   viewMode = 'defaultTab'
 
   //Loading spinner
-  loadingStatus?: boolean;
-  productDetailsLoading?: boolean;
-
+  _loadingStatus?: boolean;
+  
   //http response error message
-  errorMessage: string = '';
+  _errorMessage: string = '';
 
   //To be declared as Product []
-  productsList: any;
+  _productsList: any;
   private _searchKeyWord: string = '';
-  filteredProductsList: any;
 
-  //product details
-  private _filterdData: any;
-  productDetails: any;
+  //observables subscriptions
+  private _subscription: any;
+
+  _productDetails: any;
   _priceInSouthAfricanRand: any;
 
   //pagination properties
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 10;
+  _page: number = 1;
+  _count: number = 0;
+  _tableSize: number = 10;
 
   //Image Viwer
-  albums: any = [];
+  private _albums: any = [];
   private _images = [
     {
       src: "",
@@ -53,18 +53,16 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   ];
  
   i: number = 0;
-  selectedImageIndex: number = 0;
-
-  _selectedProductCategory: string = '';
-  _selectedSortOption: string = '0';
-  
+ 
+  //get seleted dropdown item from the view
+  private _selectedProductCategory: string = '';
+  private _selectedSortOption: string = '0';
   @ViewChild('productCategory') private _productCategory: any;
   @ViewChild('sortOption') private _sortOption: any;
 
   constructor(
-    private productService: ProductService,
-    private router: Router,
-    private routeExtraParams: RouteExtraParamsService,
+    private _productService: ProductService,
+    private _router: Router,
     private _lightboxConfig: LightboxConfig, private _lightbox: Lightbox
   ) {
 
@@ -86,6 +84,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     _lightboxConfig.containerElementResolver = () => document.body;   
   }
 
+  //Initiate the program
   ngOnInit(): void {
 
     this._selectedProductCategory = 'default';
@@ -93,44 +92,33 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     
     //fetch the products list
     this.getAllProducts();
-    this.productDetails = null;
+    this._productDetails = null;
   }
 
   get getProductCategories() {
-    return this.productService.getProductCategories;
+    return this._productService.getProductCategories;
   }
   get getSortOptions() {
-    return this.productService.getSortOptions;
+    return this._productService.getSortOptions;
   }
   get hideProductDetailsview() {
-    return this.productDetails = null;
+    return this._productDetails = null;
   }
 
+  //load http response data - products
   getAllProducts() {
     //display spinner while loading data
-    this.loadingStatus = true;
+    this._loadingStatus = true;
 
     //retrieve all products
-    this.productService.getProducts().pipe( 
+    this._subscription = this._productService.getProducts().pipe( 
       map((_httpResponseData: any) => {
 
         //no data found error
         if (_httpResponseData.length == 0) {
           throw "The system could not load data from the server.";  
         }
-
-        //return sorted http response data in ASC order
-        _httpResponseData.sort((a: any, b: any) => {
-          let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
-          if (fa < fb) {
-            return -1;
-          }
-          if (fa > fb) {
-            return 1;
-          }
-          return 0;
-        });
-        this.loadingStatus = false;
+        this._loadingStatus = false;
         return _httpResponseData;
       }),
 
@@ -143,33 +131,34 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     .subscribe({
       //http response data param
       next: (_httpResponseData: any) => {
-          this.productsList = _httpResponseData;
+        this._productsList = _httpResponseData;
+
+        //Sort http response data as per default sort param
+          this.sortBy(this._sortOption.nativeElement.value);        
         },
         
       //http response error param
       error: (_httpresponseerror: any) => {
 
-        this.errorMessage = _httpresponseerror;
+        this._errorMessage = _httpresponseerror;
         console.error(_httpresponseerror)
-        this.loadingStatus = false;
+        this._loadingStatus = false;
       }
     }
     )
-    return this.productsList;
+    return this._productsList;
   }
 
+  //reload the http response data - products
   refreshProductsList() {
 
     this._selectedProductCategory = this._productCategory.nativeElement.value;
     this._selectedSortOption = this._sortOption.nativeElement.value;
-    //display spinner while loading data
-    this.loadingStatus = true;
 
     //List products as per selected filter param
     if (this._selectedProductCategory != 'default') {
       this.filterByProductCategory(this._selectedProductCategory)
     }
-
     //List products as per selected sort param
     if (this._selectedSortOption) {
       this.sortBy(this._selectedSortOption);
@@ -177,28 +166,25 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     //List products as per default param
     if ((this._selectedProductCategory == 'default') && (this._selectedSortOption == '0')) {
       this.getAllProducts();
-    }
-
-    
+    } 
   }
 
-  //Preview product details on the same view
+  //display product details on the same _page
   productPreview(productId: number) {
     console.log('Product ID = ' + productId);
-    this.productDetailsLoading = true;
-    this.productService.getProduct(productId)
+    this._loadingStatus = true;
+    this._productService.getProduct(productId)
       .subscribe((data: any) => {
-        this.productDetails = data;
+        this._productDetails = data;
         setTimeout(() => {
-          this.productDetailsLoading = false
+          this._loadingStatus = false
         }, 10);
       });
   }
 
+  //filter http response data by product category
   filterByProductCategory(selectedCategory: string) {
-    this._selectedSortOption = this._sortOption.nativeElement.value;
-    
-    this._filterdData = this.productService.getProducts().pipe(
+    this._subscription = this._productService.getProducts().pipe(
     map((_httpResponseData: any) => {
       return _httpResponseData;
     }),
@@ -208,101 +194,99 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       throw _httpresponseerror;
     }))
       
-      .subscribe({
-      
-      //http response data param
-        next: (_httpResponseData: any) => {
-          
-        //Filter the http response data by category
-        this.productsList = _httpResponseData.filter((p: any) => p.category.toLowerCase() === selectedCategory);
-        
-          //Sort http response data as per selected sort param
-        if (this._selectedSortOption) {
-          this.sortBy(this._selectedSortOption);
-        }
-      },
-
-      //http response error param
-      error: (_httpresponseerror: any) => {
-        this.errorMessage = _httpresponseerror;
-        this.loadingStatus = false;
-      }
-    });
+    .subscribe({
     
-    return this.productsList;
+    //http response data param
+      next: (_httpResponseData: any) => {
+        
+      //Filter the http response data by category
+      this._productsList = _httpResponseData.filter((p: any) => p.category.toLowerCase() === selectedCategory);
+      //sort the new list of products
+      this.sortBy(this._sortOption.nativeElement.value);
+    },
+
+    //http response error param
+    error: (_httpresponseerror: any) => {
+      this._errorMessage = _httpresponseerror;
+      this._loadingStatus = false;
+    }
+  });
+    
+    return this._productsList;
   }
 
   //Search only, Filter only, filter and search, search and filter
   searchByKeyword(_searchKeyWord: string) {
 
     let category = this._productCategory.nativeElement.value;
-    let list: any;
+      
+    //subscribe to an observable
+    this._subscription = this._productService.getProducts().pipe(
+          map((_httpResponseData: any) => {
+            
+            //filter http response data by title/ category/ description
+            _httpResponseData = _httpResponseData.filter(
+              (products: any) =>
+                (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())) ||
+                (products.category.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())) ||
+                (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase()))
+            );            
+            return _httpResponseData;
+          }),
 
-    if (_searchKeyWord) {
-      this.productService.getProducts()
-        .subscribe((data: any) => {
+          //catch http response error
+          catchError(_httpresponseerror => {
+            throw _httpresponseerror;
+          })
+        )
 
-          if (category != 'default') {                
-                this.productsList =
-                  (
-                    (
-                    list = data.filter((products: any) => products.category.toLowerCase() === category)
-                    ) &&
-                    (
-                    (list.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
-                    (list.filter((products: any) => (category.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
-                    (list.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase()))))
-                    )                   
-                  );
-            this.loadingStatus = false
-              
-              } else {
-                this.productsList =
-                  ((data.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
-                    (data.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))));
-            this.loadingStatus = false
-                
-              }
+        .subscribe({
+          //http response data param
+          next: (_httpResponseData: any) => {
+           
+            if (category != 'default') {
+              //Filter the http response data by category if selected
+              this._productsList = _httpResponseData.filter((p: any) => p.category.toLowerCase() === category);
+            } else {
+              this._productsList = _httpResponseData;
+            }
+            //sort the new list of products
+            this.sortBy(this._sortOption.nativeElement.value);
+          },
+
+          //http response error param
+          error: (_httpresponseerror: any) => {
+            this._errorMessage = _httpresponseerror;
+            this._loadingStatus = false;
+          }
         });
-      
-    } else {
+    
+    return this._productsList;
 
-      if (category != 'default') {
-        this.filterByProductCategory(category)
-      } else {
-        console.log('[5.] --- Search is empty---');
-        this.productsList = this.getAllProducts();
-      }
-      
-    }
-
-    return this.productsList;
   }
 
-  //sort products list
+  //sort http response data by selected sort param
   sortBy(sortOptionId: string) {
-
-    // console.log('Sort by selected option = ' + sortOptionId);
     switch (sortOptionId) {
       //price - asc
       case '1':
-        this.productsList = this.productsList.sort((a: any, b: any) => a.price - b.price);
+        this._productsList = this._productsList.sort((a: any, b: any) => a.price - b.price);
         break;
       //price - desc
       case '2':
-        this.productsList = this.productsList.sort((a: any, b: any) => b.price - a.price);
+        this._productsList = this._productsList.sort((a: any, b: any) => b.price - a.price);
         break;
       //rate - asc
       case '3':
-        this.productsList = this.productsList.sort((a: any, b: any) => a.rating.rate - b.rating.rate);
+        this._productsList = this._productsList.sort((a: any, b: any) => a.rating.rate - b.rating.rate);
         break;
       //rate - desc
       case '4':
-        this.productsList = this.productsList.sort((a: any, b: any) => b.rating.rate - a.rating.rate);
+        this._productsList = this._productsList.sort((a: any, b: any) => b.rating.rate - a.rating.rate);
         break;
       //title - asc 
       case '5':
-        this.productsList = this.productsList.sort((a: any, b: any) => {
+        this._productsList = this._productsList.sort((a: any, b: any) => {
           let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
           if (fa < fb) {
             return -1;
@@ -315,7 +299,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         break;      
       //title - desc 
       case '6':
-        this.productsList = this.productsList.sort((a: any, b: any) => {
+        this._productsList = this._productsList.sort((a: any, b: any) => {
           let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
           if (fa < fb) {
             return 1;
@@ -328,7 +312,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         break;
       //title - asc 
       default:
-        this.productsList = this.productsList.sort((a: any, b: any) => {
+        this._productsList = this._productsList.sort((a: any, b: any) => {
           let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
           if (fa < fb) {
             return -1;
@@ -340,17 +324,15 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         });
         break;
     }
-
-    return this.productsList;
-
+    return this._productsList;
   }
 
-  //Imgage viewer
+  //Open selected image in lightBox view
   open(index: number): void {
 
-    const src = this.productDetails.image;
-    const caption = this.productDetails.title;
-    const thumb = this.productDetails.image;
+    const src = this._productDetails.image;
+    const caption = this._productDetails.title;
+    const thumb = this._productDetails.image;
 
     const productImageDetails = {
       src: src,
@@ -358,44 +340,39 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       thumb: thumb
     };
 
-    // this.albums.push(productImageDetails);
-    this.albums[0] = productImageDetails;
+    // this._albums.push(productImageDetails);
+    this._albums[0] = productImageDetails;
     // open lightbox
-    this._lightbox.open(this.albums, index);
+    this._lightbox.open(this._albums, index);
   }
 
+  // close lightbox programmatically
   close(): void {
-    // close lightbox programmatically
     this._lightbox.close();
   }
 
+  //US Dollar to ZRA convention
   usDollarToRandConvention(usDollar: number) {
     return usDollar * 18;
   }
 
   //Pagenation methods
   onTableDataChange(event: any) {
-    this.page = event;
-    // this.productsList;
+    this._page = event;
   }
-
+  //Pagenation methods
   onTableSizeChange(event: any): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
-    // this.productsList;
+    this._tableSize = event.target.value;
+    this._page = 1;
   }
-
+  //view selected product in product-details component
   viewProductDetails(id: number) {
-  
-    this.router.navigate(['app/online-store/product-details/', id]);
+    this._router.navigate(['app/online-store/product-details/', id]);
   }
 
   ngOnDestroy(): void {
-    this.getAllProducts().unsubscribe;
-
-    if (this._filterdData) {
-      this._filterdData.unsubscribe;
-    }
+    this._subscription.unsubscribe;
+    console.log('Subscription unsubscribed');
     console.log('Component has been destroyed');
   }
 
