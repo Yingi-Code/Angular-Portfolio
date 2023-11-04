@@ -83,6 +83,7 @@ export class FormsTemplateDrivenComponent implements OnInit, IDeactivateComponen
 
   //resets the form and its form-controls states
   @ViewChild('formData') theForm!: NgForm;
+  
   ClearForm() {
     this.theForm.reset();
     this.formSubmitBtnMode == false;

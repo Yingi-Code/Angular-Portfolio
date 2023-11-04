@@ -20,7 +20,9 @@ export class ProductService {
     { id: 1, name: 'Price (Low to High)' },
     { id: 2, name: 'Price (Hight to Low)' },
     { id: 3, name: 'Rating (Low to High)' },
-    { id: 4, name: 'Rating (Hight to Low)' }
+    { id: 4, name: 'Rating (Hight to Low)' },
+    { id: 5, name: 'Product name (Asc)' },
+    { id: 6, name: 'Product name (Desc)' }
   ];
 
   constructor(private http: HttpClient) {

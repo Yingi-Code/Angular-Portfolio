@@ -81,6 +81,7 @@ btn.active {
 
 .company-name {
     font: 1.8em sans-serif;
+    padding-left: 8px;
     /* word-spacing: -1px; */
 }
 
@@ -109,6 +110,7 @@ btn.active {
     color: darkgray;
     font: 1em sans-serif;
     margin-top: 5px;
+    padding-left: 8px;
 }
 
 

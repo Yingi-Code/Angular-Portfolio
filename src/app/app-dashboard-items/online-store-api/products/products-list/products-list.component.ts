@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { ProductService } from 'src/app/app-shared/services/online-store-services/products/products.service';
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';
 import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -50,13 +51,17 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   i: number = 0;
   selectedImageIndex: number = 0;
 
+  _selectedProductCategory: string = '';
+  _selectedSortOption: string = '';
+  
+  @ViewChild('productCategory') private _productCategory: any;
+  @ViewChild('sortOption') private _sortOption: any;
+
   constructor(
     private productService: ProductService,
     private router: Router,
     private routeExtraParams: RouteExtraParamsService,
     private _lightboxConfig: LightboxConfig, private _lightbox: Lightbox
-
-
   ) {
 
     _lightboxConfig.fadeDuration = 0.7;
@@ -78,41 +83,74 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    this._selectedProductCategory = 'default';
+    this._selectedSortOption = '0';
     
     // when the system initializes, fetch the products list
     this.getAllProducts();
+    console.log('----- Component has been initialized -----');
     this.productDetails = null;
-    // track the seleted item
-    // if (this.routeExtraParams?.productCategory == '') {
-    //   this.selectedRadioButtonValue = 'All';
-    // } else {
-    //   this.selectedRadioButtonValue = this.routeExtraParams?.productCategory;
-    // }
   }
 
-  get getProductCategories() {
-    return this.productService.getProductCategories;
-  }
-
-  get getSortOptions() {
-    return this.productService.getSortOptions;
-  }
-
-  get hideProductDetailsview() {
-    return this.productDetails = null;
-  }
+  get getProductCategories() { return this.productService.getProductCategories;}
+  get getSortOptions() {return this.productService.getSortOptions;}
+  get hideProductDetailsview() { return this.productDetails = null;}
 
   getAllProducts() {
+    //display spinner while loading data
     this.productListLoading = true;
-    this.productService.getProducts()
-      .subscribe((data: any) => {
-        this.productsList = data;
-        this.productListLoading = false        
-      });
+    //retrieve all products
+    this.productService.getProducts().pipe( 
+      map((res: any) => {
+        res.sort((a: any, b: any) => {
+          let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
+          if (fa < fb) {
+            return -1;
+          }
+          if (fa > fb) {
+            return 1;
+          }
+          return 0;
+        });
+
+        return res;
+      } )).subscribe((res: any) => {
+      this.productsList = res;
+        this.productListLoading = false
+      })
+   
+      
     return this.productsList;
   }
 
-  getThisProductDetails(productId: number) {
+  refreshProductsList() {
+
+    this._selectedProductCategory = this._productCategory.nativeElement.value;
+    this._selectedSortOption = this._sortOption.nativeElement.value;
+
+    //retrieve products as per selected product category
+    if (this._selectedProductCategory != 'default') {
+      console.log('--- Keep it filtered by ---');
+      console.log(this._selectedProductCategory);
+
+      this.filterByProductCategory(this._selectedProductCategory)
+    }
+
+    //keep the list sorted if srt option is selected
+    if (this._selectedSortOption) {
+      console.log('--- Keep it sorted by ---');
+      console.log(this._selectedSortOption);
+      
+      this.sortBy(this._selectedSortOption);
+    }
+  
+    if ((this._selectedProductCategory == 'default') && (this._selectedSortOption == '0')) {
+      this.getAllProducts();
+    }
+  }
+
+  productPreview(productId: number) {
     console.log('Product ID = ' + productId);
     this.productDetailsLoading = true;
     this.productService.getProduct(productId)
@@ -122,6 +160,125 @@ export class ProductsListComponent implements OnInit, OnDestroy {
           this.productDetailsLoading = false
         }, 10);
       });
+  }
+
+  filterByProductCategory(selectedCategory: string) {   
+    this.productService.getProducts()
+      .subscribe((data: any) => { 
+          this.productsList = data.filter((p: any) => p.category.toLowerCase() === selectedCategory);
+          this.productListLoading = false
+      });
+ }
+  
+  //Search only, Filter only, filter and search, search and filter
+  searchByKeyword(_searchKeyWord: string) {
+
+    let category = this._productCategory.nativeElement.value;
+    let list: any;
+
+    if (_searchKeyWord) {
+      // console.log('[2.] --- Search applied ---');
+      // console.log(_searchKeyWord);
+
+      this.productService.getProducts()
+        .subscribe((data: any) => {
+          // console.log('[2.1.] --- filter value ---');
+          // console.log(category);
+
+          if (category != 'default') {
+                console.log('[3.] --- Search and filter applied ---');
+                console.log(_searchKeyWord + ' and ' + category);
+                
+                this.productsList =
+                  (
+                    (
+                    list = data.filter((products: any) => products.category.toLowerCase() === category)
+                    ) &&
+                    (
+                    (list.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
+                    (list.filter((products: any) => (category.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
+                    (list.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase()))))
+                    )                   
+                  );
+                this.productListLoading = false
+              
+              } else {
+
+                console.log('[4.] --- Search only applied ---');
+                console.log(_searchKeyWord);
+                this.productsList =
+                  ((data.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
+                    (data.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))));
+                this.productListLoading = false
+                
+              }
+        });
+      
+    } else {
+
+      if (category != 'default') {
+        this.filterByProductCategory(category)
+      } else {
+        console.log('[5.] --- Search is empty---');
+        this.productsList = this.getAllProducts();
+      }
+      
+    }
+
+    return this.productsList;
+  }
+
+  //sort products list
+  sortBy(sortOptionId: string) {
+
+    // console.log('Sort by selected option = ' + sortOptionId);
+    switch (sortOptionId) {
+      case '1':
+        //price - asc
+        this.productsList = this.productsList.sort((a: any, b: any) => a.price - b.price);
+        break;
+      case '2':
+        //price - desc
+        this.productsList = this.productsList.sort((a: any, b: any) => b.price - a.price);
+        break;
+      //rate - low to high
+      case '3':
+        this.productsList = this.productsList.sort((a: any, b: any) => a.rating.rate - b.rating.rate);
+        break;
+      //rate - high to low
+      case '4':
+        this.productsList = this.productsList.sort((a: any, b: any) => b.rating.rate - a.rating.rate);
+        break;
+      //title - asc 
+      case '5':
+        this.productsList = this.productsList.sort((a: any, b: any) => {
+          let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
+          if (fa < fb) {
+            return -1;
+          }
+          if (fa > fb) {
+            return 1;
+          }
+          return 0;
+        });
+        break;      
+      //title - desc 
+      case '6':
+        this.productsList = this.productsList.sort((a: any, b: any) => {
+          let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
+          if (fa < fb) {
+            return 1;
+          }
+          if (fa > fb) {
+            return -1;
+          }
+          return 0;
+        });;
+        break;
+    }
+
+    return this.productsList;
+
   }
 
   //Imgage viewer
@@ -137,10 +294,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       thumb: thumb
     };
 
-    this.albums.push(productImageDetails);
-
+    // this.albums.push(productImageDetails);
+    this.albums[0] = productImageDetails;
     // open lightbox
-    this._lightbox.open(this.albums, 0);
+    this._lightbox.open(this.albums, index);
   }
 
   close(): void {
@@ -151,68 +308,23 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   usDollarToRandConvention(usDollar: number) {
     return usDollar * 18;
   }
-  
-  //Search, Filter, and Sort
-  searchProduct(_searchKeyWord: string) {
-    this._searchKeyWord = _searchKeyWord;
-
-    if (_searchKeyWord) {
-      this.productsList =
-        ((this.productsList.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
-        (this.productsList.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))));
-    } else {
-      this.productsList = this.getAllProducts();
-    }
-  }
-
-  filterBy(selectedCategory: string) {
-    console.log('Filter by selected option = ' + selectedCategory);
-    this.productsList = this.productsList.filter((p: any) => p.category.toLowerCase() === selectedCategory);
- }
-  
-  sortBy(sortOptionId: string) {
-
-    console.log('Sort by selected option = ' + sortOptionId);
-    switch (sortOptionId) {
-      case '1':
-        //price - asc
-        this.productsList = this.productsList.sort((a: any, b: any) => a.price - b.price);
-        break;
-
-      case '2':
-        //price - desc
-        this.productsList = this.productsList.sort((a: any, b: any) => b.price - a.price);
-        break;
-
-      case '3':
-        this.productsList = this.productsList.sort((a: any, b: any) => a.rating.rate - b.rating.rate);
-        break;
-
-      case '4':
-        this.productsList = this.productsList.sort((a: any, b: any) => b.rating.rate - a.rating.rate);
-        break;
-      
-    }
-
-  }
 
   //Pagenation methods
   onTableDataChange(event: any) {
     this.page = event;
-    this.productsList;
+    // this.productsList;
   }
 
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.productsList;
+    // this.productsList;
   }
 
-  // ProductDetails(id: number) {
-  //   this.routeExtraParams.productCategory = this.selectedRadioButtonValue;
-  //   this.routeExtraParams.productId = id;
-  //   this.router.navigate(['product-details']);
-  // }
+  viewProductDetails(id: number) {
+  
+    this.router.navigate(['app/online-store/product-details/', id]);
+  }
 
   ngOnDestroy(): void {
     this.getAllProducts().unsubscribe;

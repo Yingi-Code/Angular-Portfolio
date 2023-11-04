@@ -65,7 +65,7 @@ export class AuthStorageService implements OnInit{
 
   //store user carts quantity in session
   setCartsQuantity(quantity: string) {
-      console.log('[1. authStorage] ----- Save Quanity value ----- ');
+      //console.log('[1. authStorage] ----- Save Quanity value ----- ');
       sessionStorage.removeItem(USER_CARTS_QUANTITY);
       sessionStorage.setItem(USER_CARTS_QUANTITY, quantity);
   }
@@ -73,16 +73,16 @@ export class AuthStorageService implements OnInit{
    public updateFirstName() {
     
     let firstname = this.getUser()?.name?.firstname
-    console.log('[2.1. authStorage] --- Firstname status update---');
-    console.log(firstname);
+    //console.log('[2.1. authStorage] --- Firstname status update---');
+    //console.log(firstname);
     this.userFirstName.next(firstname);
   }
 
   public updateCartsQuantity() { 
 
     this._cartsQuantity = sessionStorage.getItem(USER_CARTS_QUANTITY);
-    console.log('[2.2. authStorage] --- Carts quantity update---');
-    console.log(this._cartsQuantity);
+    //console.log('[2.2. authStorage] --- Carts quantity update---');
+    //console.log(this._cartsQuantity);
     this._userCartsAmountSub.next(this._cartsQuantity);
   }
 

@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 //for Angular Universal (SEO)
-import { provideClientHydration } from '@angular/platform-browser';
+import { bootstrapApplication, provideClientHydration} from '@angular/platform-browser';
 
 //for toasts notifications and aminations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -65,10 +65,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-maps.component';
-
-import { NgChartsModule } from 'ng2-charts';
-import { ChartsComponent } from './app-dashboard-items/charts/charts.component';
-import { defaults } from 'chart.js';
 import { DashboardItemsComponent } from './app-structure/dashboard-items/dashboard-items.component';
 
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
@@ -80,8 +76,6 @@ import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-ca
 
 //for calendar
 import { FullCalendarModule } from '@fullcalendar/angular';
-import interactionPlugin from '@fullcalendar/interaction';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import { LoadingSpinnerComponent } from './app-structure/loading-spinner/loading-spinner.component';
 
 //for Authentication methods
@@ -89,12 +83,14 @@ import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt
 import { AccountComponent } from './app-dashboard-items/authentications/account/account.component'
 import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
+import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
 
 
 @NgModule({
 
   //All the App Components here ...
   declarations: [
+    
     AppComponent,
     HeaderComponent,
     NavbarComponent,
@@ -114,9 +110,9 @@ import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
     NgBootstrapCarouselComponent,
     GalleryComponent,
     ProductsListComponent,
+    ProductDetailsComponent,
     SearchComponent,
     GoogleMapsComponent,
-    ChartsComponent,
     DashboardItemsComponent,
     VideoComponent,
     OnlineBookingsComponent,
@@ -130,7 +126,7 @@ import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
   ],
 
   imports: [
-
+    
     HttpClientModule,
 
     //All the App Special Models not from @angular/core
@@ -160,12 +156,6 @@ import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
     //for GoogleMaps
     GoogleMapsModule,
 
-    // AgmCoreModule.forRoot({
-    //   apiKey: ''
-    // }),
-
-    NgChartsModule,
-
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
     }),
@@ -183,15 +173,21 @@ import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 
   ],
 
+  exports: [AppComponent],
+
   providers: [
     NgbCarouselConfig,
     AngularFormsDataService,
     ProductService,
-    provideClientHydration(),
+    // provideClientHydration(),
     DeactivateRoute
   ],
-  bootstrap: [AppComponent]
-})
+  bootstrap: [AppComponent],
+},
+  
+
+
+)
   
 export class AppModule { 
 

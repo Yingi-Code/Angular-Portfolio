@@ -9,8 +9,8 @@ export class RouteExtraParamsService {
 
   constructor() { }
 
-  set productId(value: number) { this._productId = value; }
-  get productId(): number { return this._productId;}
+  set setProductId(value: number) { this._productId = value; }
+  get getProductId(): number { return this._productId;}
 
   set productCategory(value: string) { this._productCategory = value;}
   get productCategory(): string { return this._productCategory; }

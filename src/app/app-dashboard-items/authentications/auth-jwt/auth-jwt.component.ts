@@ -81,10 +81,10 @@ export class AuthJwtComponent implements OnInit {
 
           //store Token for this user in localStorage
           this.authStorage.saveToken(userData.token);
-          console.log('[1. Login] ----- Store token ----- ');
-          console.log(userData.token);
+          //console.log('[1. Login] ----- Store token ----- ');
+          //console.log(userData.token);
 
-          console.log('[2. Login] ----- Store user in local storage ----- ');
+          //.log('[2. Login] ----- Store user in local storage ----- ');
           this.setStorageData(val.username, val.password);
 
          
@@ -105,8 +105,8 @@ export class AuthJwtComponent implements OnInit {
         
         //store the record for this user in localStorage
         this.authStorage.saveUser(userRecordFound);  
-        console.log('[3. Login]  ----- User record stored -----');
-        console.log(userRecordFound);
+        //console.log('[3. Login]  ----- User record stored -----');
+        //console.log(userRecordFound);
 
         console.log('[4. Login] ----- Store carts in local storage ----- ');
         this.getUserCartsQuantity();
@@ -119,18 +119,18 @@ export class AuthJwtComponent implements OnInit {
     this.carts.getUserCarts(userId)
       .subscribe((userCarts: any) => {
         if (userCarts) {
-          console.log('[5. Login] --- User carts found ---');
-          console.log(userCarts);
+          //console.log('[5. Login] --- User carts found ---');
+          //console.log(userCarts);
 
           this._userCarts = userCarts;
           this._Quantity = this._userCarts?.length.toString();
 
-          console.log('[6. Login] --- Send quantity to storage---');
-          console.log(this._Quantity);
+          //console.log('[6. Login] --- Send quantity to storage---');
+          //console.log(this._Quantity);
           this.authStorage.setCartsQuantity(this._Quantity);
 
-          console.log('[7. Login] --- Finally update values ---');
-          console.log('--------------------------------------------');
+          //console.log('[7. Login] --- Finally update values ---');
+          //console.log('--------------------------------------------');
           this.authStorage.updateFirstName();
           this.authStorage.updateCartsQuantity();
         }

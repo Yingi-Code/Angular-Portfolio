@@ -55,8 +55,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._user = this.authStorage.getUser();
-    console.log('[1. NavBar] --- User ID ---');
-    console.log('user Id: ' + this._user.id); 
+    //console.log('[1. NavBar] --- User ID ---');
+    //console.log('user Id: ' + this._user.id); 
     
     this.displayUserFirstName();
     this.displayUserCartsQuantity();
@@ -67,8 +67,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.subscription = this.authStorage.userFirstName$
         .subscribe((userFirstName?: string) => {
           this.firstname = userFirstName;
-          console.log('[2 .NavBar] --- Updated Firstname ---');
-          console.log('First name: ' + this.firstname);
+          //console.log('[2 .NavBar] --- Updated Firstname ---');
+          //console.log('First name: ' + this.firstname);
         });
   }
 
@@ -77,8 +77,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscription = this.authStorage._userCartsAmountSub$
       .subscribe((_userCartsAmountSub?: string) => {
         this._userCartsQuantity = _userCartsAmountSub;
-        console.log('[3 .NavBar] --- Updated carts quantity ---');
-        console.log('Quantity : ' + this._userCartsQuantity);
+        //console.log('[3 .NavBar] --- Updated carts quantity ---');
+        //console.log('Quantity : ' + this._userCartsQuantity);
       });
   }
 

@@ -34,7 +34,7 @@
                     
                     <li [class.active]="viewMode == 'dashboardTab'">
                     
-                        <a (click)="viewMode = 'dashboardTab'" routerLink="/dashboard" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/cpanel" class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
                         Panel</a>
                     </li>
                     
@@ -49,9 +49,11 @@
                         
                         <!-- filter-options using drop-down list -->
                         <div class="col-md-3 filter-container">                      
-                            <select #filterOption (change)="filterBy(filterOption.value)" class="form-select form-select-sm dropdown-list" required> 
-                                <option hidden 
+                            <select #productCategory (change)="filterByProductCategory(productCategory.value)" class="form-select form-select-sm dropdown-list" required> 
+                                <option 
+                                    hidden 
                                     disabled 
+                                    value="default"
                                     selected> 
                                     Filter By
                                 </option>
@@ -68,8 +70,12 @@
                         <!-- Sort-options -->
                         <div class="col-md-3 sort-container ">                      
                             <select #sortOption (change)="sortBy(sortOption.value)"  class="form-select form-select-sm dropdown-list" required>
-                                <option hidden value="0" disabled selected> 
-                                Sort By 
+                                <option 
+                                    hidden 
+                                    value="0" 
+                                    disabled 
+                                    selected> 
+                                    Sort By 
                                 </option>
                             
                                 <option 
@@ -83,18 +89,17 @@
 
                         <!-- Search section -->
                         <div class="col-md-3  search-container">
-                            <app-search (searchEvent)="searchProduct($event)"></app-search>
-                            
+                            <app-search #searchKeyword  (searchEvent)="searchByKeyword($event)"></app-search> 
                         </div>
 
                         <!-- reset-options -->
                         <div class="col-md-3 refresh-reset-btn-container">
-                            <button type="reset" class="refresh-rest-btns">
-                                <!-- <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon> -->
-                                Clear
+                            <button type="reset" (click)="getAllProducts()" class="refresh-rest-btns">
+                                <fa-icon class="" [icon]="['fas', 'eraser']"></fa-icon>
+                                Clear all
                             </button>
-                            <button class="refresh-rest-btns" (click)="getAllProducts()">
-                                <!-- <fa-icon class="" [icon]="['fas', 'arrows-rotate']"></fa-icon> -->
+                            <button class="refresh-rest-btns" (click)="refreshProductsList()">
+                                <fa-icon class="" [icon]="['fas', 'rotate-right']"></fa-icon>
                                 Refresh
                             </button>
                         </div>
@@ -118,17 +123,18 @@
                             <div class="product-details-title">
                                 {{productDetails?.title}}
                             </div>
+
+                            <div class="product-details-category">
+                                [ {{productDetails?.category | titlecase }} ]
+                            </div>
                          
                             <div class="product-details-price">
                                 {{usDollarToRandConvention(productDetails.price) | currency:'R'}}
                             </div>
-                        
                         </div>
                                                
                         <div class="col-md-5  product-details-description">
-                            <div class="product-details-category">
-                                [ {{productDetails?.category | titlecase }} ]
-                            </div>
+                            
                             <div class="product-details-rating">
                                 <b>Ratings:</b> 
                                 <ngb-rating class="star-ratings" [max]="5" [(rate)]="productDetails?.rating.rate" [readonly]="false"></ngb-rating> 
@@ -139,38 +145,34 @@
                             <b>Counts:</b> {{productDetails?.rating.count}}
                             </div>
 
-                            <button class=" btn btn-sm product-item-btn buy-btn" title="click to buy">
-                                Buy
-                            </button>
-                            <button class=" btn btn-sm product-item-btn" title="add to busket">
-                                <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
-                            </button>
-                            <button class=" btn btn-sm product-item-btn" (click)="hideProductDetailsview" title="Close">
-                                <!-- <fa-icon class="" [icon]="['fas', 'xmark']"></fa-icon>  -->
-                                Close
-                            </button>
+                            <div>
+                                <button class=" btn btn-sm product-item-btn buy-btn" title="Place order">
+                                    <fa-icon class="" [icon]="['fas', 'bag-shopping']"></fa-icon>
+                                    Order
+                                </button>
+                                <button class=" btn btn-sm product-item-btn" title="Add to cart">
+                                    <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
+                                    Add
+                                </button>
+                                <button class=" btn btn-sm product-item-btn" (click)="viewProductDetails(productDetails.id)" title="More details">
+                                    <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
+                                    Details
+                                </button>
+                                
+                            </div>
+
+                            <div>
+                                <button class=" btn btn-sm product-item-btn dismiss-btn" (click)="hideProductDetailsview" title="Dismiss">
+                                    <!-- <fa-icon class="" [icon]="['fas', 'chevron-up']"></fa-icon> -->
+                                    Dismiss
+                                </button>
+                            </div>
+                            
                         </div>
                     </div>
-
-                    <!-- product-details-description-->
-                    <div class="row product-details-second-row">
-                        <div>
-                            <details>
-                                <summary>Product Description</summary>
-                                <p>{{productDetails?.description}}</p>
-                            </details>
-
-                        </div>
-                    </div>
-                   
+                  
                 </div>
-                
-                <!--                 
-                <div *ngIf="productDetailsLoading" class="spinner-container">
-                    <app-loading-spinner></app-loading-spinner> &nbsp;
-                    loading...
-                </div> -->
-            
+                      
                 <!-- products-list-section -->
                 <div *ngIf="productsList!=null" class="products-container">
                     <!-- loop products-list -->
@@ -184,28 +186,28 @@
                         <!-- product -->
                             <div  class="product-container">
                 
-                                <div class=" product-img-container" (click)="getThisProductDetails(product.id)" title="product details">
+                                <div fragment="product-preview" class=" product-img-container" (click)="productPreview(product.id)" title="Preview">
                                     <img src="{{product.image}}" class="product-image responsive " />
                                 </div>
                 
                                 <div class="product-details">
-                                    <div class="product-title" (click)="getThisProductDetails(product.id)" title="product details">
+                                    <div class="product-title" (click)="productPreview(product.id)" title="Preview">
                                         {{product.title.slice(0,8)}} ..
                                     </div>
                 
-                                    <div class="product-price" (click)="getThisProductDetails(product.id)" title="product details">
+                                    <div class="product-price" (click)="productPreview(product.id)" title="Preview">
                                         <fa-icon class="" [icon]="['fas', 'tag']"></fa-icon> 
                                         {{ usDollarToRandConvention(product.price) | currency:'R': 'symbol'}}
                                     </div>
                 
                                     <div class="product-btns-container">
-                                        <button class=" btn btn-sm product-item-btn buy-btn" title="click to buy">
+                                        <button class=" btn btn-sm product-item-btn buy-btn" title="Click to buy">
                                             Buy
                                         </button>
-                                        <button class=" btn btn-sm product-item-btn" title="add to busket">
+                                        <button class=" btn btn-sm product-item-btn" title="Add to cart">
                                             <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>              
                                         </button>
-                                        <button class=" btn btn-sm product-item-btn" (click)="getThisProductDetails(product.id)" title="product details">
+                                        <button class=" btn btn-sm product-item-btn" (click)="viewProductDetails(product.id)" title="More details">
                                             <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
                                         </button>
 
@@ -224,6 +226,12 @@
                     loading...
                 </div>
 
+                <!-- Pagenation section-->
+                <div *ngIf="productsList?.length!=0" class="pagenation-container">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+
                 <!-- Items not found view -->
                 <div *ngIf="productsList?.length == 0 " class=" product-list-container">
                     <div class="noItemFound">
@@ -234,19 +242,14 @@
                         <div class="noItemFoundDescription">
                             The item you are searching for could not be found. <br/>
                             <button class="rearch-error-button" (click)="getAllProducts()" >
-                                <fa-icon class="" [icon]="['fas', 'magnifying-glass']"></fa-icon>
-                                &nbsp; search again
+                                <!-- <fa-icon class="" [icon]="['fas', 'magnifying-glass']"></fa-icon> -->
+                                 try again
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pagenation section-->
-                <div  *ngIf="!productListLoading"  class="pagenation-container">
-                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-                    </pagination-controls>
-                </div>
-                               
+                          
             </div>
                     
             <div *ngSwitchCase="'desciptionTab'">

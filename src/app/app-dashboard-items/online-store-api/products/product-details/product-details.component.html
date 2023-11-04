@@ -1,1 +1,172 @@
-<p>product-details works!</p>
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ API - ONLINE STORE ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            LIST, SEARCH, AND VIEW THE DETAILS OF EACH PRODUCT.
+        </p>
+
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+<div class="row page-content">
+
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
+        <!-- page content -->
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                   
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
+                            Details
+                        </a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" routerLink="/app/online-store" class="nav-link  btn tab-text"
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon> Store</a>
+                    </li>                   
+
+                    <li [class.active]="viewMode == 'dashboardTab'">
+
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/cpanel"
+                            class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']">
+                            </fa-icon>
+                            Panel</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+
+                <!-- products-details-section -->
+                <div *ngIf="_productDetails!=null" class="product-details-container">
+
+                    <div class="row product-details-first-row">
+                        <!-- product-details-image-->
+                        <div class="col-md-2 product-details-image-container">
+                            <div class="product-details-image">
+                                <img src="{{_productDetails?.image}}" (click)="open(0)" class="responsive" />
+                            </div>
+                        </div>
+
+                        <!-- product-details-price-->
+                        <div class="col-md-5 product-details-title-price ">
+                            <div class="product-details-category">
+                                [ {{_productDetails?.category | titlecase }} ]
+                            </div>
+                            <div class="product-details-title">
+                                {{_productDetails?.title}}
+                            </div>
+                            <div class="product-details-price">
+                                {{usDollarToRandConvention(_productDetails.price) | currency:'R'}}
+                            </div>
+                        </div>
+
+                        <div class="col-md-5  product-details-description">
+
+                            <div class="product-details-rating">
+                                <b>Ratings:</b>
+                                <ngb-rating class="star-ratings" [max]="5" [(rate)]="_productDetails?.rating.rate"
+                                    [readonly]="false"></ngb-rating>
+                                ({{_productDetails?.rating.rate}})
+
+                            </div>
+                            <div class="product-details-count">
+                                <b>Counts:</b> {{_productDetails?.rating.count}}
+                            </div>
+
+                            <div>
+                                <button class=" btn btn-sm product-item-btn buy-btn" title="Add to cart">
+                                    <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
+                                    Add
+                                </button>
+                                <button class=" btn btn-sm product-item-btn"
+                                    title="Place order">
+                                    <fa-icon class="" [icon]="['fas', 'bag-shopping']"></fa-icon>
+                                    Order
+                                </button>
+                                <button 
+                                    class=" btn btn-sm product-item-btn more-btn" 
+                                    title="More products"
+                                    (click)="allProducts()">
+                                    <fa-icon class="" [icon]="['fas', 'list']"></fa-icon> 
+                                    More
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row product-details-second-row">
+                        <!-- accordio starts here -->
+                        <div class="  accordion outer-accordion accordion-flush" id="accordionExample">
+                        
+                            <div class="accordion-item">
+                                <h2 class="accordion-header " id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                        aria-expanded="false" aria-controls="collapseTwo">
+                                        <fa-icon class="concept-icon" [icon]="['far', 'bookmark']"></fa-icon>&nbsp;
+                                        DESCRIPTION
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{_productDetails.description}}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- spinner section -->
+                <div *ngIf="_productDetailsLoading" class="spinner-container">
+                    <app-loading-spinner></app-loading-spinner> &nbsp;
+                    loading...
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <section class="about-paragraphs borderd-paragraph">
+                    This example covers the basics of template directives and how they can be
+                    used.<br />
+                </section>
+                <section class="about-name ">Covered concepts</section>
+                <section class="about-paragraphs">
+                    <ul class="skills-list">
+                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
+                            greater than 0 </li>
+                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
+                            is equal to</li>
+                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
+                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
+                        </li>
+                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
+                            portfolio</li>
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Sidebar-->
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>
+
