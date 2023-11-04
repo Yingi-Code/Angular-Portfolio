@@ -220,6 +220,18 @@
                     </div>
                 </div>
 
+                <!-- Items not found view -->
+                <div *ngIf="errorMessage" class=" product-list-container">
+                    <div class="noItemFound">
+                        <div class="noItemFoundTitle">                
+                            Sorry!
+                        </div>
+                        <div class="noItemFoundDescription">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                </div>
+
                 <!-- spinner section -->
                 <div *ngIf="loadingStatus" class="spinner-container">
                     <app-loading-spinner></app-loading-spinner> &nbsp;
