@@ -2,7 +2,7 @@
     <div class="welcome-messsage bg-light">
         <h3>[ API - ONLINE STORE ]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
-            LIST, SEARCH, AND VIEW THE DETAILS OF EACH PRODUCT.
+            FILTER, SORT, SEARCH, AND LIST PRODUCTS.
         </p>
 
         <div class="social-buttons-aligner slide-up">
@@ -221,7 +221,7 @@
                 </div>
 
                 <!-- spinner section -->
-                <div *ngIf="productListLoading" class="spinner-container">
+                <div *ngIf="loadingStatus" class="spinner-container">
                     <app-loading-spinner></app-loading-spinner> &nbsp;
                     loading...
                 </div>

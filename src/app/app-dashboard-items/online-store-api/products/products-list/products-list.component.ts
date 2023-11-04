@@ -5,7 +5,7 @@ import { ProductService } from 'src/app/app-shared/services/online-store-service
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';
 import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
-import { map } from 'rxjs';
+import { catchError, map, of, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -22,7 +22,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   viewMode = 'defaultTab'
 
   //Loading spinner
-  productListLoading?: boolean;
+  loadingStatus?: boolean;
   productDetailsLoading?: boolean;
 
   //To be declared as Product []
@@ -87,22 +87,35 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this._selectedProductCategory = 'default';
     this._selectedSortOption = '0';
     
-    // when the system initializes, fetch the products list
+    //fetch the products list
     this.getAllProducts();
-    console.log('----- Component has been initialized -----');
     this.productDetails = null;
   }
 
-  get getProductCategories() { return this.productService.getProductCategories;}
-  get getSortOptions() {return this.productService.getSortOptions;}
-  get hideProductDetailsview() { return this.productDetails = null;}
+  get getProductCategories() {
+    return this.productService.getProductCategories;
+  }
+  get getSortOptions() {
+    return this.productService.getSortOptions;
+  }
+  get hideProductDetailsview() {
+    return this.productDetails = null;
+  }
 
   getAllProducts() {
     //display spinner while loading data
-    this.productListLoading = true;
+    this.loadingStatus = true;
+
     //retrieve all products
     this.productService.getProducts().pipe( 
       map((res: any) => {
+
+        //no data found error
+        if (res.length == null) {
+          throw "Product items found.";  
+        }
+
+        //return sorted http response data in ASC order
         res.sort((a: any, b: any) => {
           let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
           if (fa < fb) {
@@ -115,12 +128,28 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         });
 
         return res;
-      } )).subscribe((res: any) => {
-      this.productsList = res;
-        this.productListLoading = false
+      }),
+
+      //catch http response error
+      catchError(err => {
+        throw err;
       })
-   
+    )
       
+    .subscribe({
+      //http response data param
+      next: (res: any) => {
+          this.productsList = res;
+        this.loadingStatus = false;
+        },
+        
+      //http response error param
+      error: (err: any) => {
+            console.error(err)
+      }
+    }
+    )
+   
     return this.productsList;
   }
 
@@ -166,7 +195,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.productService.getProducts()
       .subscribe((data: any) => { 
           this.productsList = data.filter((p: any) => p.category.toLowerCase() === selectedCategory);
-          this.productListLoading = false
+        this.loadingStatus = false
       });
  }
   
@@ -200,7 +229,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
                     (list.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase()))))
                     )                   
                   );
-                this.productListLoading = false
+            this.loadingStatus = false
               
               } else {
 
@@ -209,7 +238,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
                 this.productsList =
                   ((data.filter((products: any) => (products.title.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))) ||
                     (data.filter((products: any) => (products.description.toLowerCase().includes(_searchKeyWord.toLocaleLowerCase())))));
-                this.productListLoading = false
+            this.loadingStatus = false
                 
               }
         });

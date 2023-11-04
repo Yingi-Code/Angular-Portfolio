@@ -3,10 +3,7 @@
 }
 
 .sidebar-heading {
-    padding-left: 15px;
-    padding-top: 12px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    
     background-color: orangered;
     color: white;
     font-weight: bold;
@@ -14,7 +11,6 @@
 
 .sidebar-projects-list {
     margin-bottom: 10px;
-
 }
 
 a {

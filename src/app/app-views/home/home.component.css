@@ -21,27 +21,9 @@
     position: relative;
 }
 
-/* .featured-items-image:hover {
-    opacity: 0.4;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
-
-/* not being used for now */
-.featured-items-image .image-onhover {
-    position: absolute;
-    left: 150px;
-    top: 50px;
-    display: none;
-    max-width: 100%;
-}
-
-/* not being used for now */
-.featured-items-image:hover .image-onhover {
-    display: block;
-}
 
 .featured-items-image img {
-    max-height: 100px;
+    max-height: 70px;
     max-width: 100%;
 }
 
