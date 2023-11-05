@@ -130,28 +130,25 @@ export class FormsReactiveComponent {
   //Add new developer or Update an existing developer
   async Developer() {
    
-    //take only four developers - for demo purpose
-      // button mode false = display empty form
+    /*
+     take only four developers - for demo purpose
+     button mode false = display empty form
+     */
     if (this.formSubmitBtnMode == false) {
-      //take only up to four developers - for demo purpose
-      if (this.developers?.length != 4) {
-        if (await this.alertsService.addConfirmation) {
-        //
-          this.developerService.AddDeveloper(this.developerForm.value);
+        //take only up to four developers - for demo purpose
+        if (this.developers?.length != 4) {
+          
+          //pop-up item update confirmation alert
+          if (await this.alertsService.addConfirmation) {
+          //
+            this.developerService.AddDeveloper(this.developerForm.value);
+          }
+
+        } else {
+          //display alert notification
+          await this.alertsService.addLimitErrorNotification;
         }
-
-      } else {
-        //Pop-up toastr message , in case the developer array length reaches 4
-        // this.messange = "Sorry, you reach your limit!";
-        // this.showToasterError();
-
-        await this.alertsService.addLimitErrorNotification;
-      }
-        //set torstr message - created
-        // this.messange = "Profile created successfully! ";
-        // this.showToasterSuccess();
         this.developerForm.reset();
-
         //button mode true = update populated data
       } else {
 

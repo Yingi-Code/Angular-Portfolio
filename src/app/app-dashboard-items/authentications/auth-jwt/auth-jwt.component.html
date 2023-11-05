@@ -43,10 +43,10 @@
             </div>
 
             <div *ngSwitchCase="'defaultTab'">
-                <!-- first row  - Develper form -->
+                <!-- first row  - login form-->
                 <section class="row dome-form-container">
                     <!-- Form -->
-                    <form [formGroup]="developerForm" class="login-form">
+                    <form [formGroup]="_developerForm" class="login-form">
                         <div class="form-sections-headings">
                             <!-- <fa-icon class="concept-icon" [icon]="['fas', 'unlock']"></fa-icon> -->
                             Please login
@@ -54,6 +54,12 @@
 
                         <section class="row">
                             <div class="form-first-column">
+                                <div   *ngIf="_errorMessage" class="login-error-messages">
+                                    <fa-icon class="concept-icon" [icon]="['far', 'bell']"></fa-icon>
+                                    {{
+                                        _errorMessage
+                                    }}
+                                </div>
 
                                 <div class="form-group">
                                     <!-- #username allows angular to bind form-controls change status to ngModel -->
@@ -83,12 +89,11 @@
                                             required</div>
                                     </div>
                                 </div>
+                                
 
                                 <div class="form-group">
-
                                     <!-- keeps the button inactive untill when the for is valid -->
-                                    <input type="submit" value="Login" (click)="login()"
-                                        [disabled]="!developerForm.valid" class="btn btn-sm submit-button">
+                                    <input type="submit" value="Login" (click)="login()"[disabled]="!_developerForm.valid" class="btn btn-sm submit-button">
                                     <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn">
                                     <input type="button" value="[ Password reset ]" class="btn btn-link right-btn">
                                     <input type="button" value="[ Options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">

@@ -87,9 +87,9 @@ export class ProductDetailsComponent {
         return _httpResponseData;
       }),
       //catch http response error
-      catchError(_httpresponseerror => {
+      catchError(_httpResponseError => {
         this._productDetailsLoading = false
-        throw _httpresponseerror;
+        throw _httpResponseError;
       })
     )  
       .subscribe({
@@ -99,8 +99,8 @@ export class ProductDetailsComponent {
         }  
       ,
         //http response error param
-        error: (_httpresponseerror) => {
-          this._errorMessage = _httpresponseerror;
+        error: (_httpResponseError) => {
+          this._errorMessage = _httpResponseError;
           this._productDetailsLoading = false
         }
       });  
