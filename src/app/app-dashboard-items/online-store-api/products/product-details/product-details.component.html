@@ -98,8 +98,8 @@
                                     class=" btn btn-sm product-item-btn more-btn" 
                                     title="More products"
                                     (click)="allProducts()">
-                                    <fa-icon class="" [icon]="['fas', 'list']"></fa-icon> 
-                                    More
+                                    <fa-icon class="" [icon]="['fas', 'basket-shopping']"></fa-icon> 
+                                    shop
                                 </button>
                             </div>
 
@@ -141,9 +141,9 @@
                             {{_errorMessage}}
                         </div>
 
-                        <button class="rearch-error-button" (click)="allProducts()">
-                            <!-- <fa-icon class="" [icon]="['fas', 'magnifying-glass']"></fa-icon> -->
-                            try again
+                        <button class="result-error-button" (click)="allProducts()">
+                            <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>
+                            Contine shopping
                         </button>
                     </div>
                 </div>

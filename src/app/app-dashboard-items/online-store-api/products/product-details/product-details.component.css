@@ -202,16 +202,18 @@ summary {
     font-size: 20px;
 }
 
-.rearch-error-button {
+.result-error-button {
     padding: 5px;
     padding-left: 40px;
     padding-right: 40px;
     border: none;
     margin-top: 15px;
     border-radius: 5px;
+    background-color: orange;
+    color: white;
 }
 
-.rearch-error-button:hover {
-    background-color: orange;
+.result-error-button:hover {
+    background-color: red;
     color: white;
 }
