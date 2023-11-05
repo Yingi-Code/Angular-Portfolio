@@ -4,9 +4,8 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { ProductService } from 'src/app/app-shared/services/online-store-services/products/products.service';
 import { Lightbox } from 'ngx-lightbox';
 import { LightboxConfig } from 'ngx-lightbox';
-import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
-import { catchError, filter, map, of, throwError } from 'rxjs';
-import { Console } from 'console';
+import { catchError, map } from 'rxjs';
+
 
 @Component({
   selector: 'app-products-list',
@@ -24,17 +23,18 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   //Loading spinner
   _loadingStatus?: boolean;
+  _previewLoadingStatus?: boolean;
   
   //http response error message
   _errorMessage: string = '';
 
   //To be declared as Product []
   _productsList: any;
-  private _searchKeyWord: string = '';
-
+ 
   //observables subscriptions
   private _subscription: any;
 
+  //product preview
   _productDetails: any;
   _priceInSouthAfricanRand: any;
 
@@ -43,7 +43,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   _count: number = 0;
   _tableSize: number = 10;
 
-  //Image Viwer
+  //product image viwer
   private _albums: any = [];
   private _images = [
     {
@@ -51,8 +51,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       caption: ""
     }
   ];
- 
-  i: number = 0;
  
   //get seleted dropdown item from the view
   private _selectedProductCategory: string = '';
@@ -65,7 +63,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _lightboxConfig: LightboxConfig, private _lightbox: Lightbox
   ) {
-
     _lightboxConfig.fadeDuration = 0.7;
     _lightboxConfig.resizeDuration = 0.5;
     _lightboxConfig.fitImageInViewPort = true;
@@ -84,13 +81,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     _lightboxConfig.containerElementResolver = () => document.body;   
   }
 
-  //Initiate the program
   ngOnInit(): void {
-
+    //set defaults
     this._selectedProductCategory = 'default';
     this._selectedSortOption = '0';
-    
-    //fetch the products list
     this.getAllProducts();
     this._productDetails = null;
   }
@@ -114,7 +108,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this._subscription = this._productService.getProducts().pipe( 
       map((_httpResponseData: any) => {
 
-        //no data found error
+        //no http response data found - error
         if (_httpResponseData.length == 0) {
           throw "The system could not load data from the server.";  
         }
@@ -151,7 +145,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
 
   //reload the http response data - products
   refreshProductsList() {
-
+    //filters selections
     this._selectedProductCategory = this._productCategory.nativeElement.value;
     this._selectedSortOption = this._sortOption.nativeElement.value;
 
@@ -170,20 +164,20 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   //display product details on the same _page
-  productPreview(productId: number) {
-    console.log('Product ID = ' + productId);
-    this._loadingStatus = true;
-    this._productService.getProduct(productId)
+  productPreview(_productId: number) {
+    console.log('Product ID = ' + _productId);
+    this._previewLoadingStatus = true;
+    this._productService.getProduct(_productId)
       .subscribe((data: any) => {
         this._productDetails = data;
         setTimeout(() => {
-          this._loadingStatus = false
+          this._previewLoadingStatus = false
         }, 10);
       });
   }
 
   //filter http response data by product category
-  filterByProductCategory(selectedCategory: string) {
+  filterByProductCategory(_selectedCategory: string) {
     this._subscription = this._productService.getProducts().pipe(
     map((_httpResponseData: any) => {
       return _httpResponseData;
@@ -200,7 +194,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
       next: (_httpResponseData: any) => {
         
       //Filter the http response data by category
-      this._productsList = _httpResponseData.filter((p: any) => p.category.toLowerCase() === selectedCategory);
+        this._productsList = _httpResponseData.filter((p: any) => p.category.toLowerCase() === _selectedCategory);
       //sort the new list of products
       this.sortBy(this._sortOption.nativeElement.value);
     },
@@ -218,8 +212,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   //Search only, Filter only, filter and search, search and filter
   searchByKeyword(_searchKeyWord: string) {
 
-    let category = this._productCategory.nativeElement.value;
-      
+    let category = this._productCategory.nativeElement.value;  
     //subscribe to an observable
     this._subscription = this._productService.getProducts().pipe(
           map((_httpResponseData: any) => {
@@ -262,12 +255,11 @@ export class ProductsListComponent implements OnInit, OnDestroy {
         });
     
     return this._productsList;
-
   }
 
   //sort http response data by selected sort param
-  sortBy(sortOptionId: string) {
-    switch (sortOptionId) {
+  sortBy(_sortOptionId: string) {
+    switch (_sortOptionId) {
       //price - asc
       case '1':
         this._productsList = this._productsList.sort((a: any, b: any) => a.price - b.price);
@@ -328,12 +320,14 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   //Open selected image in lightBox view
-  open(index: number): void {
+  open(_index: number): void {
 
+    //get selected image details
     const src = this._productDetails.image;
     const caption = this._productDetails.title;
     const thumb = this._productDetails.image;
 
+    //create an instance of image
     const productImageDetails = {
       src: src,
       caption: caption,
@@ -343,7 +337,7 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     // this._albums.push(productImageDetails);
     this._albums[0] = productImageDetails;
     // open lightbox
-    this._lightbox.open(this._albums, index);
+    this._lightbox.open(this._albums, _index);
   }
 
   // close lightbox programmatically
@@ -352,22 +346,22 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   //US Dollar to ZRA convention
-  usDollarToRandConvention(usDollar: number) {
-    return usDollar * 18;
+  usDollarToRandConvention(_usDollar: number) {
+    return _usDollar * 18;
   }
 
   //Pagenation methods
-  onTableDataChange(event: any) {
-    this._page = event;
+  onTableDataChange(_event: any) {
+    this._page = _event;
   }
   //Pagenation methods
-  onTableSizeChange(event: any): void {
-    this._tableSize = event.target.value;
+  onTableSizeChange(_event: any): void {
+    this._tableSize = _event.target.value;
     this._page = 1;
   }
   //view selected product in product-details component
-  viewProductDetails(id: number) {
-    this._router.navigate(['app/online-store/product-details/', id]);
+  viewProductDetails(_id: number) {
+    this._router.navigate(['app/online-store/product-details/', _id]);
   }
 
   ngOnDestroy(): void {

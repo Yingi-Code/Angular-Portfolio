@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LightboxConfig, Lightbox } from 'ngx-lightbox';
+import { catchError, map } from 'rxjs';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { ProductService } from 'src/app/app-shared/services/online-store-services/products/products.service';
-import { RouteExtraParamsService } from 'src/app/app-shared/services/router-params-services/route-extra-params.service';
 
 @Component({
   selector: 'app-product-details',
@@ -20,21 +20,20 @@ export class ProductDetailsComponent {
 
   private _productId: number = -0;
   _productDetailsLoading?: boolean;
-
   //ti be declare appropriately
-   _productDetails?: any;
+  _productDetails?: any;
+  
+  //http response error message
+  _errorMessage: string = '';
 
-  //Image Viwer
-  albums: any = [];
+  //product image viwer
+  private _albums: any = [];
   private _images = [
     {
       src: "",
       caption: ""
     }
   ];
-
-  i: number = 0;
-  selectedImageIndex: number = 0;
 
   constructor(
     private _productService: ProductService,
@@ -65,8 +64,7 @@ export class ProductDetailsComponent {
   }
 
   ngOnInit(): void {
-    
-    // this._productId = this.routeExtraParams.getProductId;
+    //retrieve the selected item id
     this._activatedroute.params.subscribe(params => {
       this._productId = params['id'];
     });
@@ -74,46 +72,73 @@ export class ProductDetailsComponent {
     this.productDetails();
   }
 
-   productDetails() {
-    this._productDetailsLoading = true;
-    this._productService.getProduct(this._productId)
-      .subscribe((data: any) => {
-        this._productDetails = data;
+  productDetails() {
+     this._productDetailsLoading = true;
+    this._productService.getProduct(this._productId).pipe(
+      map((_httpResponseData: any) => {
+
+        //no http response data found - error
+        if (!_httpResponseData) {
+          throw 'The details for product with id [ ' + this._productId + ' ] were not found ';
+        }
         setTimeout(() => {
           this._productDetailsLoading = false
         }, 10);
-      });
+        return _httpResponseData;
+      }),
+      //catch http response error
+      catchError(_httpresponseerror => {
+        this._productDetailsLoading = false
+        throw _httpresponseerror;
+      })
+    )  
+      .subscribe({
+       //http response data param
+        next: (_httpResponseData) => {
+          this._productDetails = _httpResponseData  
+        }  
+      ,
+        //http response error param
+        error: (_httpresponseerror) => {
+          this._errorMessage = _httpresponseerror;
+          this._productDetailsLoading = false
+        }
+      });  
+    return this._productDetails;
    }
   
   allProducts() {
     this._router.navigate(['/app/online-store']); 
   }
 
-  usDollarToRandConvention(usDollar: number) {
-    return usDollar * 18;
+  usDollarToRandConvention(_usDollar: number) {
+    return _usDollar * 18;
   }
 
-  //Imgage viewer
-  open(index: number): void {
+  //Open selected image in lightBox view
+  open(_index: number): void {
 
+    //get selected image details
     const src = this._productDetails.image;
     const caption = this._productDetails.title;
     const thumb = this._productDetails.image;
 
+    //create an instance of image
     const productImageDetails = {
       src: src,
       caption: caption,
       thumb: thumb
     };
 
-    this.albums.push(productImageDetails);
-
+    //this._albums.push(productImageDetails);
+    this._albums[0] = productImageDetails;
     // open lightbox
-    this._lightbox.open(this.albums, 0);
+    this._lightbox.open(this._albums, _index);
   }
 
+  //close lightbox programmatically
   close(): void {
-    // close lightbox programmatically
+ 
     this._lightbox.close();
   }
 

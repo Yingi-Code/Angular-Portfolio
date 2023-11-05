@@ -186,3 +186,32 @@ summary {
     border: none;
     /* border: 1px solid lightgrey; */
 }
+
+/* ------------------- No items found - container--------------------- */
+.noItemFound {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.noItemFoundTitle {
+    font-size: 30px;
+}
+
+.noItemFoundDescription {
+    font-size: 20px;
+}
+
+.rearch-error-button {
+    padding: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: none;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.rearch-error-button:hover {
+    background-color: orange;
+    color: white;
+}
