@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { ICustomer } from 'src/app/app-shared/interfaces/icustomer/icustomer';
+import { IUser } from 'src/app/app-shared/interfaces/iuser/iuser';
 import { AuthStorageService } from 'src/app/app-shared/services/authentication/auth-storage/auth-storage.service';
 import { CartsService } from 'src/app/app-shared/services/online-store-services/carts/carts.service';
 
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   //to be declared properly
   private _userCarts?: any;
-  private _user: ICustomer;
+  private _user: IUser;
   subscription?: Subscription;
   
   constructor(
@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   public login() {
-    this.router.navigate(['/account/auth-jwt']);
+    this.router.navigate(['/account']);
   }
 
   loginOptions() {

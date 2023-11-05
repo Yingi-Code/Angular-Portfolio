@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, title: "My RPs - Account" },
   {
     path: 'account', children: [
-      { path: 'auth-jwt', component: AuthJwtComponent,  title: "My RPs - JWT Auth" },
+      { path: 'auth-jwt', component: AuthJwtComponent, canDeactivate: [DeactivateRoute],  title: "My RPs - JWT Auth" },
       { path: 'auth-basic', component: AuthBasicComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Basic Auth" }
     ]
   },

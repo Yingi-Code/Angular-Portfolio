@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/app/app-shared/services/online-store-services/shared-base-url/baseUrl';
-import { ICustomer } from 'src/app/app-shared/interfaces/icustomer/icustomer';
+
 
 @Injectable({
   providedIn: 'root'

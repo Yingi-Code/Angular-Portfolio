@@ -8,7 +8,6 @@ import { UsersService } from 'src/app/app-shared/services/online-store-services/
 import { CartsService } from 'src/app/app-shared/services/online-store-services/carts/carts.service';
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
 import { catchError, map, throwError } from 'rxjs';
-import { error } from 'console';
 
 @Component({
   selector: 'app-auth-jwt',
@@ -84,7 +83,8 @@ export class AuthJwtComponent implements OnInit {
             this._authStorage.saveToken(_httpResponseData.token);
 
           //set User object to be stored in sessionStorage
-            this.setStorageData(val.username, val.password);
+          this.setStorageData(val.username, val.password);
+          this._developerForm.reset();
             this._router.navigate(['/']);
           },
           //http response error param
@@ -98,7 +98,7 @@ export class AuthJwtComponent implements OnInit {
 
   //store  loggedIn user record after successful login
   private setStorageData(_username: string, _password: string): void {
-    let _userRecordFound: any;
+  
     this._users.getUsers().pipe(
       map((_httpResponseData: any) => {
 
