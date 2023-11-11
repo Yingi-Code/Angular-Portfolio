@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { AuthStorageService } from 'src/app/app-shared/services/authentication/auth-storage/auth-storage.service';
 import { AuthService } from 'src/app/app-shared/services/authentication/auth/auth.service';
 import { UsersService } from 'src/app/app-shared/services/online-store-services/users/users.service';
 import { CartsService } from 'src/app/app-shared/services/online-store-services/carts/carts.service';
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
-import { catchError, map, throwError, filter } from 'rxjs';
+import { catchError, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-auth-basic',
@@ -34,7 +34,6 @@ export class AuthBasicComponent implements OnInit {
     private _users: UsersService,
     private _carts: CartsService,
     private _router: Router,
-    private _activatedRoute: ActivatedRoute,
     private _authStorage: AuthStorageService,
     private _alertsService: AlertNotificationsService) {
   }

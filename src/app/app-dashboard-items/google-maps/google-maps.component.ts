@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
+import { Component, ViewChild } from '@angular/core';
+import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 
 @Component({
@@ -12,8 +12,11 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 })
   
 export class GoogleMapsComponent {
+
   @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow
+
   constructor() { }
+
   ngOnInit(): void { 
 
   }

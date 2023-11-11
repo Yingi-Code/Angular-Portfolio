@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 //for Angular Universal (SEO)
-import { bootstrapApplication, provideClientHydration} from '@angular/platform-browser';
+import { provideClientHydration} from '@angular/platform-browser';
 
 //for toasts notifications and aminations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,13 +28,13 @@ import { ContactComponent } from './app-views/contact/contact.component';
 import { PageNotFoundComponent } from './app-views/page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
 //for font-awesome
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCoffee, fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import { SidebarComponent } from './app-structure/sidebar/sidebar.component';
 
@@ -119,6 +119,7 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
     LoadingSpinnerComponent,
     AuthBasicComponent,
     
+    
     //Account and Auth components
     AccountComponent,
     AuthJwtComponent
@@ -147,7 +148,7 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
     //for lightbox image gallery
     LightboxModule,
     
-    //for toasts notifications
+    //for toasts notifications and animations
     BrowserAnimationsModule,
 
     //for pagination
@@ -173,27 +174,29 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
 
   ],
 
-  exports: [AppComponent],
+  exports: [
+    AppComponent
+  ],
 
   providers: [
     NgbCarouselConfig,
     AngularFormsDataService,
     ProductService,
-    // provideClientHydration(),
+    provideClientHydration(),
     DeactivateRoute
   ],
-  bootstrap: [AppComponent],
-},
-  
-
-
-)
+  bootstrap: [AppComponent]
+})
   
 export class AppModule { 
 
   //for Font-Awesome to be accessible globally
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas, far, fab);
+    library.addIcons(faCoffee);
   }
   
 }
+
+
+

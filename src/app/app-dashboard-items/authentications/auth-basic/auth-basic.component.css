@@ -23,7 +23,7 @@
 }
 
 .form-sections-headings {
-    color: grey;
+    color: lightgrey;
     font-weight: bold;
 }
 
@@ -89,7 +89,7 @@
     padding-left: 0px;
     padding-right: 0px;
     margin: 1px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .btn-link:hover {

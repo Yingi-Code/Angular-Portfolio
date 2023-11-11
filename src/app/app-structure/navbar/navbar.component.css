@@ -64,7 +64,7 @@ btn.active {
 }
 
 .company-identity {
-    padding: 10px;
+    padding: 20px;
     padding-left: 0px;
     text-align: left;
     color: black;
@@ -80,29 +80,43 @@ btn.active {
 }
 
 .company-name {
-    font: 1.8em sans-serif;
     padding-left: 8px;
-    /* word-spacing: -1px; */
+    font: sans-serif;
+    font-size: 28px;
+}
+
+.name-square-brackets {
+    display: inline-block;
+        margin: 0px;
+        margin-right: 5px;
+        padding: 0px;
+
 }
 
 .company-name .first-word {
-    color: darkslategray;
-    /* font-weight: bold; */
+    color: red;
+    font-weight: bold;
+    display: inline-block;
     margin: 0px;
+    margin-right: 5px;
     padding: 0px;
 }
 
 .company-name .second-word {
-    color: red;
-    font-weight: bold;
+    color: black;
+    /* font-weight: bold; */
+    display: inline-block;
     margin: 0px;
+    margin-right: 5px;
     padding: 0px;
 }
 
 .company-name .third-word {
-    color: gray;
-    font-weight: bold;
+    color: lightgray;
+    font-family: sans-serif;
+    display: inline-block;
     margin: 0px;
+    margin-right: 5px;
     padding: 0px;
 }
 

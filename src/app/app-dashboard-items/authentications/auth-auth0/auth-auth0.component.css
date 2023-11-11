@@ -1,0 +1,97 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+/* -------------------  content form --------------------- */
+.dome-form-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 15px;
+
+    background-image: url('^assets/banners/1.jpg');
+    background-color: white;
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+
+.form-sections-headings {
+    color: lightgrey;
+    font-weight: bold;
+}
+
+.login-form {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 7px;
+    border: 1px solid grey;
+}
+
+/* .form-control-textbox {
+   margin-top: 10px;
+   margin-bottom: 10px;
+} */
+
+.form-control::placeholder {
+    color: lightgrey;
+}
+
+.form-control-icon {
+    float: right;
+    margin-right: 17px;
+    margin-top: -34px;
+    position: relative;
+    z-index: 2;
+    color: lightgrey;
+}
+
+.login-error-messages {
+    padding: 5px;
+    padding-left: 8px;
+    margin-top: 4px;
+    border-radius: 5px;
+    color: red;
+    font-size: 12px;
+    border: 1px solid red;
+    ;
+
+    /* background-color: red; */
+}
+
+
+.submit-button {
+    background-color: orange;
+    width: 100%;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.submit-button:hover {
+    background-color: brown;
+    color: white;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: lightgrey;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 1px;
+    font-size: 14px;
+}
+
+.btn-link:hover {
+    color: red;
+}

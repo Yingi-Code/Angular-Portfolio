@@ -23,7 +23,7 @@
 }
 
 .form-sections-headings {
-    color: grey;
+    color: lightgrey;
     font-weight: bold;
 }
 
@@ -42,7 +42,7 @@
    margin-bottom: 10px;
 } */
 
-.form-control::placeholder{
+.form-control::placeholder {
     color: lightgrey;
 }
 
@@ -55,14 +55,15 @@
     color: lightgrey;
 }
 
-.login-error-messages{
+.login-error-messages {
     padding: 5px;
     padding-left: 8px;
     margin-top: 4px;
     border-radius: 5px;
     color: red;
     font-size: 12px;
-    border: 1px solid red;;
+    border: 1px solid red;
+    ;
 
     /* background-color: red; */
 }
@@ -88,7 +89,7 @@
     padding-left: 0px;
     padding-right: 0px;
     margin: 1px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .btn-link:hover {

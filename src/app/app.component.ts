@@ -12,7 +12,7 @@ import { CartsService } from './app-shared/services/online-store-services/carts/
 })
 
 export class AppComponent implements OnInit {
-  title = '';
+  title = 'my Angular Portfoio';
   subscription: any;
   firstname: string | undefined;
   isLoggedIn: boolean | undefined;

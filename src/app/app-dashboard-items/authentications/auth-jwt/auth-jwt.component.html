@@ -93,11 +93,13 @@
 
                                 <div class="form-group">
                                     <!-- keeps the button inactive untill when the for is valid -->
-                                    <input type="submit" value="Login" (click)="login()"[disabled]="!_developerForm.valid" class="btn btn-sm submit-button">
-                                    <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn">
-                                    <input type="button" value="[ Password reset ]" class="btn btn-link right-btn">
-                                    <input type="button" value="[ Options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">
-
+                                    <input type="submit" value="Login" (click)="login()" [disabled]="!_developerForm.valid"
+                                        class="btn btn-sm submit-button">
+                                
+                                    <!-- <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn"> -->
+                                    <input type="button" value="[ View SignIn Credentials ]" class="btn btn-link right-btn">
+                                    <input type="button" value="[ SignIn Options ]" class="btn btn-link right-btn" (click)="redirectToAccount()">
+                                
                                 </div>
                             </div>
                         </section>

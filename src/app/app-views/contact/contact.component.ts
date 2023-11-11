@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
-import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
 import { strValidator } from 'src/app/app-shared/validators/reactive-form-validators';
 
 @Component({
@@ -27,7 +26,6 @@ export class ContactComponent implements OnInit {
   ];
 
   constructor(
-    private notifyService: ToastrNotificationsService, 
     private alertsService: AlertNotificationsService) {
   }
 
@@ -60,9 +58,6 @@ export class ContactComponent implements OnInit {
   }
 
   sendMessage() {
-    //set toastr message
-    this.messange = "Request was sent successfully";
-    this.showToasterSuccess();
     this.contactForm.reset();
   }
 
@@ -79,21 +74,5 @@ export class ContactComponent implements OnInit {
     return this.exit;
   }
 
-  // ------------  Toastr Notifications section -------------------
-  showToasterSuccess() {
-    this.notifyService.showSuccess("", this.messange)
-  }
-
-  showToasterError() {
-    this.notifyService.showError("", this.messange)
-  }
-
-  showToasterInfo() {
-    this.notifyService.showInfo("", this.messange)
-  }
-
-  showToasterWarning() {
-    this.notifyService.showWarning("", this.messange)
-  }
 
 }

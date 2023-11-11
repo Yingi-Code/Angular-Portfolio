@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\app-dashboard-items\angular forms\forms-template-driven\forms-template-driven.component.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">app/app-dashboard-items/angular forms/forms-template-driven/</a> forms-template-driven.component.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.76% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>5/74</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">6.25% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.48% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>4/73</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NgForm } from '@angular/forms';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
+import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
+import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
+&nbsp;
+//Toastr alert notifications - not being used for now
+import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
+&nbsp;
+//sweet alert2 pop-up notifications
+import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
+import { IDeactivateComponent } from 'src/app/app-shared/routes-guard/deactivate-route';
+<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+@Compone<span class="cstat-no" title="statement not covered" >nt({</span>
+  select<span class="cstat-no" title="statement not covered" >or: 'app-forms-templ</span>ate-driven',
+  templa<span class="cstat-no" title="statement not covered" >teUrl: './forms-template-d</span>riven.component.html',
+  styleU<span class="cstat-no" title="statement not covered" >rls: ['./forms-template-driven.compo</span>nent.css'],
+  animat<span class="cstat-no" title="statement not covered" >ions: [</span>
+    fadeInPageTitle
+  ]<span class="cstat-no" title="statement not covered" ></span>
+})<span class="cstat-no" title="statement not covered" ></span>
+  
+export c<span class="cstat-no" title="statement not covered" >lass FormsTemplateDriv</span>enComponent implements OnInit, IDeactivateComponent {
+  @ViewChild('formData') private myForm!: NgForm;
+<span class="cstat-no" title="statement not covered" ></span>
+  //[ ng<span class="cstat-no" title="statement not covered" >Switch tag]</span>
+  viewMo<span class="cstat-no" title="statement not covered" >de = 'defaultTab';</span>
+  displa<span class="cstat-no" title="statement not covered" >yDeveloperForm: boolean =</span> true;
+<span class="cstat-no" title="statement not covered" ></span>
+  //declare an array of [type] Developer object
+  developers: IDeveloper[] = [];
+&nbsp;
+  //form properties
+  developerName = "";
+  developerEmail = "";
+  developerSubscription = false;
+  developerRole = "";
+<span class="cstat-no" title="statement not covered" ></span>
+  developerRoles: any;
+  develo<span class="cstat-no" title="statement not covered" >perIndex: any;</span>
+&nbsp;
+  objDev<span class="cstat-no" title="statement not covered" >eloperDetails: IDeveloper = {</span>
+    firstName: '',
+    emai<span class="cstat-no" title="statement not covered" >lAddress: "",</span>
+    project: {
+      isSubscribed: false,
+      developer<span class="fstat-no" title="function not covered" >Role: "",</span>
+    },<span class="cstat-no" title="statement not covered" ></span>
+  };<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  //Toas<span class="cstat-no" title="statement not covered" >tr messages</span>
+  messange: string = "";
+<span class="fstat-no" title="function not covered" ></span>
+  //subm<span class="cstat-no" title="statement not covered" >it button-mode tag</span>
+  formSu<span class="cstat-no" title="statement not covered" >bmitBtnMode: boolean = false;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+  //deve<span class="cstat-no" title="statement not covered" >loper details tag</span>
+  isDeveloperDetails: boolean = false
+<span class="fstat-no" title="function not covered" ></span>
+  //CanD<span class="cstat-no" title="statement not covered" >eactivate</span>
+  exit: boolean = true;
+&nbsp;
+  //injects the istan<span class="fstat-no" title="function not covered" >ace of formDataservice</span>
+  constr<span class="cstat-no" title="statement not covered" >uctor(</span>
+    priv<span class="cstat-no" title="statement not covered" >ate developerService: AngularFormsDataServic</span>e,
+    priv<span class="cstat-no" title="statement not covered" >ate router: Router,</span>
+    priv<span class="cstat-no" title="statement not covered" >ate route: ActivatedRoute,</span>
+    private location: Location,
+    private notifyService: ToastrNotificationsService,
+    private alertsService: Ale<span class="fstat-no" title="function not covered" >rtNotificationsService</span>
+  ) { }
+<span class="cstat-no" title="statement not covered" ></span>
+  //Loads the list of developers and list of roles
+  ngOnInit()<span class="cstat-no" title="statement not covered" >: void {</span>
+    this.develop<span class="cstat-no" title="statement not covered" >ers = this.developerService.developers;</span>
+    this.developerRoles = this.developerService.roleList;
+    this.ResetToDefa<span class="cstat-no" title="statement not covered" >ult();</span>
+    this.displayDeveloperForm = false;
+  }
+&nbsp;
+  //resets the form and its form-controls states
+  @ViewChild('formData') theForm!: NgForm;
+  
+  ClearForm() {<span class="cstat-no" title="statement not covered" ></span>
+    this.theForm.reset();
+    this.formSubmitBtnMode == false;
+    console.log('Clear fucntion executed...');
+    console.log('buttun mode is = ' + this.formSubmitBtnMode);
+  }<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+  get toggleFormDisplay() {
+    return this.displayDeveloperForm = !this.displayDeveloperForm;
+  }
+<span class="cstat-no" title="statement not covered" ></span>
+  //sets values to default
+  ResetToDefault<span class="cstat-no" title="statement not covered" >() {</span>
+    this.objDeveloperDetails.firstName = '';
+    this.objDeve<span class="cstat-no" title="statement not covered" >loperDetails.emailAddress = '';</span>
+    this.objDevelope<span class="cstat-no" title="statement not covered" >rDetails.project.developerRole = '';</span>
+    this.objDeveloperDetails.project.isSubscribed = false;
+  }<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+  //Add new deve<span class="cstat-no" title="statement not covered" >loper or update existing develop</span>er
+  async Developer(formData: NgForm) {
+&nbsp;
+      // check the button mode
+    if (this.for<span class="cstat-no" title="statement not covered" >mSubmitBtnMode == false) {</span>
+        
+      //take only four developers - for demo purpose
+      if (this.developers?.length != 4) {
+        if (await this.alertsService.addConfirmation) {
+          //<span class="fstat-no" title="function not covered" ></span>
+          this.developerService.AddDeveloper(formData.value);
+<span class="cstat-no" title="statement not covered" >        }</span>
+       <span class="cstat-no" title="statement not covered" ></span>
+      } <span class="cstat-no" title="statement not covered" >else {</span>
+<span class="cstat-no" title="statement not covered" >        //Pop-up toastr message , in case the developer array length reac</span>hes 4
+<span class="cstat-no" title="statement not covered" >        // this.messange = "Sorry, you reach your limit!";</span>
+        // this.showToasterError();
+        <span class="cstat-no" title="statement not covered" ></span>
+        await this.alertsService.addLimitErrorNotification;
+      }<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+        //set create message
+        // this.messange = "Profile <span class="fstat-no" title="function not covered" >created successfully! ";</span>
+        // this.showToasterSuccess();
+<span class="cstat-no" title="statement not covered" >        formData.reset();</span>
+<span class="cstat-no" title="statement not covered" ></span>
+    //button mode true = update for
+    } else {
+      
+        //pop-up confirmation alert<span class="fstat-no" title="function not covered" ></span>
+      if (await this.alertsService.updateConfirmation) {
+<span class="cstat-no" title="statement not covered" ></span>
+        //call the update method if the returned value is true'
+        this<span class="cstat-no" title="statement not covered" >.developerService.UpdateDeveloper(formData.value, this</span>.developerIndex);
+&nbsp;
+        //up<span class="cstat-no" title="statement not covered" >date the displayed developer details if same user</span>
+        if (this<span class="cstat-no" title="statement not covered" >.objDeveloperDetails.</span>emailAddress == formData.value.emailAddress) {
+          this.objDeveloperDetails = formData.value;
+        }
+<span class="cstat-no" title="statement not covered" ></span>
+        formData<span class="cstat-no" title="statement not covered" >.reset();</span>
+        //switch button mode to create
+          this.formSubmitBtnMode = false;
+        } else {
+&nbsp;
+          //keep button mode as <span class="fstat-no" title="function not covered" >update</span>
+<span class="cstat-no" title="statement not covered" >          this.formSubmitBtnMode = true;</span>
+        }
+      }
+   
+  }
+<span class="fstat-no" title="function not covered" ></span>
+  //popu<span class="cstat-no" title="statement not covered" >lates details of the clicked developer</span>
+  populateDeveloperForm(thisDeveloper: IDeveloper) {
+<span class="cstat-no" title="statement not covered" ></span>
+    //store sele<span class="cstat-no" title="statement not covered" >cted developer arr</span>ay index
+    this.developerIndex = this.developers.indexOf(thisDeveloper);
+&nbsp;
+    this.develop<span class="cstat-no" title="statement not covered" >erName = thisDevelo</span>per.firstName;
+    this.developerEmail = thisDeveloper.emailAddress;
+    this.developerSubscription = thisDeveloper.project.isSubscribed;
+    this<span class="cstat-no" title="statement not covered" >.developerRole = t</span>hisDeveloper.project.developerRole;
+&nbsp;
+    //change buttom mode to 'Update' once form-controls are populated
+    this.formSubmitBtnMod<span class="fstat-no" title="function not covered" >e = true;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+    //display developer form
+    this.displayDevelop<span class="fstat-no" title="function not covered" >erForm = true;</span>
+  }<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+  //desplay the detail<span class="fstat-no" title="function not covered" >s of the developer</span>
+  Develo<span class="cstat-no" title="statement not covered" >perDetails(thisDeveloper: IDeveloper) {</span>
+    //assign an object of the retrived Developer to a new instance
+    this.objDeveloperDeta<span class="fstat-no" title="function not covered" >ils = thisDeveloper;</span>
+    this<span class="cstat-no" title="statement not covered" >.isDeveloperDetails = true;</span>
+    //console.log(this.objDeveloperDetails);
+  }
+&nbsp;
+  //deletes the developer and clear details view
+  async DeleteSelectedDeveloper(thisDeveloper: IDeveloper) {
+&nbsp;
+    //pop-up confirmation alert
+    if (await this.alertsService.deleteConfirmation) {
+&nbsp;
+      //call the delete method if the user clicks 'Yes'
+      this.developerService.DeleteDeveloper(thisDeveloper);
+&nbsp;
+      //Clear the form if populated with the same item
+      if (thisDeveloper.emailAddress == this.myForm.value.emailAddress) {
+        this.myForm.reset();
+      }
+&nbsp;
+      //Clear developer details if deleting the same item
+      if (thisDeveloper == this.objDeveloperDetails) {
+        this.isDeveloperDetails = false;
+&nbsp;
+      }
+    }
+  }
+&nbsp;
+  //whipes the details object when the object gets deleted
+  ClearDetails(thisDeveloper: IDeveloper) {
+    if (this.objDeveloperDetails == thisDeveloper) {
+      // this.objDeveloperDetails = null;
+    }
+  }
+&nbsp;
+  //for canDeactivate route guard
+  async canExit(): Promise&lt;boolean&gt; {
+    if (this.myForm?.dirty) {
+      //pop-up confirmation alert if the form is incomplete
+      if (await this.alertsService.deactivateConfirmation) {
+        this.exit = true;
+      } else {
+        this.exit = false;
+      }
+    }
+    return this.exit;
+  }
+&nbsp;
+  // ------------  Toastr Notifications section -------------------
+  showToasterSuccess() {
+    this.notifyService.showSuccess("", this.messange)
+  }
+&nbsp;
+  showToasterError() {
+    this.notifyService.showError("", this.messange)
+  }
+&nbsp;
+  showToasterInfo() {
+    this.notifyService.showInfo("", this.messange)
+  }
+&nbsp;
+  showToasterWarning() {
+    this.notifyService.showWarning("", this.messange)
+  }
+&nbsp;
+&nbsp;
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 11 2023 20:14:54 GMT+0200 (South Africa Standard Time)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>
