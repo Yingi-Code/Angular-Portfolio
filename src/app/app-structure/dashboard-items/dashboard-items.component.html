@@ -1,3 +1,21 @@
+<div class="items-progress-status-legend">
+    <div class="not-started-progress-status">
+        <fa-icon class="item-icon not-started" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+        Not started
+    </div>
+
+    <div class="in-progress-status">
+        <fa-icon class="item-icon in-progress" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+        In progress
+    </div>
+
+    <div class="completed-progress-status">
+        <fa-icon class="item-icon completed" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+        completed
+    </div>
+</div>
+
+
 <div class="dashboard-items">
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/template-driven-form">

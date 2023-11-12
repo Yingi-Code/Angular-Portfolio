@@ -40,7 +40,7 @@ export class FormsReactiveComponent {
   displayDeveloperForm: boolean = true;
 
   //developer details object
-  objDeveloperDetails: IDeveloper;;
+  objDeveloperDetails: IDeveloper;
   populatedDeveloperForm: IDeveloper;
 
   //injects the istanace of formDataservice
@@ -128,20 +128,21 @@ export class FormsReactiveComponent {
      button mode false = display empty form
      */
     if (this.formSubmitBtnMode == false) {
-        //take only up to four developers - for demo purpose
-        if (this.developers?.length != 4) {
-          
-          //pop-up item update confirmation alert
-          if (await this.alertsService.addConfirmation) {
-          //
-            this.developerService.AddDeveloper(this.developerForm.value);
-          }
+          //take only up to four developers - for demo purpose
+          if (this.developers?.length != 4) {
+            
+            //pop-up item update confirmation alert
+            if (await this.alertsService.addConfirmation) {
+            //
+              this.developerService.AddDeveloper(this.developerForm.value);
+            }
 
-        } else {
-          //display alert notification
-          await this.alertsService.addLimitErrorNotification;
-        }
-        this.developerForm.reset();
+          } else {
+            //display alert notification
+            await this.alertsService.addLimitErrorNotification;
+          }
+          this.developerForm.reset();
+          
         //button mode true = update populated data
       } else {
 
@@ -201,6 +202,8 @@ export class FormsReactiveComponent {
     //assign an object of the retrived Developer to a new instance
     this.objDeveloperDetails = thisDeveloper;
     this.isDeveloperDetails = true;
+
+    return this.objDeveloperDetails
   }
 
 //deletes the developer and clear details view
@@ -222,8 +225,6 @@ export class FormsReactiveComponent {
         this.isDeveloperDetails = false;
        
       }
-
-
     }
   }
 

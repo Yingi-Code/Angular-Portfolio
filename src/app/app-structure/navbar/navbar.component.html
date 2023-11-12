@@ -75,8 +75,8 @@
                         <!-- only if the user is not logged in -->
                         <ng-template #notSignedIn>
                             <div class="nav-item ">
-                                <button type="button" class="nav-link" [ngbPopover]="popContent" [popoverTitle]="popTitle"
-                                    placement="bottom">
+                                <button type="button" class="nav-link" placement="auto" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+                                    placement="bottom-right auto">
                                     <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
                                     (Guest)
                                 </button>

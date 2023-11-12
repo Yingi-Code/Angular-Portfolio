@@ -175,6 +175,7 @@ export class FormsTemplateDrivenComponent implements OnInit, IDeactivateComponen
     this.objDeveloperDetails = thisDeveloper;
     this.isDeveloperDetails = true;
     //console.log(this.objDeveloperDetails);
+    return this.objDeveloperDetails
   }
 
   //deletes the developer and clear details view
