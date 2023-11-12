@@ -10,6 +10,16 @@
         [ Forms ] <br /> Reactive<br />
     </a>
 
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/sub-menu">
+        <fa-icon class="item-icon panding-item" [icon]="['fas', 'window-restore']"></fa-icon> <br />
+        [ Menus ] <br /> Cascaded Menu<br />
+    </a>
+
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/file-upload">
+        <fa-icon class="item-icon panding-item" [icon]="['fas', 'cloud-arrow-up']"></fa-icon> <br />
+        [ File Systems ] <br /> Files Upload<br />
+    </a>
+
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/account/auth-basic">
         <fa-icon class="item-icon " [icon]="['fas', 'user-lock']"></fa-icon> <br />
         [ Authentication ] <br /> Baisc Auth<br />

@@ -25,8 +25,14 @@ export class VideoComponent implements OnInit {
   activeIndex = 0;
   currentVideo = this.videoItems[this.activeIndex];
   data: any;
+
+  _playStastus: boolean = false;
+
   constructor() { }
-  ngOnInit(): void { }
+
+  ngOnInit(): void { 
+    this._playStastus = false
+  }
 
   videoPlayerInit(data: any) {
     this.data = data;
@@ -44,6 +50,7 @@ export class VideoComponent implements OnInit {
 
   initVdo() {
     this.data.play();
+    this._playStastus = true;
   }
   
   startPlaylistVdo(item: any, index: number) {

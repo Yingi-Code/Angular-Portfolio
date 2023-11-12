@@ -88,18 +88,28 @@
                         <div class="col-md-4  player-sections-wrapper">
                             <div class="playlist-heading">
                                 <fa-icon class="clip" [icon]="['fas', 'list']"></fa-icon>
-                                PLAYLIST
+                                Playlist
                             </div>
                             
                             <div class="list-group">
                                 <button type="button"  href="#" class="list-group-item list-group-item-action" 
-                                    *ngFor="let vdo of videoItems; let $index = index" 
-                                    (click)="startPlaylistVdo(vdo, $index)"
-                                    [class.selected]="vdo === currentVideo">
+                                    *ngFor="let vdo of videoItems; let $index = index" (click)="startPlaylistVdo(vdo, $index)" [class.selected]="vdo === currentVideo">
+                                    
+                                    <div *ngIf="(vdo === currentVideo) && (_playStastus==true)">
+                                        <fa-icon class="clip" [icon]="['far', 'circle-pause']"></fa-icon>
+                                        {{ vdo.name }}
+                                    </div>
 
-                                    <fa-icon class="clip" [icon]="['fas', 'film']"></fa-icon>
-                                    {{ vdo.name }}
+                                    <div *ngIf="(vdo === currentVideo) && (_playStastus==false)">
+                                        <fa-icon class="clip" [icon]="['far', 'circle-play']"></fa-icon>
+                                        {{ vdo.name }}                                   
+                                    </div>
 
+                                    <div *ngIf="vdo !== currentVideo">
+                                        <fa-icon class="clip" [icon]="['far', 'circle-play']"></fa-icon>
+                                        {{ vdo.name }}                                  
+                                    </div>
+                                    
                                 </button>
                             </div>
                         </div>
