@@ -1,13 +1,10 @@
 import { NgForm } from '@angular/forms';
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
-
-//Toastr alert notifications - not being used for now
-import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
 
 //sweet alert2 pop-up notifications
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
@@ -69,7 +66,6 @@ export class FormsTemplateDrivenComponent implements OnInit, IDeactivateComponen
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private notifyService: ToastrNotificationsService,
     private alertsService: AlertNotificationsService
   ) { }
 
@@ -222,24 +218,5 @@ export class FormsTemplateDrivenComponent implements OnInit, IDeactivateComponen
     }
     return this.exit;
   }
-
-  // ------------  Toastr Notifications section -------------------
-  showToasterSuccess() {
-    this.notifyService.showSuccess("", this.messange)
-  }
-
-  showToasterError() {
-    this.notifyService.showError("", this.messange)
-  }
-
-  showToasterInfo() {
-    this.notifyService.showInfo("", this.messange)
-  }
-
-  showToasterWarning() {
-    this.notifyService.showWarning("", this.messange)
-  }
-
-
 }
 

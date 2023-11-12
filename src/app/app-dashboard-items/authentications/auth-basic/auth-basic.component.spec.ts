@@ -8,6 +8,7 @@ import { SharethisAngularModule } from 'sharethis-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppIconsModule } from 'src/app/app.icons.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('AuthBasicComponent', () => {
   let component: AuthBasicComponent;
@@ -20,6 +21,7 @@ describe('AuthBasicComponent', () => {
         AppIconsModule,  
         SharethisAngularModule,
         BrowserAnimationsModule,
+         AppRoutingModule,
         ReactiveFormsModule
       ],
       
@@ -29,7 +31,9 @@ describe('AuthBasicComponent', () => {
           ShareThisButtonsComponent,
           SidebarComponent,
         ],
-      providers: [AuthService]
+      providers: [AuthService],
+
+      teardown: { destroyAfterEach: false }
     });
     fixture = TestBed.createComponent(AuthBasicComponent);
     component = fixture.componentInstance;

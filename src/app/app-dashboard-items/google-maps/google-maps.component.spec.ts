@@ -27,7 +27,9 @@ describe('GoogleMapsComponent', () => {
       declarations: [
         GoogleMapsComponent,
         ShareThisButtonsComponent,
-        SidebarComponent,]
+        SidebarComponent,],
+
+      teardown: { destroyAfterEach: false }
     });
     fixture = TestBed.createComponent(GoogleMapsComponent);
     component = fixture.componentInstance;

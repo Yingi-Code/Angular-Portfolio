@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/12</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">16.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/11</span>
+        <span class='fraction'>11/11</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -95,15 +95,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,16 +113,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,16 +141,16 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 &nbsp;
 @Injectable({
-  providedIn: 'root'<span class="fstat-no" title="function not covered" ></span>
-})<span class="cstat-no" title="statement not covered" ></span>
-  <span class="cstat-no" title="statement not covered" ></span>
-export c<span class="cstat-no" title="statement not covered" >lass ProductService {</span>
+  providedIn: 'root'
+})
+  
+export class ProductService {
 &nbsp;
   baseUrl = 'https://fakestoreapi.com/products';
 &nbsp;
   private _productCategories = [
     { id: 1, name: 'Men clothing', value: "men's clothing"},
-    { id<span class="cstat-no" title="statement not covered" >: 2, name: 'Women clothing', value: "women's clothing" },</span>
+    { id: 2, name: 'Women clothing', value: "women's clothing" },
     { id: 3, name: 'Electronics', value: "electronics" },
     { id: 4, name: 'Jewellary', value: "jewelery" },
   ];
@@ -159,17 +159,17 @@ export c<span class="cstat-no" title="statement not covered" >lass ProductServic
     { id: 1, name: 'Price (Low to High)' },
     { id: 2, name: 'Price (Hight to Low)' },
     { id: 3, name: 'Rating (Low to High)' },
-    { id: 4, name:<span class="fstat-no" title="function not covered" > 'Rating (Hight to Low)' },</span>
-    { id<span class="cstat-no" title="statement not covered" >: 5, name: 'Product name (Asc)' },</span>
+    { id: 4, name: 'Rating (Hight to Low)' },
+    { id: 5, name: 'Product name (Asc)' },
     { id: 6, name: 'Product name (Desc)' }
-  ];<span class="fstat-no" title="function not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
+  ];
+&nbsp;
   constructor(private http: HttpClient) {
-  }<span class="fstat-no" title="function not covered" ></span>
-  <span class="cstat-no" title="statement not covered" ></span>
+  }
+  
   getProducts() {
-    return this.http.get(<span class="fstat-no" title="function not covered" >this.baseUrl);</span>
-  }<span class="cstat-no" title="statement not covered" ></span>
+    return this.http.get(this.baseUrl);
+  }
 &nbsp;
   getProduct(id: number) {
     return this.http.get(this.baseUrl + '/' + id);
@@ -190,7 +190,7 @@ export c<span class="cstat-no" title="statement not covered" >lass ProductServic
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 11 2023 20:14:54 GMT+0200 (South Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Nov 12 2023 12:01:00 GMT+0200 (South Africa Standard Time)
 </div>
 </div>
 <script src="../../../../../prettify.js"></script>

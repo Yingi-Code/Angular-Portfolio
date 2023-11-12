@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for app\app-shared\social-media-buttons\share-this-buttons\share-this-buttons.component.ts</title>
+    <title>Code coverage report for app\app-routing.module.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../../index.html">all files</a> / <a href="index.html">app/app-shared/social-media-buttons/share-this-buttons/</a> share-this-buttons.component.ts
+      <a href="../index.html">all files</a> / <a href="index.html">app/</a> app-routing.module.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
   </div>
@@ -113,23 +113,7 @@
 68
 69
 70
-71
-72
-73
-74
-75
-76
-77
-78
-79</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+71</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,6 +134,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,10 +171,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16×</span>
-<span class="cline-any cline-yes">16×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,84 +181,78 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component } from '@angular/core';
-import { InlineShareButtonsConfig } from 'sharethis-angular';
-import { StickyShareButtonsConfig } from 'sharethis-angular';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { GalleryComponent } from './app-dashboard-items/gallery/gallery.component';
+import { PageNotFoundComponent } from './app-views/page-not-found/page-not-found.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './app-views/home/home.component';
+import { AboutComponent } from './app-views/about/about.component';
+import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
+import { ContactComponent } from './app-views/contact/contact.component';
+import { DashboardComponent } from './app-views/dashboard/dashboard.component';
+import { FormsTemplateDrivenComponent } from './app-dashboard-items/angular forms/forms-template-driven/forms-template-driven.component';
+import { FormsReactiveComponent } from './app-dashboard-items/angular forms/forms-reactive/forms-reactive.component';
+import { ProductsListComponent } from './app-dashboard-items/online-store-api/products/products-list/products-list.component';
+import { GoogleMapsComponent } from './app-dashboard-items/google-maps/google-maps.component';
+import { VideoComponent } from './app-dashboard-items/videos/video.component';
+import { OnlineBookingsComponent } from './app-dashboard-items/online-booking-calendar/online-bookings.component';
+import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
+import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
+import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
+import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
 &nbsp;
-//Inline Share Buttons
-const inlineShareButtonsConfig: InlineShareButtonsConfig = {
-  alignment: 'center', // alignment of buttons (left, center, right)
-  color: 'white', // set the color of buttons (social, white)
-  enabled: true, // show/hide buttons (true, false)
-  font_size: 16, // font size for the buttons
-  labels: null, // button labels (cta, counts, null)
-  language: 'en', // which language to use (see LANGUAGES)
-  networks: [
-    // which networks to include (see SHARING NETWORKS)
-    //'whatsapp',
-    'linkedin',
-    // 'messenger',
-    // 'facebook',
-    // 'twitter',
-    'email',
-    'print'
-  ],
-  padding: 12, // padding within buttons (INTEGER)
-  radius: 4, // the corner radius on each button (INTEGER)
-  show_total: false,
-  size: 30, // the size of each button (INTEGER)
-};
+const routes: Routes = [
+  //components content are rendared by &lt;router-outlet&gt;&lt;/router-outlet&gt; inside the app component
+  // redirectTo - home
+  { path: '', component: HomeComponent, title: "My RPs - Home"  },
+  
+  { path: 'home', component: HomeComponent, title: "My RPs - Home" },
+  { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
+  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Contact" },
+  { path: 'cpanel', component: DashboardComponent, title: "My RPs - Panel" },
+  
+  {
+     path: 'app', children: [
+      { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Template-driven" },
+      { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Reactive" },
+      { path: 'gallery', component: GalleryComponent, title: "My RPs - Gallery" },
+       {
+         path: 'online-store', component: ProductsListComponent, title: "My RPs - Products"
+      },
+       
+      {
+        path: 'online-store', children: [{
+          path: 'product-details/:id', component: ProductDetailsComponent, title: "My RPs - Details"
+        }]
+      },
+       
+      { path: 'google-maps', component: GoogleMapsComponent, title: "My RPs - Maps" },
+      { path: 'videos', component: VideoComponent, title: "My RPs - Videos" },
+      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My RPs - Bookings" },
+    ]
+  },
 &nbsp;
-//Sticky Share Buttons
-const stickyShareButtonsConfig: StickyShareButtonsConfig = {
-  alignment: 'left',    // alignment of buttons (left, right)
-  color: 'white',      // set the color of buttons (social, white)
-  enabled: true,        // show/hide buttons (true, false)
-  font_size: 16,        // font size for the buttons
-  hide_desktop: false,  // hide buttons on desktop (true, false)
-  labels: 'counts',     // button labels (cta, counts, null)
-  language: 'en',       // which language to use (see LANGUAGES)
-  min_count: 0,         // hide react counts less than min_count (INTEGER)
-  networks: [           // which networks to include (see SHARING NETWORKS)
-    'linkedin',
-    //'messenger',
-    // 'facebook',
-    //'twitter',
-    //'whatsapp',
-    'email',
-    'print'
-   
-  ],
-  padding: 12,          // padding within buttons (INTEGER)
-  radius: 4,            // the corner radius on each button (INTEGER)
-  show_total: false,     // show/hide the total share count (true, false)
-  show_mobile: true,    // show/hide the buttons on mobile (true, false)
-  show_toggle: false,    // show/hide the toggle buttons (true, false)
-  size: 38,             // the size of each button (INTEGER)
-  top: 260,             // offset in pixels from the top of the page
+  
+  { path: 'account', component: AccountComponent, title: "My RPs - Account" },
+  {
+    path: 'account', children: [
+      { path: 'auth-jwt', component: AuthJwtComponent, canDeactivate: [DeactivateRoute],  title: "My RPs - JWT Auth" },
+      { path: 'auth-basic', component: AuthBasicComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Basic Auth" }
+    ]
+  },
+  // redirectTo - Error page
+  { path: '**', component: PageNotFoundComponent, title: "My RPs- Not found" },
+];
 &nbsp;
-&nbsp;
-  // OPTIONAL PARAMETERS
-&nbsp;
-  url: 'www.myrecentprojects.co.za', // (defaults to current url)
-  image: '../assets/banners/6.jpg',  // (defaults to og:image or twitter:image)
-  description: 'Hi Yingi, I would like to hear more about your software development skills. Can we please have a discussion? Thanks.',       // (defaults to og:description or twitter:description)
-  title: 'Angular App [Portfolio]',            // (defaults to og:title or twitter:title)
-  message: 'Hi Yingi, I would like to hear more about your software development skills. Can we please have a discussion? Thanks.',     // (only for email sharing)
-  subject: 'Let me more about your Angular App',  // (only for email sharing)
-  username: 'custom twitter handle' // (only for twitter sharing)
-};
-&nbsp;
-@Component({
-  selector: 'app-share-this-buttons',
-  templateUrl: './share-this-buttons.component.html',
-  styleUrls: ['./share-this-buttons.component.css']
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
+  exports: [RouterModule]
 })
-export class ShareThisButtonsComponent {
-  inlineShareButtonsConfig = inlineShareButtonsConfig;
-  stickButton = stickyShareButtonsConfig;
-&nbsp;
-}
+export class AppRoutingModule { }
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -286,7 +262,7 @@ export class ShareThisButtonsComponent {
   generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Nov 12 2023 12:01:00 GMT+0200 (South Africa Standard Time)
 </div>
 </div>
-<script src="../../../../prettify.js"></script>
+<script src="../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -294,6 +270,6 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../../sorter.js"></script>
+<script src="../sorter.js"></script>
 </body>
 </html>

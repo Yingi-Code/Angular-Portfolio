@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">61.9% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/18</span>
+        <span class='fraction'>13/21</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">57.14% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/7</span>
+        <span class='fraction'>4/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.18% </span>
+        <span class="strong">60% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/17</span>
+        <span class='fraction'>12/20</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -97,7 +97,14 @@
 52
 53
 54
-55</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+55
+56
+57
+58
+59
+60
+61
+62</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,21 +122,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,6 +150,9 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,25 +184,31 @@ export class VideoComponent implements OnInit {
   videoItems = [
     { name: 'Scatting and cableway', src: 'assets/videos/ice.mp4', type: 'video/mp4'},
     { name: 'Maldive lifestyle', src: 'assets/videos/malvide.mp4', type: 'video/mp4' },
-    { name: 'Ho<span class="fstat-no" title="function not covered" >me a</span>way from home', src: 'assets/videos/relaxed-waves.mp4', type: 'video/mp4'},
-    { name: 'The magical s<span class="fstat-no" title="function not covered" >urfing', src: 'assets/videos/surfing.mp4', type: 'video/mp4' },</span>
-    { na<span class="cstat-no" title="statement not covered" >me: 'Peace of mind</span>', src: 'assets/videos/end-of-the-day.mp4', type: 'video/mp4' }
-  ];<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" ></span>
-  activeIndex = 0;
-  currentVideo =<span class="fstat-no" title="function not covered" > this.videoItems[this.activeIndex];</span>
-  data: <span class="cstat-no" title="statement not covered" >any;</span>
-  constr<span class="cstat-no" title="statement not covered" >uctor() { }</span>
-  ngOnInit()<span class="cstat-no" title="statement not covered" >: void { }</span>
+    { name: 'Home away from home', src: 'assets/videos/relaxed-waves.mp4', type: 'video/mp4'},
+    { name: 'The magical surfing', src: 'assets/videos/surfing.mp4', type: 'video/mp4' },
+    { name: 'Peace of mind', src: 'assets/videos/end-of-the-day.mp4', type: 'video/mp4' }
+  ];
 &nbsp;
-  videoP<span class="cstat-no" title="statement not covered" >layerInit(data: any) {</span>
-    this.data = data;
-    this.data.<span class="fstat-no" title="function not covered" >getDefaultMedia().subscriptions.loadedMetadata.subscribe(this.initVdo.bind(this));</span>
-    this<span class="cstat-no" title="statement not covered" >.data.getDefaultMe</span>dia().subscriptions.ended.subscribe(this.nextVideo.bind(this));
+  activeIndex = 0;
+  currentVideo = this.videoItems[this.activeIndex];
+  data: any;
+&nbsp;
+  _playStastus: <span class="fstat-no" title="function not covered" >boolean = false;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+  constr<span class="cstat-no" title="statement not covered" >uctor() { }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+  ngOnInit(): void { 
+    this<span class="cstat-no" title="statement not covered" >._playStastus = false</span>
   }
 <span class="fstat-no" title="function not covered" ></span>
-  nextVi<span class="cstat-no" title="statement not covered" >deo() {</span>
-    this<span class="cstat-no" title="statement not covered" >.activeIndex++;</span>
+  videoP<span class="cstat-no" title="statement not covered" >layerInit(data: an</span>y) {
+    this<span class="cstat-no" title="statement not covered" >.data = data;</span>
+    this.data.getDefaultMedia().subscriptions.loadedMetadata.subscribe(this.initVdo.bind(this));
+    this.data.getDefaultMedia().su<span class="fstat-no" title="function not covered" >bscriptions.ended.subscribe(this.nextVideo.bind(this));</span>
+  }<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  nextVideo() {
+    this.activeIndex++;
     if (this.activeIndex === this.videoItems.length) {
       this.activeIndex = 0;
     }
@@ -197,6 +217,7 @@ export class VideoComponent implements OnInit {
 &nbsp;
   initVdo() {
     this.data.play();
+    this._playStastus = true;
   }
   
   startPlaylistVdo(item: any, index: number) {
@@ -211,7 +232,7 @@ export class VideoComponent implements OnInit {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Nov 11 2023 20:14:54 GMT+0200 (South Africa Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Nov 12 2023 12:01:00 GMT+0200 (South Africa Standard Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

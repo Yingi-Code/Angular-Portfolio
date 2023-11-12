@@ -10,7 +10,6 @@ import { provideClientHydration} from '@angular/platform-browser';
 
 //for toasts notifications and aminations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 
 //for template-driven forms. e.g ngForm
 import { FormsModule } from '@angular/forms';
@@ -84,6 +83,8 @@ import { AccountComponent } from './app-dashboard-items/authentications/account/
 import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
+import { UsersService } from './app-shared/services/online-store-services/users/users.service';
+import { CartsService } from './app-shared/services/online-store-services/carts/carts.service';
 
 
 @NgModule({
@@ -157,9 +158,6 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
     //for GoogleMaps
     GoogleMapsModule,
 
-    ToastrModule.forRoot({
-      positionClass: 'toast-top-center',
-    }),
     //for routes in App-Routing.Module.ts
     AppRoutingModule,
 
@@ -182,7 +180,9 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
     NgbCarouselConfig,
     AngularFormsDataService,
     ProductService,
-    provideClientHydration(),
+    UsersService,
+    CartsService,
+    // provideClientHydration(),
     DeactivateRoute
   ],
   bootstrap: [AppComponent]

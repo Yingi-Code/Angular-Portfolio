@@ -1,13 +1,10 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component } from '@angular/core';
 import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
 import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { strValidator } from 'src/app/app-shared/validators/reactive-form-validators';
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';
-import { ToastrNotificationsService } from 'src/app/app-shared/services/notifications/toasts/toastr-notifications.service';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 
 
@@ -49,10 +46,6 @@ export class FormsReactiveComponent {
   //injects the istanace of formDataservice
   constructor(
     private developerService: AngularFormsDataService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private location: Location,
-    private notifyService: ToastrNotificationsService,
     private alertsService: AlertNotificationsService
 
   ) { 

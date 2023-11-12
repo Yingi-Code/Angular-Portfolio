@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthStorageService } from './auth-storage.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AuthStorageService', () => {
   let service: AuthStorageService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+      ]
+    });
     service = TestBed.inject(AuthStorageService);
   });
 

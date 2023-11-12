@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarRatingComponent } from './star-rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('StarRatingComponent', () => {
   let component: StarRatingComponent;
@@ -8,6 +9,9 @@ describe('StarRatingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NgbModule
+      ],
       declarations: [StarRatingComponent]
     });
     fixture = TestBed.createComponent(StarRatingComponent);
