@@ -76,6 +76,10 @@ body {
     color: grey;
 }
 
+.form-control::placeholder {
+    color: lightgrey;
+}
+
 .form-control.ng-touched.ng-invalid {
     border-left: 14px solid #42A948;
     opacity: 1;
@@ -122,6 +126,11 @@ body {
      left: 50%;
      margin-left: -150px;
      width: 50%;
+ }
+
+ .card {
+    color: grey;
+    margin-bottom: 10px;
  }
 
 /* 

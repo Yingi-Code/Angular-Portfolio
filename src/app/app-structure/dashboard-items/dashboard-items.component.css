@@ -4,39 +4,45 @@
 }
 
 .items-progress-status-legend {
-    /* text-align: center; */
-    padding: 12px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 15px;
     border-bottom: 1px solid lightgrey;
 }
 
-.not-started-progress-status, .in-progress-status, .completed-progress-status {
-    display: inline-block;
-    margin-right: 15px;
-    /* font-size: 12px; */
+.status-wrapper {
+    padding: 5px;
+}
+
+.status-indicator{
+    border-radius: 5px;
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 20px;
 }
 
 .item-icon {
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
-.not-started {
+.not-started-icon {
     color: red;
 }
 
-.in-progress {
-    color: yellowgreen;
+.in-progress-icon {
+    color: #0096FF;
 }
 
-.completed{
+.completed-icon {
     color: gray;
 }
 
-
+/* ============= Dashboard items =============*/
 .item-container {
-    display: inline-block;
     margin: 10px;
     text-align: center;
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     color: grey;
     min-width: 120px;
     padding: 5px;
@@ -50,7 +56,7 @@
 }
 
 .dashboard-items {
-     text-align: center;
+    text-align: center;
     border-bottom: 1px solid lightgrey;
     margin: 5px;
     padding: 5px;

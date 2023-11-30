@@ -21,44 +21,44 @@ import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/
 const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
   // redirectTo - home
-  { path: '', component: HomeComponent, title: "My RPs - Home"  },
+  { path: '', component: HomeComponent, title: "My AP - Home"  },
   
-  { path: 'home', component: HomeComponent, title: "My RPs - Home" },
-  { path: 'about', component: AboutComponent, title: "My RPs - About Developer" },
-  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Contact" },
-  { path: 'cpanel', component: DashboardComponent, title: "My RPs - Panel" },
+  { path: 'home', component: HomeComponent, title: "My AP - Home" },
+  { path: 'about', component: AboutComponent, title: "My AP - About Portfolio" },
+  { path: 'contact', component: ContactComponent, canDeactivate: [DeactivateRoute], title: "My AP - Contact" },
+  { path: 'cpanel', component: DashboardComponent, title: "My AP - Panel" },
   
   {
      path: 'app', children: [
-      { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Template-driven" },
-      { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Reactive" },
-      { path: 'gallery', component: GalleryComponent, title: "My RPs - Gallery" },
+      { path: 'template-driven-form', component: FormsTemplateDrivenComponent, canDeactivate: [DeactivateRoute], title: "My AP - Template-driven" },
+      { path: 'reactive-form', component: FormsReactiveComponent, canDeactivate: [DeactivateRoute], title: "My AP - Reactive" },
+      { path: 'gallery', component: GalleryComponent, title: "My AP - Gallery" },
        {
-         path: 'online-store', component: ProductsListComponent, title: "My RPs - Products"
+         path: 'online-store', component: ProductsListComponent, title: "My AP - Products"
       },
        
       {
         path: 'online-store', children: [{
-          path: 'product-details/:id', component: ProductDetailsComponent, title: "My RPs - Details"
+          path: 'product-details/:id', component: ProductDetailsComponent, title: "My AP - Details"
         }]
       },
        
-      { path: 'google-maps', component: GoogleMapsComponent, title: "My RPs - Maps" },
-      { path: 'videos', component: VideoComponent, title: "My RPs - Videos" },
-      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My RPs - Bookings" },
+      { path: 'google-maps', component: GoogleMapsComponent, title: "My AP - Maps" },
+      { path: 'videos', component: VideoComponent, title: "My AP - Videos" },
+      { path: 'online-bookings', component: OnlineBookingsComponent, title: "My AP - Bookings" },
     ]
   },
 
   
-  { path: 'account', component: AccountComponent, title: "My RPs - Account" },
+  { path: 'account', component: AccountComponent, title: "My AP - Account" },
   {
     path: 'account', children: [
-      { path: 'auth-jwt', component: AuthJwtComponent, canDeactivate: [DeactivateRoute],  title: "My RPs - JWT Auth" },
-      { path: 'auth-basic', component: AuthBasicComponent, canDeactivate: [DeactivateRoute], title: "My RPs - Basic Auth" }
+      { path: 'auth-jwt', component: AuthJwtComponent, canDeactivate: [DeactivateRoute],  title: "My AP - JWT Auth" },
+      { path: 'auth-basic', component: AuthBasicComponent, canDeactivate: [DeactivateRoute], title: "My AP - Basic Auth" }
     ]
   },
   // redirectTo - Error page
-  { path: '**', component: PageNotFoundComponent, title: "My RPs- Not found" },
+  { path: '**', component: PageNotFoundComponent, title: "My AP- Not found" },
 ];
 
 @NgModule({

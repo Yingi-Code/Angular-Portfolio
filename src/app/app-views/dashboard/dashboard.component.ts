@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 
 @Component({
@@ -13,5 +14,13 @@ export class DashboardComponent {
 
   //[ ngSwitch tag]
   viewMode = 'defaultTab';
+
+  constructor(
+    private _router: Router,
+  )
+{}
+  redirectToHomePage() {
+    this._router.navigate(['/']); 
+  }
   
 }

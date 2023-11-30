@@ -9,7 +9,12 @@
 .auth-introduction {
     background-color: #f8f9fa;
     padding: 10px;
-    margin-bottom: 5px;
+    padding-top: 20px;
+
+}
+
+.auth-mechanisms-list {
+    margin-top: 10px;
 }
 
 .login-options-section {
@@ -22,16 +27,18 @@
     /* background-size: contain; */
     background-repeat: no-repeat;
     object-fit: contain; 
+
+    color: lightgray;
 }
 
 .login-img {
- height: 60px;
- margin-bottom: 20px;
+ height: 40px;
+ margin-bottom: 5px;
 }
 
 .Authentication-option {
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .Authentication-nav {

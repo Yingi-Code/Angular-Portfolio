@@ -30,7 +30,7 @@
 
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> info</a>
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> Details</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
@@ -98,8 +98,8 @@
                                         [disabled]="!_developerForm.valid" class="btn btn-sm submit-button">
 
                                     <!-- <input type="button" value=" [ Sign up ]" class="btn btn-link left-btn"> -->
-                                    <input type="button" value="[ View SignIn Credentials ]" class="btn btn-link right-btn">
-                                    <input type="button" value="[ SignIn Options ]" class="btn btn-link right-btn"
+                                    <input type="button" value="[ Test data ]" class="btn btn-link right-btn">
+                                    <input type="button" value="[ Sign-in Options ]" class="btn btn-link right-btn"
                                         (click)="redirectToAccount()">
 
                                 </div>

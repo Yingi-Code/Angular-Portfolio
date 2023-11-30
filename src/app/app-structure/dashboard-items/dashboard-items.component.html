@@ -1,17 +1,24 @@
-<div class="items-progress-status-legend">
-    <div class="not-started-progress-status">
-        <fa-icon class="item-icon not-started" size="xs" [icon]="['fas', 'circle']"></fa-icon>
-        Not started
+<div class="row items-progress-status-legend ">
+
+    <div class="col-md-4  status-wrapper">
+        <div class="status-indicator bg-light not-started-progress-status ">
+            <fa-icon class="item-icon not-started-icon" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+            Not started
+        </div>
     </div>
 
-    <div class="in-progress-status">
-        <fa-icon class="item-icon in-progress" size="xs" [icon]="['fas', 'circle']"></fa-icon>
-        In progress
+    <div class="col-md-4 status-wrapper ">
+        <div class="status-indicator bg-light not-started-progress-status ">
+            <fa-icon class="item-icon in-progress-icon" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+            In progress
+        </div>
     </div>
 
-    <div class="completed-progress-status">
-        <fa-icon class="item-icon completed" size="xs" [icon]="['fas', 'circle']"></fa-icon>
-        completed
+    <div class="col-md-4  status-wrapper">
+        <div class="status-indicator bg-light not-started-progress-status ">
+        <fa-icon class="item-icon completed-icon" size="xs" [icon]="['fas', 'circle']"></fa-icon>
+        Completed
+    </div>
     </div>
 </div>
 
@@ -27,7 +34,7 @@
         <fa-icon class="item-icon" [icon]="['fas', 'address-card']"></fa-icon> <br />
         [ Forms ] <br /> Reactive<br />
     </a>
-
+    
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/sub-menu">
         <fa-icon class="item-icon panding-item" [icon]="['fas', 'window-restore']"></fa-icon> <br />
         [ Menus ] <br /> Cascaded Menu<br />
@@ -68,7 +75,10 @@
         [ Data Analysis ] <br /> Charts<br />
     </a>
 
-    
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/sub-menu">
+        <fa-icon class="item-icon panding-item" [icon]="['fas', 'cloud-moon-rain']"></fa-icon> <br />
+        [ Weather ] <br /> Geolocation<br />
+    </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/online-bookings">
         <fa-icon class="item-icon" [icon]="['far', 'calendar-days']"></fa-icon> <br />
@@ -80,14 +90,29 @@
         [ Gallery ] <br /> Photos Album<br />
     </a>
 
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/google-maps">
+        <fa-icon class="item-icon" [icon]="['fas', 'location-dot']"></fa-icon> <br />
+        [ Google Maps ] <br /> Locations<br />
+    </a>
+
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/videos">
         <fa-icon class="item-icon" [icon]="['fas', 'film']"></fa-icon> <br />
         [ Video ] <br /> Online Clips<br />
     </a>
 
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/gallery">
+        <fa-icon class="item-icon panding-item" [icon]="['far', 'lightbulb']"></fa-icon> <br />
+        [ New concept ] <br /> Coming soon<br />
+    </a>
+    
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/videos">
+        <fa-icon class="item-icon panding-item" [icon]="['far', 'lightbulb']"></fa-icon> <br />
+        [ New concept ] <br /> Coming soon<br />
+    </a>
+    
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/google-maps">
-        <fa-icon class="item-icon" [icon]="['fas', 'location-dot']"></fa-icon> <br />
-        [ AGM ] <br /> Google Maps<br />
+        <fa-icon class="item-icon panding-item" [icon]="['far', 'lightbulb']"></fa-icon> <br />
+        [ New concept ] <br /> Coming soon<br />
     </a>
   
 
