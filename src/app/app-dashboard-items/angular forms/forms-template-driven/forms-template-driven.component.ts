@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
-import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
+import { IDeveloper } from 'src/app/app-shared/interfaces/i-developer/ideveloper';
 
 //sweet alert2 pop-up notifications
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';

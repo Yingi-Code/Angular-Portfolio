@@ -1,0 +1,49 @@
+.page-content {
+    margin-top: 15px;
+}
+
+.formSwitch {
+    padding-bottom: 10px;
+}
+
+.dashboard-back-button {
+    background-color: #f8f9fa;
+}
+
+.weather-container{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 10px;
+    padding-top: 20px;
+    background-image: url('^assets/weather-bg/31.jpg');
+    background-color: #ffffff;
+    background-size:cover;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    /* border: 1px solid lightgrey; */
+}
+
+.weather-details {
+    margin-bottom: 12px;
+    padding-left: 20px;
+    border-radius: 9px;    
+}
+.weather-icon {
+color: red;
+
+}
+
+.weather-details-title {
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+/* .weather-details-value {
+color: lightgrey;
+} */
+
+.weather-details-title, .weather-details-value {
+    margin-left: 10px;
+
+}

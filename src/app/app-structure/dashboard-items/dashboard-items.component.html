@@ -2,14 +2,14 @@
 
     <div class="col-md-4  status-wrapper">
         <div class="status-indicator bg-light not-started-progress-status ">
-            <fa-icon class="item-icon not-started-icon" size="xs" [icon]="['far', 'clock']"></fa-icon>
+            <fa-icon class="item-icon not-started-icon" size="xs" [icon]="['fas', 'clock']"></fa-icon>
             Coming soon
         </div>
     </div>
 
     <div class="col-md-4 status-wrapper ">
         <div class="status-indicator bg-light not-started-progress-status ">
-            <fa-icon class="item-icon in-progress-icon" size="xs" [icon]="['far', 'hourglass-half']"></fa-icon>
+            <fa-icon class="item-icon in-progress-icon" size="xs" [icon]="['fas', 'screwdriver-wrench']"></fa-icon>
             In progress
         </div>
     </div>
@@ -75,9 +75,9 @@
         [ Data Analysis ] <br /> Charts<br />
     </a>
 
-    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/sub-menu">
-        <fa-icon class="item-icon panding-item" [icon]="['fas', 'cloud-moon-rain']"></fa-icon> <br />
-        [ Weather ] <br /> Geolocation<br />
+    <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/weather-forecast">
+        <fa-icon class="item-icon in-progress-icon" [icon]="['fas', 'cloud-rain']"></fa-icon> <br />
+        [ RESTful API ] <br /> Weather-forecast<br />
     </a>
 
     <a class="btn item-container" [routerLinkActive]="['active']" routerLink="/app/online-bookings">

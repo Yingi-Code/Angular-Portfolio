@@ -1,4 +1,4 @@
-import { IDeveloper } from './../../../app-shared/interfaces/ideveloper/ideveloper';
+import { IDeveloper } from '../../../app-shared/interfaces/i-developer/ideveloper';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormsReactiveComponent } from './forms-reactive.component';

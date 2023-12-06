@@ -17,6 +17,7 @@ import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt
 import { AccountComponent } from './app-dashboard-items/authentications/account/account.component';
 import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
 import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
+import { WeatherForecastComponent } from './app-dashboard-items/weather-forecast/weather-forecast.component';
 
 const routes: Routes = [
   //components content are rendared by <router-outlet></router-outlet> inside the app component
@@ -46,6 +47,7 @@ const routes: Routes = [
       { path: 'google-maps', component: GoogleMapsComponent, title: "My AP - Maps" },
       { path: 'videos', component: VideoComponent, title: "My AP - Videos" },
       { path: 'online-bookings', component: OnlineBookingsComponent, title: "My AP - Bookings" },
+      { path: 'weather-forecast', component: WeatherForecastComponent, title: "My AP - Weather" },
     ]
   },
 

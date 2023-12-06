@@ -1,0 +1,231 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ WEATHER-FORECAST ]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            YOUR CURRENT GEOLOCATION WEATHER.
+        </p>
+
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+<div class="row page-content">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+
+        <!-- page content -->
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'cloud-rain']"></fa-icon>
+                            Weather
+                        </a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> Details</a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'dashboardTab'">
+
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/cpanel"
+                            class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']">
+                            </fa-icon>
+                            Panel</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+
+                <div class="row weather-container">
+
+                    <div *ngIf="!_geoLocationError && !_httpResponseError" class="weather-details-items">
+
+                        <section class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'calendar-days']"></fa-icon>
+                                        Date
+                                    </div>
+                                    <div class="weather-details-value">{{CurrentDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section class="row weather-info">
+                        
+                            <div class="col-md-3">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'location-dot']"></fa-icon>
+                                        Current Location</div>
+                                    <div class="weather-details-value">[ {{_currentWeather.latitude}} , {{_currentWeather.longitude}} ]</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'cloud-rain']"></fa-icon>
+                                        Rain</div>
+                                    <div class="weather-details-value">{{_currentWeather.current.rain +" "+
+                                        _currentWeather.current_units.rain}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'droplet']"></fa-icon>
+                                        Humidity
+                                    </div>
+                                    <div class="weather-details-value">{{((_currentWeather.current.relative_humidity_2m) | number:'2.0-1')
+                                        +" "+ _currentWeather.current_units.relative_humidity_2m}}
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 ">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'gauge-simple']"></fa-icon>
+                                        Wind speed</div>
+                                    <div class="weather-details-value">{{((_currentWeather.current.wind_speed_10m) | number:'2.0-1') +" "+
+                                        _currentWeather.current_units.wind_speed_10m}}</div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section  class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                                    <div class="weather-details-title"> 
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'temperature-high']"></fa-icon>
+                                        Temperature</div>
+                                    <div class="weather-details-value">{{
+                                        ((_currentWeatherTemperature) | number:'2.0-0') +" "+
+                                        _currentWeatherTemperatureUnit
+                                        }}</div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <div *ngIf="_geoLocationError" class="weather-details-items">
+                    
+                        <section class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                    
+                                    <div class="weather-details-title">
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'calendar-days']"></fa-icon>
+                                        Date
+                                    </div>
+                                    <div class="weather-details-value">{{CurrentDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                        
+                                    <div class="weather-details-title">
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'circle-exclamation']"></fa-icon>
+                                        Message
+                                    </div>
+                                    <div class="weather-details-value">{{_geoLocationError.message}}</div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <div *ngIf="_httpResponseError" class="weather-details-items">
+                    
+                        <section class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                    
+                                    <div class="weather-details-title">
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'calendar-days']"></fa-icon>
+                                        Date
+                                    </div>
+                                    <div class="weather-details-value">{{CurrentDate | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section class="row weather-info">
+                            <div class="col-md-12">
+                                <div class="weather-details bg-light p-2 text-dark bg-opacity-50">
+                    
+                                    <div class="weather-details-title">
+                                        <fa-icon class="weather-icon" [icon]="['fas', 'circle-exclamation']"></fa-icon>
+                                        Message
+                                    </div>
+                                    <div class="weather-details-value">{{_httpResponseError}}</div>
+                                </div>
+                            </div>
+                        </section>                   
+                    </div>
+                </div>
+                  
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'circle-question']"></fa-icon>
+                        How does it works?
+                    </strong>
+                    <div class="card-body">
+                        <p class="card-text">This component demonstrates how to implement <b>reactive forms</b> in
+                            angular.
+                            You can manage developers' team by adding new developer, viewing details, updating details,
+                            allocating or
+                            removing developer from project team,
+                            and deleting developer from the list.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        The scope of work
+                    </strong>
+                    <div class="card-body">
+                        <ul>
+                            <li>Responsive UI Design concept.</li>
+                            <li>Reactive forms, forms validation, and route guard.</li>
+                            <li>Data structures - Arrays and Objects.</li>
+                            <li>Angular services - Dependency injection.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div *ngSwitchCase="'dashboardTab'">
+                <app-dashboard-items></app-dashboard-items>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Sidebar-->
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>

@@ -85,6 +85,7 @@ import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
 import { UsersService } from './app-shared/services/online-store-services/users/users.service';
 import { CartsService } from './app-shared/services/online-store-services/carts/carts.service';
+import { WeatherForecastComponent } from './app-dashboard-items/weather-forecast/weather-forecast.component';
 
 
 @NgModule({
@@ -119,7 +120,7 @@ import { CartsService } from './app-shared/services/online-store-services/carts/
     OnlineBookingsComponent,
     LoadingSpinnerComponent,
     AuthBasicComponent,
-    
+    WeatherForecastComponent,
     
     //Account and Auth components
     AccountComponent,
@@ -197,6 +198,8 @@ export class AppModule {
   }
   
 }
+
+
 
 
 

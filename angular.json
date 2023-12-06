@@ -18,7 +18,8 @@
               "lodash",
               "crypto",
               "file-saver",
-              "sweetalert2"
+              "sweetalert2",
+              "openmeteo"
             ],
             "outputPath": "dist/myRP",
             "index": "src/index.html",

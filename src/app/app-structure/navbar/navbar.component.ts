@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
-import { IUser } from 'src/app/app-shared/interfaces/iuser/iuser';
+import { IUser } from 'src/app/app-shared/interfaces/i-user/iuser';
 import { AuthStorageService } from 'src/app/app-shared/services/authentication/auth-storage/auth-storage.service';
 import { CartsService } from 'src/app/app-shared/services/online-store-services/carts/carts.service';
 

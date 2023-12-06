@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Component } from '@angular/core';
-import { IDeveloper } from 'src/app/app-shared/interfaces/ideveloper/ideveloper';
+import { IDeveloper } from 'src/app/app-shared/interfaces/i-developer/ideveloper';
 import { AngularFormsDataService } from 'src/app/app-shared/services/angular-forms-service/angular-forms.service';
 import { strValidator } from 'src/app/app-shared/validators/reactive-form-validators';
 import { AlertNotificationsService } from 'src/app/app-shared/services/notifications/alerts/alert-notifications.service';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IDeveloper } from '../../interfaces/ideveloper/ideveloper';
+import { IDeveloper } from '../../interfaces/i-developer/ideveloper';
 
 
 @Injectable({
