@@ -54,24 +54,35 @@
             </div>
 
             <div *ngSwitchCase="'desciptionTab'">
-                <section class="about-paragraphs borderd-paragraph">
-                    This example covers the basics of template directives and how they can be
-                    used.<br />
-                </section>
-                <section class="about-name ">Covered concepts</section>
-                <section class="about-paragraphs">
-                    <ul class="skills-list">
-                        <li><b>ngIf</b> - eg. Displays the list of items only if the list length is
-                            greater than 0 </li>
-                        <li><b>ngIf/else</b> - eg. Displays the "No items found" message if list length
-                            is equal to</li>
-                        <li><b>ngFor</b> Iterates the list of items sotred in array</li>
-                        <li><b>ngSwitch</b> - determines which tab (Example or Description) to desplay
-                        </li>
-                        <li><b>ngClass </b> and <b>ngStyle</b> are covered at a later stage in this
-                            portfolio</li>
-                    </ul>
-                </section>
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
+                        How it works
+                    </strong>
+                    <div class="card-body">
+                        <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b> in angular.
+                            It allows you to manage developers' team by adding new developer, viewing details, updating details,
+                            allocating or
+                            removing developer from project team,
+                            and deleting the developer from developers list.
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        The scope of work
+                    </strong>
+                    <div class="card-body">
+                        <ul>
+                            <li>Responsive UI Design concept.</li>
+                            <li>Template-driven forms, forms validation, and route guard.</li>
+                            <li>Data structures - Arrays and Objects.</li>
+                            <li>Angular services - Dependency injection.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 

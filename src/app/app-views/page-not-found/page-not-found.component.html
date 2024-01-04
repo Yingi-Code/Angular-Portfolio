@@ -1,6 +1,6 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ OOPS! ]</h3>
+        <h3>[ PAGE NOT FOUND! ]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
             THE RESOURCE YOU ARE LOOKING FOR WAS NOT FOUND..
         </p>
@@ -17,21 +17,57 @@
 
 <div class="row page-content">
 
-    <div class="col-md-9">
-
+    <div class="col-md-9" [ngSwitch]="viewMode">
+    
+        <!-- page content -->
         <div class="page-content-container">
+    
+                    <!-- Switch tabs-->
+                    <div class="formSwitch">
+                        <ul class="nav nav-tabs ">
+                            <li [class.active]="viewMode == 'defaultTab'">
+                                <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                                    <fa-icon class="concept-icon " [icon]="['fas', 'circle-exclamation']"> </fa-icon>
+                                    Not found
+                                </a>
+                            </li>
+                                        
+                            <li [class.active]="viewMode == 'desciptionTab'" (click)="redirectToHomePage()">
+                                <a class="nav-link  btn tab-text" data-bs-toggle="tab">
+                                    <fa-icon class="" [icon]="['fas', 'home']"></fa-icon> home</a>
+                            </li>
+                    
+                    
+                        </ul>
+                    </div>
+    
+            <div *ngSwitchCase="'defaultTab'">
 
-        <div class="page-error-paragraph">
-            <section>
-                The page you are looking for could not be found or you do not have access to the page.
-            </section>
-            <section>
-                Please content the administrator for further assistance.
-            </section>
-        </div>
+    
+                <!-- Items not found view -->
+                <div class=" product-list-container">
+                    <div class="noItemFound">
+                        <div class="noItemFoundTitle">
+    
+                            Oops!
+                        </div>
+                        <div class="noItemFoundDescription">
+                            The item or resource you are looking for could not be found. <br />
+                            <button class="rearch-error-button" (click)="redirectToCPanle()">
+                                <!-- <fa-icon class="" [icon]="['fas', 'magnifying-glass']"></fa-icon> -->
+                                Explore the cPanel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+    
         </div>
     </div>
 
+    <!-- Sidebar-->
     <div class="col-md-3">
         <app-sidebar></app-sidebar>
     </div>

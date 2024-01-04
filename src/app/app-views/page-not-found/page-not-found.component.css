@@ -7,45 +7,33 @@
     padding-left: 0px;
 }
 
-.inner-accordion {
-    margin: 0px;
-    padding-left: 0px;
+/* ------------------- No items found - container--------------------- */
+.noItemFound {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.outer-body {
-    padding-left: 0px;
-    margin: 5px;
+.noItemFoundTitle {
+    font-size: 30px;
 }
 
-.accordion-body {
-    border-bottom: 1px solid lightgrey;
-    margin-left: 0px;
+.noItemFoundDescription {
+    font-size: 20px;
 }
 
-.accordion-item {
+.rearch-error-button {
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
     border: none;
-    margin-left: 0px;
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: orange;
+    color: white;
 }
 
-.accordion-button {
-    padding: 10px;
-    padding-left: 10px;
-    border-radius: 8px;
-    margin-left: 0px;
-}
-
-.accordion-button:not(.collapsed) {
-    color: brown;
-    background-color: #f8f9fa;
-    box-shadow: none;
-    border: 1px solid lightgrey;
-}
-
-.accordion-button:focus {
-    z-index: 3;
-    border: none;
-    outline: 1;
-    box-shadow: 0 0 0 0rem #f8f9fa;
-    border: none;
-    border: 1px solid lightgrey;
+.rearch-error-button:hover {
+    background-color: brown;
+    color: white;
 }

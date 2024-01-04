@@ -19,12 +19,12 @@ export class NgxLightboxComponent {
   albums: any = [];
   private _images = [
   
-    { src: "assets/gallery/1.jpg", caption: "Hi, I'm Yingi" },
-    { src: "assets/gallery/2.jpg", caption: "I'm passionate about Front End Development" },
-    { src: "assets/gallery/3.jpg", caption: "Learning someting new each day" },
-    { src: "assets/gallery/4.jpg", caption: "We all started somewhere" },
-    { src: "assets/gallery/5.jpg", caption: "Angular is the future" },
-    { src: "assets/gallery/6.jpg", caption: "I hope you enjoyed" },
+    { src: "assets/gallery/1.jpg", caption: "Hi, I'm Yingi, welcome to my photo album." },
+    { src: "assets/gallery/2.jpg", caption: "I am Angular +2 Front-End developer." },
+    { src: "assets/gallery/3.jpg", caption: "I enjoy solving real-world problems." },
+    { src: "assets/gallery/4.jpg", caption: "I always see challanges as an opportunity to unleash my potential" },
+    { src: "assets/gallery/5.jpg", caption: "Learning is the key to personal development" },
+    { src: "assets/gallery/6.jpg", caption: "Hope you enjoyed viewing my photo album." },
 
   ];
 

@@ -6,7 +6,7 @@
         <div class="gallery-content">
 
             <div class="gallery-intro">
-                Hi, I'm <b>Yingi</b>, welcome to my photos gallery
+                Hi, I'm <b>Yingi</b>, welcome to my online photo-album.
             </div>
 
             <div class="gallery-images-container" *ngFor="let image of albums; let i=index">
@@ -19,47 +19,8 @@
             </div>
 
             <div class="bottom-msg">
-                I hope you enjoyed!
+                I hope you enjoyed viewing my photo-album!
             </div>
         </div>  
-
-       
-    <!-- </div> -->
-
-    <!-- image details section -->
-    <!-- <div class="col-md-4">
-
-        <div *ngIf="selectedImageDetails; else noImageSeleted" class="image-details-section">
-            <div class="image-item">
-                <img class="image-details-img" [src]="selectedImageDetails.src" (click)="open(selectedImageIndex)"  />
-            </div>
-            <div class="list-group">
-                <button type="button" class="list-group-item list-group-item-action schedule-content">
-                    <b>Caption:</b> {{selectedImageDetails.caption}}
-                </button>
-                <button type="button" class="list-group-item list-group-item-action schedule-content">
-                    <b>File name:</b> {{fileName}}
-                </button>
-                <button type="button" class="list-group-item list-group-item-action schedule-content">
-                    <b>File type:</b> {{fileExtension}}
-                </button>
-            </div>
-        </div>
-
-        <ng-template #noImageSeleted >
-            <div class="image-details-section">
-            <div class="image-item">
-                <img class="image-details-default-img" src="assets/gallery/default.png" />
-            </div>
-
-            <button type="button" class="list-group-item list-group-item-action schedule-content">
-                <fa-icon class="" [icon]="['fas', 'circle-Description']"> </fa-icon>&nbsp;
-                Sorry, no image seleted yet.
-            </button>
-
-            </div>
-        </ng-template>
-
-    </div> -->
 </div>
 

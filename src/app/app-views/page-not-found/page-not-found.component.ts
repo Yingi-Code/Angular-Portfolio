@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
 
 @Component({
@@ -9,6 +10,26 @@ import { fadeInPageTitle } from 'src/app/app-shared/animations/animations';
     fadeInPageTitle,
   ]
 })
-export class PageNotFoundComponent {
+export class PageNotFoundComponent implements OnInit {
+
+  //[ ngSwitch tag]
+  viewMode = 'defaultTab';
+  private currentUrl: string = '';
+
+  constructor(private _router: Router,) {
+    
+  }
+
+  ngOnInit(): void {
+    this.currentUrl  = this._router.url;
+  }
+
+  redirectToHomePage() {
+    this._router.navigate(['/']);
+  }
+
+  redirectToCPanle() {
+    this._router.navigate(['/cpanel']);
+  }
 
 }
