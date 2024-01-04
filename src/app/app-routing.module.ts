@@ -40,7 +40,7 @@ const routes: Routes = [
        
       {
         path: 'online-store', children: [{
-          path: 'product-details/:id', component: ProductDetailsComponent, title: "My AP - Details"
+          path: 'product-details/:id', component: ProductDetailsComponent, title: "My AP - Description"
         }]
       },
        

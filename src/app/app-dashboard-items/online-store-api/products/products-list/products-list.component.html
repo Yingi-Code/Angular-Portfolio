@@ -29,7 +29,7 @@
                     </li>
                     
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> Details</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Description</a>
                     </li>
                     
                     <li [class.active]="viewMode == 'dashboardTab'">
@@ -155,8 +155,8 @@
                                     Add
                                 </button>
                                 <button class=" btn btn-sm product-item-btn" (click)="viewProductDetails(_productDetails.id)" title="More details">
-                                    <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
-                                    Details
+                                    <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                                    Description
                                 </button>
                                 
                             </div>
@@ -208,7 +208,7 @@
                                             <fa-icon class="" [icon]="['fas', 'cart-shopping']"></fa-icon>              
                                         </button>
                                         <button class=" btn btn-sm product-item-btn" (click)="viewProductDetails(product.id)" title="More details">
-                                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
+                                            <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
                                         </button>
 
                                        
