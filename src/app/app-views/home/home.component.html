@@ -1,13 +1,16 @@
-<div class="bg-light">
-    <div @fadeInPageTitle  class="welcome-messsage ">
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
         <h3>[ WELCOME ]</h3>
-        <p class="page-title-description fade-in">
+        <p class="page-title-description fade-in d-none d-md-block">
             HI, I'M <b>YINGI!</b> WELCOME TO MY <b>ANGULAR PORTFOLIO</b>.
-    </div>
+        </p>
 
-    <div class="social-buttons-aligner ">
-        <app-share-this-buttons></app-share-this-buttons>
-    </div>
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+
+    </div> 
 </div>
 
 <!--Page content -->

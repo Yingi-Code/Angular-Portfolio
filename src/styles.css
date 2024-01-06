@@ -38,6 +38,14 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     font-size: large;
+    border-bottom: 5px solid orangered;
+
+    background-image: url('^assets/header-bg/header-bg.jpg');
+    background-color: #ffffff;
+    background-size: cover;
+    object-fit: contain;
+    background-repeat: no-repeat;
+    color: white;
 }
 
 .welcome-messsage>h3 {
@@ -50,6 +58,17 @@ body {
 
 .dashboard-button-section {
     text-align: right;
+}
+
+
+/* 
+-------------------------------------------------
+Card component
+-------------------------------------------------
+*/
+
+.card-body > ul {
+    margin-bottom: 0px;
 }
 
 /* 

@@ -1,19 +1,20 @@
-<div @fadeInPageTitle class="bg-light">
-    <div class="welcome-messsage">
-        <h3>[ ANGULAR PANEL ]</h3>
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ PORTFOLIO cPANEL ]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
            <b class="bold-subtitle-word">ANGULAR CONCEPTS</b> AND HOW THEY ARE IMPLEMENTED.
         </p>
-    </div>
 
-    <div class="social-buttons-aligner ">
-        <app-share-this-buttons></app-share-this-buttons>
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
     </div>
-
 </div>
 
 
 <div class="row page-content">
+
     <div class="col-md-9" [ngSwitch]="viewMode">
 
         <div class="page-content-container">
@@ -30,14 +31,13 @@
             
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">
-                            <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Description</a>
+                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> How it works</a>
                     </li>
 
                     <li [class.active]="viewMode == 'desciptionTab'" (click)="redirectToHomePage()">
                         <a class="nav-link  btn tab-text" data-bs-toggle="tab">
                             <fa-icon class=""  [icon]="['fas', 'home']"></fa-icon> home</a>
                     </li>
-
 
                 </ul>
             </div>
@@ -55,30 +55,26 @@
             <div *ngSwitchCase="'desciptionTab'">
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
-                        How it works
+                        <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                        Description
                     </strong>
                     <div class="card-body">
-                        <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b> in angular.
-                            It allows you to manage developers' team by adding new developer, viewing details, updating details,
-                            allocating or
-                            removing developer from project team,
-                            and deleting the developer from developers list.
+                        <p class="card-text">This component serves as a <b>Dashboard or Control Panel</b> for this portfolio.
+                            It presents easy-access to various features and functionalities of the portfolio. 
+                            The status for each development progress very depending on whether the feature is just a <b>concept</b> , the development of a feature is <b>in-progress</b>  , the feature is <b>completed</b> , which are represented in different colors. 
                         </p>
                     </div>
                 </div>
             
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        <fa-icon class="" [icon]="['fas', 'mug-hot']"></fa-icon>
                         The scope of work
                     </strong>
                     <div class="card-body">
                         <ul>
-                            <li>Responsive UI Design concept.</li>
-                            <li>Template-driven forms, forms validation, and route guard.</li>
-                            <li>Data structures - Arrays and Objects.</li>
-                            <li>Angular services - Dependency injection.</li>
+                            <li>The implementation of Responsive UI Design principles.</li>
+                            <li>The development progress status for each listed feature.</li>
                         </ul>
                     </div>
                 </div>

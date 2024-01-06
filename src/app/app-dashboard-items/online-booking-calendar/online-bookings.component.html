@@ -1,13 +1,14 @@
-<div @fadeInPageTitle class="bg-light">
-    <div class="welcome-messsage">
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
         <h3>[ ONLINE CALENDAR]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
             MANAGEMENT WORKSHOP SESSIONS BOOKING.
         </p>
-    </div>
 
-    <div class="social-buttons-aligner ">
-        <app-share-this-buttons></app-share-this-buttons>
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
     </div>
 
 </div>
@@ -24,13 +25,13 @@
                     <li [class.active]="viewMode == 'defaultTab'">
                         <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
                             <fa-icon class="" [icon]="['far', 'calendar-days']"></fa-icon>
-                            Schedule
+                            Dates
                         </a>
                     </li>
 
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Description</a>
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> How it works</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
@@ -88,7 +89,7 @@
 
                                 <div class="list-group">
                                     <button type="button" class="list-group-item list-group-item-action schedlee-headings">
-                                        <fa-icon class="" [icon]="['fas', 'bookmark']"> </fa-icon>&nbsp;
+                                        <fa-icon class="" [icon]="['fas', 'book-bookmark']"> </fa-icon>&nbsp;
                                         <b>CONTENT</b>
                                     </button>
                                     <button type="button" class="list-group-item list-group-item-action schedule-content">
@@ -124,30 +125,27 @@
             <div *ngSwitchCase="'desciptionTab'">
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
-                        How it works
+                        <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                        Description
                     </strong>
                     <div class="card-body">
-                        <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b> in angular.
-                            It allows you to manage developers' team by adding new developer, viewing details, updating details,
-                            allocating or
-                            removing developer from project team,
-                            and deleting the developer from developers list.
+                        <p class="card-text">This component demonstrates how to implement and customize <b>Angular calendar</b> in angular application.
+                            The calendar can be configured to display specific features depanding on the needs as required by the application. 
+                            The customization includes the default content display format. eg, display items in a list-calendar-view or display items in a week-calendar-view. Users can view the details of an item by clicking or selecting that specific item in the calendar.
                         </p>
                     </div>
                 </div>
             
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        <fa-icon class="" [icon]="['fas', 'mug-hot']"></fa-icon>
                         The scope of work
                     </strong>
                     <div class="card-body">
                         <ul>
-                            <li>Responsive UI Design concept.</li>
-                            <li>Template-driven forms, forms validation, and route guard.</li>
+                            <li>Responsive UI/UX Design concept using (HTML5, CSS3, Bootstrap 5, and FontAwesome).</li>
                             <li>Data structures - Arrays and Objects.</li>
-                            <li>Angular services - Dependency injection.</li>
+                            <li>Unit Test - Karma and Jasmine.</li>
                         </ul>
                     </div>
                 </div>

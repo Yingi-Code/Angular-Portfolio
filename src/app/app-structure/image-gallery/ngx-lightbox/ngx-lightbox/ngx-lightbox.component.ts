@@ -20,7 +20,7 @@ export class NgxLightboxComponent {
   private _images = [
   
     { src: "assets/gallery/1.jpg", caption: "Hi, I'm Yingi, welcome to my photo album." },
-    { src: "assets/gallery/2.jpg", caption: "I am Angular +2 Front-End developer." },
+    { src: "assets/gallery/2.jpg", caption: "I am an Angular +2 Front-End Developer." },
     { src: "assets/gallery/3.jpg", caption: "I enjoy solving real-world problems." },
     { src: "assets/gallery/4.jpg", caption: "I always see challanges as an opportunity to unleash my potential" },
     { src: "assets/gallery/5.jpg", caption: "Learning is the key to personal development" },

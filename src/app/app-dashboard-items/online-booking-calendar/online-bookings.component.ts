@@ -36,7 +36,7 @@ export class OnlineBookingsComponent implements OnInit {
     timeZone: 'CAT',
     // themeSystem: 'bootstrap5',
     plugins: [dayGridPlugin, interactionPlugin, listPlugin],
-    initialView: 'dayGridWeek',
+    initialView: 'listWeek',
     weekends: false,
 
     //Calendar header options
@@ -63,7 +63,7 @@ export class OnlineBookingsComponent implements OnInit {
     // /Calendar Events
     events: [
       {
-        title: 'Responsive Web Design', start: '2023-12-15T0900:00', end: '2023-12-15T1600:00',
+        title: 'Responsive Web Design', start: '2024-03-15T0900:00', end: '2024-03-15T1600:00',
             extendedProps: {
               workshopTopic: 'Responsive Web Design',
               description: 'Designing Responsive User Interfaces (UIs) for SAP'
@@ -71,7 +71,7 @@ export class OnlineBookingsComponent implements OnInit {
         
       },
       {
-        title: 'Developing SPA in Angular', start: '2023-11-05T0900:00', end: '2023-12-05T1600:00',
+        title: 'Developing SPA in Angular', start: '2024-01-05T0900:00', end: '2024-05-05T1600:00',
         extendedProps: {
           workshopTopic: 'Developing SPA in Angular',
           description: 'Learn how to develop Sing Page Applications (SPA)'
@@ -79,7 +79,7 @@ export class OnlineBookingsComponent implements OnInit {
       },
         
       {
-        title: 'Intro to Web API', start: '2023-11-18T0800:00', end: '2023-11-20T1600:00',
+        title: 'Intro to Web API', start: '2024-03-18T0800:00', end: '2024-04-20T1600:00',
       extendedProps: {
         workshopTopic: 'Intro to Web API',
         description: 'Learn how to develop your own RESTful Web API'
@@ -87,7 +87,7 @@ export class OnlineBookingsComponent implements OnInit {
       },
         
       {
-        title: 'JWT Authentication', start: '2023-12-27T1400:00', end: '2023-12-29T1500:00',
+        title: 'JWT Authentication', start: '2024-02-27T1400:00', end: '2024-04-29T1500:00',
         extendedProps: {
           workshopTopic: 'JWT Authentication',
           description: 'Implementing authentication using JWT in Angular'
@@ -95,7 +95,7 @@ export class OnlineBookingsComponent implements OnInit {
       },
 
       {
-        title: 'Intro to .NET MVC Core', start: '2023-10-12T10:00:00', end: '2023-11-16T1300:00',
+        title: 'Intro to .NET MVC Core', start: '2024-01-12T10:00:00', end: '2024-03-16T1300:00',
         extendedProps: {
           workshopTopic: 'Intro to .NET MVC Core',
           description: 'Introduction to .NET MVC application'
@@ -103,7 +103,7 @@ export class OnlineBookingsComponent implements OnInit {
       },
 
       {
-        title: 'Angular Universal - SEO', start: '2023-11-18T1100:00', end: '2023-11-18T1500:00' ,
+        title: 'Angular Universal - SEO', start: '2024-03-18T1100:00', end: '2024-04-18T1500:00' ,
         extendedProps: {
           workshopTopic: 'Angular Universal - SEO',
           description: 'Learn how to implement search engine optimisation.'

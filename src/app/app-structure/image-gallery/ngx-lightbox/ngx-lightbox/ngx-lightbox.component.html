@@ -10,12 +10,10 @@
             </div>
 
             <div class="gallery-images-container" *ngFor="let image of albums; let i=index">
-
                 <div class="content-item-wrapper">
-                    <img class="img-fluid" [src]="image.thumb" (click)="open(i)" title="View image" />
-                    <!-- <button class="view-image-details-btn" (click)="getSelectedImageDetails(i)" title="View image properties">Description</button> -->
+                    <img class="img-fluid" [src]="image.thumb" (click)="open(i)" title="Display image" />
+                    <!-- <button class="view-image-details-btn" (click)="getSelectedImageDetails(i)" title="View image properties">How it works</button> -->
                 </div>
-
             </div>
 
             <div class="bottom-msg">

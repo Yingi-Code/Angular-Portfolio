@@ -30,7 +30,7 @@
 
                     <li [class.active]="viewMode == 'desciptionTab'">
                         <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text"
-                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Description</a>
+                            data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> How it works</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
@@ -112,8 +112,8 @@
             <div *ngSwitchCase="'desciptionTab'">
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
-                        How it works
+                        <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                        Description
                     </strong>
                     <div class="card-body">
                         <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b> in angular.
@@ -127,7 +127,7 @@
             
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        <fa-icon class="" [icon]="['fas', 'mug-hot']"></fa-icon>
                         The scope of work
                     </strong>
                     <div class="card-body">

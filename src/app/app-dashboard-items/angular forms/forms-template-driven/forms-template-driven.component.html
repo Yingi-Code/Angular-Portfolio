@@ -2,7 +2,7 @@
     <div class="welcome-messsage bg-light">
         <h3>[ TEMPLATE-DRIVE ]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
-            UI DESIGN, VALIDATION, AND ROUTE-GUARD.
+            UI/UX DESIGN, VALIDATION, AND ROUTE-GUARD.
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -29,7 +29,7 @@
                     </li>
             
                     <li [class.active]="viewMode == 'desciptionTab'">
-                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon> Description</a>
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab"><fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> How it works</a>
                     </li>
 
                     <li [class.active]="viewMode == 'dashboardTab'">
@@ -226,7 +226,7 @@
 
                             <ng-template #noDeveloperDetailsFound>
                                 <div class="alert alert-warning alert-sm empty-list-message">
-                                    <fa-icon class="concept-icon" [icon]="['fas', 'circle-info']"></fa-icon>
+                                    <fa-icon class="concept-icon" [icon]="['far', 'bell']"></fa-icon>
                                     Please select developer to view details!
                                 </div>
                             </ng-template>
@@ -241,8 +241,8 @@
             <div *ngSwitchCase="'desciptionTab'">
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon>
-                        How it works
+                        <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                        Description
                     </strong>
                     <div class="card-body">
                         <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b> in angular.
@@ -255,15 +255,15 @@
                 
                 <div class="card">
                     <strong class="card-header">
-                        <fa-icon class="" [icon]="['fas', 'gears']"></fa-icon>
+                        <fa-icon class="" [icon]="['fas', 'mug-hot']"></fa-icon>
                         The scope of work
                     </strong>
                     <div class="card-body">
                         <ul>
-                            <li>Responsive UI Design concept.</li>
-                            <li>Template-driven forms, forms validation, and route guard.</li>
+                            <li>Responsive UI/UX Design concept using (HTML5, CSS3, Bootstrap 5, and FontAwesome).</li>
+                            <li>Template-Driven forms, custom validation, and route guard, and seperaation of concerns.</li>
                             <li>Data structures - Arrays and Objects.</li>
-                            <li>Angular services - Dependency injection.</li>
+                            <li>Unit Test - Karma and Jasmine.</li>
                         </ul>
                     </div>
                 </div>

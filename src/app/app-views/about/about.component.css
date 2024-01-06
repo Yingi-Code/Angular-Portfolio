@@ -4,7 +4,8 @@
 
 .outer-accordion {
     margin: 0px;
-    padding-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin-top: 8px;
 }
 
@@ -13,16 +14,11 @@
     padding-left: 0px;
 }
 
-.outer-body {
-    padding-left: 0px;
-    margin: 5px;
-}
-
 .accordion-body {
     border-left: 1px solid lightgrey;
     margin-top: 10px;
      margin-bottom: 10px;
-    margin-left: 18px;
+    margin-left: 14px;
     padding: 15px;
     padding-bottom: 5px;
     
