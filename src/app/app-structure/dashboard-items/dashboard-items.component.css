@@ -26,6 +26,7 @@
 
 .item-icon {
     margin-right: 2px;
+    font-size: 22px;
 }
 
 .not-started-icon {
@@ -33,7 +34,11 @@
 }
 
 .in-progress-icon {
-    color: #17a2b8;
+    color: #17a2c9;
+}
+
+.dashboard-items>.btn:hover .in-progress-icon {
+    color: white;
 }
 
 .completed-icon {
@@ -66,14 +71,11 @@
     padding: 5px;
 }
 
-.item-icon {
-    font-size: 20px;
-}
 
 .panding-item {
     color: red;
 }
 
-.dashboard-items>.btn:hover .panding-item {
+.dashboard-items>.btn:hover .panding-item{
     color: white;
 }

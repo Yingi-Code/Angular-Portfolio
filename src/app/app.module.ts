@@ -81,11 +81,17 @@ import { LoadingSpinnerComponent } from './app-structure/loading-spinner/loading
 import { AuthJwtComponent } from './app-dashboard-items/authentications/auth-jwt/auth-jwt.component';
 import { AccountComponent } from './app-dashboard-items/authentications/account/account.component'
 import { AuthBasicComponent } from './app-dashboard-items/authentications/auth-basic/auth-basic.component';
+
 import { DeactivateRoute } from './app-shared/routes-guard/deactivate-route';
 import { ProductDetailsComponent } from './app-dashboard-items/online-store-api/products/product-details/product-details.component';
 import { UsersService } from './app-shared/services/online-store-services/users/users.service';
 import { CartsService } from './app-shared/services/online-store-services/carts/carts.service';
+
+//for weather forecast
 import { WeatherForecastComponent } from './app-dashboard-items/weather-forecast/weather-forecast.component';
+import { CascadingMenuComponent } from './app-dashboard-items/cascading-menu/cascading-menu.component';
+
+
 
 
 @NgModule({
@@ -124,7 +130,9 @@ import { WeatherForecastComponent } from './app-dashboard-items/weather-forecast
     
     //Account and Auth components
     AccountComponent,
-    AuthJwtComponent
+    AuthJwtComponent,
+
+    CascadingMenuComponent
     
   ],
 

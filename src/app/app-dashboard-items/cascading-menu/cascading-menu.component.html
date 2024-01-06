@@ -1,0 +1,88 @@
+<div @fadeInPageTitle class="">
+    <div class="welcome-messsage bg-light">
+        <h3>[ CASCADING MENU]</h3>
+        <p class="page-title-description fade-in d-none d-md-block">
+            THREE-LEVEL SUB-MENU USING DROPDOWN
+        </p>
+
+        <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
+        <div class="social-buttons-aligner slide-up">
+            <app-share-this-buttons></app-share-this-buttons>
+        </div>
+    </div>
+</div>
+
+<div class="row page-content">
+    <div class="col-md-9" [ngSwitch]="viewMode">
+        <div class="page-content-container">
+
+            <!-- Switch tabs-->
+            <div class="formSwitch">
+                <ul class="nav nav-tabs ">
+                    <li [class.active]="viewMode == 'defaultTab'">
+                        <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'location-dot']"></fa-icon>
+                            Sub-menu
+                        </a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'desciptionTab'">
+                        <a (click)="viewMode = 'desciptionTab'" class="nav-link  btn tab-text" data-bs-toggle="tab">
+                            <fa-icon class="" [icon]="['fas', 'circle-info']"></fa-icon> How it works</a>
+                    </li>
+
+                    <li [class.active]="viewMode == 'dashboardTab'">
+                        <a (click)="viewMode = 'dashboardTab'" routerLink="/cpanel"
+                            class="nav-link  btn tab-text"><fa-icon class="concept-icon " [icon]="['fas', 'grip']">
+                            </fa-icon>
+                            Panel</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngSwitchCase="'defaultTab'">
+
+            </div>
+
+            <div *ngSwitchCase="'desciptionTab'">
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'bookmark']"></fa-icon>
+                        Description
+                    </strong>
+                    <div class="card-body">
+                        <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b>
+                            in angular.
+                            It allows you to manage developers' team by adding new developer, viewing details, updating
+                            details,
+                            allocating or
+                            removing developer from project team,
+                            and deleting the developer from developers list.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <strong class="card-header">
+                        <fa-icon class="" [icon]="['fas', 'mug-hot']"></fa-icon>
+                        The scope of work
+                    </strong>
+                    <div class="card-body">
+                        <ul>
+                            <li>Responsive UI Design concept.</li>
+                            <li>Template-driven forms, forms validation, and route guard.</li>
+                            <li>Data structures - Arrays and Objects.</li>
+                            <li>Angular services - Dependency injection.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <app-sidebar></app-sidebar>
+    </div>
+
+</div>
