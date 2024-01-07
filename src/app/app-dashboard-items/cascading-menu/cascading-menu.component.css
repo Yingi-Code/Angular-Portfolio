@@ -5,3 +5,39 @@
 .formSwitch {
     padding-bottom: 10px;
 }
+
+.dome-form-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    border: 1px solid lightgrey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sections-headings {
+    color: brown;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.select-text {
+    color: grey;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.price-title {
+    color: red;
+    font-size: 20px;
+}
+
+.price-value{
+        font-size: 16px;
+}
+
+.product-color {
+    font-weight: bold;
+}

@@ -21,8 +21,8 @@
                 <ul class="nav nav-tabs ">
                     <li [class.active]="viewMode == 'defaultTab'">
                         <a (click)="viewMode = 'defaultTab'" class="nav-link active btn tab-text" data-bs-toggle="tab">
-                            <fa-icon class="" [icon]="['fas', 'location-dot']"></fa-icon>
-                            Sub-menu
+                            <fa-icon class="" [icon]="['fas', 'window-restore']"></fa-icon>
+                            Menu
                         </a>
                     </li>
 
@@ -41,7 +41,69 @@
             </div>
 
             <div *ngSwitchCase="'defaultTab'">
+                
+                <section class="row dome-form-container">
 
+                    <div class="col-md-6">
+                        <div class="sections-headings">
+                            Clothing store
+                        </div>
+                        <!-- Product menu -->
+                        <div>
+                            <div class="input-group input-group-sm mb-3">
+                                <select (change)="GetProductCategoryList($event.target)" class="form-select form-select-sm select-text">
+                                    <option value="" hidden disabled selected class=""> --- Gender ---</option>
+                                    <option *ngFor="let _genderType of _gender" [value]="_genderType.id">{{ _genderType.name }} </option>
+                                </select>
+                            </div>
+                            <div (change)="GetProductsList($event.target)" class="input-group input-group-sm mb-3">
+                                <select class="form-select form-select-sm select-text">
+                                    <option value="" hidden disabled selected class=""> --- Product Category ---</option>
+                                    <option *ngFor="let _productCategory of _categories" [value]="_productCategory.id">{{ _productCategory.name }} </option>
+                                </select>
+                            </div>
+
+                            <div (change)="ProductDetails($event.target)" class="input-group input-group-sm mb-3">
+                                <select class="form-select form-select-sm select-text">
+                                    <option value="" hidden disabled selected class=""> --- Product ---</option>
+                                    <option *ngFor="let _product of _products" [value]="_product.id">{{ _product.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Product details -->
+                    <div class="col-md-6 ">
+                        <div class="sections-headings">
+                            Item Details
+                        </div>
+
+                        <div *ngIf="_productDetails">
+                            <div class="product-name">{{_productDetails[0]?.name}}</div>
+
+                            <div class="price-title">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'tag']"></fa-icon>
+                                Price
+                            </div>
+                            <div class="price-value">
+                                {{_productDetails[0]?.price | currency:'R'}}
+                            </div>
+                            
+                            <div class="product-color">Color</div>
+                            <div >{{_productDetails[0]?.color}}</div>
+                           
+                        </div>
+
+                        <div *ngIf="!_productDetails" class="alert alert-warning alert-sm empty-list-message">
+                            <fa-icon class="concept-icon" [icon]="['fas', 'circle-exclamation']"></fa-icon>
+                            No selections have been made yet!
+                        </div>
+                       
+                    </div>
+                
+                </section>
+                
             </div>
 
             <div *ngSwitchCase="'desciptionTab'">
@@ -51,13 +113,8 @@
                         Description
                     </strong>
                     <div class="card-body">
-                        <p class="card-text">This component demonstrates how to implement <b>template-driven forms</b>
-                            in angular.
-                            It allows you to manage developers' team by adding new developer, viewing details, updating
-                            details,
-                            allocating or
-                            removing developer from project team,
-                            and deleting the developer from developers list.
+                        <p class="card-text">This component demonstrates how to implement <b>Cascading drop-downs</b> in angular application to drill-down data to specific level.
+                            It's a three-level dependent drop-doown menu that allows the user to make couple of selections before retriieving the intended information.
                         </p>
                     </div>
                 </div>
@@ -69,10 +126,9 @@
                     </strong>
                     <div class="card-body">
                         <ul>
-                            <li>Responsive UI Design concept.</li>
+                            <li>Responsive UI/UX Design concept using (HTML5, CSS3, Bootstrap 5, and FontAwesome).</li>
                             <li>Template-driven forms, forms validation, and route guard.</li>
-                            <li>Data structures - Arrays and Objects.</li>
-                            <li>Angular services - Dependency injection.</li>
+                            <li>Data structures - JSON Data.</li>
                         </ul>
                     </div>
                 </div>

@@ -90,6 +90,7 @@ import { CartsService } from './app-shared/services/online-store-services/carts/
 //for weather forecast
 import { WeatherForecastComponent } from './app-dashboard-items/weather-forecast/weather-forecast.component';
 import { CascadingMenuComponent } from './app-dashboard-items/cascading-menu/cascading-menu.component';
+import { CascadingMenuService } from './app-shared/services/cascading-menu/cascading-menu.service';
 
 
 
@@ -192,7 +193,8 @@ import { CascadingMenuComponent } from './app-dashboard-items/cascading-menu/cas
     UsersService,
     CartsService,
     // provideClientHydration(),
-    DeactivateRoute
+    DeactivateRoute,
+    CascadingMenuService
   ],
   bootstrap: [AppComponent]
 })

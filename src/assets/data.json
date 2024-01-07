@@ -1,0 +1,31 @@
+    {
+        "gender": [
+            { "id": 1, "name": "Men"},
+            { "id": 2, "name": "Women"}
+        ],
+
+        "category": [
+            { "id": 1,  "name": "Footwear", "genderId": 1 },
+            { "id": 2,  "name": "Footwear", "genderId": 2 },
+            { "id": 3,  "name": "Bottoms",  "genderId": 1 },
+            { "id": 4,  "name": "Bottoms",  "genderId": 2 },
+            { "id": 5,  "name": "Tops",     "genderId": 1 },
+            { "id": 6,  "name": "Tops",    "genderId": 2 } 
+        ],
+
+        "product": [
+            { "id": 1, "name": "Nike Sneakers - Men", "categoryId": 1, "price": 1.400, "color": "White" },
+            { "id": 2, "name": "Levis Jean - Women",  "categoryId": 4, "price": 1.199, "color": "Navy blue" },
+            { "id": 3, "name": "Guess Jean - Men",        "categoryId": 3, "price": 799, "color":"Navy blue" },
+            { "id": 4, "name": "CAT Boots - Women",         "categoryId": 2, "price": 1.600, "color": "brown"},
+            { "id": 5, "name": "K Way Sneakers - Men",    "categoryId": 1, "price" : 8.99, "color": "grey" },
+            { "id": 6, "name": "Old Khaki T-Shirt - Women", "categoryId": 6, "price": 500, "color": "White"},
+            { "id": 7, "name": "Hi-tec Hiking Shoes - Men", "categoryId": 1, "price": 999, "color": "Brown" },
+            { "id": 8, "name": "Northface Jacket - Women",    "categoryId": 6, "price": 1.800, "color": "Black"},
+            { "id": 9, "name": "Polo Long-sleeve Shirt - Men", "categoryId": 5, "price": 1.300, "color": "Black & White stripes" },
+            { "id": 10, "name": "New Balance Running Short - Women", "categoryId": 4, "price": 1.800, "color": "red"},
+            { "id": 11,  "name": "Addidas Sneaker - Women", "categoryId": 2, "price": 999, "color": "Black & white" },
+            { "id": 12, "name": "Forever new Dress - Women","categoryId": 6, "price": 649, "color": "Pink" }
+    
+        ]
+    }
