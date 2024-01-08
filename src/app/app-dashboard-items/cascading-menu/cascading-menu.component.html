@@ -1,8 +1,8 @@
 <div @fadeInPageTitle class="">
     <div class="welcome-messsage bg-light">
-        <h3>[ CASCADING MENU]</h3>
+        <h3>[ CASCADING MENU ]</h3>
         <p class="page-title-description fade-in d-none d-md-block">
-            THREE-LEVEL SUB-MENU USING DROPDOWN
+            THREE-LEVEL MENU USING DROP-DOWN
         </p>
 
         <!-- <app-ngx-share-buttons></app-ngx-share-buttons> -->
@@ -42,11 +42,11 @@
 
             <div *ngSwitchCase="'defaultTab'">
                 
-                <section class="row dome-form-container">
+                <section class="row content-container">
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 section-container" >
                         <div class="sections-headings">
-                            Clothing store
+                            Filter
                         </div>
                         <!-- Product menu -->
                         <div>
@@ -56,6 +56,7 @@
                                     <option *ngFor="let _genderType of _gender" [value]="_genderType.id">{{ _genderType.name }} </option>
                                 </select>
                             </div>
+
                             <div (change)="GetProductsList($event.target)" class="input-group input-group-sm mb-3">
                                 <select class="form-select form-select-sm select-text">
                                     <option value="" hidden disabled selected class=""> --- Product Category ---</option>
@@ -70,34 +71,45 @@
                                     </option>
                                 </select>
                             </div>
+
+                            <div class="input-group input-group-sm mb-3">
+                                <input type="button" value="View details" (click)="DisplayProduct()" class="btn view-details-btn btn-sm ">
+                            </div>
                         </div>
                     </div>
                 
                     <!-- Product details -->
-                    <div class="col-md-6 ">
+                    <div class="col-md-6 section-container">
                         <div class="sections-headings">
-                            Item Details
+                            Product
                         </div>
 
-                        <div *ngIf="_productDetails">
-                            <div class="product-name">{{_productDetails[0]?.name}}</div>
+                        <div *ngIf="_productDetails != null" class="details-container bg-light">
+                            <div class="product-name">
+                                {{_productDetails[0]?.name}}
+                            </div>
 
                             <div class="price-title">
-                                <fa-icon class="concept-icon" [icon]="['fas', 'tag']"></fa-icon>
+                               
                                 Price
                             </div>
                             <div class="price-value">
+                                <fa-icon class="concept-icon" [icon]="['fas', 'tag']"></fa-icon>
                                 {{_productDetails[0]?.price | currency:'R'}}
                             </div>
                             
-                            <div class="product-color">Color</div>
-                            <div >{{_productDetails[0]?.color}}</div>
+                            <div class="product-color-title">
+                                Color
+                            </div>
+                            <div class="product-color-value">
+                                {{_productDetails[0]?.color}}
+                            </div>
                            
                         </div>
 
-                        <div *ngIf="!_productDetails" class="alert alert-warning alert-sm empty-list-message">
+                        <div *ngIf="_productDetails == null" class="alert alert-warning alert-sm empty-list-message">
                             <fa-icon class="concept-icon" [icon]="['fas', 'circle-exclamation']"></fa-icon>
-                            No selections have been made yet!
+                            No filters selected yet!
                         </div>
                        
                     </div>
@@ -113,8 +125,8 @@
                         Description
                     </strong>
                     <div class="card-body">
-                        <p class="card-text">This component demonstrates how to implement <b>Cascading drop-downs</b> in angular application to drill-down data to specific level.
-                            It's a three-level dependent drop-doown menu that allows the user to make couple of selections before retriieving the intended information.
+                        <p class="card-text">This component demonstrates how to implement <b>Cascading menu </b> in angular application to specific level.
+                            It's a three-level dependent drop-down menu that allows users to make few  selections before displaying the intended information.
                         </p>
                     </div>
                 </div>
@@ -127,7 +139,7 @@
                     <div class="card-body">
                         <ul>
                             <li>Responsive UI/UX Design concept using (HTML5, CSS3, Bootstrap 5, and FontAwesome).</li>
-                            <li>Template-driven forms, forms validation, and route guard.</li>
+                            <li>Template-driven forms.</li>
                             <li>Data structures - JSON Data.</li>
                         </ul>
                     </div>

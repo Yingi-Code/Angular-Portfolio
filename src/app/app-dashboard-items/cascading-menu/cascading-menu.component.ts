@@ -20,7 +20,10 @@ export class CascadingMenuComponent implements OnInit {
   _gender: any;
   _categories: any;
   _products: any;
+  _product: any;
   _productDetails: any;
+  _dataLoaded: boolean = false;
+  _dataAvailable: boolean = false;
   _errorMessage: string = '';
 
   _selectedGender: any = {
@@ -30,6 +33,7 @@ export class CascadingMenuComponent implements OnInit {
   constructor(private _cascadingMenuService: CascadingMenuService ) { }
 
   ngOnInit(): void {
+    this._dataLoaded = false;
     this.GetGenderList();
     this.GetProductCategoryList(this._selectedGender)
   }
@@ -75,7 +79,7 @@ export class CascadingMenuComponent implements OnInit {
     this._cascadingMenuService.getAllMenuData().pipe(
       map((_menuData: any) => {
 
-        //filter  the category items by ganderId
+        //filter category items by ganderId
         let _productCategory = _menuData['category'].filter((c: any) => c.genderId == seletedGenderId.value)
 
         if (_productCategory.length <= 0) {
@@ -92,13 +96,13 @@ export class CascadingMenuComponent implements OnInit {
 
           this._categories = _productCategory;
 
-          //set detected location coordinates
+          //set detected Category Data
           console.log('==== Category Data found =====')
           console.log(this._categories);
         },
         error: (_Error: any) => {
 
-          // this.GeoLocationErrorHandler(_Error);
+          // HTTP response (_Error);
           console.log('==== Category Data Error detected =====')
           console.log(_Error);
           this._errorMessage = "The items you are looking for could not be found"
@@ -116,7 +120,7 @@ export class CascadingMenuComponent implements OnInit {
     this._cascadingMenuService.getAllMenuData().pipe(
       map((_menuData: any) => {
 
-        //filter  the category items by ganderId
+        //filter product items by ganderId
         let _products = _menuData['product'].filter((p: any) => p.categoryId == seletedProductCategoryId.value)
 
         if (_products.length <= 0) {
@@ -133,13 +137,13 @@ export class CascadingMenuComponent implements OnInit {
 
           this._products = _products;
 
-          //set detected location coordinates
+          //set detected Product Data
           console.log('==== Product Data found =====')
           console.log(this._products);
         },
         error: (_Error: any) => {
 
-          // this.GeoLocationErrorHandler(_Error);
+          // HTTP response (_Error);
           console.log('==== Category Data Error detected =====')
           console.log(_Error);
           this._errorMessage = "The items you are looking for could not be found"
@@ -156,7 +160,7 @@ export class CascadingMenuComponent implements OnInit {
     this._cascadingMenuService.getAllMenuData().pipe(
       map((_menuData: any) => {
 
-        //filter  the category items by ganderId
+        //filter selected product category
         let _selectedProduct = _menuData['product'].filter((p: any) => p.id == selectedProduct.value)
 
         if (_selectedProduct.length <= 0) {
@@ -171,23 +175,27 @@ export class CascadingMenuComponent implements OnInit {
       .subscribe({
         next: (_selectedProduct: any) => {
 
-          this._productDetails = _selectedProduct;
+          this._product = _selectedProduct;
 
-          //set detected location coordinates
+          //set detected Product Details
           console.log('==== Product Details found =====')
-          console.log(this._productDetails);
+          console.log(this._product);
         },
         error: (_Error: any) => {
 
-          // this.GeoLocationErrorHandler(_Error);
+          // HTTP response (_Error);
           console.log('==== Category Data Error detected =====')
           console.log(_Error);
           this._errorMessage = "The items you are looking for could not be found"
 
         }
-      })
+      });
+    this._dataLoaded = true
+  }
 
-    return this._productDetails;
+  DisplayProduct() {
+    this._dataLoaded = true
+    return this._productDetails = this._product;
   }
 
   

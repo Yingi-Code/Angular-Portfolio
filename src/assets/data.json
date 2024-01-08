@@ -14,18 +14,18 @@
         ],
 
         "product": [
-            { "id": 1, "name": "Nike Sneakers - Men", "categoryId": 1, "price": 1.400, "color": "White" },
-            { "id": 2, "name": "Levis Jean - Women",  "categoryId": 4, "price": 1.199, "color": "Navy blue" },
-            { "id": 3, "name": "Guess Jean - Men",        "categoryId": 3, "price": 799, "color":"Navy blue" },
-            { "id": 4, "name": "CAT Boots - Women",         "categoryId": 2, "price": 1.600, "color": "brown"},
-            { "id": 5, "name": "K Way Sneakers - Men",    "categoryId": 1, "price" : 8.99, "color": "grey" },
+            { "id": 1, "name": "Nike Sneakers - Men", "categoryId": 1, "price": 1400, "color": "White" },
+            { "id": 2, "name": "Levis Jean - Women",  "categoryId": 4, "price": 1199, "color": "Navy Blue" },
+            { "id": 3, "name": "Guess Jean - Men",        "categoryId": 3, "price": 799, "color":"Black" },
+            { "id": 4, "name": "CAT Boots - Women",         "categoryId": 2, "price": 1600, "color": "Brown"},
+            { "id": 5, "name": "K Way Sneakers - Men",    "categoryId": 1, "price" : 899, "color": "Grey" },
             { "id": 6, "name": "Old Khaki T-Shirt - Women", "categoryId": 6, "price": 500, "color": "White"},
-            { "id": 7, "name": "Hi-tec Hiking Shoes - Men", "categoryId": 1, "price": 999, "color": "Brown" },
-            { "id": 8, "name": "Northface Jacket - Women",    "categoryId": 6, "price": 1.800, "color": "Black"},
-            { "id": 9, "name": "Polo Long-sleeve Shirt - Men", "categoryId": 5, "price": 1.300, "color": "Black & White stripes" },
-            { "id": 10, "name": "New Balance Running Short - Women", "categoryId": 4, "price": 1.800, "color": "red"},
-            { "id": 11,  "name": "Addidas Sneaker - Women", "categoryId": 2, "price": 999, "color": "Black & white" },
-            { "id": 12, "name": "Forever new Dress - Women","categoryId": 6, "price": 649, "color": "Pink" }
+            { "id": 7, "name": "Hi-Tec Hiking Shoes - Men", "categoryId": 1, "price": 999, "color": "Brown" },
+            { "id": 8, "name": "Northface Jacket - Women",    "categoryId": 6, "price": 1800, "color": "Black"},
+            { "id": 9, "name": "Polo Shirt - Men", "categoryId": 5, "price": 1300, "color": "Black & White Stripes" },
+            { "id": 10, "name": "New Balance Short - Women", "categoryId": 4, "price": 1800, "color": "Red"},
+            { "id": 11,  "name": "Addidas Sneaker - Women", "categoryId": 2, "price": 999, "color": "Black & White" },
+            { "id": 12, "name": "Forever New Dress - Women","categoryId": 6, "price": 649, "color": "Pink" }
     
         ]
     }

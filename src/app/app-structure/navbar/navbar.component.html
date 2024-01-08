@@ -95,18 +95,20 @@
                                     <ul class="list-group">
                                         <li class="list-group-item list-group-item-action">
                                             <fa-icon class="concept-icon " [icon]="['fas', 'user']"> </fa-icon>
-                                            New profile
+                                            Register
                                         </li>
-        
-                                        <li (click)="loginOptions()" class="list-group-item list-group-item-action">
-                                            <fa-icon class="concept-icon " [icon]="['fas', 'lock']"> </fa-icon>
-                                            Auth options
-                                        </li>
-        
+
                                         <li (click)="login()" class="list-group-item list-group-item-action">
                                             <fa-icon class="concept-icon " [icon]="['fas', 'right-to-bracket']"> </fa-icon>
                                             Login
                                         </li>
+        
+                                        <li (click)="loginOptions()" class="list-group-item list-group-item-action">
+                                            <fa-icon class="concept-icon " [icon]="['fas', 'lock']"> </fa-icon>
+                                            Password reset
+                                        </li>
+        
+                                       
                                     </ul>
         
                                 </ng-template>
