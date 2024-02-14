@@ -1,123 +1,20 @@
     <div class="header-container">
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-        
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="../assets/logo/1.png"><br/>
-                </a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-expanded="false" aria-controls="navbarCollapse" aria-label="Toggle navigation">
-        
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Main NavBar -->        
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-        
-                        <div class="nav-item">
-                            <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]={exact:true}
-                                routerLink="/">
-                                <fa-icon class="concept-icon " [icon]="['fas', 'house']"> </fa-icon>
-                                Home
-                            </a>
-                        </div>
-        
-                        <div class="nav-item">
-                            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/about">
-                                <fa-icon class="concept-icon " [icon]="['fas', 'circle-info']"> </fa-icon>
-                                About
-                            </a>
-                        </div>
-        
-                        <div class="nav-item">
-                            <a class="nav-link" [routerLinkActive]="['active']" routerLink="/cpanel">
-                                <fa-icon class="concept-icon " [icon]="['fas', 'grip']"> </fa-icon>
-                                Panel
-                            </a>
-                        </div>
-        
-                        <!-- only if the user is logged in  -->
-                        <div *ngIf="firstname?.length !=0; else notSignedIn" class="nav-item ">
-                            <button type="button" class="nav-link" [ngbPopover]="popContent" [popoverTitle]="popTitle"
-                                placement="bottom">
-                                <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
-                                Online({{firstname}})
-                            </button>
-        
-                            <ng-template #popTitle>
-                                <div class="popover-menu-header">
-                                    <fa-icon class="concept-icon " [icon]="['fas', 'gear']"> </fa-icon>
-                                    <b> Manage</b>
-                                </div>
-                            </ng-template>
-        
-                            <ng-template #popContent>
-        
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-action">
-                                        <fa-icon class="concept-icon " [icon]="['fas', 'pen-to-square']"> </fa-icon>
-                                        Edit Profile
-                                    </li>
-                                    <li class="list-group-item list-group-item-action">
-                                        <fa-icon class="concept-icon " [icon]="['fas', 'cart-shopping']"> </fa-icon>
-                                        Carts({{_userCartsQuantity}})
-                                    </li>
-                                    <li (click)="logout()" class="list-group-item list-group-item-action">
-                                        <fa-icon class="concept-icon " [icon]="['fas', 'right-from-bracket']"> </fa-icon>
-                                        Logout
-                                    </li>
-                                </ul>
-        
-                            </ng-template>
-        
-                        </div>
-        
-                        <!-- only if the user is not logged in -->
-                        <ng-template #notSignedIn>
-                            <div class="nav-item ">
-                                <button type="button" class="nav-link" placement="auto" [ngbPopover]="popContent" [popoverTitle]="popTitle"
-                                    placement="bottom-right auto">
-                                    <fa-icon class="concept-icon " [icon]="['fas', 'circle-user']"> </fa-icon>
-                                    (Guest)
-                                </button>
-        
-                                <ng-template #popTitle>
-        
-                                    <div class="popover-menu-header">
-                                        <fa-icon class="concept-icon " [icon]="['fas', 'gear']"> </fa-icon>
-                                        <b> Manage</b>
-                                    </div>
-                                </ng-template>
-        
-                                <ng-template #popContent>
-        
-                                    <ul class="list-group">
-                                        <li class="list-group-item list-group-item-action">
-                                            <fa-icon class="concept-icon " [icon]="['fas', 'user']"> </fa-icon>
-                                            Register
-                                        </li>
-
-                                        <li (click)="login()" class="list-group-item list-group-item-action">
-                                            <fa-icon class="concept-icon " [icon]="['fas', 'right-to-bracket']"> </fa-icon>
-                                            Login
-                                        </li>
-        
-                                        <li (click)="loginOptions()" class="list-group-item list-group-item-action">
-                                            <fa-icon class="concept-icon " [icon]="['fas', 'lock']"> </fa-icon>
-                                            Password reset
-                                        </li>
-        
-                                       
-                                    </ul>
-        
-                                </ng-template>
-                            </div>
-                        </ng-template>
-                    </div>
-                </div>
-            </div>
-        </nav>
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+      </div>
+    </div>
+  </div>
+</nav>
 
         <div class="company-identity">
             <a class="nav-link" routerLink="/">

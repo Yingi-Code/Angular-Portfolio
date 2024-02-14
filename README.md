@@ -9,7 +9,7 @@
 
 ## 2. Layout and Design
 
-![Alt text](app.jpg)
+![Alt text](App.png)
 
 ## 3. Description
 
@@ -21,7 +21,7 @@ The project covers the following Front-End Development fundamentals:
 
 - Implementing Resposive Web Design Principles.
 - Building Single-Page Application using Angular/Typescript.
-- Writing code that is Clean, Reable, Reusable, and Testable.
+- Writing code that is Clean, Readable, Reusable, and Testable.
 - Implementing Search Engine Optimization
 - RESTful API Integration.
 - Unit Testing.
@@ -64,7 +64,7 @@ We are currently looking at introducing the following features, components, and 
 | Git and GitHub                    | 2.39.1 (Windows)          | Version control system for tracking source code changes. |
 | DevTools                          | 120.0.6099.200 (64-bit)   | Set of Chrome browser tools built to assist developer debug error faster. |
 | Karma and Jasmine                 | 6.4.0                     | Tools used for Unit Testing. |
-| Draw Plus X8                      | 14.0.1.21 (64-bit)        | Tool used for graphic design (Creating, Editing, and Publishing). |
+| Serif Draw Plus X8                      | 14.0.1.21 (64-bit)        | Software used for graphic design (Creating, Editing, and Publishing). |
 
 ## 8. Copyright and licensing
 
